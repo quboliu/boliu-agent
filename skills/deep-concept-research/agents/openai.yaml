@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deep Concept Research"
+  short_description: "以源码、实验、Claim、精细图表和版本重验驱动的跨领域深度研究"
+  default_prompt: "Use $deep-concept-research to build an evidence-traceable source-and-experiment research topic or program with audited visuals."

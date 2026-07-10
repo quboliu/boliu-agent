@@ -1,0 +1,11 @@
+.DS_Store
+*.swp
+*.swo
+*~
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
