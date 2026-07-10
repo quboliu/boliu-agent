@@ -62,8 +62,8 @@
 
 使用 `FIG-<TOPIC>-NNN`，只增不复用。图语义改变时新建 ID；同一语义的分辨率/尺寸导出共用 ID 并记 variant。
 
-| FIG ID | Question | Type | Claims | Source/experiment | Spec | Accepted artifact | Variants | Consumers | Status | Review |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| FIG ID | Question | Type | Claims | Source/experiment | Generation policy/method | Spec | Accepted artifact | Variants | Consumers | Status | Review |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Status 取：`planned|draft|fact-reviewed|accepted|rejected|stale|superseded`。
 
@@ -98,6 +98,14 @@ Status 取：`planned|draft|fact-reviewed|accepted|rejected|stale|superseded`。
 - Layers/panels:
 - Main visual hierarchy:
 - Detail inset/subgraph:
+
+## Generation Policy And Provenance
+- Project/user policy:
+- Chosen method:
+- Image Gen prompt/candidate:
+- Deterministic exception reason:
+- Overlay/post-processing:
+- Tool/mode/date:
 
 ## Objects
 | Visual object | Source object/concept | Category | Label | Must show | Must not imply |
@@ -157,14 +165,15 @@ Status 取：`planned|draft|fact-reviewed|accepted|rejected|stale|superseded`。
 
 ## 生成和编辑方式
 
-先遵循当前项目的图形资产规则。无项目特定约束时：
+先遵循用户和当前项目的图形资产规则；局部政策可以比本协议更严格。无特定约束时，按下列顺序路由：
 
-- 精确文本、箭头、对齐和层次是核心时，优先可编辑矢量/代码原生图；
-- 需要视觉隐喻、空间氛围、插画或高质量位图时，使用图像生成能力；
-- 项目规定只使用位图时，将图内精确文本减到最小，用 caption/图例和正文承载机制细节；
-- 任何方式都不允许伪代码、伪字段、伪地址或视觉上暗示未证明的对象关系。
+1. **Image Gen first**：面向读者的 atlas、layer map、机制概览、流程/时序解释图、概念插画和非数据 infographic，默认先用 Image Gen 产生候选位图。在 spec 保留 prompt、候选路径、工具/模式和日期。
+2. **精确机制图**：仍先评估 Image Gen；图内只放必要、稀疏、可审的标签，把字段、函数路径、条件矩阵和 Claim ID 放到 caption/表格/正文。如果必须保证每个箭头、对齐或文本的机械正确性，可对 Image Gen 视觉层叠加确定性标注，或改用确定性图形；必须记录例外原因和后处理 provenance。
+3. **数据图与精确表格**：从 raw artifact 确定性生成，不让 Image Gen 发明数字、坐标、样本或误差线。Image Gen 可用于无数值的背景/解释层，但不得成为数据事实层。
+4. **Mermaid 只作草图**：可用于研究中间的快速关系校验，但默认不得成为 accepted 正式图。只有用户/项目明确允许时才能封版。
+5. **导出与源文件**：面向读者的正式资产优先 PNG/WebP。SVG 可作确定性标注的可编辑源，但不是默认视觉路线，也不得绕过项目的 Image Gen-only 规则。
 
-使用图像生成时，不把 prompt 中写了“accurate”当成事实审核。每次生成结果都按 spec 逐对象、逐箭头复核。
+任何路线都不允许伪代码、伪字段、伪地址、伪数据或视觉上暗示未证明的对象关系。不把 prompt 中的“accurate”当成事实审核；每个候选结果都按 spec 逐对象、逐箭头、逐标签复核。
 
 ## 双层图谱与细节密度
 
@@ -180,7 +189,7 @@ Status 取：`planned|draft|fact-reviewed|accepted|rejected|stale|superseded`。
 
 1. **Visual plan**：在大纲中为每张候选图写问题、类型、绑定 Claim、consumer 和优先级。
 2. **Spec**：只有主 Claim 至少 G1/G2 且边界清楚时写精确 visual spec；G3 图只能标为探索草图。
-3. **Draft**：生成或编辑图，保留源文件/prompt、工具、版本和 variant。
+3. **Draft**：先按项目政策与 Image Gen-first 路由生成或编辑图，保留源文件/prompt、工具、模式、日期、variant 和例外原因。
 4. **Fact review**：逐对象、逐箭头、逐状态、逐标签与 Claim/source-map 核验。
 5. **Editorial review**：检查视觉层次、阅读顺序、文字密度、对比度、尺寸、alt/caption 和与系列图的一致性。
 6. **Integration**：正文引用，caption 说明图能/不能表达什么，更新 Visual Registry。
@@ -198,6 +207,8 @@ Status 取：`planned|draft|fact-reviewed|accepted|rejected|stale|superseded`。
 - 图是否把可选路径画成必经，把局部实现画成标准契约？
 - 图中状态/字段是源码名还是教学分类，是否明确区分？
 - 架构、版本、配置和非目标是否在 caption 中可见？
+- 是否遵循项目生成政策？Image Gen 候选、确定性叠加或例外路由的 provenance 是否完整？
+- Image Gen 产物中的所有文字、数值、箭头和对象是否逐项核验？无法核验的细节是否删除或退回 caption/表格？
 
 ### Editorial Review
 

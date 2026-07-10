@@ -42,6 +42,7 @@ description: 构建和维护术语严格、主张可追溯、源码可核验、�
 - 实验前按 [references/experiments.md](references/experiments.md) 定安全等级；需要提权、修改宿主全局状态或有数据/连接风险时必须先取得授权。
 - G3、冲突、stale 和未闭合 Claim 不进入确定性总结；“未命中代码/未观察到/无权限”不能证明机制不存在。
 - 图只组织关系，不是证据；精确路径、字段、Claim ID 和边界保留在文本。
+- 面向读者的非数据视觉默认先使用 Image Gen；项目/用户更严格的图形政策优先。精确数据图、机械可验证布局可走确定性例外，但必须在 visual spec 记录原因；Mermaid 默认只是草图，不得直接封版。
 - accepted 图必须有 FIG ID、Claim/证据绑定、visual spec、caption/alt text、正文 consumer 和事实审图；stale/rejected 图不得被正文引用。
 
 ## 资源路由

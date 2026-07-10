@@ -232,24 +232,31 @@ check_claims() {
   local ledger="$ROOT/claims/claim-ledger.md"
   [[ -f "$ledger" ]] || return
 
-  local ids_file all_ids_file id count dup
+  local ids_file all_ids_file rows_file id count dup
   ids_file="$(mktemp)"
   all_ids_file="$(mktemp)"
+  rows_file="$(mktemp)"
 
-  awk -F'|' '/^[[:space:]]*\|[[:space:]]*CLM-[A-Z0-9-]+[[:space:]]*\|/ {
+  awk '
+    /^##[[:space:]]+Claims[[:space:]]*$/ {in_claims=1; next}
+    /^##[[:space:]]+/ && in_claims {in_claims=0}
+    in_claims && /^[[:space:]]*\|[[:space:]]*CLM-[A-Z0-9-]+[[:space:]]*\|/ {print}
+  ' "$ledger" > "$rows_file"
+
+  awk -F'|' '{
     id=$2; gsub(/^[[:space:]]+|[[:space:]]+$/, "", id); print id
-  }' "$ledger" > "$ids_file"
+  }' "$rows_file" > "$ids_file"
 
   if [[ ! -s "$ids_file" ]]; then
     if [[ "$MODE" == "scaffold" ]]; then
-      rm -f "$ids_file" "$all_ids_file"
+      rm -f "$ids_file" "$all_ids_file" "$rows_file"
       return
     elif [[ "$MODE" == "audit" ]]; then
       warn "CLM001" "Claim Ledger contains no primary Claim rows"
     else
       error "CLM001" "Claim Ledger contains no primary Claim rows"
     fi
-    rm -f "$ids_file" "$all_ids_file"
+    rm -f "$ids_file" "$all_ids_file" "$rows_file"
     return
   fi
 
@@ -274,8 +281,8 @@ check_claims() {
     [[ "$line" =~ \|[[:space:]]*(contract|implementation|observation|performance|historical|portability|security)[[:space:]]*\| ]] || warn "CLM005" "Claim row has an unknown or missing Claim Type: $line"
     [[ "$line" =~ \|[[:space:]]*(open|supported|bounded|contradicted|superseded|stale)[[:space:]]*\| ]] || warn "CLM006" "Claim row has an unknown or missing status: $line"
     [[ "$line" =~ G[0-3][[:space:]]*\[PE[0-2][[:space:]]+EX[0-2][[:space:]]+VA[0-2][[:space:]]+AC[0-2][[:space:]]+RR[0-2][[:space:]]+TS=(local|implementation|family|standard)\] ]] || warn "CLM007" "Claim row has no valid evidence vector: $line"
-  done < <(grep -E '^[[:space:]]*\|[[:space:]]*CLM-' "$ledger" || true)
-  rm -f "$ids_file" "$all_ids_file"
+  done < "$rows_file"
+  rm -f "$ids_file" "$all_ids_file" "$rows_file"
 }
 
 check_source_maps() {
@@ -374,7 +381,15 @@ check_reader_docs() {
 check_visuals() {
   [[ -d "$ROOT/images" ]] || return
   exists_file "images/README.md" "FIG001"
-  local image base refs
+  local image base refs spec
+
+  while IFS= read -r -d '' spec; do
+    require_heading "$spec" "Generation Policy And Provenance|生成政策与溯源" "FIG006" "Generation Policy And Provenance"
+    grep -Eq '(Chosen method|选定方式)' "$spec" || warn "FIG007" "$(realpath --relative-to="$ROOT" "$spec"): no chosen generation method"
+    grep -Eq '(Image Gen prompt/candidate|Prompt|Image Gen)' "$spec" || warn "FIG008" "$(realpath --relative-to="$ROOT" "$spec"): no Image Gen attempt/prompt record"
+    grep -Eq '(Deterministic exception|Deterministic exception/overlay|确定性例外)' "$spec" || warn "FIG009" "$(realpath --relative-to="$ROOT" "$spec"): no deterministic-exception decision"
+  done < <(find "$ROOT/images/specs" -maxdepth 1 -type f -name '*.md' -print0 2>/dev/null)
+
   while IFS= read -r -d '' image; do
     base="$(basename "$image")"
     refs=0
