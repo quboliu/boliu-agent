@@ -11,6 +11,7 @@ boliu-agent/
 │   ├── README.md
 │   └── repository-conventions.md
 └── skills/
+    ├── blog-publish/
     └── deep-concept-research/
 ```
 
@@ -18,6 +19,12 @@ boliu-agent/
 - `skills/` contains self-contained agent skills. Each skill owns its `SKILL.md`, references, scripts, assets, and optional UI metadata.
 
 ## Skills
+
+### blog-publish
+
+Manages posts on the Astro blog `quboliu/quboliu.github.io`: preflight environment checks, published-status checks, local-vs-published diffs, and publish / update / delete workflows guarded by explicit confirmation before any commit or push.
+
+Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
 
 ### deep-concept-research
 
