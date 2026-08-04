@@ -9,7 +9,7 @@
 - 先分析→后设计→再实施→验证→闭环;未完成「需求/现状/设计」三步不许动代码
 - 任务分级 S/A/P 决定产出文档量;P 级必带风险评估+回滚+灰度+监控
 
-  二、调试和修bug纪律(证据驱动)
+二、调试和修bug纪律(证据驱动)
 
 - 拿到问题和用户报告的bug之后，第一时间真实复现，结合源码文本以及使用测试日志和调试工具定位根因，禁止仅根据源码文本进行猜测假设然后上手修改代码的不负责行为。
 - 同一 bug 修两次没解决 → 立刻停手, 确保不存在默认的假设和前提，如果有，务必把假设变成证据和事实再动手。
@@ -21,13 +21,13 @@
 - 所有bug修复走根本解,不搞绕过/workaround,从根源一劳永逸。
 - 同一问题翻车 → 回共享组件做根本解,别在调用点逐个打补丁
 
-  三、改代码与重构
+三、改代码与重构
 
 - 只走根本解和当前需求和约束下的最优解,禁绕过/workaround/屏蔽规则/超时 hack/降级糊弄，禁止小修小补屎山堆屎山，要大胆重构。
 - 零功能损失:重构只许升级优化不许降级,不许「优雅降级/已知 gap」当借口
 - 对等才许 cutover(strangler 旧路保留期是补对等的窗口,不是提前切的许可)
 
-  四、验证和测试
+四、验证和测试
 
 - 验证必须打真实 deployed endpoint + 走用户实际路径,绝不模拟(手工补数据=自欺)
 - 前端一律走 frontend-verify skill(puppeteer 截图+量DOM+console error 门禁)
@@ -37,36 +37,36 @@
 - fail-closed:集成/e2e 被启用却连不上依赖 → t.Fatal 不 t.Skip
 - 隔离栈用完即焚,CS_TEST_STACK=1 护栏防误连主栈
 
-  五、多 agent 并行编排
+五、多 agent 并行编排
 
 - Claude 是组长, 如果你当前不是Claude，那么你就是组长，可派 codex、agy、kimi code、 opencode等本机内有的其他agent工作做具体的任务 但必须 review、不盲信你的组员的反馈。
 - 使用worktree来并行，不同的agent工具在不同的worktree中工作，不要同时修改同一目录下的东西。
 - worktree 里的 agent 绝不碰 live docker stack(会 wipe 主 DB 卷)
 
-  六、凭证与安全
+六、凭证与安全
 
 - LLM 凭证和其他的密钥类的信息，只走 shell 替换,绝不 echo / 落盘明文，绝对不允许出现在大模型session的上下文中
 - CORS 不用 credentials:include,用 Bearer token
 
-  七、Git 与文档语言
+七、Git 与文档语言
 
 - commit 正文一律中文,type(scope): 前缀保英文,技术名词不硬翻译
 - task-id 三处一致(目录名/task-id/commit footer)
 - worktree 建在仓库父目录,rebase 优先,禁止裸 force push
 - 所有落盘文档用新加坡中文
 
-  八、Docker 与部署
+八、Docker 与部署
 
 - BuildKit GC 不许关;临时容器必须 --rm;不许 prune --volumes(误删数据)
 - AutoMigrate 卡死无日志 = 被锁,查 pg_stat_activity 杀僵尸事务,别先 restart 容器
 - 每次改完代码主动部署到容器(别等用户提醒)
 
-  九、UI 基调
+九、UI 基调
 
 - 首页基调不准暗色,黑色只能上组件(对标 Vercel/Stripe 亮模式)
 - UI 复刻先写像素级 prompt 再实现,别放养 subagent
 
-  十、结论来源(认识论)
+十、结论来源(认识论)
 
 - 结论从源码/运行产物来,不轻信文档/probe(probe 系统性高估,本 session 多次被证伪)
 - 证据三档:静态读 < 结构推理 < 运行产物;安全/并发类必到运行产物档
