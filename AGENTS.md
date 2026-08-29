@@ -2,6 +2,8 @@
 
 These instructions apply to the entire repository.
 
+This repository is an Aranya workspace entry. When a session starts here directly, also read `../AGENTS.md` for the workspace map and cross-repository boundaries; this file remains authoritative for repository-specific work.
+
 ## Repository Contract
 
 - Put reusable behavioral policies in `rules/`.

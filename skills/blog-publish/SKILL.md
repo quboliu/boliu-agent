@@ -1,98 +1,171 @@
 ---
 name: blog-publish
-description: Manage posts on the user's Astro blog (quboliu.github.io) from any working directory — preflight environment checks (account/repo/login), check whether a local article is already published, diff local vs published versions, publish new articles, and edit or delete existing posts. Use when the user mentions 发布博客/查验是否已发布/对比博客文章/博客增删改, publishing a markdown article to their blog, or asks whether an article is already on the blog.
+description: Manage posts on the user's Astro blog at quboliu.github.io from any working directory. Run environment and repository preflight checks; determine whether a Markdown article is published; compare local and published content; prepare, update, delete, validate, commit, and push posts. Use when the user mentions 发布博客、查验是否已发布、对比博客文章、博客增删改, asks to publish or update a Markdown article on their blog, or asks whether an article is already on the blog.
 ---
 
 # Blog Publish
 
-Target repo `quboliu/quboliu.github.io` (owner account `quboliu`), site `https://quboliu.github.io`.
-Local repo path resolution: env `BLOG_REPO` → `~/.config/blog-publish/config.json` (written by `blog.mjs config <path>`). Check with `blog.mjs which-repo`.
-Posts live in `src/content/posts/NNNN/index.md` with co-located assets; post URL is `/posts/NNNN/`. Publishing = push to `main`; GitHub Actions builds and deploys.
+Operate only on the fixed target repository quboliu/quboliu.github.io and the site
+https://quboliu.github.io. Store posts under src/content/posts/NNNN/index.md or
+index.mdx with co-located assets. Treat a push to main as publication because
+GitHub Actions builds and deploys the site.
 
-Helper script (never mutates git content, never pushes; `preflight` is read-only).
-Run it as `node "$SKILL_DIR/scripts/blog.mjs" <command>`, where `$SKILL_DIR` is the directory containing this SKILL.md (the skill loader reports it as `dir=`):
+## Resolve the helper
 
-```
-node "$SKILL_DIR/scripts/blog.mjs" <preflight|status|diff|prepare|apply|list|config|which-repo> [args]
-```
+Resolve the installed cross-agent user skill once per shell command:
 
-- `preflight` — environment check chain; **run it before the first blog operation of every session**
-- `status <file>` — is this local article published? (match by title, then body similarity)
-- `diff <file>` — unified diff of published body vs local body
-- `prepare <file>` — create a new numbered post dir with generated frontmatter + copied assets (no git)
-- `apply <file>` — overwrite an existing post with local content, bump `modDatetime` (no git)
-- `list` — all posts: id, date, title
-- `config <path>` / `which-repo` — persist / show the blog repo location and target repo
+    BLOG_SKILL_DIR="$HOME/.agents/skills/blog-publish"
+    node "$BLOG_SKILL_DIR/scripts/blog.mjs" <command> [args]
 
-## Preflight (mandatory, first blog action of every session)
+Do not assume that an agent host exports SKILL_DIR or a host-specific home
+variable. Prefer absolute paths for article arguments so the workflow remains
+independent of the current working directory.
 
-Run `blog.mjs preflight`. It checks, in order, each with a `fix:` hint on failure:
+Resolve the blog clone in this order: BLOG_REPO environment variable, the repo
+path in ~/.config/blog-publish/config.json, then the built-in default. Inspect the
+resolved path with which-repo.
 
-1. gh CLI installed
-2. login state — distinguishes: not logged in / token expired / network unreachable, and reports the **active account name**
-3. target account vs repo owner, and real push permission (`viewerPermission`) on `quboliu/quboliu.github.io`
-4. local clone exists, is a git repo, and its `origin` **is** the target repo (refuses to operate on a mismatched clone)
-5. branch = main, working tree clean, and sync with `origin/main` (ahead/behind)
+Available commands:
 
-Then:
+- preflight: check Node, GitHub authentication and permission, clone identity,
+  branch, working tree, and synchronization with origin/main.
+- status <file>: match a local Markdown article to a published post.
+- diff <file>: show a unified body diff against the matched post.
+- prepare <file>: create the next numbered post and copy referenced assets.
+- apply <file>: replace the body of a matched post and set modDatetime.
+- list: show post id, publication date, and title.
+- config <path>: validate and save the local clone path.
+- which-repo: show the resolved clone and fixed target repository.
 
-- **Any FAIL** → show the `fix:` hint, resolve with the user, re-run preflight. Do not proceed to writes.
-- **Present the target summary and get explicit confirmation before the first write of the session**, e.g.:
-  > 将以账号 `quboliu` 发布到 `quboliu/quboliu.github.io`（本地 `<path>`，分支 main，工作区干净）。确认无误？
-- WARN handling:
-  - wrong account → `gh auth switch -u quboliu` after asking the user
-  - dirty tree → list the changes, ask how to proceed; **never** discard or stash them silently
-  - behind origin → `git pull --ff-only` only after confirmation
-  - not on main → ask before `git switch main`
-  - fetch failed/offline → local ops (status/diff/prepare/apply) are OK; no commit/push until preflight passes
+The helper never commits, pushes, switches branches, pulls, or deletes posts.
+preflight contacts GitHub and runs git fetch, which updates remote-tracking refs
+but never changes blog content or the working tree. config writes only its config
+file. prepare and apply write blog content.
 
-## Fresh environment (blog repo not cloned)
+## Establish session safety
 
-Triggered by a preflight FAIL on gh/login/local-clone:
+Run preflight before the first blog operation in every session. Do not substitute
+ad hoc checks for it.
 
-1. Fix login first per the preflight hint (target account `quboliu`, needs `repo` scope). Also verify `node -v` >= 22.
-2. Confirm the clone location with the user, then `gh repo clone quboliu/quboliu.github.io <path>` (respects gh's git protocol — https via gh credentials or SSH key; both can push).
-3. Register the path: `node "$SKILL_DIR/scripts/blog.mjs" config <path>` (also records the repo full name detected from `origin`).
-4. `npm ci` inside the clone (required for `content:check`/`build`).
-5. Re-run `preflight`; continue with the normal workflows once it passes.
+Interpret results as follows:
 
-## Workflows
+- On FAIL, show the failure and fix hint, resolve it with the user, rerun
+  preflight, and do not write blog content.
+- On WARN, explain the warning and follow the corresponding handling below.
+- On success, present the account, fixed repository, local path, branch, working
+  tree, and sync state.
 
-### 1. Check if published (查验)
-Run `status <file>`, report id/title/URL or "not published". If the user gave only a topic or title (no file), run `list` and match by title.
+Before the first content-changing action in a session, obtain explicit
+confirmation of that target. Use a concise prompt such as:
 
-### 2. Compare local vs published (对比)
-Run `diff <file>` and summarize what changed. Frontmatter differences are not shown by the script — if relevant, read both frontmatters and compare manually.
+> 将以账号 quboliu 发布到 quboliu/quboliu.github.io（本地 PATH，分支 main，工作区干净）。确认开始修改博客内容吗？
 
-### 3. Publish a new article (发布)
-1. Run `status <file>` first — if already published, switch to the update workflow.
-2. Run `prepare <file>`. The script generates frontmatter (`pubDatetime` now +08:00, title from first heading, description from first prose line, tags `["others"]`).
-3. **Show the generated frontmatter and asset list to the user.** Offer to adjust title/description/tags before proceeding — generated descriptions are rough.
-4. Validate then ship (see "Ship" below).
+Treat prepare, apply, direct edits, git rm, commit, and push as content-changing
+actions. A target confirmation does not authorize commit or push; obtain the
+separate shipping confirmation described below.
 
-### 4. Update an existing post (更新/修改)
-- Content update from a local file: `diff <file>` to preview, then `apply <file>`.
-- Small edits (typo, frontmatter, tags): edit `src/content/posts/NNNN/index.md` directly in the blog repo; set `modDatetime` to now (+08:00) when content changes.
-- Then "Ship" below.
+Handle warnings explicitly:
 
-### 5. Delete a post (删除)
-1. Locate via `list` or `status`; show the user the post title and the files that will be removed.
-2. Get explicit confirmation, then `git rm -r src/content/posts/NNNN`.
-3. Remind the user it stays recoverable from git history. Then "Ship" below (content check only is enough; build optional).
+- Wrong account: ask before running gh auth switch -u quboliu.
+- Dirty tree: show git status and relevant diffs; ask how to proceed. Never
+  discard or stash user work silently.
+- Behind origin: ask before running git pull --ff-only.
+- Not on main: ask before running git switch main.
+- Fetch failure or offline state: allow status, diff, list, prepare, or apply only
+  after the user acknowledges the stale remote state. Do not commit or push until
+  preflight can verify synchronization.
 
-## Ship (validate + commit + push)
+## Bootstrap a fresh environment
 
-Requires a clean preflight (or user-acknowledged WARNs) earlier in this session.
+When preflight reports a missing or unsuitable runtime, login, or clone:
 
-1. In the blog repo: `npm run content:check`. For content changes also `npm run build`. Do not push if either fails — fix first.
-2. `git status`/`git diff --stat` and show the user a summary of exactly what will be committed.
-3. **Only after the user explicitly confirms in this session**: one commit per post, e.g. `git add src/content/posts/NNNN && git commit -m "posts: add NNNN <title>"`, then `git push origin main`.
-4. Report the post URL; note deploy takes a minute or two via Actions.
+1. Satisfy the exact Node engine declared by the blog's package.json.
+2. Authenticate GitHub CLI as an account with write access to
+   quboliu/quboliu.github.io.
+3. Confirm a clone location with the user, then run:
 
-## Safety rules (non-negotiable)
+       gh repo clone quboliu/quboliu.github.io <path>
 
-- Never run `git commit`/`git push` without explicit user confirmation in the current session.
-- Never force-push, rewrite history, or touch branches other than `main`.
-- Never operate on a repo whose `origin` is not `quboliu/quboliu.github.io` — preflight blocks this; do not route around it.
-- One post per commit so mistakes are revertable with `git revert`.
-- If `status` matched only by body similarity, confirm the match with the user before `apply` or any destructive action.
+4. Register the clone:
+
+       node "$BLOG_SKILL_DIR/scripts/blog.mjs" config <path>
+
+5. Run npm ci inside the clone.
+6. Rerun preflight before continuing.
+
+Accept either HTTPS with GitHub CLI credentials or SSH with a working key. Never
+configure a clone whose origin is not the fixed target repository.
+
+## Run the requested workflow
+
+### Check publication status
+
+Run status <file> and report the matched id, title, match method, and URL, or
+report that it is not published. If the user supplies only a title or topic, run
+list and match candidates by title.
+
+If status reports a partial-title or body-similarity match, treat it as uncertain.
+Confirm the match before apply or deletion.
+
+### Compare content
+
+Run diff <file> and summarize meaningful changes. The helper compares bodies
+only. Read and compare both frontmatters directly when metadata matters.
+
+### Publish a new article
+
+1. Run status <file>. Switch to the update workflow if it already exists.
+2. After target confirmation, run prepare <file>.
+3. Show the generated frontmatter and copied-asset list.
+4. Offer to correct the generated title, description, and tags; generated
+   descriptions are only drafts.
+5. Continue to shipping.
+
+### Update an existing post
+
+- For a full update, run diff <file>, confirm uncertain matches, then run
+  apply <file>.
+- For a small edit, modify the matched post directly.
+- Whenever content changes, set modDatetime to the current Asia/Shanghai time.
+- Review the complete diff, including metadata and asset changes, then continue
+  to shipping.
+
+### Delete a post
+
+1. Locate it with list or status.
+2. Show its title, URL, match method, and every file that would be removed.
+3. Obtain explicit deletion confirmation.
+4. Run git rm -r src/content/posts/NNNN.
+5. State that the committed version remains recoverable through git history.
+6. Continue to shipping; content:check is mandatory and build is optional for a
+   deletion unless related code or configuration changed.
+
+## Validate and ship
+
+Require a successful preflight in the current session before committing or
+pushing.
+
+1. Run npm run content:check in the blog repository.
+2. For additions and updates, also run npm run build. Fix failures before
+   proceeding.
+3. Show git status, git diff --stat, and a concise summary of the exact diff to be
+   committed.
+4. Obtain explicit confirmation for this commit and push in the current session.
+5. Stage only one post directory, create one commit per post, and push main:
+
+       git add src/content/posts/NNNN
+       git commit -m "posts: add NNNN <title>"
+       git push origin main
+
+   Use an update or remove verb when appropriate.
+6. Report https://quboliu.github.io/posts/NNNN/ and note that deployment usually
+   takes a minute or two.
+
+## Preserve hard safety boundaries
+
+- Never commit or push without explicit confirmation in the current session.
+- Never force-push, rewrite history, or operate on branches other than main.
+- Never bypass an origin mismatch or redirect this skill to another repository.
+- Never discard, overwrite, or stash unrelated work.
+- Stage and commit exactly one post directory at a time.
+- Prefer git revert for undoing a published commit.

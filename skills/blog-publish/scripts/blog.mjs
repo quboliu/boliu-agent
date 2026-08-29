@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // blog.mjs — operations for the quboliu.github.io Astro blog.
 // Usage: node blog.mjs <preflight|status|diff|prepare|apply|list|config|which-repo> [args]
-// This script never mutates content git state and never pushes. `preflight`
-// performs read-only checks only (gh api calls + `git fetch`). All mutating
-// git operations are run by the calling agent, after explicit user confirmation.
+// This script never commits, pushes, pulls, switches branches, or deletes posts.
+// `preflight` contacts GitHub and runs `git fetch`, but never changes blog
+// content or the working tree. `prepare` and `apply` do write blog content.
+// Git operations that change publication state remain the calling agent's job
+// and require the confirmations documented in SKILL.md.
 
 import fs from "node:fs";
 import os from "node:os";
@@ -11,11 +13,12 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 // Repo location resolution order:
-//   1. env BLOG_REPO / BLOG_REPO_FULL_NAME
+//   1. env BLOG_REPO
 //   2. ~/.config/blog-publish/config.json  (written by `config` subcommand)
-// There is deliberately no built-in default path — run `config <path>` once
-// on each machine.
-const DEFAULT_REPO_FULL_NAME = "quboliu/quboliu.github.io";
+//   3. the built-in defaults below
+const DEFAULT_REPO =
+  "/home/muxunting/WorkSpace/Aranya/ResumeProj/13-个人博客-quboliu.github.io";
+const TARGET_REPO_FULL_NAME = "quboliu/quboliu.github.io";
 const CONFIG_FILE = path.join(os.homedir(), ".config", "blog-publish", "config.json");
 
 function readConfig() {
@@ -27,9 +30,10 @@ function readConfig() {
 }
 
 const CONFIG = readConfig();
-const BLOG_REPO = process.env.BLOG_REPO ?? CONFIG.repo ?? "";
-const REPO_FULL_NAME =
-  process.env.BLOG_REPO_FULL_NAME ?? CONFIG.repoFullName ?? DEFAULT_REPO_FULL_NAME;
+const BLOG_REPO = process.env.BLOG_REPO ?? CONFIG.repo ?? DEFAULT_REPO;
+// Keep repository identity immutable. Configuration may choose only the clone
+// path; it must never redirect this skill to a different repository.
+const REPO_FULL_NAME = TARGET_REPO_FULL_NAME;
 const POSTS_ROOT = path.join(BLOG_REPO, "src/content/posts");
 const SITE_URL = "https://quboliu.github.io";
 
@@ -60,6 +64,100 @@ function run(cmd, args) {
 function parseGitHubRepo(url) {
   const m = url.trim().match(/github\.com[:/]([^/\s]+)\/([^/\s]+?)(?:\.git)?$/);
   return m ? `${m[1]}/${m[2]}` : null;
+}
+
+function assertWritableTarget() {
+  if (!fs.existsSync(path.join(BLOG_REPO, ".git")))
+    fail("refusing to write: configured blog path is not a git clone: " + BLOG_REPO);
+
+  const origin = run("git", ["-C", BLOG_REPO, "remote", "get-url", "origin"]);
+  const actual = origin.ok ? parseGitHubRepo(origin.stdout) : null;
+  if (!actual)
+    fail("refusing to write: cannot identify the clone's origin remote");
+  if (actual.toLowerCase() !== REPO_FULL_NAME.toLowerCase())
+    fail(
+      "refusing to write: origin is " +
+        actual +
+        " but this skill is locked to " +
+        REPO_FULL_NAME
+    );
+
+  const branch = run("git", ["-C", BLOG_REPO, "branch", "--show-current"]);
+  if (!branch.ok || branch.stdout !== "main")
+    fail(
+      'refusing to write: expected branch "main", found "' +
+        (branch.stdout || "(detached/unknown)") +
+        '"'
+    );
+}
+
+function versionTuple(value) {
+  const match = String(value).trim().match(/^v?(\d+)\.(\d+)\.(\d+)/);
+  return match ? match.slice(1, 4).map(Number) : null;
+}
+
+function compareVersions(a, b) {
+  for (let i = 0; i < 3; i++) {
+    if (a[i] !== b[i]) return a[i] < b[i] ? -1 : 1;
+  }
+  return 0;
+}
+
+function checkNodeEngine(check) {
+  const packageFile = path.join(BLOG_REPO, "package.json");
+  if (!fs.existsSync(packageFile)) {
+    check(
+      "FAIL",
+      "Node.js",
+      "package.json not found under " + BLOG_REPO,
+      "confirm this is a complete clone of " + REPO_FULL_NAME
+    );
+    return;
+  }
+
+  let packageJson;
+  try {
+    packageJson = JSON.parse(fs.readFileSync(packageFile, "utf8"));
+  } catch (error) {
+    check(
+      "FAIL",
+      "Node.js",
+      "cannot parse package.json: " + error.message,
+      "repair or restore package.json before publishing"
+    );
+    return;
+  }
+
+  const range = packageJson.engines?.node;
+  if (!range) {
+    check("WARN", "Node.js", process.version + "; package.json declares no engine");
+    return;
+  }
+
+  const minimumMatch = String(range).match(
+    /^\s*>=\s*v?(\d+)\.(\d+)\.(\d+)\s*$/
+  );
+  const current = versionTuple(process.version);
+  if (!minimumMatch || !current) {
+    check(
+      "WARN",
+      "Node.js",
+      process.version + "; unable to evaluate engine constraint " + range,
+      "verify the Node version manually before npm ci or validation"
+    );
+    return;
+  }
+
+  const minimum = minimumMatch.slice(1, 4).map(Number);
+  if (compareVersions(current, minimum) >= 0)
+    check("PASS", "Node.js", process.version + " satisfies " + range);
+  else
+    check(
+      "FAIL",
+      "Node.js",
+      process.version + " does not satisfy package engine " + range,
+      "install and activate a compatible Node version, then rerun preflight"
+    );
 }
 
 // ---------- frontmatter ----------
@@ -258,7 +356,8 @@ function makeDescription(local) {
 
 // ---------- preflight ----------
 
-// Read-only check chain. Prints [PASS]/[WARN]/[FAIL] lines with `fix:` hints.
+// Safety check chain. It does not alter blog content or the working tree, but
+// its git fetch updates origin/main. Prints statuses with fix hints.
 // Exit code: 0 = all pass, 1 = warnings only, 2 = at least one FAIL.
 function cmdPreflight() {
   const results = [];
@@ -326,6 +425,7 @@ function cmdPreflight() {
       "point the config at a proper clone: node blog.mjs config <path>");
     return printPreflight(results);
   }
+  checkNodeEngine(check);
   const origin = run("git", ["-C", BLOG_REPO, "remote", "get-url", "origin"]);
   const actual = origin.ok ? parseGitHubRepo(origin.stdout) : null;
   if (!actual)
@@ -348,7 +448,10 @@ function cmdPreflight() {
 
     const porc = run("git", ["-C", BLOG_REPO, "status", "--porcelain"]);
     const dirty = porc.ok && porc.stdout ? porc.stdout.split("\n").length : 0;
-    if (dirty)
+    if (!porc.ok)
+      check("FAIL", "working tree", "cannot read git status",
+        "repair the local clone before publishing");
+    else if (dirty)
       check("WARN", "working tree", `${dirty} uncommitted change(s) — possibly someone's in-progress work`,
         "list them (git status) and ask the user how to proceed; never discard them silently");
     else check("PASS", "working tree", "clean");
@@ -360,7 +463,10 @@ function cmdPreflight() {
     } else {
       const rl = run("git", ["-C", BLOG_REPO, "rev-list", "--left-right", "--count", "main...origin/main"]);
       const [ahead = "0", behind = "0"] = rl.ok ? rl.stdout.split(/\s+/) : ["0", "0"];
-      if (behind !== "0")
+      if (!rl.ok)
+        check("WARN", "remote sync", "cannot compare main with origin/main",
+          "repair the refs and rerun preflight; do not commit or push yet");
+      else if (behind !== "0")
         check("WARN", "remote sync", `local main is ${behind} commit(s) behind origin/main`,
           "git pull --ff-only (after user confirmation) before publishing");
       else if (ahead !== "0")
@@ -428,6 +534,7 @@ function cmdDiff(file) {
 }
 
 function cmdPrepare(file) {
+  assertWritableTarget();
   const local = readLocal(path.resolve(file));
   const posts = listPosts();
   const { post, how } = findPost(local, posts);
@@ -469,6 +576,7 @@ function cmdPrepare(file) {
 }
 
 function cmdApply(file) {
+  assertWritableTarget();
   const local = readLocal(path.resolve(file));
   const { post, how } = findPost(local, listPosts());
   if (!post) fail(`no published post matches "${local.title}" (${how}); use prepare`);
@@ -512,13 +620,28 @@ function cmdConfig(repoPath) {
     fail(`not a blog repo (no src/content/posts): ${dir}`);
   const origin = run("git", ["-C", dir, "remote", "get-url", "origin"]);
   const detected = origin.ok ? parseGitHubRepo(origin.stdout) : null;
-  const full = detected ?? DEFAULT_REPO_FULL_NAME;
+  if (!detected)
+    fail("cannot identify the clone's origin; refusing to save this path");
+  if (detected.toLowerCase() !== REPO_FULL_NAME.toLowerCase())
+    fail(
+      "origin is " +
+        detected +
+        "; this skill is locked to " +
+        REPO_FULL_NAME +
+        " — refusing to save this path"
+    );
   fs.mkdirSync(path.dirname(CONFIG_FILE), { recursive: true });
-  fs.writeFileSync(CONFIG_FILE, JSON.stringify({ repo: dir, repoFullName: full }, null, 2) + "\n");
+  fs.writeFileSync(
+    CONFIG_FILE,
+    JSON.stringify({ repo: dir, repoFullName: REPO_FULL_NAME }, null, 2) + "\n"
+  );
   console.log(
-    `CONFIG_SAVED repo=${dir} repoFullName=${full}` +
-      (detected ? "" : " (origin undetected, used default repo name)") +
-      `\n  file: ${CONFIG_FILE}`
+    "CONFIG_SAVED repo=" +
+      dir +
+      " repoFullName=" +
+      REPO_FULL_NAME +
+      "\n  file: " +
+      CONFIG_FILE
   );
 }
 
@@ -526,7 +649,7 @@ function cmdConfig(repoPath) {
 
 const [cmd, ...args] = process.argv.slice(2);
 const usage = `usage: node blog.mjs <command>
-  preflight          read-only environment check chain (run first, every session)
+  preflight          safety checks + git fetch (run first, every session)
   status <file.md>   check whether a local article is already published
   diff <file.md>     diff local article body against the published version
   prepare <file.md>  create a new numbered post (frontmatter + assets), no commit
@@ -534,9 +657,6 @@ const usage = `usage: node blog.mjs <command>
   list               list all published posts (id, date, title)
   config <path>      persist the blog repo location (fresh-machine bootstrap)
   which-repo         print the resolved blog repo path and target repo`;
-
-if (cmd && cmd !== "config" && !BLOG_REPO)
-  fail("blog repo location is not configured — set env BLOG_REPO or run `node blog.mjs config <path>` once");
 
 if (cmd === "preflight") cmdPreflight();
 else if (cmd === "status" && args[0]) cmdStatus(args[0]);
