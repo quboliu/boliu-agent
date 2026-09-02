@@ -15,11 +15,17 @@ import { execFileSync } from "node:child_process";
 // Repo location resolution order:
 //   1. env BLOG_REPO
 //   2. ~/.config/blog-publish/config.json  (written by `config` subcommand)
-//   3. the built-in defaults below
-const DEFAULT_REPO =
-  "/home/muxunting/WorkSpace/Aranya/ResumeProj/13-个人博客-quboliu.github.io";
+// There is deliberately no machine-specific built-in local path. The skill
+// asks the user for one during first-use setup.
 const TARGET_REPO_FULL_NAME = "quboliu/quboliu.github.io";
 const CONFIG_FILE = path.join(os.homedir(), ".config", "blog-publish", "config.json");
+
+function expandUserPath(value) {
+  const text = String(value).trim();
+  if (text === "~") return os.homedir();
+  if (text.startsWith("~/")) return path.join(os.homedir(), text.slice(2));
+  return text;
+}
 
 function readConfig() {
   try {
@@ -30,16 +36,26 @@ function readConfig() {
 }
 
 const CONFIG = readConfig();
-const BLOG_REPO = process.env.BLOG_REPO ?? CONFIG.repo ?? DEFAULT_REPO;
+const configuredRepo = process.env.BLOG_REPO ?? CONFIG.repo;
+const BLOG_REPO = configuredRepo ? path.resolve(expandUserPath(configuredRepo)) : null;
 // Keep repository identity immutable. Configuration may choose only the clone
 // path; it must never redirect this skill to a different repository.
 const REPO_FULL_NAME = TARGET_REPO_FULL_NAME;
-const POSTS_ROOT = path.join(BLOG_REPO, "src/content/posts");
+const POSTS_ROOT = BLOG_REPO ? path.join(BLOG_REPO, "src/content/posts") : null;
 const SITE_URL = "https://quboliu.github.io";
 
 function fail(msg) {
   process.stderr.write(`error: ${msg}\n`);
   process.exit(2);
+}
+
+function requireConfiguredRepo() {
+  if (!BLOG_REPO)
+    fail(
+      "blog repo path is not configured; ask the user for the local clone path, " +
+        "then run `node blog.mjs config <path>`"
+    );
+  return BLOG_REPO;
 }
 
 // Run a command, never throw. 20s ceiling so network calls can't hang a session.
@@ -60,13 +76,17 @@ function run(cmd, args) {
   }
 }
 
-// "git@github.com:owner/repo.git" / "https://github.com/owner/repo" -> "owner/repo"
+// GitHub HTTPS/SSH URLs, including configured SSH host aliases, -> "owner/repo"
 function parseGitHubRepo(url) {
-  const m = url.trim().match(/github\.com[:/]([^/\s]+)\/([^/\s]+?)(?:\.git)?$/);
+  const m = url
+    .trim()
+    .replace(/\/+$/, "")
+    .match(/(?:^|[/:])([^/:\s]+)\/([^/\s]+?)(?:\.git)?$/);
   return m ? `${m[1]}/${m[2]}` : null;
 }
 
 function assertWritableTarget() {
+  requireConfiguredRepo();
   if (!fs.existsSync(path.join(BLOG_REPO, ".git")))
     fail("refusing to write: configured blog path is not a git clone: " + BLOG_REPO);
 
@@ -191,6 +211,7 @@ function fmTags(fm) {
 // ---------- posts index ----------
 
 function listPosts() {
+  requireConfiguredRepo();
   if (!fs.existsSync(POSTS_ROOT))
     fail(
       `posts dir not found: ${POSTS_ROOT}\n` +
@@ -236,7 +257,16 @@ function readLocal(file) {
     stripped = body.replace(/^\s*#\s+.+\r?\n/, "");
   }
   title ??= path.basename(file).replace(/\.mdx?$/i, "");
-  return { file, raw, fm, body: stripped, title, tags: fmTags(fm), description: fmValue(fm, "description") };
+  return {
+    file,
+    raw,
+    fm,
+    body: stripped,
+    title,
+    area: fmValue(fm, "area"),
+    tags: fmTags(fm),
+    description: fmValue(fm, "description"),
+  };
 }
 
 // ---------- matching ----------
@@ -415,6 +445,15 @@ function cmdPreflight() {
   }
 
   // 4. local clone present, is a git repo, and origin IS the target repo
+  if (!BLOG_REPO) {
+    check(
+      "FAIL",
+      "local clone",
+      "blog repo path is not configured",
+      "ask the user for the local clone path, clone if needed, then run `node blog.mjs config <path>`"
+    );
+    return printPreflight(results);
+  }
   if (!fs.existsSync(POSTS_ROOT)) {
     check("FAIL", "local clone", `posts dir not found under ${BLOG_REPO}`,
       `gh repo clone ${REPO_FULL_NAME} <path> && node blog.mjs config <path> (Fresh environment in SKILL.md)`);
@@ -536,6 +575,10 @@ function cmdDiff(file) {
 function cmdPrepare(file) {
   assertWritableTarget();
   const local = readLocal(path.resolve(file));
+  if (!local.area)
+    fail(
+      `local article is missing required frontmatter field "area": ${local.file}`
+    );
   const posts = listPosts();
   const { post, how } = findPost(local, posts);
   if (post)
@@ -553,6 +596,7 @@ function cmdPrepare(file) {
     `pubDatetime: ${shanghaiNow()}`,
     `timezone: "Asia/Shanghai"`,
     `title: "${local.title.replace(/"/g, '\\"')}"`,
+    `area: "${local.area.replace(/"/g, '\\"')}"`,
     `featured: false`,
     `draft: false`,
     `tags:`,
@@ -589,12 +633,21 @@ function cmdApply(file) {
     .join("\n");
   // local frontmatter overrides title/description when present
   const out = [];
+  let areaSeen = false;
   for (const line of newFm.split("\n")) {
     if (/^title:/.test(line) && local.fm && fmValue(local.fm, "title"))
       out.push(`title: "${local.title.replace(/"/g, '\\"')}"`);
+    else if (/^area:/.test(line) && local.area) {
+      out.push(`area: "${local.area.replace(/"/g, '\\"')}"`);
+      areaSeen = true;
+    }
     else if (/^description:/.test(line) && local.description)
       out.push(`description: "${local.description.replace(/"/g, '\\"')}"`);
     else out.push(line);
+  }
+  if (local.area && !areaSeen) {
+    const titleLine = out.findIndex(l => /^title:/.test(l));
+    out.splice(titleLine + 1, 0, `area: "${local.area.replace(/"/g, '\\"')}"`);
   }
   const pubLine = out.findIndex(l => /^pubDatetime:/.test(l));
   out.splice(pubLine + 1, 0, `modDatetime: ${shanghaiNow()}`);
@@ -665,5 +718,8 @@ else if (cmd === "prepare" && args[0]) cmdPrepare(args[0]);
 else if (cmd === "apply" && args[0]) cmdApply(args[0]);
 else if (cmd === "list") cmdList();
 else if (cmd === "config" && args[0]) cmdConfig(args[0]);
-else if (cmd === "which-repo") console.log(`${BLOG_REPO} (${REPO_FULL_NAME})`);
+else if (cmd === "which-repo")
+  console.log(
+    `${BLOG_REPO ?? "(not configured; ask the user for the blog clone path)"} (${REPO_FULL_NAME})`
+  );
 else fail(usage);

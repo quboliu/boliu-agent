@@ -6,9 +6,10 @@ description: Manage posts on the user's Astro blog at quboliu.github.io from any
 # Blog Publish
 
 Operate only on the fixed target repository quboliu/quboliu.github.io and the site
-https://quboliu.github.io. Store posts under src/content/posts/NNNN/index.md or
-index.mdx with co-located assets. Treat a push to main as publication because
-GitHub Actions builds and deploys the site.
+https://quboliu.github.io. The local clone path is user-configured; never embed
+or assume a machine-specific blog directory. Store posts under
+src/content/posts/NNNN/index.md or index.mdx with co-located assets. Treat a
+push to main as publication because GitHub Actions builds and deploys the site.
 
 ## Resolve the helper
 
@@ -21,9 +22,11 @@ Do not assume that an agent host exports SKILL_DIR or a host-specific home
 variable. Prefer absolute paths for article arguments so the workflow remains
 independent of the current working directory.
 
-Resolve the blog clone in this order: BLOG_REPO environment variable, the repo
-path in ~/.config/blog-publish/config.json, then the built-in default. Inspect the
-resolved path with which-repo.
+Resolve the blog clone in this order: BLOG_REPO environment variable, then the
+repo path in ~/.config/blog-publish/config.json. There is no built-in local
+directory. If neither is configured, ask the user for the blog clone path before
+running preflight or any other blog operation, then persist it with `config`.
+Inspect the resolved path with which-repo.
 
 Available commands:
 
@@ -43,6 +46,12 @@ but never changes blog content or the working tree. config writes only its confi
 file. prepare and apply write blog content.
 
 ## Establish session safety
+
+After installing this skill, and whenever no BLOG_REPO or saved repo path exists,
+ask the user where the local clone of quboliu/quboliu.github.io is located (or
+where it should be cloned). Do not infer a path from the current working
+directory, the agent's home directory, or a previous machine. A user-supplied
+path such as `~/workspace/13-个人博客-quboliu.github.io` is valid.
 
 Run preflight before the first blog operation in every session. Do not substitute
 ad hoc checks for it.
@@ -82,7 +91,8 @@ When preflight reports a missing or unsuitable runtime, login, or clone:
 1. Satisfy the exact Node engine declared by the blog's package.json.
 2. Authenticate GitHub CLI as an account with write access to
    quboliu/quboliu.github.io.
-3. Confirm a clone location with the user, then run:
+3. Ask the user to confirm a clone location if one has not already been supplied,
+   then run:
 
        gh repo clone quboliu/quboliu.github.io <path>
 
@@ -117,7 +127,9 @@ only. Read and compare both frontmatters directly when metadata matters.
 1. Run status <file>. Switch to the update workflow if it already exists.
 2. After target confirmation, run prepare <file>.
 3. Show the generated frontmatter and copied-asset list.
-4. Offer to correct the generated title, description, and tags; generated
+4. Ensure the source article declares the blog's required `area` field; use the
+   site's existing area vocabulary and ask the user when the area is ambiguous.
+   Offer to correct the generated title, description, tags, and area; generated
    descriptions are only drafts.
 5. Continue to shipping.
 
