@@ -1,0 +1,4 @@
+interface:
+  display_name: "GPT Image Gen"
+  short_description: "通过多供应商安全生成和编辑 gpt-image-2 图像"
+  default_prompt: "使用 $gpt-image-gen 生成或编辑一张图片；若未指定供应商，先询问我选择哪一家。"

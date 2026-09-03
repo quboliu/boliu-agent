@@ -12,7 +12,8 @@ boliu-agent/
 │   └── repository-conventions.md
 └── skills/
     ├── blog-publish/
-    └── deep-concept-research/
+    ├── deep-concept-research/
+    └── gpt-image-gen/
 ```
 
 - `rules/` contains reusable behavioral and repository rules.
@@ -31,6 +32,12 @@ Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
 Builds evidence-traceable, source-and-experiment-driven research topics and cross-domain research programs, with audited claims, experiments, diagrams, tables, and version refresh workflows.
 
 Entry: [`skills/deep-concept-research/SKILL.md`](skills/deep-concept-research/SKILL.md)
+
+### gpt-image-gen
+
+Generates and edits raster images with `gpt-image-2` through the packyapi or apimart provider, while keeping credentials in ignored local configuration or environment variables.
+
+Entry: [`skills/gpt-image-gen/SKILL.md`](skills/gpt-image-gen/SKILL.md)
 
 ## Security
 
