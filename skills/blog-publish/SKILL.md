@@ -70,8 +70,12 @@ confirmation of that target. Use a concise prompt such as:
 > 将以账号 quboliu 发布到 quboliu/quboliu.github.io（本地 PATH，分支 main，工作区干净）。确认开始修改博客内容吗？
 
 Treat prepare, apply, direct edits, git rm, commit, and push as content-changing
-actions. A target confirmation does not authorize commit or push; obtain the
-separate shipping confirmation described below.
+actions. When the user's request explicitly asks to publish and the user confirms
+the target, that instruction authorizes validation, commit, and push for the
+requested article in the same session. Do not ask for a second shipping
+confirmation after the article is written. If the user asks only to draft,
+prepare, or edit without publication, do not infer authorization to commit or
+push.
 
 Handle warnings explicitly:
 
@@ -162,7 +166,9 @@ pushing.
    proceeding.
 3. Show git status, git diff --stat, and a concise summary of the exact diff to be
    committed.
-4. Obtain explicit confirmation for this commit and push in the current session.
+4. If the user explicitly requested publication and confirmed the target in this
+   session, proceed directly. Otherwise, obtain explicit confirmation for this
+   commit and push.
 5. Stage only one post directory, create one commit per post, and push main:
 
        git add src/content/posts/NNNN
@@ -175,7 +181,9 @@ pushing.
 
 ## Preserve hard safety boundaries
 
-- Never commit or push without explicit confirmation in the current session.
+- Never commit or push without an explicit publication instruction and target
+  confirmation in the current session. Once both are present, do not request a
+  redundant post-validation shipping confirmation.
 - Never force-push, rewrite history, or operate on branches other than main.
 - Never bypass an origin mismatch or redirect this skill to another repository.
 - Never discard, overwrite, or stash unrelated work.
