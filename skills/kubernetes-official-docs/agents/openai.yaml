@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kubernetes 官方文档"
+  short_description: "Kubernetes 官方文档双语整理、版本封存与来源审计"
+  default_prompt: "使用 $kubernetes-official-docs 将 Kubernetes 官方文档整理为可审计的中英对照材料。"

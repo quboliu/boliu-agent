@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kubernetes 论文阅读"
+  short_description: "PDF 论文抽取、图表还原、双语草稿与证据核验流程"
+  default_prompt: "使用 $kubernetes-paper-reading 将 Kubernetes 相关论文整理为可核验的双语阅读草稿。"
