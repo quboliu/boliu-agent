@@ -15,7 +15,8 @@ boliu-agent/
     ├── deep-concept-research/
     ├── gpt-image-gen/
     ├── kubernetes-official-docs/
-    └── kubernetes-paper-reading/
+    ├── kubernetes-paper-reading/
+    └── user-skill-sync/
 ```
 
 - `rules/` contains reusable behavioral and repository rules.
@@ -57,6 +58,13 @@ figure-aware bilingual reading drafts with source hashes and explicit review
 boundaries.
 
 Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
+
+### user-skill-sync
+
+Keeps user-created Codex skills attributed to `quboliu` and synchronized from
+the local user-skill directory to this repository.
+
+Entry: [`skills/user-skill-sync/SKILL.md`](skills/user-skill-sync/SKILL.md)
 
 ## Security
 
