@@ -22,6 +22,7 @@ boliu-agent/
     ├── pdf-dual-typst/
     ├── pphc-typst-book/
     ├── scanned-pdf-to-typst/
+    ├── typst-book-production/
     ├── udl-typst-book/
     └── user-skill-sync/
 ```
@@ -102,6 +103,13 @@ Entry: [`skills/pphc-typst-book/SKILL.md`](skills/pphc-typst-book/SKILL.md)
 Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
 
 Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKILL.md)
+
+### typst-book-production
+
+Produces reproducible, publication-quality Typst books in Chinese, English, or
+adjacent Chinese-English bilingual editions.
+
+Entry: [`skills/typst-book-production/SKILL.md`](skills/typst-book-production/SKILL.md)
 
 ### udl-typst-book
 

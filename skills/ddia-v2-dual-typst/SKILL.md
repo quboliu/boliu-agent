@@ -15,6 +15,12 @@ it is the shared terminology baseline for all agents. The general Typst skill
 may supply implementation knowledge, but it must not override the decisions
 recorded here.
 
+`typst-book-production` is this project's general production core. Use its
+source-locking, semantic-conversion, reproducible-build, and four-layer QA
+methods where they do not conflict with this file. This skill remains the DDIA
+overlay: its explicit paths, English-Chinese order, terminology, B5 geometry,
+font pairing, macro names, and documented source anomalies override the core.
+
 ## Scope and invariants
 
 - Work in `DDIA-V2-Typest-dual/`; leave the original `DDIA-V2-Typest/` tree
