@@ -51,13 +51,10 @@ frontmatter precedes the title and does not affect this check. Preserve any
 existing title and put the declaration between the title and the first section
 or paragraph.
 
-Before completing any managed-skill creation, modification, or update:
-
-1. Inspect the skill being changed and every other managed skill already tracked
-   in `boliu-agent`.
-2. Add the declaration wherever it is absent.
-3. Confirm that each managed skill has a lowercase directory name matching its
-   frontmatter `name`.
+Before completing any managed-skill creation, modification, or update, inspect
+every managed skill present locally in `$HOME/.agents/skills/`. Add the
+declaration wherever it is absent, then confirm that each directory name is
+lowercase and matches its frontmatter `name`.
 
 ## Local source-of-truth invariant
 
@@ -89,19 +86,34 @@ how to proceed. Never overwrite, stash, or commit unrelated work.
 
 ## Synchronize and publish
 
+The local managed-skill set is the complete synchronization input. For every
+local managed skill, compare `$HOME/.agents/skills/<skill-name>/` with
+`<repo>/skills/<skill-name>/`; do not use remote-only skills to expand, modify,
+or prune the local set. A remote skill missing locally is outside this sync run
+and must be left untouched.
+
+Use `scripts/skill_tree_fingerprint.py <directory>` to obtain a deterministic
+SHA-256 fingerprint of a skill tree. The fingerprint includes each relative path,
+file content, symbolic-link target, and permission bits. It is a fast decision
+check; after copying a changed skill, require matching fingerprints before
+committing.
+
 For every managed skill creation, modification, or update:
 
 1. Apply the attribution invariant and validate the local skill structure.
-2. Copy the complete validated local directory, including direct references,
-   scripts, assets, and `agents/openai.yaml` when present, to
-   `<repo>/skills/<skill-name>/`. Keep the repository copy byte-identical to the
-   local managed copy and verify that equality before committing.
-3. Update the root `README.md` skill catalog when the skill is added or removed.
-4. Review `git status`, the staged diff, and the target remote. Validate each
+2. If `<repo>/skills/<skill-name>/` is absent, copy the complete validated local
+   directory there and add it to the root `README.md` catalog.
+3. If the repository copy exists, compare both fingerprints. When they match,
+   leave it unchanged. When they differ, replace the repository copy with the
+   complete validated local directory, including direct references, scripts,
+   assets, and `agents/openai.yaml` when present.
+4. After every copy, compare fingerprints again and stop on any difference.
+5. Review `git status`, the staged diff, and the target remote. Validate each
    changed `SKILL.md` with the available skill validator.
-5. Commit only files belonging to the affected skills and their required catalog
-   update, using a focused message such as `skills: sync user-skill-sync`.
-6. Push `main` to `origin` and report the commit and remote result.
+6. If this run produced changes, commit only the affected skills and their
+   required catalog update with a focused message such as
+   `skills: sync user-skill-sync`, then push `main` to `origin`. If every local
+   skill matches its repository copy, make no commit or push.
 
 The user's request to create, modify, or update a managed skill authorizes this
 validation, commit, and push in the same session. Do not request a redundant
