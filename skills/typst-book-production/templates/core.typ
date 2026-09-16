@@ -81,6 +81,20 @@
   set heading(numbering: "1.1")
   set footnote(numbering: "1")
   show heading: set block(sticky: true)
+  show heading.where(level: 4): set heading(numbering: none)
+  show heading.where(level: 5): set heading(numbering: none)
+  show heading.where(level: 6): set heading(numbering: none)
+  show outline.entry: it => block(
+    width: 100%, breakable: false, inset: (y: 3pt),
+  )[
+    #set text(size: if it.level == 1 { 10pt } else { 9pt })
+    #link(it.element.location())[#pad(left: (it.level - 1) * 12pt)[
+      #grid(columns: (if it.element.numbering == none { 0pt } else { 32pt }, 1fr),
+        gutter: 4pt, align: (left, top),
+        if it.element.numbering != none { it.prefix() },
+        it.inner())
+    ]]
+  ]
   show footnote.entry: set text(size: 8pt, font: body-font)
   show footnote.entry: set block(above: 0.65em)
   show link: set text(fill: accent)

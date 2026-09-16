@@ -12,7 +12,7 @@ args = p.parse_args()
 root = pathlib.Path(__file__).resolve().parents[1] / "templates"
 out = pathlib.Path(args.output).resolve()
 out.mkdir(parents=True, exist_ok=True)
-for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "original-cover"):
+for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "original-cover", "structure"):
     pdf = out / (mode + ".pdf")
     fixture = "stress" if mode == "original-cover" else mode
     run = subprocess.run(
@@ -37,6 +37,16 @@ for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "origina
     assert "伯流出版社" in doc[1].get_text()
     assert "NOT FOR RELEASE" in doc[1].get_text()
     assert doc[2].get_text().strip(), "Unwanted blank before first chapter"
+    if mode == "structure":
+        contents_pages = [page for page in doc if "Contents /" in page.get_text()]
+        assert len(contents_pages) >= 2, "Multi-page contents not exercised"
+        assert any(page.get_links() for page in contents_pages), "Contents links missing"
+        for index, page in enumerate(doc):
+            if "CHAPTER 1" in page.get_text() or "PART I" in page.get_text():
+                assert (index + 1) % 2 == 1
+            if "PART I" in page.get_text():
+                assert not doc[index-1].get_text().strip(), "TOC blank verso has furniture"
+                assert not doc[index-1].get_drawings()
     if fixture == "stress":
         joined = "".join(page.get_text() for page in doc)
         assert "3.1" in joined and "2.1" in joined

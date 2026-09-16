@@ -1,6 +1,6 @@
 # Using the runnable templates
 
-Copy the relevant entry file plus `core.typ` and `covers.typ` from
+Copy the relevant entry file plus `core.typ`, `covers.typ`, and `matter.typ` from
 `templates/` to the book's `book/` directory. Then create a `main.typ` that
 imports the chosen entry and calls the cover macros before the body.
 
@@ -47,6 +47,10 @@ approved text-only fallback. `boliu-cover` deliberately renders a prominent
 the documented historical line drawing required by the design system.
 
 The entry files are intentionally thin:
+
+They also export the structural components in
+[Markdown conversion and book structure](markdown-and-matter.md). These add
+front matter after the mandatory two covers and keep physical duplex parity.
 
 - `monolingual-zh.typ` selects Noto Serif SC and Chinese language behavior.
 - `monolingual-en.typ` selects Libertinus Serif and English language behavior.

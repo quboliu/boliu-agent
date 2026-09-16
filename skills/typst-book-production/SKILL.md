@@ -41,7 +41,7 @@ the book contract with the replacement value and a visual comparison.
 ## Start from the runnable templates
 
 Copy the relevant file from `templates/` into the book repository together with
-`core.typ` and `covers.typ`; do not edit the copy inside this skill. Use
+`core.typ`, `covers.typ`, and `matter.typ`; do not edit the copy inside this skill. Use
 `monolingual-zh.typ`, `monolingual-en.typ`, or `bilingual.typ` as the project
 template according to the contract. The three entry points share the same core
 tokens and covers module, so a change to page geometry, hierarchy, figures,
@@ -125,6 +125,14 @@ regenerating content. Reconcile supplied local and web editions before choosing
 authority; distinguish text, hierarchy, asset, and metadata-only differences.
 Keep generated chapters marked as derived and regenerate them with their source
 map. Existing authored Typst may remain maintained source under its contract.
+
+For supported Markdown corpora, use the structural converter
+`scripts/md2typ.py` described in
+[Markdown conversion and book structure](references/markdown-and-matter.md).
+It preserves local links and semantic blocks, emits a source/asset manifest,
+and rejects unsupported constructs. It is not a universal Markdown/LaTeX
+converter or a translation engine. The same reference documents reusable
+contents, unnumbered front matter, part pages, copyright and quotation macros.
 
 1. Inventory chapters, hierarchy, links, figures, tables, code, notes,
    footnotes, citations, and assets before conversion.

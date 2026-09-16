@@ -30,6 +30,7 @@ final suffix.
 │   ├── covers.typ
 │   ├── core.typ
 │   ├── main.typ
+│   ├── matter.typ
 │   └── template.typ
 ├── output/
 │   ├── audit/
@@ -55,7 +56,7 @@ editorial directory is needed only for requested content audits. Other top-level
   `assets/fonts/` holds only font files the project may legally redistribute.
 - `book/` is the only maintained Typst source tree. `main.typ` is the single
   compilation entry point. `template.typ` is the renamed copied edition
-  entry, while `core.typ` and `covers.typ` remain the shared project modules.
+  entry, while `core.typ`, `covers.typ`, and `matter.typ` remain the shared project modules.
   `chapters/` holds semantic content, not build outputs or source exports.
 - `output/build/` holds reproducible release PDFs, `output/preview/` holds
   disposable page or chapter previews, and `output/audit/` holds QA manifests,
@@ -72,7 +73,7 @@ sessions in `editorial/content-audit/`. These are maintained inputs; generated
 reports remain in `output/audit/`.
 
 1. Select the edition and stable slug before creating the directory.
-2. Copy `core.typ`, `covers.typ`, and the matching edition entry from the skill
+2. Copy `core.typ`, `covers.typ`, `matter.typ`, and the matching edition entry from the skill
    templates into `book/`; rename that entry to `template.typ`.
 3. Make `book/main.typ` import `template.typ`, apply `#show: book`, render the two cover pages, then
    include chapters from `book/chapters/`.
