@@ -2,8 +2,7 @@
 #import "core.typ": *
 
 #let frontchapter(title, body, running: title) = {
-  metadata("recto")
-  pagebreak(to: "odd")
+  recto-start(running: running)
   counter(footnote).update(0)
   set heading(numbering: none)
   v(30mm)
@@ -16,8 +15,7 @@
 
 // A semantic unnumbered opener; the next numbered chapter resets its counter.
 #let part-page(number, title, blurb: []) = {
-  metadata("recto")
-  pagebreak(to: "odd")
+  recto-start(running: title)
   v(45mm)
   text(font: display-face, size: 12pt, fill: accent)[#number]
   v(10mm)
@@ -31,6 +29,7 @@
 // Optional matter follows the mandatory two covers; never replaces page 2.
 #let title-page(title, author, edition: []) = {
   pagebreak(weak: true)
+  page-role("front")
   set page(header: none, footer: none)
   v(35mm)
   text(font: display-face, size: 25pt, weight: "bold", hyphenate: false)[#title]
@@ -43,6 +42,7 @@
 
 #let copyright-page(body) = {
   pagebreak(weak: true)
+  page-role("front")
   set page(header: none, footer: none)
   v(1fr)
   set text(size: 8.5pt, fill: ink-gray)
@@ -54,6 +54,7 @@
 
 #let toc-page(title: [Contents], depth: 3) = {
   pagebreak(weak: true)
+  page-role("contents", running: title)
   set page(
     header: context {
       if page-kind() == "blank" { return }

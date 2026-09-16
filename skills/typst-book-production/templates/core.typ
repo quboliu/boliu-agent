@@ -17,22 +17,32 @@
 #let body-leading = 0.68em
 #let paragraph-gap = 1.1em
 
-// Only content-bearing pages and chapter openers get furniture.
-#let page-kind() = {
-  let p = here().page()
-  let heads = query(heading.where(level: 1))
-  if heads.any(h => h.location().page() == p) { return "opener" }
-  let marks = query(metadata.where(value: "recto")).filter(m => m.location().page() <= p)
-  if marks.len() > 0 {
-    let m = marks.last()
-    let mp = m.location().page()
-    let next = heads.filter(h => h.location().page() > mp or
-      (h.location().page() == mp and h.location().position().y > m.location().position().y))
-    if (next.len() > 0 and p < next.first().location().page() and
-      (p > mp or m.location().position().y <= 23mm)) { return "blank" }
+#let page-role(role, running: []) = metadata((kind: "boliu-page", role: role, running: running))
+
+// Structural components declare roles; no heading or coordinate heuristics.
+#let page-info() = {
+  let marks = query(metadata).filter(m => type(m.value) == dictionary and
+    m.value.at("kind", default: none) == "boliu-page" and m.location().page() <= here().page())
+  if marks.len() == 0 { return (role: "front", running: []) }
+  let mark = marks.last()
+  let role = mark.value.role
+  if role == "opener" and mark.location().page() < here().page() { role = "body" }
+  (role: role, running: mark.value.running)
+}
+#let page-kind() = page-info().role
+
+#let recto-start(running: []) = {
+  pagebreak(weak: true)
+  // Materialize the new page before evaluating physical parity. Metadata alone
+  // is invisible and can otherwise attach to the preceding page.
+  context {
+    box(width: 0pt, height: 0pt)
+    if calc.even(here().page()) {
+      page-role("blank")
+      pagebreak()
+    }
+    page-role("opener", running: running)
   }
-  if not heads.any(h => h.location().page() < p) { return "front" }
-  "body"
 }
 
 #let section-title(it, size, color) = context {
@@ -49,9 +59,7 @@
     margin: (top: margin-top, bottom: margin-bottom, inside: margin-inside, outside: margin-outside),
     header: context {
       if page-kind() != "body" { return }
-      let hs = query(heading.where(level: 1)).filter(h => h.location().page() < here().page())
-      let h = hs.last()
-      let running = if h.supplement == none { h.body } else { h.supplement }
+      let running = page-info().running
       set text(font: display-face, size: 8pt, fill: faint)
       if calc.odd(here().page()) {
         grid(columns: (1fr, auto), gutter: 12pt,
@@ -147,8 +155,7 @@
 }
 
 #let chapter(number, title, running: title) = context {
-  metadata("recto")
-  pagebreak(to: "odd")
+  recto-start(running: running)
   counter(footnote).update(0)
   counter(heading).update((int(number) - 1,))
   v(30mm)

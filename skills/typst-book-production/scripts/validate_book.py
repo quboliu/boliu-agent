@@ -69,23 +69,18 @@ def check_manifest(
         fail("manifest.images must be a list", failures)
         images = []
 
-    orders: list[int] = []
     if not chapters:
         fail("manifest has no chapters", failures)
     source_names: set[str] = set()
-    output_names: set[str] = set()
     for index, chapter in enumerate(chapters, start=1):
         if not isinstance(chapter, dict):
             fail(f"chapter entry {index} is not an object", failures)
             continue
         source = chapter.get("source")
         output = chapter.get("output")
-        order = chapter.get("order", index)
         if not isinstance(source, str) or not source:
             fail(f"chapter entry {index} has no source", failures)
         else:
-            if source in source_names:
-                fail(f"duplicate chapter source: {source}", failures)
             source_names.add(source)
             if source_dir is not None and not (source_dir / source).is_file():
                 fail(f"source file does not exist: {source_dir / source}", failures)
@@ -101,19 +96,9 @@ def check_manifest(
         if not isinstance(output, str) or not output:
             fail(f"chapter entry {index} has no output", failures)
         else:
-            if output in output_names:
-                fail(f"duplicate chapter output: {output}", failures)
-            output_names.add(output)
             output_path = relative_path(book_dir, output)
             if output_path is None or not output_path.is_file():
                 fail(f"generated chapter does not exist: {output}", failures)
-        if isinstance(order, int):
-            orders.append(order)
-        else:
-            fail(f"chapter {source!r} has non-integer order", failures)
-
-    if orders and orders != list(range(1, len(orders) + 1)):
-        fail(f"chapter order is not contiguous: {orders}", failures)
 
     if source_dir is not None:
         excluded = manifest.get("excluded_sources", [])
@@ -167,7 +152,6 @@ def check_generated_text(book_dir: Path, failures: list[str]) -> tuple[int, int]
         fail(f"no Typst files found under {book_dir}", failures)
         return 0, 0
     placeholders: list[str] = []
-    raw_obisidian: list[str] = []
     for path in typst_files:
         try:
             text = path.read_text(encoding="utf-8")
@@ -176,13 +160,9 @@ def check_generated_text(book_dir: Path, failures: list[str]) -> tuple[int, int]
             continue
         if PLACEHOLDER_RE.search(text):
             placeholders.append(str(path))
-        if "![[" in text:
-            raw_obisidian.append(str(path))
     if placeholders:
         fail("placeholders remain in generated Typst: " + ", ".join(placeholders), failures)
-    if raw_obisidian:
-        fail("raw Obsidian image syntax remains in generated Typst: " + ", ".join(raw_obisidian), failures)
-    return len(typst_files), len(placeholders) + len(raw_obisidian)
+    return len(typst_files), len(placeholders)
 
 
 def check_pdf(

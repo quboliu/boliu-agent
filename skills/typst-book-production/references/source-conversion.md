@@ -14,7 +14,7 @@ Use a parser or line-oriented converter with an explicit mapping table. Do not p
 | Ordered/unordered list | Typst list | Check nested list indentation and continuation paragraphs. |
 | Markdown link | Typst link | Keep link text; external URLs must remain valid or be intentionally marked. |
 | Horizontal rule/page break | Semantic rule or explicit page break | Use page breaks only where editorially justified. |
-| HTML/Obsidian-only syntax | Normalised equivalent or a logged exception | Never leave raw Obsidian image syntax, unsupported HTML, or TODO placeholders in output. |
+| HTML/Obsidian-only syntax | Normalised equivalent or a logged exception | Reject unintended conversion residue; preserve literal syntax in author-supplied code/examples. Use project-aware checks, not a whole-file substring ban. |
 
 ## Conversion workflow
 

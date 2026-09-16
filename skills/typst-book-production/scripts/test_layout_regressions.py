@@ -49,6 +49,25 @@ class LayoutRegressions(unittest.TestCase):
         self.compile('#boliu-cover("Title " * 1000, "Author", "Source", "Edition")', success=False)
         self.compile('#source-cover("Title " * 1000, "Author", "Source")', success=False)
 
+    def test_explicit_roles_with_changed_margins(self):
+        doc = self.compile('#set page(margin: (top: 35mm, bottom: 25mm, inside: 24mm, outside: 18mm))\n'
+                           '#chapter("1", "First", running: "RUNNING-ONE")\nText.\n'
+                           '#chapter("2", "Second")\nMore text.\n')
+        self.assertEqual(len(doc), 3)
+        self.assertIn("CHAPTER 1", doc[0].get_text())
+        self.assertEqual(doc[1].get_text().strip(), "")
+        self.assertFalse(doc[1].get_drawings())
+        self.assertIn("CHAPTER 2", doc[2].get_text())
+
+    def test_heading_does_not_infer_page_role(self):
+        doc = self.compile('#chapter("1", "First", running: "RUNNING-ONE")\nText.\n'
+                           '#pagebreak()\n#heading(level: 1)[Ordinary special heading]\nText.\n')
+        words = doc[1].get_text("words")
+        self.assertTrue(any(w[4] == "RUNNING-ONE" and w[3] < 22*72/25.4 for w in words))
+        folio = next(w for w in words if w[4] == "2")
+        self.assertLess(folio[3], 22*72/25.4)
+        self.assertAlmostEqual(folio[0], 16*72/25.4, delta=1)
+
     def test_bilingual_short_and_overheight_pairs(self):
         doc = self.compile('#v(200mm)\n#dual([PAIR-EN], [配对中文])\n'
                            '#pagebreak()\n#dual([LONG-START #lorem(1800)], [长段末尾])',

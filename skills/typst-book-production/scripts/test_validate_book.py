@@ -50,13 +50,25 @@ class ProjectValidation(unittest.TestCase):
             self.manifest.write_text(json.dumps(data))
             self.assertTrue(any("source_sha256" in x for x in self.check_manifest()))
 
-    def test_order_and_asset(self):
+    def test_missing_asset(self):
         self.manifest.write_text(json.dumps({"chapters": [
             {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 2}
         ], "images": [{"asset": "assets/missing.png", "width": 100, "height": 100}]}))
         result = self.check_manifest()
-        self.assertTrue(any("order" in x for x in result))
         self.assertTrue(any("asset does not exist" in x for x in result))
+
+    def test_project_owned_mapping_cardinality_and_order(self):
+        data = json.loads(self.manifest.read_text())
+        first = data["chapters"][0]
+        (self.root / "book/chapters/02.typ").write_text("= Part two")
+        data["chapters"] += [dict(first, output="book/chapters/02.typ", order=7),
+                             dict(first, order=7)]
+        second = self.root / "source/chapters/02.md"
+        second.write_text("# Supporting source")
+        data["chapters"].append(dict(first, source="chapters/02.md", order=7,
+            source_sha256=hashlib.sha256(second.read_bytes()).hexdigest()))
+        self.manifest.write_text(json.dumps(data))
+        self.assertEqual(self.check_manifest(), [])
 
     def pdf(self, watermark=False):
         path = self.root / "book.pdf"
@@ -89,7 +101,7 @@ class ProjectValidation(unittest.TestCase):
 
     def test_literal_words_and_template_comments_are_not_placeholders(self):
         (self.root / "book/chapters/01.typ").write_text(
-            '// artwork placeholder\n#raw("TODO FIXME placeholder")\nTODO is a code convention.')
+            '// artwork placeholder\n#raw("TODO FIXME placeholder ![[diagram.png]]")\nTODO is a code convention.')
         failures = []
         validator.check_generated_text(self.root, failures)
         self.assertEqual(failures, [])

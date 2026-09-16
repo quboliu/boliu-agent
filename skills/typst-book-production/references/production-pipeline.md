@@ -74,12 +74,25 @@ python3 /path/to/typst-book-production/scripts/validate_book.py \
 ```
 
 Requires PyMuPDF for parsed PDF checks. The script checks recursive manifest
-coverage, duplicate/order errors, referenced assets and dimensions, generated
+file coverage, source hashes, referenced outputs/assets and declared dimensions, generated
 placeholders, PDF trim, searchable text, font embedding, and text outside page
 bounds. `--require-a4` is retained for explicitly A4 legacy projects. Neither
 script proves code equivalence, correctness of all links, annotation evidence,
 caption attachment, or complete duplex layout on an arbitrary real book.
 Verify those in the release audit; never treat a script PASS as certification.
+
+The legacy `chapters` list contains source/output mapping edges, not a
+one-file-per-chapter requirement. Repeated sources and outputs are allowed:
+one PDF can generate several chapters, and several inputs can contribute to
+one output. Hash every input edge; record semantic fragments/reading order in
+project metadata. Project-specific checks own mapping cardinality, duplicate
+fragments, ordering and semantic coverage. The generic checker verifies
+declared files/hashes only. Set `--source-extensions` for the actual corpus
+(for example `.pdf`), not the Markdown/HTML defaults by habit.
+
+The generic checker does not classify source-language residue. Literal Obsidian,
+HTML or Markdown syntax may be legitimate quoted code. Detect conversion leaks
+with source-aware project tests and PDF review, not a global substring ban.
 
 Mark unfinished project work with the reserved marker `BOLIU-UNRESOLVED: reason`
 (including in comments); the checker rejects it anywhere in Typst source.

@@ -2,7 +2,7 @@
 // project contract before release; the publisher artwork placeholder is a hard
 // release blocker.
 
-#import "core.typ": accent, display-face, faint
+#import "core.typ": accent, display-face, faint, page-role
 
 // Test the whole composition at finite width before emitting one full page.
 // Exhausting the reviewed type scale is an error, never a spill or tiny title.
@@ -24,6 +24,7 @@
 })
 
 #let source-cover(title, author, source-version, original-cover: none) = {
+  page-role("front")
   set page(header: none, footer: none)
   set text(hyphenate: false)
   set par(justify: false)
@@ -47,6 +48,7 @@
 }
 
 #let boliu-cover(title, author, source-version, edition, artwork: none, artwork-credit: none) = {
+  page-role("front")
   set page(header: none, footer: none)
   set text(hyphenate: false)
   set par(justify: false)

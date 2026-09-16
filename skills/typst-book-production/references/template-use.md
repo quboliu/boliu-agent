@@ -62,6 +62,19 @@ They also export the structural components in
 [Markdown conversion and book structure](markdown-and-matter.md). These add
 front matter after the mandatory two covers and keep physical duplex parity.
 
+Page furniture uses explicit structural metadata, not heading detection or a
+fixed top-margin coordinate. `recto-start(running: ...)` starts an odd physical
+page and marks any inserted verso blank; chapter/frontchapter/part-page call it.
+An `opener` marker applies to its page and becomes `body` on continuation pages.
+Custom structural components must declare `page-role("front")`,
+`page-role("body", running: [...])`, `page-role("contents", running: [...])`
+or `page-role("blank")` at the page start, or use `recto-start` for openers.
+Changing an H1 does not change page roles or running titles automatically.
+For explicit blank pages, place a zero-size box before the marker so the blank
+has a stable physical page, then break before subsequent content. Do not use
+manual coordinate thresholds to classify pages. Run duplex tests after adding
+custom components or changing margins.
+
 - `monolingual-zh.typ` selects Noto Serif SC and Chinese language behavior.
 - `monolingual-en.typ` selects Libertinus Serif and English language behavior.
 - `bilingual.typ` adds `dual`, `dual-heading`, `dual-caption`, `dual-note`,
