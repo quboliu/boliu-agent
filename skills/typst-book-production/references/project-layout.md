@@ -37,10 +37,10 @@ final suffix.
 │   └── preview/
 ├── source/
 ├── book.toml
-└── README.md
+└── readme.md
 ```
 
-The `README.md` is optional unless the surrounding repository requires it. The
+The `readme.md` is optional unless the surrounding repository requires it. The
 other top-level roles are fixed.
 
 ## Role boundaries
@@ -53,7 +53,7 @@ other top-level roles are fixed.
   publisher cover; `assets/figures/` holds supplied or traceable figures; and
   `assets/fonts/` holds only font files the project may legally redistribute.
 - `book/` is the only maintained Typst source tree. `main.typ` is the single
-  compilation entry point. `template.typ` imports the matching copied edition
+  compilation entry point. `template.typ` is the renamed copied edition
   entry, while `core.typ` and `covers.typ` remain the shared project modules.
   `chapters/` holds semantic content, not build outputs or source exports.
 - `output/build/` holds reproducible release PDFs, `output/preview/` holds
@@ -69,7 +69,7 @@ other top-level roles are fixed.
 1. Select the edition and stable slug before creating the directory.
 2. Copy `core.typ`, `covers.typ`, and the matching edition entry from the skill
    templates into `book/`; rename that entry to `template.typ`.
-3. Make `book/main.typ` import `template.typ`, render the two cover pages, then
+3. Make `book/main.typ` import `template.typ`, apply `#show: book`, render the two cover pages, then
    include chapters from `book/chapters/`.
 4. Place supplied sources and assets in their designated roots without silently
    rewriting them. Create the `output/` subdirectories before the first build.

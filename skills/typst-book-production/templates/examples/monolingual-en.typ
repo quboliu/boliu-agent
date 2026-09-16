@@ -1,4 +1,5 @@
 #import "../monolingual-en.typ": *
+#show: book
 
 #source-cover("Example Book", "Original Author", "Original source: example edition")
 #boliu-cover("Example Book", "Original Author", "Original source: example edition", "English edition")
@@ -9,4 +10,4 @@ This is a minimal compilable fixture for the Boliu Publishers English template. 
 
 == Second-Level Heading
 
-#book-table((1fr, 1fr), [Token], [Value], [Live measure], [141 mm], [Body], [10 pt])
+#book-table((1fr, 1fr), header: ([Token], [Value]), [Live measure], [141 mm], [Body], [10 pt])

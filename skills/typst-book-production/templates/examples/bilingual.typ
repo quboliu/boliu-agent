@@ -1,4 +1,5 @@
 #import "../bilingual.typ": *
+#show: book
 
 #source-cover("Example Book", "Original Author", "Original source: example edition")
 #boliu-cover("Example Book", "Original Author", "Original source: example edition", "English-Chinese bilingual edition")

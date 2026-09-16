@@ -7,7 +7,7 @@
 #let source-cover(title, author, source-version, original-cover: none) = {
   set page(header: none, footer: none)
   if original-cover != none {
-    align(center + horizon)[#image(original-cover, width: 100%, height: 100%, fit: "cover")]
+    align(center + horizon)[#image(original-cover, width: 100%, height: 100%, fit: "contain")]
   } else {
     v(34mm)
     align(center)[
@@ -52,5 +52,5 @@
   v(4mm)
   text(size: 8.5pt, fill: faint)[#source-version]
   if artwork-credit != none { v(2pt); text(size: 7.5pt, fill: faint)[#artwork-credit] }
-  pagebreak(to: "odd")
+  // The next chapter/front-matter block owns the next page transition.
 }

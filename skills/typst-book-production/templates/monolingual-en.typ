@@ -1,4 +1,4 @@
 #import "core.typ": *
 #import "covers.typ": source-cover, boliu-cover
 
-#show: boliu-book.with(body-font: "Libertinus Serif", body-lang: "en")
+#let book = boliu-book.with(body-font: ("Libertinus Serif", "Noto Serif SC"), body-lang: "en")

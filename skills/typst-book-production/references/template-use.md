@@ -10,7 +10,7 @@ default. Keep any vendored, redistribution-permitted fonts in `assets/fonts/`
 and compile with an explicit font path, for example:
 
 ```sh
-typst compile --root . --font-path assets/fonts book/main.typ dist/book.pdf
+typst compile --root . --font-path assets/fonts book/main.typ output/build/book.pdf
 ```
 
 Treat an unknown-font warning or fallback in the PDF as a failed build, not a
@@ -19,19 +19,20 @@ contract.
 
 ```typst
 #import "template.typ": *
+#show: book
 
 #source-cover(
   "Book title",
   "Original author",
   "Original source: publisher, edition, year",
-  original-cover: "assets/source-cover.png",
+  original-cover: "/assets/covers/source/cover.png",
 )
 #boliu-cover(
   "Book title",
   "Original author",
   "Original source: publisher, edition, year",
   "Chinese edition",
-  artwork: "assets/historical-line-art.svg",
+  artwork: "/assets/covers/boliu/historical-line-art.svg",
   artwork-credit: "Subject, artist/source, public-domain or licence basis",
 )
 
@@ -49,10 +50,32 @@ The entry files are intentionally thin:
 
 - `monolingual-zh.typ` selects Noto Serif SC and Chinese language behavior.
 - `monolingual-en.typ` selects Libertinus Serif and English language behavior.
-- `bilingual.typ` adds `dual`, `dual-heading`, and `dual-caption`; source text
+- `bilingual.typ` adds `dual`, `dual-heading`, `dual-caption`, `dual-note`,
+  and `dual-footnote`; source text
   precedes Chinese and both remain full semantic elements.
 
 Do not change the core values in individual chapter files. For a justified
 project-level exception, copy the affected named token into the project template,
 record the old/new values and visual comparison in the contract, then test every
 example page class specified in the design system.
+
+The edition file is renamed to `book/template.typ`; its exported `book`
+function is applied in main with `#show: book`. Use project-root absolute asset
+paths beginning with `/` under `--root .` to avoid resolution relative to a
+macro's module. Changes to constants belong in the copied `book/core.typ`;
+declaring a same-named constant in a chapter does not override an imported
+function's lexical scope.
+
+`book-table(columns, header: ([A], [B]), ..cells)` repeats the supplied header
+and inserts its separating rule. Legacy positional calls still work but have
+no inferred header; update them explicitly. For long tables, use native table
+and figure mechanics with the same style and test continuation pages.
+`display-equation[$ ... $]` is not the calling convention: pass math content
+as `#display-equation($ a^2 + b^2 = c^2 $) <eq-example>`, then use
+`@eq-example`. Use `number: "(3.7)"` to preserve a supplied source number.
+
+Run `python3 scripts/check-templates.py --font-path /path/to/fonts --output
+/path/to/qa-output` from this skill directory after a shared-template change.
+It requires Typst and PyMuPDF, compiles the three edition fixtures and stress
+fixture, checks actual trim, cover order, chapter numbers and blank furniture,
+and renders sample pages for human review. It does not certify visual quality.

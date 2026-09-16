@@ -1,15 +1,17 @@
 # Project contract
 
 Create a compact, versioned contract in the book repository before substantive
-conversion or layout work. A `book.toml`, `book.yaml`, or decision-log section
-is acceptable if it records these decisions unambiguously.
+conversion or layout work. New projects use `book.toml`; legacy projects may
+map an existing manifest in their documented layout exception.
 
 ```toml
 edition = "bilingual" # monolingual-zh | monolingual-en | bilingual
 project_name = "book-slug-typst-dual"
 primary_language = "en"
 secondary_language = "zh"
-source_authority = "source-markdown/"
+source_authority = "source/"
+publisher_profile = "boliu-b5-2"
+paragraph_style = "flush-left-spaced"
 typst_entry = "book/main.typ"
 template = "book/template.typ"
 output_pdf = "output/build/book-slug-typst-dual.pdf"

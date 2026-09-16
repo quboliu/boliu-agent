@@ -20,14 +20,19 @@ The baseline is B5. A different trim size must preserve comparable proportions,
 body measure, hierarchy, whitespace, and furniture, then receive a new measured
 token set rather than simply copying millimetres.
 
-## Baseline print profile: `boliu-b5-1`
+## Baseline print profile: `boliu-b5-2`
+
+Version 2 retains DDIA's page/text geometry and explicitly adopts no first-line
+indent. It removes rounded code panels, inline-code chips and table striping.
+Read [editorial style](editorial-style.md) for the full composition rules and
+distinguish inherited measurements below from these deliberate house refinements.
 
 | Element | Default token | DDIA-calibrated value |
 | --- | --- | --- |
 | Trim | B5 | 176 × 250 mm |
 | Margins | top / bottom / inside / outside | 22 / 20 / 19 / 16 mm |
 | Live text width | trim width minus inner/outer margins | 141 mm |
-| Body | serif, justified | 10 pt; leading `0.68em`; paragraph spacing `1.1em` |
+| Body | serif, justified | 10 pt; leading `0.68em`; paragraph spacing `1.1em`; first-line indent 0 pt |
 | English body face | `body-en` | Libertinus Serif |
 | Chinese body face | `body-zh` | Noto Serif SC |
 | UI/head face | `display` | DejaVu Sans |
@@ -40,9 +45,9 @@ token set rather than simply copying millimetres.
 | Chapter opener | `chapter-top` | 30 mm down from live-area top; label 12 pt, title rule after 3 mm, body begins 10 mm after rule |
 | Running head | `running-head` | 8 pt sans; 3 pt to a 0.4 pt light-gray rule; page number is paired at the outer side |
 | Opener footer | `opener-folio` | centered 8.5 pt; ordinary running head omitted |
-| Block code | `code-block` | 100% live width; 9 pt horizontal / 7 pt vertical inset; 3 pt radius; very light gray fill |
-| Figures | `figure` | vertical space `0.8em` above and below; centered; caption 4 pt below image, 92% of figure width, 8.5 pt |
-| Tables | `table` | 9 pt text; 6 pt horizontal / 5 pt vertical cell inset; 1 pt top/bottom rules, 0.6 pt header rule, no box grid, restrained alternating rows; `0.6em` above/below |
+| Block code | `code-block` | 100% live width; 9 pt horizontal / 7 pt vertical inset; square corners; very light gray fill; no syntax colors |
+| Figures | `figure` | vertical space 8 pt above and below; centered; caption 4 pt below image, 92% of live width, 8.5 pt |
+| Tables | `table` | 9 pt text; 6 pt horizontal / 5 pt vertical cell inset; 1 pt top/bottom rules, 0.6 pt header rule, no box grid or striping; 6 pt above/below |
 | Captions | `caption` | 8.5 pt muted gray; attached to the figure or table |
 
 The values are deliberately specific because the publisher character lives in

@@ -1,4 +1,5 @@
 #import "../monolingual-zh.typ": *
+#show: book
 
 #source-cover("示例书名", "原始作者", "原始资料：示例版本")
 #boliu-cover("示例书名", "原始作者", "原始资料：示例版本", "中文版")
@@ -11,4 +12,4 @@
 
 下表验证三线式表格的留白与层级。
 
-#book-table((1fr, 1fr), [项目], [说明], [版心], [141 mm], [正文], [10 pt])
+#book-table((1fr, 1fr), header: ([项目], [说明]), [版心], [141 mm], [正文], [10 pt])

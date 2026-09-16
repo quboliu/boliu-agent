@@ -19,6 +19,13 @@ type scale, vertical rhythm, figure, table, code, running-furniture, and cover
 rules are calibrated from the finished DDIA edition. This is how independently
 produced books retain one recognisable publisher character.
 
+Read [editorial style](references/editorial-style.md) before every production or
+layout change. The current profile is `boliu-b5-2`: minimalist, flush-left
+paragraph starts (explicitly zero first-line indent) in all three editions,
+with paragraph spacing. It defines code, equations, tables, images, punctuation,
+pagination, front matter, and measurable release gates. Implement decisions in
+the shared templates and verify output, not only written instructions.
+
 Treat the profile as a measurable default, not a collection of decorative
 suggestions. Put its tokens in the book's `template.typ`; do not replace them
 with chapter-local spacing. A departure is allowed only for a real content,
@@ -35,6 +42,11 @@ tokens and covers module, so a change to page geometry, hierarchy, figures,
 tables, or running furniture remains a deliberate project override rather than
 an accidental divergence. Read [template use](references/template-use.md) before
 adapting them.
+
+The importing main file MUST apply `#show: book` after importing the edition
+module. Importing a module does not apply its local show rules to the caller.
+Verify actual PDF page dimensions; compilation alone cannot detect a missed
+template. The smoke script in `scripts/check-templates.py` exercises this.
 
 The first two pages are mandatory cover matter:
 

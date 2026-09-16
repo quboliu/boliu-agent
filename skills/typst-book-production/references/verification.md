@@ -2,6 +2,12 @@
 
 Run these checks before calling a Typst book complete:
 
+Read [editorial style](editorial-style.md) for the profile-specific acceptance
+criteria. Confirm the zero-indent paragraph style in all three editions.
+For shared-template changes, run the bundled PDF smoke check and inspect its
+rendered pages. It catches trim, cover-order, numbering, code-color/size, repeated
+header and blank-verso regressions, but human proofing is still required.
+
 1. **Content:** every declared source element has the expected output element;
    bilingual editions also have a matching translation element in the correct
    order.
