@@ -26,6 +26,12 @@ with paragraph spacing. It defines code, equations, tables, images, punctuation,
 pagination, front matter, and measurable release gates. Implement decisions in
 the shared templates and verify output, not only written instructions.
 
+Every complete-book PDF must support direct duplex printing: portrait pages in
+reading order, left binding, long-edge flip, mirrored inside/outside margins,
+outward-facing running folios, and chapter starts on odd physical pages.
+Read [duplex printing](references/duplex-printing.md) before building or handing
+off a book. Retain intentional blank versos and the fixed two-cover sequence.
+
 Treat the profile as a measurable default, not a collection of decorative
 suggestions. Put its tokens in the book's `template.typ`; do not replace them
 with chapter-local spacing. A departure is allowed only for a real content,

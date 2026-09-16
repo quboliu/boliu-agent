@@ -4,6 +4,8 @@ Run these checks before calling a Typst book complete:
 
 Read [editorial style](editorial-style.md) for the profile-specific acceptance
 criteria. Confirm the zero-indent paragraph style in all three editions.
+Apply [duplex printing](duplex-printing.md): verify physical odd/even margins,
+outside folios, recto starts, blank versos, and cover sequence in the actual PDF.
 For shared-template changes, run the bundled PDF smoke check and inspect its
 rendered pages. It catches trim, cover-order, numbering, code-color/size, repeated
 header and blank-verso regressions, but human proofing is still required.

@@ -48,13 +48,35 @@ for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "origina
         assert code and all(s["color"] == 0 for s in code), "Unexpected syntax colors"
         assert any(abs(s["size"] - 8) < 0.01 for s in code)
         assert any(abs(s["size"] - 8.6) < 0.01 for s in code)
+        tested_sides = set()
         for index, page in enumerate(doc):
             if "CHAPTER" in page.get_text():
                 assert (index + 1) % 2 == 1
             # Transition blanks must not contain a rule or furniture.
             if not page.get_text().strip():
                 assert not page.get_drawings()
+            header_words = [w for w in page.get_text("words") if w[3] < 22 / 25.4 * 72]
+            if index >= 2 and header_words:
+                physical = index + 1
+                odd = physical % 2 == 1
+                tested_sides.add(odd)
+                folios = [w for w in header_words if w[4] == str(physical)]
+                assert len(folios) == 1, "Missing running folio"
+                folio = folios[0]
+                expected_left = (19 if odd else 16) / 25.4 * 72
+                expected_right = page.rect.width - (16 if odd else 19) / 25.4 * 72
+                if odd:
+                    assert abs(folio[2] - expected_right) < 1, "Recto folio not outside"
+                else:
+                    assert abs(folio[0] - expected_left) < 1, "Verso folio not outside"
+                rules = [d["rect"] for d in page.get_drawings()
+                         if d["rect"].y1 < 22 / 25.4 * 72 and d["rect"].width > 300]
+                assert rules, "Running rule missing"
+                assert any(abs(r.x0 - expected_left) < 0.2 and
+                           abs(r.x1 - expected_right) < 0.2 for r in rules), "Margins not mirrored"
+        assert tested_sides == {False, True}, "Need both recto and verso body pages"
     for index in range(len(doc)):
         doc[index].get_pixmap(matrix=pymupdf.Matrix(1.5, 1.5)).save(
             str(out / f"{mode}-page-{index+1}.png"))
-    print(f"{mode}: {len(doc)} pages, B5, cover sequence and geometry passed")
+    print(f"{mode}: {len(doc)} pages, B5, cover sequence and geometry passed"
+          + (", duplex mirror/folios passed" if fixture == "stress" else ""))

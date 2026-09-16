@@ -45,6 +45,7 @@
   set page(
     width: trim-width,
     height: trim-height,
+    binding: left,
     margin: (top: margin-top, bottom: margin-bottom, inside: margin-inside, outside: margin-outside),
     header: context {
       if page-kind() != "body" { return }
@@ -52,12 +53,13 @@
       let h = hs.last()
       let running = if h.supplement == none { h.body } else { h.supplement }
       set text(font: display-face, size: 8pt, fill: faint)
-      grid(
-        columns: (1fr, auto),
-        gutter: 12pt,
-        [#running],
-        [#counter(page).display()],
-      )
+      if calc.odd(here().page()) {
+        grid(columns: (1fr, auto), gutter: 12pt,
+          [#running], [#counter(page).display()])
+      } else {
+        grid(columns: (auto, 1fr), gutter: 12pt,
+          [#counter(page).display()], align(right)[#running])
+      }
       v(3pt)
       line(length: 100%, stroke: 0.4pt + luma(200))
     },

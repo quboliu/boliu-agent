@@ -34,7 +34,7 @@ See @eq-sum. #footnote[Footnote typography remains independent of body size.]
 #book-note[Short editorial note without a colored panel.]
 #dual-note[Shared bilingual note.][中英文说明保留在同一容器内。]
 
-#for i in range(5) [
+#for i in range(12) [
   #lorem(95)
 
 ]

@@ -12,6 +12,12 @@ secondary_language = "zh"
 source_authority = "source/"
 publisher_profile = "boliu-b5-2"
 paragraph_style = "flush-left-spaced"
+binding = "left"
+duplex = true
+flip_edge = "long"
+pdf_page_order = "reading"
+recto_basis = "physical-pdf-page"
+print_scale = "100%"
 typst_entry = "book/main.typ"
 template = "book/template.typ"
 output_pdf = "output/build/book-slug-typst-dual.pdf"
@@ -38,6 +44,8 @@ Also record:
 - terminology baseline, source anomalies, approved errata, and unresolved
   decisions;
 - deterministic build environment and required quality gates.
+- binding method/thickness, gutter allowance, duplex print settings, and
+  digital versus physical proof status; see [duplex printing](duplex-printing.md).
 
 The contract is a project boundary. Do not put book-specific type sizes,
 translated terms, paths, or exceptions into the general production skill.
