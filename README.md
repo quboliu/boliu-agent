@@ -18,10 +18,8 @@ boliu-agent/
     ├── gpt-image-gen/
     ├── kubernetes-official-docs/
     ├── kubernetes-paper-reading/
-    ├── pdf-dual-typst/
     ├── scanned-pdf-to-typst/
     ├── typst-book-production/
-    ├── udl-typst-book/
     └── user-skill-sync/
 ```
 
@@ -78,12 +76,6 @@ boundaries.
 
 Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
 
-### pdf-dual-typst
-
-Creates faithful English-Chinese bilingual PDFs from source PDFs with Typst.
-
-Entry: [`skills/pdf-dual-typst/SKILL.md`](skills/pdf-dual-typst/SKILL.md)
-
 ### scanned-pdf-to-typst
 
 Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
@@ -95,16 +87,11 @@ Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKIL
 Produces reproducible, publication-quality Typst books in Chinese, English, or
 adjacent Chinese-English bilingual editions, with source reconciliation,
 semantic conversion, evidence-backed editorial audits, real-project checks,
-semantic Markdown conversion, complete-book structural components,
+project-owned conversion, PDF margin-note/vector/code recovery, bilingual QA,
+complete-book structural components,
 and the shared 伯流出版社 duplex-print design system.
 
 Entry: [`skills/typst-book-production/SKILL.md`](skills/typst-book-production/SKILL.md)
-
-### udl-typst-book
-
-Maintains the publication-quality Typst/PDF edition of Understanding Deep Learning.
-
-Entry: [`skills/udl-typst-book/SKILL.md`](skills/udl-typst-book/SKILL.md)
 
 ### user-skill-sync
 
