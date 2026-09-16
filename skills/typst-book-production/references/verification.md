@@ -17,6 +17,14 @@ Run these checks before calling a Typst book complete:
    code page, footnote/notes page, table page, and image-heavy page. Check
    overflow, widows/orphans, pair adjacency, captions, running furniture, and
    page bottoms.
+6. **Publisher-profile QA:** compare the inspected pages with the named
+   伯流出版社 tokens: page grid, body measure, type scale, vertical rhythm,
+   heading attachment, figure/caption spacing, table geometry, and running
+   furniture. Inspect page 1 and page 2 at output resolution: page 1 is either
+   the exact high-resolution source cover or the neutral fallback; page 2 bears
+   `伯流出版社`, the edition identification, and the documented lawful historical
+   line drawing. Confirm that neither cover has headers, footers, or page
+   numbers.
 
 Record source coverage, unresolved anomalies, inspected pages, output checksum,
 and the build command in the release record. A clean compile alone does not

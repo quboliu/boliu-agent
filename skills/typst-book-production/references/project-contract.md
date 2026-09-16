@@ -21,8 +21,12 @@ Also record:
   allowed;
 - source-to-output map and generated-file policy;
 - chapter ordering, heading hierarchy, and numbering policy;
-- page size, margins, font families, font licences, code face, and fallback
-  policy;
+- page size, margins, font families, font licences, code face, fallback policy,
+  the 伯流出版社 profile version, and every approved token override;
+- source-cover status (`original` or `fallback`), source URL or repository path,
+  checksum, pixel dimensions, licence/permission, and any applied crop; and the
+  second-page 伯流出版社-cover image's subject, source, rights, and relevance to
+  the book;
 - semantic macros for headings, prose, notes, footnotes, figures, captions,
   tables, code, links, and running furniture;
 - bilingual pairing order and special-element policy when applicable;

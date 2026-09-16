@@ -11,6 +11,41 @@ Produce a faithful, maintainable, and reproducible Typst book. This is a
 general production core: each book supplies its own source authority, language
 policy, typography, semantic macros, terminology, and exceptions.
 
+## Use the 伯流出版社 design system
+
+Every book begins from the shared publication profile in
+[伯流出版社 design system](references/publisher-design-system.md). Its B5 grid,
+type scale, vertical rhythm, figure, table, code, running-furniture, and cover
+rules are calibrated from the finished DDIA edition. This is how independently
+produced books retain one recognisable publisher character.
+
+Treat the profile as a measurable default, not a collection of decorative
+suggestions. Put its tokens in the book's `template.typ`; do not replace them
+with chapter-local spacing. A departure is allowed only for a real content,
+language, binding, accessibility, or print constraint, and must be recorded in
+the book contract with the replacement value and a visual comparison.
+
+The first two pages are mandatory cover matter:
+
+1. **Source cover (page 1).** When a published or open-source book already has
+   an original cover, use that exact cover from the best available high-
+   resolution, reproduction-permitted source; retain its proportions and record
+   source, checksum, licence or permission, and any crop. Do not redraw,
+   stylise, upscale, or substitute it. When no original cover exists, make the
+   neutral fallback cover defined by the design system: title, original author,
+   original-source/version statement, and no invented artwork.
+2. **伯流出版社 cover (page 2).** Always follow with the publisher's distinct
+   edition cover. It must visibly carry `伯流出版社`, identify the edition without
+   impersonating the source edition, and use a contextually relevant, lawful
+   line-drawing portrait of a well-known historical figure or a line-drawing of
+   a notable scene in which that figure participated. Record the image source,
+   rights, subject, and relevance. Do not use a living person's likeness,
+   invented historical portrait, or a generic decorative image.
+
+If a reproduction-permitted high-resolution original cover or the required
+rights/provenance cannot be established, stop before distribution and ask for a
+source or permission; a low-resolution web preview is not an acceptable stand-in.
+
 ## Select the edition
 
 At the start, identify one edition and record it in the book contract:
@@ -29,7 +64,8 @@ bilingual edition into a translation summary.
 Before conversion or layout work, read the repository instructions and create
 or update the project's book contract. It identifies the content authority,
 edition, language order, source and output locations, template, fonts, build
-command, source map, terminology, and known anomalies. Read
+command, source map, terminology, known anomalies, publisher-profile version,
+and both cover records. Read
 [project contracts](references/project-contract.md) for the required decisions.
 
 The declared source is authoritative. Keep it immutable unless the project
