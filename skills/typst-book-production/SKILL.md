@@ -25,6 +25,17 @@ with chapter-local spacing. A departure is allowed only for a real content,
 language, binding, accessibility, or print constraint, and must be recorded in
 the book contract with the replacement value and a visual comparison.
 
+## Start from the runnable templates
+
+Copy the relevant file from `templates/` into the book repository together with
+`core.typ` and `covers.typ`; do not edit the copy inside this skill. Use
+`monolingual-zh.typ`, `monolingual-en.typ`, or `bilingual.typ` as the project
+template according to the contract. The three entry points share the same core
+tokens and covers module, so a change to page geometry, hierarchy, figures,
+tables, or running furniture remains a deliberate project override rather than
+an accidental divergence. Read [template use](references/template-use.md) before
+adapting them.
+
 The first two pages are mandatory cover matter:
 
 1. **Source cover (page 1).** When a published or open-source book already has
@@ -102,6 +113,11 @@ Verify content coverage, hierarchy and numbering, links and cross-references,
 assets, fonts, code integrity, table and figure geometry, PDF existence and
 page count. Rasterize and inspect representative chapter openers, dense text,
 code, tables, footnotes, and image-heavy pages.
+
+Compile the matching example in `templates/examples/` after changing a template
+module. The examples intentionally render the publisher-cover artwork warning
+until a project supplies a documented historical line drawing; that warning is
+permitted for a fixture but is a release blocker for a book.
 
 ## Project overlays
 
