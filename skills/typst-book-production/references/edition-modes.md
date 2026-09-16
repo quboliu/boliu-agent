@@ -29,6 +29,18 @@ order. Pair complete semantic elements rather than slicing by line, word count,
 or page boundary. A heading pair is one semantic heading; a note or footnote
 pair is one note or footnote; captions stay with their figure or table.
 
+Choose the pairing granularity for readability: cohesive option lists, scoring
+rubrics and parameter groups may use the entire English group followed by the
+entire Chinese group. Preserve item labels and order. Do not alternate languages
+mechanically after every line or list item.
+
+Identify heading pairs through source IDs, hierarchy and verified translation
+mapping, not Han-character detection. A translated proper name can remain all
+Latin. Adjacency is supporting evidence, not proof that two headings are a pair.
+Emit one semantic heading with an explicit `linebreak()` between languages;
+apply heading spacing once, not to two independently rendered headings. When
+both language labels link to the same target, keep both clickable.
+
 Use project macros to express pairing and keep the pair together where it fits.
 For long pairs, allow a controlled break and inspect the resulting page. Complex
 tables may use adjacent language-specific copies with identical structure when a

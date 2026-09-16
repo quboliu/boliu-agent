@@ -22,6 +22,11 @@ equation numbering/references, caption alignment and bilingual pair pagination.
 Source conversion tests belong to each book project; see the acceptance cases
 in [Markdown conversion](markdown-and-matter.md).
 
+For PDF authorities, add the project-specific note-ownership, link-target,
+vector-asset, code-indentation and measured geometry cases from
+[PDF source recovery](pdf-source-recovery.md). These checks are not implemented
+by the generic validator and must be verified in the actual project.
+
 1. **Content:** every declared source element has the expected output element;
    bilingual editions also have a matching translation element in the correct
    order.

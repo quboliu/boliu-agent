@@ -126,6 +126,14 @@ authority; distinguish text, hierarchy, asset, and metadata-only differences.
 Keep generated chapters marked as derived and regenerate them with their source
 map. Existing authored Typst may remain maintained source under its contract.
 
+For authoritative PDFs, read [PDF source recovery](references/pdf-source-recovery.md)
+for paragraph-owned margin notes, vector extraction, code recovery and geometric
+acceptance cases. These rules absorb the reusable UDL/PDF-dual experience without
+bundling a universal converter or imposing UDL's paths, A4 size or special labels.
+Distinguish producing a house-style book from preserving a paper or slide deck:
+non-book PDF adaptations require their own explicit layout contract and must not
+silently inherit the book's covers, B5 geometry or chapter machinery.
+
 For Markdown corpora, inspect the actual source dialect and create or adapt a
 project-owned converter according to
 [Markdown conversion and book structure](references/markdown-and-matter.md).
