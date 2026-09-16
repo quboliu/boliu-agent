@@ -20,15 +20,17 @@ size overrides the B5 default through a documented, reproofed project profile.
 
 ## Manifest
 
-Keep `source/source-map.json` under version control. Source paths below are
-relative to `source/`; output and asset paths are relative to the project root.
-Use recursive coverage for Markdown/HTML corpora; explicitly list navigation or
-other excluded source files, with reasons in the project decision log.
+Keep `source-map.json` at each Typst edition root under version control.
+`source` paths are relative to the sibling
+`<book-slug>-markdown/chapters/`; output and asset paths are relative to the
+edition root. All source-language Markdown chapters must be covered. Record
+raw-to-Markdown extraction provenance in the book-local skill; the edition map
+begins at the normalized Markdown boundary.
 
 ```json
 {
   "chapters": [
-    {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1,
+    {"source": "01.md", "output": "book/chapters/01.typ", "order": 1,
      "source_sha256": "<64 lowercase hexadecimal characters from the actual input bytes>"}
   ],
   "images": [
@@ -40,13 +42,14 @@ other excluded source files, with reasons in the project decision log.
 
 Replace the illustrative hash above with the actual SHA-256 of each chapter's
 source bytes. Missing, malformed or mismatching source hashes fail validation;
-legacy manifests must be regenerated from reviewed inputs, not merely stamped
-with new hashes while retaining stale output. Record generator version, title,
-conversion policy and mapping granularity as needed. Source hashes detect drift;
+nonconforming manifests must be regenerated from reviewed inputs, not merely
+stamped with new hashes while retaining stale output. Record generator version,
+title, conversion policy and mapping granularity as needed. Source hashes detect
+drift;
 they do not prove that Typst/PDF corresponds to the source. Compare headings,
 lists, links, code and figures and, for bilingual work, every translated element.
-For PDF/EPUB or mixed authority, record the extraction map and use the appropriate
-source extensions in the checker; manual content audits remain necessary.
+For PDF, EPUB, or mixed raw authority, record and test the raw-to-Markdown
+extraction in the book-local skill; manual content audits remain necessary.
 
 ## Deterministic build and regeneration
 
@@ -67,10 +70,19 @@ the fix on regeneration. Authored Typst remains editable if declared as such.
 
 ```sh
 python3 /path/to/typst-book-production/scripts/validate_book.py \
-  --book-dir /path/to/book-slug-typst-dual \
-  --source-dir /path/to/book-slug-typst-dual/source \
-  --pdf /path/to/book-slug-typst-dual/output/build/book.pdf \
+  --book-dir /path/to/book-slug/book-slug-typst-dual \
+  --source-dir /path/to/book-slug/book-slug-markdown/chapters \
+  --manifest /path/to/book-slug/book-slug-typst-dual/source-map.json \
+  --pdf /path/to/book-slug/book-slug-typst-dual/output/build/book.pdf \
   --page-size-mm 176 250
+```
+
+Before edition validation, enforce the workspace and edition matrix:
+
+```sh
+python3 /path/to/typst-book-production/scripts/validate_workspace.py \
+  --workspace-dir /path/to/book-slug \
+  --source-language en
 ```
 
 Requires PyMuPDF for parsed PDF checks. The script checks recursive manifest
@@ -81,14 +93,16 @@ script proves code equivalence, correctness of all links, annotation evidence,
 caption attachment, or complete duplex layout on an arbitrary real book.
 Verify those in the release audit; never treat a script PASS as certification.
 
-The legacy `chapters` list contains source/output mapping edges, not a
+The `chapters` list contains source/output mapping edges, not an absolute
 one-file-per-chapter requirement. Repeated sources and outputs are allowed:
-one PDF can generate several chapters, and several inputs can contribute to
-one output. Hash every input edge; record semantic fragments/reading order in
-project metadata. Project-specific checks own mapping cardinality, duplicate
-fragments, ordering and semantic coverage. The generic checker verifies
-declared files/hashes only. Set `--source-extensions` for the actual corpus
-(for example `.pdf`), not the Markdown/HTML defaults by habit.
+one Markdown chapter can generate several Typst files, and several Markdown
+inputs can contribute to one output. Hash every input edge; record semantic
+fragments and reading order in project metadata. Project-specific checks own
+mapping cardinality, duplicate fragments, ordering and semantic coverage. The
+generic checker verifies declared files and hashes only. Canonical workspaces
+validate the Markdown intermediate with `--source-extensions .md`; raw PDF,
+EPUB, HTML, or other extraction coverage belongs to book-local tests because
+raw material is not the Typst conversion input.
 
 The generic checker does not classify source-language residue. Literal Obsidian,
 HTML or Markdown syntax may be legitimate quoted code. Detect conversion leaks
@@ -98,7 +112,7 @@ Mark unfinished project work with the reserved marker `BOLIU-UNRESOLVED: reason`
 (including in comments); the checker rejects it anywhere in Typst source.
 Ordinary `TODO`, `FIXME` and `placeholder` words are not automatic failures:
 they may occur legitimately in quoted source code or template documentation.
-Review legacy unmarked TODOs manually and migrate actual unfinished tasks to
+Review unmarked TODOs manually and migrate actual unfinished tasks to
 the reserved marker. The rendered `NOT FOR RELEASE` cover warning remains a
 separate PDF failure. Absence of markers does not prove content completeness.
 

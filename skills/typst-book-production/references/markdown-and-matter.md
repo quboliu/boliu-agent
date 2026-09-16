@@ -45,11 +45,13 @@ The structure fixture tests multi-page contents, hyperlinks and right-page start
 
 Do not route every book through one universal script. Inspect the supplied
 source dialect, chapter organization and exceptional structures, then create or
-adapt a converter in the book project's `scripts/` with project-local tests.
-Keep the script, exact dependencies, explicit input order and regeneration
-command under version control. Reuse that implementation on subsequent updates;
-model flexibility is not permission to improvise a new conversion each session.
-Existing maintained Typst does not require a conversion script.
+adapt a converter in
+`<book-slug>/.agents/skills/<book-slug>/scripts/` with book-local tests.
+Document exact dependencies, explicit input order, regeneration commands,
+formula rules, known anomalies, and learned pitfalls in that local skill or its
+references. Reuse the implementation on subsequent updates; model flexibility
+is not permission to improvise a new conversion each session. Existing
+maintained Typst does not require a conversion script.
 
 Prefer a structural parser with an explicit semantic mapping. Inventory dialect
 extensions before parsing: unsupported footnotes, task lists or custom HTML may
@@ -59,9 +61,13 @@ Never use blind global replacements across prose, code and math.
 
 ### Invariants to implement
 
-- Preserve source files. Declare reading order and front matter explicitly;
-  map source elements to generated chapters in `source/source-map.json`.
-  Record each chapter's `source_sha256` from the exact bytes converted.
+- Preserve everything under `<book-slug>-raw/` byte-for-byte. Produce
+  source-language intermediate chapters only in
+  `<book-slug>-markdown/chapters/` and highest-quality extracted images only
+  in `<book-slug>-markdown/images/`. Declare reading order and front matter
+  explicitly. Each edition maps Markdown elements to generated Typst in its
+  root `source-map.json` and records `source_sha256` from the exact Markdown
+  bytes converted.
 - Preserve complete heading numbers and hierarchy. Do not strip a source
   prefix unless it agrees with the complete generated counter, not merely the
   chapter number. Handle excerpts, jumps, duplicates and appendices explicitly.
@@ -74,7 +80,8 @@ Never use blind global replacements across prose, code and math.
 - Preserve internal link destinations with stable, collision-checked labels;
   resolve source-specific anchors deliberately. Fail on missing destinations.
   Preserve external links and footnote/reference relationships.
-- Copy authoritative assets without byte changes when fidelity requires it;
+- Recover the best available image once into the Markdown `images/` tree.
+  Reproducibly copy edition figure inputs from there without quality loss;
   record hashes, dimensions and provenance, and use lowercase collision-safe
   paths. Reject missing/out-of-root inputs. Choose placed size for print
   readability, not from assumed screen DPI. Tables need content-aware widths.
@@ -103,8 +110,9 @@ exhaustive list or a bundled converter's claimed feature set:
 | Source changes after conversion | Hash check fails until regeneration; output must reflect changed content |
 | Asset failure midway through conversion | Previous accepted output remains coherent; failed staging is not published |
 
-Run a small end-to-end project: real source subset → generated Typst → both
-covers and all copied template modules → compiled PDF → `validate_book.py`.
+Run a small end-to-end project: immutable raw subset → source-language Markdown
+chapters/images → generated Typst → both covers and all copied template modules
+→ compiled PDF → `validate_workspace.py` and `validate_book.py`.
 Check extracted content, links, footnotes, numbering and assets against the
 source, then inspect rendered pages. Add short and overheight bilingual pairs
 when applicable. General template tests cannot replace these project tests.

@@ -12,14 +12,14 @@ class ProjectValidation(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        (self.root / "source/chapters").mkdir(parents=True)
+        (self.root / "markdown/chapters").mkdir(parents=True)
         (self.root / "book/chapters").mkdir(parents=True)
-        (self.root / "source/chapters/01.md").write_text("# Chapter\nText.", encoding="utf-8")
+        (self.root / "markdown/chapters/01.md").write_text("# Chapter\nText.", encoding="utf-8")
         (self.root / "book/chapters/01.typ").write_text("= Chapter\nText.", encoding="utf-8")
-        self.manifest = self.root / "source/source-map.json"
+        self.manifest = self.root / "source-map.json"
         self.manifest.write_text(json.dumps({"chapters": [
-            {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1,
-             "source_sha256": hashlib.sha256((self.root / "source/chapters/01.md").read_bytes()).hexdigest()}
+            {"source": "01.md", "output": "book/chapters/01.typ", "order": 1,
+             "source_sha256": hashlib.sha256((self.root / "markdown/chapters/01.md").read_bytes()).hexdigest()}
         ], "images": []}), encoding="utf-8")
 
     def tearDown(self):
@@ -27,12 +27,12 @@ class ProjectValidation(unittest.TestCase):
 
     def check_manifest(self):
         failures = []
-        validator.check_manifest(self.root, self.root / "source", self.manifest, failures)
+        validator.check_manifest(self.root, self.root / "markdown/chapters", self.manifest, failures)
         return failures
 
     def test_recursive_sources(self):
         self.assertEqual(self.check_manifest(), [])
-        (self.root / "source/chapters/02.md").write_text("# Missing")
+        (self.root / "markdown/chapters/02.md").write_text("# Missing")
         self.assertTrue(any("absent from manifest" in x for x in self.check_manifest()))
 
     def test_missing_output(self):
@@ -40,7 +40,7 @@ class ProjectValidation(unittest.TestCase):
         self.assertTrue(any("generated chapter" in x for x in self.check_manifest()))
 
     def test_changed_source_hash(self):
-        (self.root / "source/chapters/01.md").write_text("# Chapter\nChanged facts.")
+        (self.root / "markdown/chapters/01.md").write_text("# Chapter\nChanged facts.")
         self.assertTrue(any("hash mismatch" in x for x in self.check_manifest()))
 
     def test_missing_or_invalid_source_hash(self):
@@ -63,9 +63,9 @@ class ProjectValidation(unittest.TestCase):
         (self.root / "book/chapters/02.typ").write_text("= Part two")
         data["chapters"] += [dict(first, output="book/chapters/02.typ", order=7),
                              dict(first, order=7)]
-        second = self.root / "source/chapters/02.md"
+        second = self.root / "markdown/chapters/02.md"
         second.write_text("# Supporting source")
-        data["chapters"].append(dict(first, source="chapters/02.md", order=7,
+        data["chapters"].append(dict(first, source="02.md", order=7,
             source_sha256=hashlib.sha256(second.read_bytes()).hexdigest()))
         self.manifest.write_text(json.dumps(data))
         self.assertEqual(self.check_manifest(), [])

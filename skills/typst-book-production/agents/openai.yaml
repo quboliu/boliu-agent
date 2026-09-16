@@ -1,4 +1,4 @@
 interface:
   display_name: "Typst Book Production"
-  short_description: "伯流出版社中英双语书籍制作、内容审校与双面印刷质量检查"
-  default_prompt: "Use $typst-book-production to convert, audit, or maintain a reproducible book with the shared publisher style and duplex PDF checks."
+  short_description: "严格分层的 Typst 书籍制作、内容审校与双面印刷质量检查"
+  default_prompt: "Use $typst-book-production to create or maintain a canonical raw-to-Markdown-to-Typst book workspace with the shared publisher style and duplex PDF checks."

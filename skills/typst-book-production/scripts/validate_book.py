@@ -54,7 +54,7 @@ def check_manifest(
     source_dir: Path | None,
     manifest_path: Path,
     failures: list[str],
-    extensions: tuple[str, ...] = (".md", ".html", ".htm"),
+    extensions: tuple[str, ...] = (".md",),
 ) -> tuple[int, int]:
     manifest = load_json(manifest_path, failures)
     if manifest is None:
@@ -215,11 +215,16 @@ def check_pdf(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--book-dir", required=True, type=Path)
-    parser.add_argument("--source-dir", type=Path)
+    parser.add_argument(
+        "--source-dir",
+        required=True,
+        type=Path,
+        help="canonical sibling <book-slug>-markdown/chapters directory",
+    )
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--pdf", type=Path)
     parser.add_argument("--page-size-mm", type=float, nargs=2, default=(176, 250))
-    parser.add_argument("--source-extensions", nargs="+", default=[".md", ".html", ".htm"])
+    parser.add_argument("--source-extensions", nargs="+", default=[".md"])
     parser.add_argument(
         "--require-a4",
         action="store_true",
@@ -228,8 +233,8 @@ def main() -> int:
     args = parser.parse_args()
 
     book_dir = args.book_dir.resolve()
-    source_dir = (args.source_dir or book_dir / "source").resolve()
-    manifest = (args.manifest or book_dir / "source" / "source-map.json").resolve()
+    source_dir = args.source_dir.resolve()
+    manifest = (args.manifest or book_dir / "source-map.json").resolve()
     pdf = (args.pdf or book_dir / "output" / "build" / "book.pdf").resolve()
     failures: list[str] = []
 

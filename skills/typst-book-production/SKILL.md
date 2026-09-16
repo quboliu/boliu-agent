@@ -1,6 +1,6 @@
 ---
 name: typst-book-production
-description: Produce and maintain publication-quality Typst books in Chinese, English, or Chinese-English bilingual editions, including source reconciliation, semantic conversion, optional evidence-backed editorial audits, reproducible builds, and duplex PDF verification.
+description: Produce and maintain publication-quality Typst books in a strict raw-to-Markdown-to-Typst workspace, with Chinese, English, or bilingual editions, book-local skill overlays, reproducible builds, and duplex PDF verification.
 ---
 
 # Typst Book Production
@@ -8,8 +8,8 @@ description: Produce and maintain publication-quality Typst books in Chinese, En
 made by quboliu
 
 Produce a faithful, maintainable, and reproducible Typst book. This is a
-general production core: each book supplies its own source authority, language
-policy, typography, semantic macros, terminology, and exceptions.
+general production core: each book supplies its own source provenance, language
+policy, typography, semantic macros, terminology, and content exceptions.
 
 ## Use the 伯流出版社 design system
 
@@ -75,48 +75,55 @@ If a reproduction-permitted high-resolution original cover or the required
 rights/provenance cannot be established, stop before distribution and ask for a
 source or permission; a low-resolution web preview is not an acceptable stand-in.
 
-## Select the edition
+## Select the source language and edition matrix
 
-At the start, identify one edition and record it in the book contract:
+At the start, identify the source language and create its complete required
+edition matrix. Record each edition in its own book contract:
 
 - `monolingual-zh`: a Chinese-only edition.
 - `monolingual-en`: an English-only edition.
 - `bilingual`: adjacent English-Chinese content, unless the project explicitly
   specifies the opposite language order.
 
+A Chinese source creates only `monolingual-zh`. An English source creates
+`monolingual-en`, `bilingual`, and translated `monolingual-zh`; completing
+one does not make the other required editions optional.
+
 Read [edition modes](references/edition-modes.md) for the selected mode. Do not
 introduce bilingual duplication into a monolingual edition, or simplify a
 bilingual edition into a translation summary.
 
-## Create a canonical source tree
+## Enforce the canonical book workspace
 
-For a new Typst edition, use the canonical root name
-`<book-slug>-typst-zh`, `<book-slug>-typst-en`, or
-`<book-slug>-typst-dual`. The `<book-slug>` is lowercase ASCII words joined by
-hyphens; it identifies the work rather than the translator, editor, or release
-date. Use the same slug for parallel editions. Read
-[project layout](references/project-layout.md) before creating or migrating a
-project.
+Read [project layout](references/project-layout.md) before creating, converting,
+or migrating a book. The root workspace is `<book-slug>/`, where the slug is a
+stable lowercase English title slug. It contains three separated production
+layers:
 
-The standard tree separates immutable authority (`source/`), maintained Typst
-source (`book/`), stable inputs (`assets/`), and reproducible artifacts
-(`output/`). Do not put derived PDFs, extracted source text, or the only copy of
-an asset inside `book/`. An existing project may retain a different tree only
-when its book contract records the exact exception and maps each standard role
-to its actual path.
+1. `<book-slug>-raw/` is immutable original material and contains nothing else.
+2. `<book-slug>-markdown/{chapters,images}/` is the source-language normalized
+   intermediate and the content authority for every Typst edition.
+3. `<book-slug>-typst-<suffix>/` contains one final edition project.
+
+A Chinese source requires only `-typst-zh`. An English source requires all of
+`-typst-en`, `-typst-dual`, and `-typst-zh`. Do not bypass the Markdown
+layer, store corrected material in the raw tree, invent alternate directory
+names, or keep a second source authority inside an edition. Run
+`scripts/validate_workspace.py` before production and handoff.
 
 ## Establish the book contract
 
 Before conversion or layout work, read the repository instructions and create
 or update the project's book contract. It identifies the content authority,
 edition, language order, source and output locations, template, fonts, build
-command, source map, terminology, known anomalies, canonical project name and
-layout exceptions, publisher-profile version, and both cover records. Read
+command, source map, terminology, known anomalies, canonical project name,
+publisher-profile version, and both cover records. Read
 [project contracts](references/project-contract.md) for the required decisions.
 
-The declared source is authoritative. Keep it immutable unless the project
-explicitly permits source corrections; record approved errata and source-export
-defects separately instead of silently repairing or inventing content.
+The raw directory is immutable evidence. The source-language Markdown
+intermediate is the normalized content authority for Typst conversion. Apply
+reviewed corrections there, record their raw provenance and rationale, and
+regenerate affected Typst editions instead of silently patching them.
 
 ## Produce semantic Typst
 
@@ -135,11 +142,12 @@ non-book PDF adaptations require their own explicit layout contract and must not
 silently inherit the book's covers, B5 geometry or chapter machinery.
 
 For Markdown corpora, inspect the actual source dialect and create or adapt a
-project-owned converter according to
+book-local converter according to
 [Markdown conversion and book structure](references/markdown-and-matter.md).
 This skill deliberately does not bundle a universal Markdown converter. Keep
-the project's script, pinned dependencies and acceptance tests in its source
-tree so future regeneration is repeatable rather than rewritten each session.
+the converter, pinned dependencies, and acceptance tests in
+`.agents/skills/<book-slug>/` so future regeneration is repeatable rather than
+rewritten each session.
 The same reference documents reusable
 contents, unnumbered front matter, part pages, copyright and quotation macros.
 
@@ -194,10 +202,13 @@ permitted for a fixture but is a release blocker for a book.
 
 ## Project overlays
 
-When a project-specific Typst skill exists, treat it as an overlay on this
-production core. The overlay owns project paths, content authority, terminology,
-fonts, page geometry, macro names, approved visual decisions, and known source
-anomalies. Its explicit rules override this skill where they differ.
+Every book workspace has a local overlay at
+`.agents/skills/<book-slug>/SKILL.md`, with matching lowercase slug in its
+frontmatter. The overlay owns book-specific scripts, dependencies, terminology,
+formula handling, fonts, macro names, approved visual decisions, source
+anomalies, and learned pitfalls. It may refine the production core for genuine
+content needs, but it must not rename, collapse, or bypass the canonical raw,
+Markdown, edition, language, or local-skill boundaries.
 
 Promote a lesson from a project overlay into this core only when it is
 reproducible and useful across multiple books. Keep one-book taste and

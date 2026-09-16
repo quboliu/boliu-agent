@@ -1,15 +1,23 @@
 # Project contract
 
-Create a compact, versioned contract in the book repository before substantive
-conversion or layout work. New projects use `book.toml`; legacy projects may
-map an existing manifest in their documented layout exception.
+Create one compact, versioned `book.toml` inside each Typst edition before
+substantive conversion or layout work. Paths are relative to that edition
+directory unless explicitly prefixed with `../`. All editions point to the
+single sibling Markdown intermediate; none owns a second source tree.
 
 ```toml
 edition = "bilingual" # monolingual-zh | monolingual-en | bilingual
 project_name = "book-slug-typst-dual"
+book_slug = "book-slug"
+source_language = "en"
 primary_language = "en"
 secondary_language = "zh"
-source_authority = "source/"
+raw_authority = "../book-slug-raw/"
+markdown_authority = "../book-slug-markdown/"
+markdown_chapters = "../book-slug-markdown/chapters/"
+markdown_images = "../book-slug-markdown/images/"
+source_map = "source-map.json"
+local_skill = "../.agents/skills/book-slug/"
 publisher_profile = "boliu-b5-2"
 paragraph_style = "flush-left-spaced"
 binding = "left"
@@ -26,10 +34,13 @@ build_command = "typst compile --root . --font-path assets/fonts book/main.typ o
 
 Also record:
 
-- content authority, source version/checksum, and whether source corrections are
-  allowed;
-- canonical project name, the selected `zh` / `en` / `dual` suffix, and any
-  documented exception from the standard project tree;
+- raw authority, source version/checksum, and the rule that raw material is
+  immutable;
+- Markdown authority, chapter/image paths, source-to-Markdown extraction
+  provenance, and the rule that normalized corrections happen only in the
+  Markdown layer;
+- canonical book slug, project name, source language, selected `zh` / `en` /
+  `dual` suffix, and path to the book-local skill;
 - source-to-output map and generated-file policy;
 - chapter ordering, heading hierarchy, and numbering policy;
 - page size, margins, font families, font licences, code face, fallback policy,
@@ -43,9 +54,11 @@ Also record:
 - bilingual pairing order and special-element policy when applicable;
 - terminology baseline, source anomalies, approved errata, and unresolved
   decisions;
-- deterministic build environment and required quality gates.
+- deterministic build environment and required quality gates;
 - binding method/thickness, gutter allowance, duplex print settings, and
   digital versus physical proof status; see [duplex printing](duplex-printing.md).
 
-The contract is a project boundary. Do not put book-specific type sizes,
-translated terms, paths, or exceptions into the general production skill.
+The contract is an edition boundary. Put reusable production rules in this
+general skill and book-specific behavior in
+`.agents/skills/<book-slug>/`; do not hide a second source authority or a
+noncanonical directory behind a contract exception.
