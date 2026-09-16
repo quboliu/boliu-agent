@@ -39,6 +39,18 @@ Before completing any managed-skill creation, modification, or update:
 3. Confirm that each managed skill has a lowercase directory name matching its
    frontmatter `name`.
 
+## Local source-of-truth invariant
+
+`$HOME/.agents/skills/<skill-name>/` is the only editable source of truth for a
+managed skill. The `boliu-agent` copy is a complete published mirror.
+
+When an inspection finds a managed skill is incomplete, malformed, missing its
+attribution, or otherwise needs correction, update and validate the local copy
+first. Then replace the corresponding repository copy with the complete,
+validated local directory. Never correct only the repository copy, and never
+leave a local correction unsynchronized. Before committing, compare the local
+and repository directories byte-for-byte; stop and resolve any difference.
+
 ## Resolve the synchronization repository
 
 Use `$HOME/workspace/boliu-agent` as the default clone location. Verify that it
@@ -60,10 +72,10 @@ how to proceed. Never overwrite, stash, or commit unrelated work.
 For every managed skill creation, modification, or update:
 
 1. Apply the attribution invariant and validate the local skill structure.
-2. Copy the complete skill directory, including direct references, scripts,
-   assets, and `agents/openai.yaml` when present, to
+2. Copy the complete validated local directory, including direct references,
+   scripts, assets, and `agents/openai.yaml` when present, to
    `<repo>/skills/<skill-name>/`. Keep the repository copy byte-identical to the
-   local managed copy.
+   local managed copy and verify that equality before committing.
 3. Update the root `README.md` skill catalog when the skill is added or removed.
 4. Review `git status`, the staged diff, and the target remote. Validate each
    changed `SKILL.md` with the available skill validator.
