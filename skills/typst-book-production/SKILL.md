@@ -126,12 +126,13 @@ authority; distinguish text, hierarchy, asset, and metadata-only differences.
 Keep generated chapters marked as derived and regenerate them with their source
 map. Existing authored Typst may remain maintained source under its contract.
 
-For supported Markdown corpora, use the structural converter
-`scripts/md2typ.py` described in
+For Markdown corpora, inspect the actual source dialect and create or adapt a
+project-owned converter according to
 [Markdown conversion and book structure](references/markdown-and-matter.md).
-It preserves local links and semantic blocks, emits a source/asset manifest,
-and rejects unsupported constructs. It is not a universal Markdown/LaTeX
-converter or a translation engine. The same reference documents reusable
+This skill deliberately does not bundle a universal Markdown converter. Keep
+the project's script, pinned dependencies and acceptance tests in its source
+tree so future regeneration is repeatable rather than rewritten each session.
+The same reference documents reusable
 contents, unnumbered front matter, part pages, copyright and quotation macros.
 
 1. Inventory chapters, hierarchy, links, figures, tables, code, notes,

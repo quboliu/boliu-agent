@@ -164,16 +164,14 @@
 
 #let fig(path, caption: none, width: 100%) = {
   v(8pt)
-  block(breakable: false)[
-    #align(center)[
-      #image(path, width: width)
-      #if caption != none [
-        #v(4pt)
-        #block(width: 92%)[
-          #set text(size: 8.5pt, fill: ink-gray)
-          #set par(justify: false)
-          #caption
-        ]
+  block(width: 100%, breakable: false)[
+    #align(center, image(path, width: width))
+    #if caption != none [
+      #v(4pt)
+      #pad(left: 4%, right: 4%)[
+        #set text(size: 8.5pt, fill: ink-gray)
+        #set par(justify: false)
+        #align(left, caption)
       ]
     ]
   ]
@@ -200,8 +198,10 @@
 
 // Label the returned equation for native references. Preserve source numbers
 // with number: "(3.7)"; otherwise the numbered equations count automatically.
-#let display-equation(body, number: "(1)") = math.equation(
-  block: true, numbering: number, number-align: right, body)
+#let display-equation(body, number: auto) = math.equation(
+  block: true,
+  numbering: if number == auto { "(1)" } else if number == none { none } else { (..nums) => number },
+  number-align: right, body)
 
 #let book-note(body) = block(
   above: 10pt, below: 10pt, inset: (left: 10pt),

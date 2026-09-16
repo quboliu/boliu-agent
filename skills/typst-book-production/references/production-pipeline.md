@@ -28,7 +28,8 @@ other excluded source files, with reasons in the project decision log.
 ```json
 {
   "chapters": [
-    {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1}
+    {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1,
+     "source_sha256": "<64 lowercase hexadecimal characters from the actual input bytes>"}
   ],
   "images": [
     {"asset": "assets/figures/diagram.svg", "width": 800, "height": 400}
@@ -37,8 +38,12 @@ other excluded source files, with reasons in the project decision log.
 }
 ```
 
-Add hashes, generator version, title, conversion policy and mapping granularity
-as needed. An inventory is not proof of semantic completeness: compare headings,
+Replace the illustrative hash above with the actual SHA-256 of each chapter's
+source bytes. Missing, malformed or mismatching source hashes fail validation;
+legacy manifests must be regenerated from reviewed inputs, not merely stamped
+with new hashes while retaining stale output. Record generator version, title,
+conversion policy and mapping granularity as needed. Source hashes detect drift;
+they do not prove that Typst/PDF corresponds to the source. Compare headings,
 lists, links, code and figures and, for bilingual work, every translated element.
 For PDF/EPUB or mixed authority, record the extraction map and use the appropriate
 source extensions in the checker; manual content audits remain necessary.

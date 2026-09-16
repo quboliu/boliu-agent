@@ -46,6 +46,16 @@ approved text-only fallback. `boliu-cover` deliberately renders a prominent
 `NOT FOR RELEASE` placeholder when `artwork` is missing. Replace it only with
 the documented historical line drawing required by the design system.
 
+Both text covers disable automatic hyphenation and measure the complete
+composition before emitting one unbreakable page. The fallback title tries
+27/24/22/20pt; publisher title tries 24/22/20/18pt. For the publisher's compact
+profile (below 24pt), artwork height is 70mm instead of 83mm, top space 12mm
+instead of 18mm, brand-to-rule 5mm, rule-to-title 8mm, author-to-edition and
+edition-to-art 5mm. Both profiles reserve at least 6mm before the source credits.
+Choose the first fitting profile; never shrink below the declared minimum.
+If none fits, compilation stops for a reviewed project cover layout. Record
+the selected title size/profile in the proof and inspect both physical pages.
+
 The entry files are intentionally thin:
 
 They also export the structural components in
@@ -85,6 +95,9 @@ and figure mechanics with the same style and test continuation pages.
 `display-equation[$ ... $]` is not the calling convention: pass math content
 as `#display-equation($ a^2 + b^2 = c^2 $) <eq-example>`, then use
 `@eq-example`. Use `number: "(3.7)"` to preserve a supplied source number.
+Omitting `number` uses automatic `(1)`, `(2)`, etc.; `number: none` suppresses
+numbering. Explicit values are literal labels returned by a numbering function,
+not Typst numbering patterns, and native references use that same label.
 
 Run `python3 scripts/check-templates.py --font-path /path/to/fonts --output
 /path/to/qa-output` from this skill directory after a shared-template change.

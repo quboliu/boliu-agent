@@ -1,5 +1,6 @@
 """Regression tests for real-project validation. Run with PyMuPDF installed."""
 import json
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -17,7 +18,8 @@ class ProjectValidation(unittest.TestCase):
         (self.root / "book/chapters/01.typ").write_text("= Chapter\nText.", encoding="utf-8")
         self.manifest = self.root / "source/source-map.json"
         self.manifest.write_text(json.dumps({"chapters": [
-            {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1}
+            {"source": "chapters/01.md", "output": "book/chapters/01.typ", "order": 1,
+             "source_sha256": hashlib.sha256((self.root / "source/chapters/01.md").read_bytes()).hexdigest()}
         ], "images": []}), encoding="utf-8")
 
     def tearDown(self):
@@ -36,6 +38,17 @@ class ProjectValidation(unittest.TestCase):
     def test_missing_output(self):
         (self.root / "book/chapters/01.typ").unlink()
         self.assertTrue(any("generated chapter" in x for x in self.check_manifest()))
+
+    def test_changed_source_hash(self):
+        (self.root / "source/chapters/01.md").write_text("# Chapter\nChanged facts.")
+        self.assertTrue(any("hash mismatch" in x for x in self.check_manifest()))
+
+    def test_missing_or_invalid_source_hash(self):
+        data = json.loads(self.manifest.read_text())
+        for digest in (None, "bad", 123):
+            data["chapters"][0]["source_sha256"] = digest
+            self.manifest.write_text(json.dumps(data))
+            self.assertTrue(any("source_sha256" in x for x in self.check_manifest()))
 
     def test_order_and_asset(self):
         self.manifest.write_text(json.dumps({"chapters": [

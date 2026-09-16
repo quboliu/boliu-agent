@@ -9,6 +9,7 @@ separate gates. Adapted from the retired chinese-typst-book validator.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -88,6 +89,15 @@ def check_manifest(
             source_names.add(source)
             if source_dir is not None and not (source_dir / source).is_file():
                 fail(f"source file does not exist: {source_dir / source}", failures)
+            digest = chapter.get("source_sha256")
+            if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+                fail(f"missing or invalid source_sha256: {source}; regenerate manifest", failures)
+            elif source_dir is None:
+                fail(f"source directory required to verify hash: {source}", failures)
+            elif (source_dir / source).is_file():
+                actual = hashlib.sha256((source_dir / source).read_bytes()).hexdigest()
+                if actual != digest:
+                    fail(f"source hash mismatch: {source}; regenerate derived outputs", failures)
         if not isinstance(output, str) or not output:
             fail(f"chapter entry {index} has no output", failures)
         else:

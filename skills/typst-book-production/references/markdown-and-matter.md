@@ -41,78 +41,70 @@ Keep the continuous folio policy unless the project explicitly chooses roman
 preliminaries; physical page parity never depends on displayed counters.
 The structure fixture tests multi-page contents, hyperlinks and right-page starts.
 
-## Converter
+## Project-owned conversion
 
-Install in the project build environment: `markdown-it-py==4.2.0`,
-`mdit-py-plugins==0.6.1`, and PyMuPDF (record its exact installed version).
-The converter uses a Markdown token tree, rather than global regex rewriting.
+Do not route every book through one universal script. Inspect the supplied
+source dialect, chapter organization and exceptional structures, then create or
+adapt a converter in the book project's `scripts/` with project-local tests.
+Keep the script, exact dependencies, explicit input order and regeneration
+command under version control. Reuse that implementation on subsequent updates;
+model flexibility is not permission to improvise a new conversion each session.
+Existing maintained Typst does not require a conversion script.
 
-```sh
-python3 /path/to/skill/scripts/md2typ.py \
-  --project /path/to/book-slug-typst-zh \
-  --source-dir /path/to/book-slug-typst-zh/source \
-  preface.md chapters/01.md chapters/02.md \
-  --front preface.md
-```
+Prefer a structural parser with an explicit semantic mapping. Inventory dialect
+extensions before parsing: unsupported footnotes, task lists or custom HTML may
+become ordinary text rather than unknown tokens. Detect them deliberately;
+implement their semantics or stop with a source location and adaptation need.
+Never use blind global replacements across prose, code and math.
 
-Supply chapter paths in explicit reading order, relative to `source/`; each
-contains one leading H1. `--front` lists unnumbered inputs. Outputs are
-`book/chapters/001.typ`, etc., plus `source/source-map.json`. Copy all shared
-template modules and rename the selected entry to `book/template.typ`; create
-`book/main.typ` with `#show: book`, covers, matter and ordered includes.
-The converter does not assemble a title/author/cover without project metadata.
+### Invariants to implement
 
-Supported: paragraphs, semantic headings, emphasis/strong, inline/fenced/indented
-code, nested lists and start numbers, links, quotations with a final dash
-attribution, pipe tables and alignment, local images, explicit HTML-export
-figure/table/listing captions, and opt-in verified Typst math.
-Recognized plain Chinese chapter numbers and numeric section prefixes are
-removed from display only when the complete number matches the generated
-chapter/section/subsection counter, including preceding unnumbered-in-source
-headings. Jumps, duplicates, skipped numbered levels, styled numeric prefixes,
-and numbered front matter or levels 4–6 require an explicit adapter; conversion
-stops before writing chapters rather than renumbering silently.
-Image assets are copied unchanged under lowercase content-derived filenames;
-their hashes/dimensions enter the manifest. The initial image width is 80% of
-the measure, NOT a 96dpi inference; tune at print size and record effective ppi.
-Table fractions initially are equal; tune widths for the actual content.
+- Preserve source files. Declare reading order and front matter explicitly;
+  map source elements to generated chapters in `source/source-map.json`.
+  Record each chapter's `source_sha256` from the exact bytes converted.
+- Preserve complete heading numbers and hierarchy. Do not strip a source
+  prefix unless it agrees with the complete generated counter, not merely the
+  chapter number. Handle excerpts, jumps, duplicates and appendices explicitly.
+- Render inline semantics everywhere, including quotations, attribution,
+  captions, notes and table cells. Extracting a dash-prefixed attribution must
+  not flatten emphasis, code or links into literal Markdown.
+- Preserve code whitespace and punctuation; syntax examples inside code must
+  not trigger prose-footnote or HTML conversion. Determine math syntax first:
+  Markdown dollar delimiters do not mean the contents are valid Typst math.
+- Preserve internal link destinations with stable, collision-checked labels;
+  resolve source-specific anchors deliberately. Fail on missing destinations.
+  Preserve external links and footnote/reference relationships.
+- Copy authoritative assets without byte changes when fidelity requires it;
+  record hashes, dimensions and provenance, and use lowercase collision-safe
+  paths. Reject missing/out-of-root inputs. Choose placed size for print
+  readability, not from assumed screen DPI. Tables need content-aware widths.
+- Pair bilingual content by semantic element, never by alternating lines or
+  guessed paragraph counts. Preserve invariant code/formulas single-copy as
+  declared in the book contract; conversion alone does not produce translation.
+- Validate all inputs and planned outputs before replacing generated files.
+  Stage multi-file output and publish only after success, so an asset failure
+  cannot leave a mixed old/new edition. Preserve audit metadata and exclusions.
+  Fix derived text through the converter or recorded errata, not hand patches.
 
-Relative chapter/heading links become native label links. Anchors use lowercase
-Unicode heading text with punctuation removed and spaces replaced by hyphens.
-Duplicate headings, missing targets and unsupported URI schemes are rejected;
-adapt alternative website anchor conventions explicitly. External HTTP(S) and
-mailto targets remain clickable.
+### Required project acceptance cases
 
-Dollar math defaults to rejection, because Markdown commonly contains LaTeX.
-Use `--math typst` only after verifying/converting expressions into Typst syntax.
-This option never translates LaTeX. Unknown HTML, footnotes, extensions and
-unsupported constructs require a documented source adapter; they must not be
-silently dropped. Run a representative-source trial before converting a corpus.
-Footnote references (including undefined ones), unused definitions, inline
-footnotes and strikethrough are recognized and rejected explicitly; the same
-syntax in inline/fenced code stays literal. This is detection, not footnote
-conversion. Other dialect extensions still need source inventory and an adapter.
-The converter preserves supplied content; bilingual pairing/translation remains
-a subsequent explicit semantic step, not guessed from alternating paragraphs.
+Implement tests for the constructs actually present, including their failure
+paths. The following past failures are reusable acceptance cases, not an
+exhaustive list or a bundled converter's claimed feature set:
 
-Outputs are derived and overwritten on regeneration. Do not manually patch them;
-change the converter/adapter or recorded source corrections. Preserve custom
-manifest exclusions/audit data separately and merge them deliberately after
-regeneration. Render validation precedes chapter writes, but asset I/O can still
-fail during output: fix the source/asset issue and rerun before using the tree.
+| Input or event | Required outcome |
+| --- | --- |
+| `Text[^1]` plus definition; undefined or unused footnotes | Faithful linked notes, or explicit rejection; never silent text fallback/drop |
+| The same footnote syntax inside inline/fenced code | Exact literal code |
+| First section `1.7`, repeated `1.1`, or skipped hierarchy | Preserve intentional source numbering or reject; never silently renumber |
+| `> -- *Author* [work](https://example.org)` | Styled attribution and clickable link, without printed Markdown syntax |
+| Missing internal anchor, duplicate titles, nested lists, HTML captions | Explicit project-specific mappings and failures, with no lost structure |
+| LaTeX math and existing equation tags | Verified translation and preserved tags, or explicit rejection |
+| Source changes after conversion | Hash check fails until regeneration; output must reflect changed content |
+| Asset failure midway through conversion | Previous accepted output remains coherent; failed staging is not published |
 
-## Tests and proof
-
-```sh
-BOLIU_FONT_PATH=/path/to/fonts python3 scripts/test_md2typ.py
-python3 scripts/check-templates.py --font-path /path/to/fonts --output /tmp/book-proof
-```
-
-Tests include semantic preservation, unresolved-link rejection, unsupported
-HTML/math/footnote rejection, full numbering checks, asset/caption mapping,
-short/overheight bilingual pagination, and compilation of generated chapters
-with native links, quotations, code, tables and math. A complete synthetic book
-with both covers and copied modules also passes the real-project validator;
-its diagnostic artwork does not establish release rights or cover suitability.
-Review actual-source
-coverage and use the real-project validator before publication.
+Run a small end-to-end project: real source subset → generated Typst → both
+covers and all copied template modules → compiled PDF → `validate_book.py`.
+Check extracted content, links, footnotes, numbering and assets against the
+source, then inspect rendered pages. Add short and overheight bilingual pairs
+when applicable. General template tests cannot replace these project tests.

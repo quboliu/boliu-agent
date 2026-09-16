@@ -15,6 +15,13 @@ For shared-template changes, run the bundled PDF smoke check and inspect its
 rendered pages. It catches trim, cover-order, numbering, code-color/size, repeated
 header and blank-verso regressions, but human proofing is still required.
 
+Run `BOLIU_FONT_PATH=/path/to/fonts python3 -m unittest discover -s scripts
+-p 'test_*.py'` from this skill directory (with PyMuPDF and Typst installed).
+These reusable checks cover source-hash drift, long-cover capacity, literal
+equation numbering/references, caption alignment and bilingual pair pagination.
+Source conversion tests belong to each book project; see the acceptance cases
+in [Markdown conversion](markdown-and-matter.md).
+
 1. **Content:** every declared source element has the expected output element;
    bilingual editions also have a matching translation element in the correct
    order.
