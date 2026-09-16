@@ -8,7 +8,7 @@ import re
 import sys
 import urllib.request
 
-UA = {"User-Agent": "Mozilla/5.0 (compatible; blog-paparazzi/1.0)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; paparazzi/1.0)"}
 
 
 def main():

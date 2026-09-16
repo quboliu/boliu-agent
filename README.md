@@ -11,7 +11,7 @@ boliu-agent/
 │   ├── README.md
 │   └── repository-conventions.md
 └── skills/
-    ├── blog-paparazzi/
+    ├── paparazzi/
     ├── blog-publish/
     ├── chinese-typst-book/
     ├── ddia-v2-dual-typst/
@@ -31,11 +31,12 @@ boliu-agent/
 
 ## Skills
 
-### blog-paparazzi
+### paparazzi
 
-Investigates a blog and produces a thematic article catalog with author research.
+Builds source-traceable, themed chronological dossiers from public clues about a
+person or body of work, then publishes them to the Paparazzi module.
 
-Entry: [`skills/blog-paparazzi/SKILL.md`](skills/blog-paparazzi/SKILL.md)
+Entry: [`skills/paparazzi/SKILL.md`](skills/paparazzi/SKILL.md)
 
 ### blog-publish
 

@@ -12,7 +12,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from urllib.parse import urljoin, urlparse
 
-UA = {"User-Agent": "Mozilla/5.0 (compatible; blog-paparazzi/1.0)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; paparazzi/1.0)"}
 
 FEED_PATHS = ["/feed", "/rss", "/rss.xml", "/atom.xml", "/index.xml",
               "/feed.xml", "/feed/", "/rss/"]
