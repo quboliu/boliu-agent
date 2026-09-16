@@ -19,7 +19,6 @@ boliu-agent/
     ├── kubernetes-official-docs/
     ├── kubernetes-paper-reading/
     ├── pdf-dual-typst/
-    ├── pphc-typst-book/
     ├── scanned-pdf-to-typst/
     ├── typst-book-production/
     ├── udl-typst-book/
@@ -85,12 +84,6 @@ Creates faithful English-Chinese bilingual PDFs from source PDFs with Typst.
 
 Entry: [`skills/pdf-dual-typst/SKILL.md`](skills/pdf-dual-typst/SKILL.md)
 
-### pphc-typst-book
-
-Turns Markdown book manuscripts into publication-quality Chinese Typst books.
-
-Entry: [`skills/pphc-typst-book/SKILL.md`](skills/pphc-typst-book/SKILL.md)
-
 ### scanned-pdf-to-typst
 
 Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
@@ -102,6 +95,7 @@ Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKIL
 Produces reproducible, publication-quality Typst books in Chinese, English, or
 adjacent Chinese-English bilingual editions, with source reconciliation,
 semantic conversion, evidence-backed editorial audits, real-project checks,
+semantic Markdown conversion, complete-book structural components,
 and the shared 伯流出版社 duplex-print design system.
 
 Entry: [`skills/typst-book-production/SKILL.md`](skills/typst-book-production/SKILL.md)
