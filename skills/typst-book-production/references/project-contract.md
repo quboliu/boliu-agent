@@ -6,19 +6,22 @@ is acceptable if it records these decisions unambiguously.
 
 ```toml
 edition = "bilingual" # monolingual-zh | monolingual-en | bilingual
+project_name = "book-slug-typst-dual"
 primary_language = "en"
 secondary_language = "zh"
 source_authority = "source-markdown/"
 typst_entry = "book/main.typ"
 template = "book/template.typ"
-output_pdf = "dist/book.pdf"
-build_command = "typst compile --root . --font-path assets/fonts book/main.typ dist/book.pdf"
+output_pdf = "output/build/book-slug-typst-dual.pdf"
+build_command = "typst compile --root . --font-path assets/fonts book/main.typ output/build/book-slug-typst-dual.pdf"
 ```
 
 Also record:
 
 - content authority, source version/checksum, and whether source corrections are
   allowed;
+- canonical project name, the selected `zh` / `en` / `dual` suffix, and any
+  documented exception from the standard project tree;
 - source-to-output map and generated-file policy;
 - chapter ordering, heading hierarchy, and numbering policy;
 - page size, margins, font families, font licences, code face, fallback policy,

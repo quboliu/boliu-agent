@@ -70,13 +70,30 @@ Read [edition modes](references/edition-modes.md) for the selected mode. Do not
 introduce bilingual duplication into a monolingual edition, or simplify a
 bilingual edition into a translation summary.
 
+## Create a canonical source tree
+
+For a new Typst edition, use the canonical root name
+`<book-slug>-typst-zh`, `<book-slug>-typst-en`, or
+`<book-slug>-typst-dual`. The `<book-slug>` is lowercase ASCII words joined by
+hyphens; it identifies the work rather than the translator, editor, or release
+date. Use the same slug for parallel editions. Read
+[project layout](references/project-layout.md) before creating or migrating a
+project.
+
+The standard tree separates immutable authority (`source/`), maintained Typst
+source (`book/`), stable inputs (`assets/`), and reproducible artifacts
+(`output/`). Do not put derived PDFs, extracted source text, or the only copy of
+an asset inside `book/`. An existing project may retain a different tree only
+when its book contract records the exact exception and maps each standard role
+to its actual path.
+
 ## Establish the book contract
 
 Before conversion or layout work, read the repository instructions and create
 or update the project's book contract. It identifies the content authority,
 edition, language order, source and output locations, template, fonts, build
-command, source map, terminology, known anomalies, publisher-profile version,
-and both cover records. Read
+command, source map, terminology, known anomalies, canonical project name and
+layout exceptions, publisher-profile version, and both cover records. Read
 [project contracts](references/project-contract.md) for the required decisions.
 
 The declared source is authoritative. Keep it immutable unless the project
