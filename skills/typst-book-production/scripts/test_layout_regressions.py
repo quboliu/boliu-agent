@@ -69,7 +69,7 @@ class LayoutRegressions(unittest.TestCase):
         self.assertAlmostEqual(folio[0], 16*72/25.4, delta=1)
 
     def test_bilingual_short_and_overheight_pairs(self):
-        doc = self.compile('#v(200mm)\n#dual([PAIR-EN], [配对中文])\n'
+        doc = self.compile('#v(204mm)\n#dual([PAIR-EN], [配对中文])\n'
                            '#pagebreak()\n#dual([LONG-START #lorem(1800)], [长段末尾])',
                            edition="bilingual")
         pages = [p.get_text() for p in doc]
@@ -92,6 +92,31 @@ class LayoutRegressions(unittest.TestCase):
         self.assertGreaterEqual(text.count("3.7"), 2)
         self.assertIn("(2)", text)
         self.assertTrue(doc[0].get_links())
+
+    def test_bilingual_gaps_are_independent_and_not_doubled(self):
+        measured = []
+        for options in ("", ", language-gap: 9pt", ", pair-gap: 18pt"):
+            doc = self.compile(''.join(
+                f'#dual([EN{i} English paragraph.], [中文{i}翻译段落。]{options})\n'
+                for i in range(1, 4)), edition="bilingual")
+            self.assertEqual(len(doc), 1)
+            lines = [line for block in doc[0].get_text("dict")["blocks"]
+                     for line in block.get("lines", [])]
+            self.assertEqual(len(lines), 6)
+            inner = [lines[i+1]["bbox"][1] - lines[i]["bbox"][3] for i in (0, 2, 4)]
+            outer = [lines[i+1]["bbox"][1] - lines[i]["bbox"][3] for i in (1, 3)]
+            self.assertGreater(min(inner), 0)
+            for gap in inner[1:]:
+                self.assertAlmostEqual(gap, inner[0], delta=0.1)
+            self.assertAlmostEqual(outer[0], outer[1], delta=0.1)
+            measured.append((inner[0], outer[0], lines[0]["bbox"][1]))
+        base, inner, outer = measured
+        self.assertGreater(base[1], base[0])
+        self.assertAlmostEqual(inner[0] - base[0], 3, delta=0.1)
+        self.assertAlmostEqual(inner[1], base[1], delta=0.1)
+        self.assertAlmostEqual(outer[1] - base[1], 6, delta=0.1)
+        self.assertAlmostEqual(outer[0], base[0], delta=0.1)
+        self.assertAlmostEqual(outer[2], base[2], delta=0.1)
 
     def test_figure_caption_left_edge(self):
         doc = self.compile('#fig("/examples/cover-fixture.svg", width: 60%, caption: [Short caption])')

@@ -89,6 +89,15 @@ do not use the remaining space on the current page as that threshold. Proof
 footnote-heavy pairs separately because note reservations reduce available space.
 The measurement follows Typst's [measure/layout API](https://typst.app/docs/reference/layout/measure/).
 
+`dual-language-gap = 6pt` and `dual-pair-gap = 12pt` are defined in the bilingual
+entry module. The call accepts `language-gap:` and `pair-gap:` independently.
+For a reviewed project-wide override, edit the copied entry's constants or bind
+`dual.with(language-gap: ..., pair-gap: ...)` once in the project template;
+do not add per-paragraph manual spacers. These values do not change monolingual
+paragraph spacing or the separate note/footnote/heading/caption components.
+The regression suite measures exported PDF lines and verifies that changing one
+gap does not change the other and adjacent outer gaps do not double.
+
 Do not change the core values in individual chapter files. For a justified
 project-level exception, copy the affected named token into the project template,
 record the old/new values and visual comparison in the contract, then test every

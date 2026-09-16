@@ -33,6 +33,7 @@ distinguish inherited measurements below from these deliberate house refinements
 | Margins | top / bottom / inside / outside | 22 / 20 / 19 / 16 mm |
 | Live text width | trim width minus inner/outer margins | 141 mm |
 | Body | serif, justified | 10 pt; leading `0.68em`; paragraph spacing `1.1em`; first-line indent 0 pt |
+| Bilingual body pair | `dual-language-gap` / `dual-pair-gap` | 6 pt between original/translation; 12 pt between pairs; see editorial style for collapse and measurement rules |
 | English body face | `body-en` | Libertinus Serif |
 | Chinese body face | `body-zh` | Noto Serif SC |
 | UI/head face | `display` | DejaVu Sans |
