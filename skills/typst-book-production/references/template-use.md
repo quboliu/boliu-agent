@@ -58,6 +58,14 @@ front matter after the mandatory two covers and keep physical duplex parity.
   and `dual-footnote`; source text
   precedes Chinese and both remain full semantic elements.
 
+`dual` measures both streams at the current column width and keeps the pair
+unbroken if it fits a full live page (208mm in the baseline). Longer pairs retain
+normal paragraph pagination. For a changed trim/margin profile or constrained
+container, set its `pair-height:` to the actual available full-region height;
+do not use the remaining space on the current page as that threshold. Proof
+footnote-heavy pairs separately because note reservations reduce available space.
+The measurement follows Typst's [measure/layout API](https://typst.app/docs/reference/layout/measure/).
+
 Do not change the core values in individual chapter files. For a justified
 project-level exception, copy the affected named token into the project template,
 record the old/new values and visual comparison in the contract, then test every

@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from markdown_it import MarkdownIt
 from mdit_py_plugins.dollarmath import dollarmath_plugin
+from mdit_py_plugins.footnote import footnote_plugin
 
 
 def string(value):
@@ -35,7 +36,11 @@ class Converter:
     def __init__(self, source, project, names, front=(), math="reject"):
         self.source, self.project = Path(source).resolve(), Path(project).resolve()
         self.names, self.front, self.math = names, set(front), math
-        self.parser = MarkdownIt("commonmark", {"html": True}).enable("table").use(dollarmath_plugin)
+        # Recognize footnotes so unsupported semantics cannot fall back to text.
+        # Keep unused definitions in the token stream too; never silently drop them.
+        self.parser = (MarkdownIt("commonmark", {"html": True})
+                       .enable(["table", "strikethrough"]).use(dollarmath_plugin)
+                       .use(footnote_plugin, move_to_end=False, always_match_refs=True))
         self.docs = {}
         self.targets = {}
         self.assets = {}
@@ -233,6 +238,30 @@ class Converter:
             i += 1
         return "\n\n".join(out)
 
+    def validate_heading_numbers(self, source, tokens, chapter_number):
+        counts = [chapter_number, 0, 0]
+        previous = 1
+        for i, token in enumerate(tokens):
+            if token.type != "heading_open":
+                continue
+            level = int(token.tag[1:])
+            title = tokens[i+1].content
+            prefix = (re.match(r"^第\s*(\d+)\s*章[：:\s]+", title) if level == 1
+                      else re.match(r"^(\d+(?:\.\d+)+)\s+", title))
+            if source not in self.front and level <= 3:
+                if level > previous + 1:
+                    raise ValueError(f"{source}: skipped heading level requires a source adapter")
+                if level > 1:
+                    counts[level-1] += 1
+                    counts[level:] = [0] * (3-level)
+                previous = level
+            if prefix:
+                expected = ".".join(map(str, counts[:level]))
+                plain = all(c.type == "text" for c in tokens[i+1].children or [])
+                if source in self.front or level > 3 or not plain or prefix[1] != expected:
+                    raise ValueError(f"{source}: heading number {prefix[1]} cannot be preserved "
+                                     f"by automatic numbering ({expected}); supply a source adapter")
+
     def run(self):
         generated, manifest, number = {}, [], 0
         for order, name in enumerate(self.names, 1):
@@ -241,6 +270,7 @@ class Converter:
                 raise ValueError(f"{name}: require one leading H1; adapt source explicitly")
             if name not in self.front:
                 number += 1
+            self.validate_heading_numbers(name, tokens, number)
             content = self.render(name, tokens, number)
             if name in self.front:
                 content += "\n]\n"

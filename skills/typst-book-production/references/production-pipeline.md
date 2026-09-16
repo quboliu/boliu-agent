@@ -76,6 +76,14 @@ script proves code equivalence, correctness of all links, annotation evidence,
 caption attachment, or complete duplex layout on an arbitrary real book.
 Verify those in the release audit; never treat a script PASS as certification.
 
+Mark unfinished project work with the reserved marker `BOLIU-UNRESOLVED: reason`
+(including in comments); the checker rejects it anywhere in Typst source.
+Ordinary `TODO`, `FIXME` and `placeholder` words are not automatic failures:
+they may occur legitimately in quoted source code or template documentation.
+Review legacy unmarked TODOs manually and migrate actual unfinished tasks to
+the reserved marker. The rendered `NOT FOR RELEASE` cover warning remains a
+separate PDF failure. Absence of markers does not prove content completeness.
+
 Scan extracted text for leaked converter commands such as literal `v(...)`,
 `line(...)`, stale paths and implementation markers, with human review to avoid
 rejecting legitimate code quotations. Check heading/figure counts using native

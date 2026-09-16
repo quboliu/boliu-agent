@@ -17,10 +17,9 @@ from pathlib import Path
 from typing import Any
 
 
-PLACEHOLDER_RE = re.compile(
-    r"(?i)(?:\bTODO\b|\[TODO\]|\bPLACEHOLDER\b|\bFIXME\b|"
-    r"!\[\[.*?\]\])"
-)
+# Reserved project marker, not ordinary prose/code words such as TODO/FIXME.
+# It is intentionally detected even in comments: remove it only after resolution.
+PLACEHOLDER_RE = re.compile(r"\bBOLIU-UNRESOLVED\b")
 
 
 def fail(message: str, failures: list[str]) -> None:

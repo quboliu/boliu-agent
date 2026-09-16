@@ -67,7 +67,11 @@ code, nested lists and start numbers, links, quotations with a final dash
 attribution, pipe tables and alignment, local images, explicit HTML-export
 figure/table/listing captions, and opt-in verified Typst math.
 Recognized plain Chinese chapter numbers and numeric section prefixes are
-removed from display only when consistent with the declared chapter order.
+removed from display only when the complete number matches the generated
+chapter/section/subsection counter, including preceding unnumbered-in-source
+headings. Jumps, duplicates, skipped numbered levels, styled numeric prefixes,
+and numbered front matter or levels 4–6 require an explicit adapter; conversion
+stops before writing chapters rather than renumbering silently.
 Image assets are copied unchanged under lowercase content-derived filenames;
 their hashes/dimensions enter the manifest. The initial image width is 80% of
 the measure, NOT a 96dpi inference; tune at print size and record effective ppi.
@@ -84,6 +88,10 @@ Use `--math typst` only after verifying/converting expressions into Typst syntax
 This option never translates LaTeX. Unknown HTML, footnotes, extensions and
 unsupported constructs require a documented source adapter; they must not be
 silently dropped. Run a representative-source trial before converting a corpus.
+Footnote references (including undefined ones), unused definitions, inline
+footnotes and strikethrough are recognized and rejected explicitly; the same
+syntax in inline/fenced code stays literal. This is detection, not footnote
+conversion. Other dialect extensions still need source inventory and an adapter.
 The converter preserves supplied content; bilingual pairing/translation remains
 a subsequent explicit semantic step, not guessed from alternating paragraphs.
 
@@ -101,6 +109,10 @@ python3 scripts/check-templates.py --font-path /path/to/fonts --output /tmp/book
 ```
 
 Tests include semantic preservation, unresolved-link rejection, unsupported
-HTML/math rejection, asset/caption mapping, and compilation of generated chapters
-with native links, quotations, code, tables and math. Review actual-source
+HTML/math/footnote rejection, full numbering checks, asset/caption mapping,
+short/overheight bilingual pagination, and compilation of generated chapters
+with native links, quotations, code, tables and math. A complete synthetic book
+with both covers and copied modules also passes the real-project validator;
+its diagnostic artwork does not establish release rights or cover suitability.
+Review actual-source
 coverage and use the real-project validator before publication.

@@ -69,10 +69,17 @@ class ProjectValidation(unittest.TestCase):
         self.assertTrue(any("fixture" in x for x in failures))
 
     def test_placeholder(self):
-        (self.root / "book/chapters/01.typ").write_text("TODO")
+        (self.root / "book/chapters/01.typ").write_text("// BOLIU-UNRESOLVED: missing diagram")
         failures = []
         validator.check_generated_text(self.root, failures)
         self.assertTrue(failures)
+
+    def test_literal_words_and_template_comments_are_not_placeholders(self):
+        (self.root / "book/chapters/01.typ").write_text(
+            '// artwork placeholder\n#raw("TODO FIXME placeholder")\nTODO is a code convention.')
+        failures = []
+        validator.check_generated_text(self.root, failures)
+        self.assertEqual(failures, [])
 
 
 if __name__ == "__main__":
