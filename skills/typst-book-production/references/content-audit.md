@@ -53,10 +53,16 @@ Both reviewers may share model blind spots. Random source sampling, public errat
 
 ## Inject from a fail-closed sidecar
 
+An independent reviewer and reviewer-session archive are mandatory only when
+the brief requires that review. Otherwise keep an explicit editorial acceptance
+decision and evidence in the ledger; do not invent a second review or require
+an unavailable reviewer merely to typeset a book. Where checks below refer to
+reviewer acceptance/sessions, apply the review mode recorded in the contract.
+
 Keep accepted annotations separate from the immutable source and generated chapters. A useful project layout is:
 
 ```text
-content-audit/
+editorial/content-audit/
 ├── annotations.json        # accepted, renderable notes only
 ├── ledger.json             # evidence, objections, verdicts, rejected/unresolved items
 └── reviewer-sessions/      # raw exported discussions when available
@@ -92,7 +98,10 @@ The ledger should preserve the source-era/current contexts, claim, evidence grad
 
 ## Render annotations as editorial matter
 
-Use named Typst components rather than paragraph-level styling. Visually distinguish at least correction/verification, version, mechanism/deepening, safety, and cross-book extension. Light fills, a restrained side rule, a short label, and a small evidence footer usually preserve the hierarchy better than repeated dark boxes.
+Use named Typst components following the house editorial style: white background,
+a restrained gray side rule, a short textual category label, and a small evidence
+footer. Distinguish correction/verification, version, mechanism/deepening,
+safety, and cross-book extension through labels, not colored panels.
 
 Keep the author's prose visually primary. A note should be the minimum sufficient correction or extension, positioned immediately after the complete semantic block containing its anchor. Never splice a note into code, a list item, quotation text, or a sentence merely to save space.
 
@@ -111,3 +120,7 @@ In addition to the ordinary book checks, verify:
 - the final report states audited chapters versus total chapters instead of implying whole-book completion from a pilot chapter.
 
 Annotations change pagination. Rebuild the complete PDF and visually inspect every page containing a new note plus its adjacent pages.
+
+The generic project validator does not implement sidecar injection or prove
+reviewer agreement. The project's converter must implement the anchor, ledger
+and emission checks above, with negative tests for drift and rejected entries.

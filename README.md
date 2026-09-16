@@ -13,7 +13,6 @@ boliu-agent/
 └── skills/
     ├── paparazzi/
     ├── blog-publish/
-    ├── chinese-typst-book/
     ├── ddia-v2-dual-typst/
     ├── deep-concept-research/
     ├── gpt-image-gen/
@@ -44,12 +43,6 @@ Entry: [`skills/paparazzi/SKILL.md`](skills/paparazzi/SKILL.md)
 Manages posts on the Astro blog `quboliu/quboliu.github.io`: preflight environment checks, published-status checks, local-vs-published diffs, and publish / update / delete workflows guarded by explicit confirmation before any commit or push.
 
 Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
-
-### chinese-typst-book
-
-Builds and maintains publication-quality Chinese technical books in Typst.
-
-Entry: [`skills/chinese-typst-book/SKILL.md`](skills/chinese-typst-book/SKILL.md)
 
 ### ddia-v2-dual-typst
 
@@ -107,7 +100,9 @@ Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKIL
 ### typst-book-production
 
 Produces reproducible, publication-quality Typst books in Chinese, English, or
-adjacent Chinese-English bilingual editions.
+adjacent Chinese-English bilingual editions, with source reconciliation,
+semantic conversion, evidence-backed editorial audits, real-project checks,
+and the shared 伯流出版社 duplex-print design system.
 
 Entry: [`skills/typst-book-production/SKILL.md`](skills/typst-book-production/SKILL.md)
 

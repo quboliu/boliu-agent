@@ -1,5 +1,0 @@
-interface:
-  display_name: "Chinese Typst Book"
-  short_description: "出版级中文技术书 Typst 制作与质量校验流水线"
-  brand_color: "#17324D"
-  default_prompt: "Use $chinese-typst-book to build or maintain a publication-quality Chinese technical book in Typst."

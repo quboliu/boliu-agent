@@ -36,12 +36,13 @@ final suffix.
 │   ├── build/
 │   └── preview/
 ├── source/
+├── editorial/               # optional maintained annotations and review ledger
 ├── book.toml
 └── readme.md
 ```
 
 The `readme.md` is optional unless the surrounding repository requires it. The
-other top-level roles are fixed.
+editorial directory is needed only for requested content audits. Other top-level roles are fixed.
 
 ## Role boundaries
 
@@ -65,6 +66,10 @@ other top-level roles are fixed.
   version, and every exception. It is the mapping layer for a legacy tree.
 
 ## Required initialization
+
+Keep accepted annotations, evidence/rebuttal ledgers and requested reviewer
+sessions in `editorial/content-audit/`. These are maintained inputs; generated
+reports remain in `output/audit/`.
 
 1. Select the edition and stable slug before creating the directory.
 2. Copy `core.typ`, `covers.typ`, and the matching edition entry from the skill

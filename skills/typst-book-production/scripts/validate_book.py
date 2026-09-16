@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Mechanical release checks for a Typst book project.
 
-The script intentionally uses only the Python standard library so it can run in
-a clean checkout. It validates the source map, derived files, asset paths, and
-basic PDF integrity; Typst compilation and visual review remain separate gates.
+Validates the source map, derived files, asset paths and actual parsed PDF.
+Requires PyMuPDF. Compilation, content review and duplex visual proof are
+separate gates. Adapted from the retired chinese-typst-book validator.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ import argparse
 import json
 import re
 import sys
+import pymupdf
 from pathlib import Path
 from typing import Any
 
@@ -19,10 +20,6 @@ from typing import Any
 PLACEHOLDER_RE = re.compile(
     r"(?i)(?:\bTODO\b|\[TODO\]|\bPLACEHOLDER\b|\bFIXME\b|"
     r"!\[\[.*?\]\])"
-)
-PAGE_RE = re.compile(rb"/Type\s*/Page\b")
-A4_MEDIA_BOX_RE = re.compile(
-    rb"/MediaBox\s*\[\s*0\s+0\s+595\.2756\s+841\.8898\s*\]"
 )
 
 
@@ -57,6 +54,7 @@ def check_manifest(
     source_dir: Path | None,
     manifest_path: Path,
     failures: list[str],
+    extensions: tuple[str, ...] = (".md", ".html", ".htm"),
 ) -> tuple[int, int]:
     manifest = load_json(manifest_path, failures)
     if manifest is None:
@@ -72,6 +70,8 @@ def check_manifest(
         images = []
 
     orders: list[int] = []
+    if not chapters:
+        fail("manifest has no chapters", failures)
     source_names: set[str] = set()
     output_names: set[str] = set()
     for index, chapter in enumerate(chapters, start=1):
@@ -107,10 +107,15 @@ def check_manifest(
         fail(f"chapter order is not contiguous: {orders}", failures)
 
     if source_dir is not None:
+        excluded = manifest.get("excluded_sources", [])
+        if not isinstance(excluded, list) or not all(isinstance(x, str) for x in excluded):
+            fail("excluded_sources must be a list of relative source paths", failures)
+            excluded = []
         expected = {
             path.relative_to(source_dir).as_posix()
-            for path in source_dir.glob("*.md")
-            if path.name != "SUMMARY.md"
+            for path in source_dir.rglob("*")
+            if path.is_file() and path.suffix.lower() in extensions
+            and path.relative_to(source_dir).as_posix() not in excluded
         }
         missing = sorted(expected - source_names)
         extra = sorted(source_names - expected)
@@ -137,14 +142,18 @@ def check_manifest(
         height = image.get("height")
         if not isinstance(width, int) or not isinstance(height, int):
             fail(f"image {asset!r} lacks integer dimensions", failures)
-        elif width < 64 or height < 24:
-            fail(f"image is suspiciously small ({width}x{height}): {asset}", failures)
+        elif width <= 0 or height <= 0:
+            fail(f"invalid image dimensions ({width}x{height}): {asset}", failures)
 
     return len(chapters), asset_count
 
 
 def check_generated_text(book_dir: Path, failures: list[str]) -> tuple[int, int]:
-    typst_files = sorted(book_dir.rglob("*.typ"))
+    source_root = book_dir / "book"
+    if not source_root.is_dir():
+        source_root = book_dir
+    typst_files = sorted(path for path in source_root.rglob("*.typ")
+                         if not {"output", "build", "dist"}.intersection(path.relative_to(source_root).parts))
     if not typst_files:
         fail(f"no Typst files found under {book_dir}", failures)
         return 0, 0
@@ -170,33 +179,48 @@ def check_generated_text(book_dir: Path, failures: list[str]) -> tuple[int, int]
 def check_pdf(
     pdf_path: Path,
     failures: list[str],
-    require_a4: bool = False,
+    page_size_mm: tuple[float, float] = (176, 250),
 ) -> int:
     if not pdf_path.is_file():
         fail(f"missing PDF: {pdf_path}", failures)
         return 0
     try:
-        data = pdf_path.read_bytes()
-    except OSError as exc:
-        fail(f"cannot read PDF {pdf_path}: {exc}", failures)
+        with pymupdf.open(pdf_path) as doc:
+            if doc.needs_pass:
+                fail("PDF requires a password", failures)
+                return 0
+            if doc.is_repaired:
+                fail("PDF required structural repair", failures)
+            if len(doc) < 2:
+                fail("Book PDF must include the two cover pages", failures)
+            searchable = False
+            checked_fonts = set()
+            for index, page in enumerate(doc, 1):
+                expected = [mm * 72 / 25.4 for mm in page_size_mm]
+                if any(abs(a - b) > 0.2 for a, b in zip(
+                        (page.rect.width, page.rect.height), expected)):
+                    fail(f"page {index}: unexpected trim or rotation", failures)
+                text = page.get_text()
+                searchable |= bool(text.strip()) and index > 2
+                if "NOT FOR RELEASE" in text:
+                    fail(f"page {index}: publisher artwork still a fixture", failures)
+                for word in page.get_text("words"):
+                    if word[0] < -0.5 or word[1] < -0.5 or word[2] > page.rect.width + 0.5 or word[3] > page.rect.height + 0.5:
+                        fail(f"page {index}: text exceeds page bounds", failures)
+                        break
+                for font in page.get_fonts():
+                    xref = font[0]
+                    if xref in checked_fonts:
+                        continue
+                    checked_fonts.add(xref)
+                    if not xref or not doc.extract_font(xref)[3]:
+                        fail(f"page {index}: font not embedded: {font[3]}", failures)
+            if not searchable:
+                fail("No searchable body text after covers", failures)
+            return len(doc)
+    except Exception as exc:
+        fail(f"cannot parse PDF: {exc}", failures)
         return 0
-    if len(data) < 10000:
-        fail(f"PDF is unexpectedly small ({len(data)} bytes): {pdf_path}", failures)
-    if not data.startswith(b"%PDF-"):
-        fail(f"not a PDF file: {pdf_path}", failures)
-    if b"%%EOF" not in data[-2048:]:
-        fail(f"PDF has no EOF marker near its end: {pdf_path}", failures)
-    pages = len(PAGE_RE.findall(data))
-    if pages < 2:
-        fail(f"PDF has implausible page count ({pages}): {pdf_path}", failures)
-    if require_a4:
-        a4_boxes = len(A4_MEDIA_BOX_RE.findall(data))
-        if a4_boxes != pages:
-            fail(
-                f"expected A4 page boxes on every page, found {a4_boxes}/{pages}: {pdf_path}",
-                failures,
-            )
-    return pages
 
 
 def main() -> int:
@@ -205,6 +229,8 @@ def main() -> int:
     parser.add_argument("--source-dir", type=Path)
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--pdf", type=Path)
+    parser.add_argument("--page-size-mm", type=float, nargs=2, default=(176, 250))
+    parser.add_argument("--source-extensions", nargs="+", default=[".md", ".html", ".htm"])
     parser.add_argument(
         "--require-a4",
         action="store_true",
@@ -213,14 +239,15 @@ def main() -> int:
     args = parser.parse_args()
 
     book_dir = args.book_dir.resolve()
-    source_dir = args.source_dir.resolve() if args.source_dir else None
-    manifest = (args.manifest or book_dir / "source-map.json").resolve()
-    pdf = (args.pdf or book_dir / "dist" / "book.pdf").resolve()
+    source_dir = (args.source_dir or book_dir / "source").resolve()
+    manifest = (args.manifest or book_dir / "source" / "source-map.json").resolve()
+    pdf = (args.pdf or book_dir / "output" / "build" / "book.pdf").resolve()
     failures: list[str] = []
 
-    chapter_count, asset_count = check_manifest(book_dir, source_dir, manifest, failures)
+    chapter_count, asset_count = check_manifest(book_dir, source_dir, manifest, failures,
+                                               tuple(args.source_extensions))
     typst_count, issue_count = check_generated_text(book_dir, failures)
-    page_count = check_pdf(pdf, failures, require_a4=args.require_a4)
+    page_count = check_pdf(pdf, failures, page_size_mm=(210, 297) if args.require_a4 else args.page_size_mm)
 
     print(
         f"checked chapters={chapter_count} assets={asset_count} "

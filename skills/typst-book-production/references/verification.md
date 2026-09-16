@@ -2,6 +2,11 @@
 
 Run these checks before calling a Typst book complete:
 
+Use [production pipeline](production-pipeline.md) for actual-project manifest/
+PDF checks, fixed build timestamps, source reconciliation and before/after
+visual comparisons. For requested annotations, also run the converter's anchor,
+acceptance and emission checks from [content audit](content-audit.md).
+
 Read [editorial style](editorial-style.md) for the profile-specific acceptance
 criteria. Confirm the zero-indent paragraph style in all three editions.
 Apply [duplex printing](duplex-printing.md): verify physical odd/even margins,

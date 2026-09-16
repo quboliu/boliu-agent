@@ -1,6 +1,6 @@
 ---
 name: typst-book-production
-description: Produce and maintain publication-quality Typst books in Chinese, English, or adjacent Chinese-English bilingual editions. Use when converting or maintaining a book, long-form manuscript, or paginated source as a reproducible Typst PDF.
+description: Produce and maintain publication-quality Typst books in Chinese, English, or Chinese-English bilingual editions, including source reconciliation, semantic conversion, optional evidence-backed editorial audits, reproducible builds, and duplex PDF verification.
 ---
 
 # Typst Book Production
@@ -120,6 +120,12 @@ defects separately instead of silently repairing or inventing content.
 
 ## Produce semantic Typst
 
+Read [source conversion](references/source-conversion.md) before converting or
+regenerating content. Reconcile supplied local and web editions before choosing
+authority; distinguish text, hierarchy, asset, and metadata-only differences.
+Keep generated chapters marked as derived and regenerate them with their source
+map. Existing authored Typst may remain maintained source under its contract.
+
 1. Inventory chapters, hierarchy, links, figures, tables, code, notes,
    footnotes, citations, and assets before conversion.
 2. Convert semantic elements, not Markdown punctuation or rendered page shapes.
@@ -140,9 +146,24 @@ unless the book contract defines a different policy.
 
 ## Build and verify
 
+For requested fact-checking, corrections, or version updates, read
+[content audit](references/content-audit.md). Keep author text immutable and
+inject accepted editorial notes from a separately reviewed sidecar. Verify exact
+source hashes and anchors, evidence, acceptance and emitted-note counts; reject
+drift or unresolved claims. This workflow does not run merely because a book
+needs typesetting. House typography, two-cover sequencing and duplex rules
+remain authoritative for annotated editions.
+
 Use the project's explicit Typst version, root, font path, and reproducible
 build command. A successful compile is necessary but not sufficient. Read
 [verification](references/verification.md) before handoff.
+
+Read [production pipeline](references/production-pipeline.md) for deterministic
+builds, the source manifest, real-project validation, regeneration and visual
+regression checks. Use `scripts/validate_book.py` on the actual project;
+`scripts/check-templates.py` tests bundled fixtures and cannot replace it.
+For the inherited research lineage and historical project evidence, consult
+[conversion research](references/conversion-research.md).
 
 Verify content coverage, hierarchy and numbering, links and cross-references,
 assets, fonts, code integrity, table and figure geometry, PDF existence and

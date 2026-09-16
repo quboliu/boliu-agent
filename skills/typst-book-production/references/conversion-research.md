@@ -1,6 +1,9 @@
-# Research decisions
+# Conversion research provenance (historical)
 
-This is the decision record for the reusable chinese-typst-book skill. Add a dated entry when a future project changes a default.
+This preserves the research lineage and project evidence incorporated from the
+retired chinese-typst-book. MySQL/A4 entries are historical project examples, not
+defaults. Current publisher, editorial and duplex rules take precedence. Record
+new adopted/adapted/rejected choices in each book's decision log.
 
 ## Project override — 2026-09-04
 
