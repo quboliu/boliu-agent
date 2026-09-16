@@ -11,11 +11,18 @@ boliu-agent/
 │   ├── README.md
 │   └── repository-conventions.md
 └── skills/
+    ├── blog-paparazzi/
     ├── blog-publish/
+    ├── chinese-typst-book/
+    ├── ddia-v2-dual-typst/
     ├── deep-concept-research/
     ├── gpt-image-gen/
     ├── kubernetes-official-docs/
     ├── kubernetes-paper-reading/
+    ├── pdf-dual-typst/
+    ├── pphc-typst-book/
+    ├── scanned-pdf-to-typst/
+    ├── udl-typst-book/
     └── user-skill-sync/
 ```
 
@@ -24,11 +31,29 @@ boliu-agent/
 
 ## Skills
 
+### blog-paparazzi
+
+Investigates a blog and produces a thematic article catalog with author research.
+
+Entry: [`skills/blog-paparazzi/SKILL.md`](skills/blog-paparazzi/SKILL.md)
+
 ### blog-publish
 
 Manages posts on the Astro blog `quboliu/quboliu.github.io`: preflight environment checks, published-status checks, local-vs-published diffs, and publish / update / delete workflows guarded by explicit confirmation before any commit or push.
 
 Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
+
+### chinese-typst-book
+
+Builds and maintains publication-quality Chinese technical books in Typst.
+
+Entry: [`skills/chinese-typst-book/SKILL.md`](skills/chinese-typst-book/SKILL.md)
+
+### ddia-v2-dual-typst
+
+Maintains the DDIA V2 English-Chinese dual-language Typst book.
+
+Entry: [`skills/ddia-v2-dual-typst/SKILL.md`](skills/ddia-v2-dual-typst/SKILL.md)
 
 ### deep-concept-research
 
@@ -58,6 +83,30 @@ figure-aware bilingual reading drafts with source hashes and explicit review
 boundaries.
 
 Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
+
+### pdf-dual-typst
+
+Creates faithful English-Chinese bilingual PDFs from source PDFs with Typst.
+
+Entry: [`skills/pdf-dual-typst/SKILL.md`](skills/pdf-dual-typst/SKILL.md)
+
+### pphc-typst-book
+
+Turns Markdown book manuscripts into publication-quality Chinese Typst books.
+
+Entry: [`skills/pphc-typst-book/SKILL.md`](skills/pphc-typst-book/SKILL.md)
+
+### scanned-pdf-to-typst
+
+Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
+
+Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKILL.md)
+
+### udl-typst-book
+
+Maintains the publication-quality Typst/PDF edition of Understanding Deep Learning.
+
+Entry: [`skills/udl-typst-book/SKILL.md`](skills/udl-typst-book/SKILL.md)
 
 ### user-skill-sync
 

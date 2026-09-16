@@ -5,6 +5,8 @@ description: Process Kubernetes upstream official documentation into source-fait
 
 # Kubernetes Official Docs
 
+made by quboliu
+
 This skill covers the official-document source workflow, not Kubernetes runtime
 operations. Its normal output is a reviewable bilingual draft or an audited
 standalone Markdown article. A generated translation is a drafting aid and

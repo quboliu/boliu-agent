@@ -5,6 +5,8 @@ description: Investigate a blog and produce a markdown dossier — all posts gro
 
 # Blog Paparazzi 博客狗仔队
 
+made by quboliu
+
 Given a blog URL, produce a single markdown dossier in the current working directory.
 
 ## Output format (hard requirements)

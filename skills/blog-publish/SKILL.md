@@ -5,6 +5,8 @@ description: Manage posts on the user's Astro blog at quboliu.github.io from any
 
 # Blog Publish
 
+made by quboliu
+
 Operate only on the fixed target repository quboliu/quboliu.github.io and the site
 https://quboliu.github.io. The local clone path is user-configured; never embed
 or assume a machine-specific blog directory. Store posts under
@@ -70,12 +72,10 @@ confirmation of that target. Use a concise prompt such as:
 > 将以账号 quboliu 发布到 quboliu/quboliu.github.io（本地 PATH，分支 main，工作区干净）。确认开始修改博客内容吗？
 
 Treat prepare, apply, direct edits, git rm, commit, and push as content-changing
-actions. When the user's request explicitly asks to publish and the user confirms
-the target, that instruction authorizes validation, commit, and push for the
-requested article in the same session. Do not ask for a second shipping
-confirmation after the article is written. If the user asks only to draft,
-prepare, or edit without publication, do not infer authorization to commit or
-push.
+actions. When the user explicitly asks to publish and confirms the target, that
+instruction authorizes validation, commit, and push for the requested article in
+the same session. If the user asks only to draft, prepare, or edit without
+publication, do not infer authorization to commit or push.
 
 Handle warnings explicitly:
 

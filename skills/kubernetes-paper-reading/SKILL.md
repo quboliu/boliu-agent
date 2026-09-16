@@ -5,6 +5,8 @@ description: Turn Kubernetes-related research PDFs into source-traceable bilingu
 
 # Kubernetes Paper Reading
 
+made by quboliu
+
 This skill handles the paper-reading branch of the Kubernetes knowledge workflow.
 The current extraction geometry and correction rules target the archived Borg and
 Omega papers. The output is a bilingual reading draft, not a publication-ready

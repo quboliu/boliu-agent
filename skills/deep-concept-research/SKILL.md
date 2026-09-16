@@ -5,6 +5,8 @@ description: 构建和维护术语严格、主张可追溯、源码可核验、�
 
 # Deep Concept Research
 
+made by quboliu
+
 ## 产出合同
 
 交付可审计的专题或研究计划：术语有坐标，机制落到对象和转换，每条强主张有 Claim ID 与证据包，实验能复现且说明不能证明什么，图表绑定 Claim 并通过事实审图，版本变化后能定向重验。

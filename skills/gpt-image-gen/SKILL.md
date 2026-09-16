@@ -5,6 +5,8 @@ description: "Generate AND edit raster images with the gpt-image-2 model via TWO
 
 # gpt-image-gen（多供应商）
 
+made by quboliu
+
 用 `gpt-image-2` 模型出图/改图，支持两家供应商：**packyapi** 与 **apimart**。
 
 ## ⚠️ 供应商选择：默认必问（硬性流程）
