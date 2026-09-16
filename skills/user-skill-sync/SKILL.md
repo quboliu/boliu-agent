@@ -23,6 +23,26 @@ unless the user explicitly adopts them as a maintained fork.
 If ownership is unclear, ask the user before adding an attribution line or
 synchronizing it.
 
+## Normalize nonstandard locations first
+
+`$HOME/.agents/skills/` is the canonical user-level location for managed skills.
+Before inspecting, correcting, or synchronizing a user-created skill, check
+other host-specific locations that exist, including `$HOME/.codex/skills/`,
+`$HOME/.claude/skills/`, `$HOME/.zcode/skills/`,
+`$HOME/.config/zcode/skills/`, and any location the user identifies.
+
+When a user-created skill is found outside the canonical directory, migrate its
+complete directory to `$HOME/.agents/skills/<skill-name>/` first. Do not migrate
+Codex `.system` skills, plugin-managed skills, entries recorded as third-party
+installations in `$HOME/.agents/.skill-lock.json`, or a symlink whose resolved
+target is already the canonical directory. If a different canonical directory
+with the same name already exists, compare the two copies; stop and ask the user
+to resolve divergent content rather than overwriting either one.
+
+After migration, validate and correct only the canonical local copy. The former
+location must no longer contain an independent copy, so future work cannot
+silently modify one side.
+
 ## Attribution invariant
 
 Every managed `SKILL.md` must start its Markdown body with the exact standalone
