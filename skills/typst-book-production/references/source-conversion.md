@@ -25,6 +25,17 @@ Use a parser or line-oriented converter with an explicit mapping table. Do not p
 5. Compile a tiny sample, then a representative chapter, then the complete book.
 6. Compare extracted text or structural counts between source and output. Visual review catches problems that text comparison cannot: clipping, overflow, bad breaks, low contrast, and broken captions.
 
+PDF and ebook extraction can flatten, promote, or demote heading levels. Never
+split chapters from extracted Markdown heading punctuation alone. Reconcile the
+declared contents/navigation, visible PDF geometry, explicit title patterns,
+and expected chapter count and order. Add an acceptance test for the exact
+ordered chapter-title sequence before Typst generation.
+
+Treat source page labels as provenance locators, not edition identities. Reflow
+changes pagination, so internal links in generated editions must target stable
+semantic labels for sections, equations, figures, tables, notes, and examples.
+Keep the source-page-to-semantic-label mapping in the source map or audit data.
+
 ## Source-anomaly ledger
 
 Source exports are evidence, not permission to silently invent structure. Keep a small, reviewable anomaly ledger (in the project's decision log or source map) whenever conversion encounters an ambiguous or lossy construct. Record the source path/line, anomaly type, observed text, chosen output, and reason. At minimum review:
@@ -46,3 +57,7 @@ An anomaly entry is part of the publishing record, not a reason to add TODO text
 - SQL contains characters that are meaningful to Typst. It must stay inside raw blocks, never be sent through prose escaping.
 - Backslashes in Markdown may be authorial escapes, literal SQL, or line-break markers. Handle them by block type, not one global rule.
 - Keep links in the source map even if the PDF uses visible URLs sparingly; this supports later link validation and maintenance.
+- When matching extracted raster figures to official vector assets, use filename,
+  dimensions, or visual similarity only to produce candidates. Approve a
+  replacement only after reviewing figure identity, source edition, labels,
+  caption, checksum, and rights; otherwise retain the recovered source asset.

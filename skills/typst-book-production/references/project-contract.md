@@ -30,9 +30,23 @@ typst_entry = "book/main.typ"
 template = "book/template.typ"
 output_pdf = "output/build/book-slug-typst-dual.pdf"
 build_command = "typst compile --root . --font-path assets/fonts book/main.typ output/build/book-slug-typst-dual.pdf"
+
+[status]
+structure = "complete"
+content = "in-progress"
+translation = "in-progress"
+build = "not-run"
+visual_proof = "not-run"
+rights = "unresolved"
+physical_proof = "not-run"
+release = "blocked"
 ```
 
 Also record:
+
+- independent structural, content, translation, build, visual-proof, rights,
+  physical-proof, and release states; directory existence or a validator pass
+  must never imply content completion or release readiness;
 
 - raw authority, source version/checksum, and the rule that raw material is
   immutable;

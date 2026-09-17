@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Mechanical release checks for a Typst book project.
 
-Validates the source map, derived files, asset paths and actual parsed PDF.
-Requires PyMuPDF. Compilation, content review and duplex visual proof are
-separate gates. Adapted from the retired chinese-typst-book validator.
+Validates the source map, derived files, asset paths, optional raw compile
+diagnostics and actual parsed PDF. Requires PyMuPDF. Content review and duplex
+visual proof are separate gates. Adapted from the retired chinese-typst-book
+validator.
 """
 
 from __future__ import annotations
@@ -165,6 +166,26 @@ def check_generated_text(book_dir: Path, failures: list[str]) -> tuple[int, int]
     return len(typst_files), len(placeholders)
 
 
+def check_compile_log(log_path: Path, failures: list[str]) -> int:
+    """Reject missing or nonempty raw Typst diagnostics; return diagnostic lines."""
+    if not log_path.is_file():
+        fail(f"missing compile diagnostics log: {log_path}", failures)
+        return 0
+    try:
+        text = log_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        fail(f"cannot read compile diagnostics log {log_path}: {exc}", failures)
+        return 0
+    lines = [line for line in text.splitlines() if line.strip()]
+    if lines:
+        preview = lines[0].strip()
+        fail(
+            f"compile diagnostics present ({len(lines)} nonblank lines): {preview}",
+            failures,
+        )
+    return len(lines)
+
+
 def check_pdf(
     pdf_path: Path,
     failures: list[str],
@@ -223,6 +244,11 @@ def main() -> int:
     )
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--pdf", type=Path)
+    parser.add_argument(
+        "--compile-log",
+        type=Path,
+        help="raw Typst stderr from the release build; must exist and be empty",
+    )
     parser.add_argument("--page-size-mm", type=float, nargs=2, default=(176, 250))
     parser.add_argument("--source-extensions", nargs="+", default=[".md"])
     parser.add_argument(
@@ -241,11 +267,16 @@ def main() -> int:
     chapter_count, asset_count = check_manifest(book_dir, source_dir, manifest, failures,
                                                tuple(args.source_extensions))
     typst_count, issue_count = check_generated_text(book_dir, failures)
+    diagnostic_count = (
+        check_compile_log(args.compile_log.resolve(), failures)
+        if args.compile_log is not None else 0
+    )
     page_count = check_pdf(pdf, failures, page_size_mm=(210, 297) if args.require_a4 else args.page_size_mm)
 
     print(
         f"checked chapters={chapter_count} assets={asset_count} "
-        f"typst_files={typst_count} pdf_pages={page_count}"
+        f"typst_files={typst_count} compile_diagnostics={diagnostic_count} "
+        f"pdf_pages={page_count}"
     )
     if failures:
         print("FAIL")

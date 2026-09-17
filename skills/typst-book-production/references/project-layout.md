@@ -24,6 +24,12 @@ source has one Chinese Typst edition:
 └── <book-slug>-typst-zh/
 ```
 
+The matrix describes required destinations, not completion. Track structural
+migration, source recovery, content conversion, translation, build, visual
+proof, and release readiness independently for each edition. An empty or stub
+edition satisfies none of the content or release gates merely because its
+directory exists.
+
 An English source has English, bilingual English-Chinese, and Chinese Typst
 editions:
 
@@ -98,6 +104,12 @@ command in the raw `readme.md`; put the retrieval script in the book-local
 skill. Use Git LFS only when the user explicitly requires the remote repository
 to contain the large binary itself.
 
+Apply the same explicit policy to large reproducible PDF outputs. Exact-ignore
+the local output path when ordinary Git hosting cannot accept it, and publish it
+through a release/artifact store or Git LFS only when the project explicitly
+chooses that channel. Never let a broad ignore pattern hide source material,
+manifests, audit records, or smaller edition outputs.
+
 ## Edition project layout
 
 Each required Typst edition uses the same internal structure:
@@ -163,5 +175,14 @@ The canonical layout is mandatory for all new work and for a legacy workspace
 once the user authorizes migration. Never silently rename, move, merge, or
 delete existing material. Inventory every current path, map it to one canonical
 role, identify duplicate authorities, and obtain migration authorization before
-changing paths. After an authorized migration, do not retain aliases or layout
-exceptions that recreate competing source trees.
+changing paths. Hash or byte-compare apparent duplicates before choosing the
+canonical copy. Move superseded, duplicate, and temporary material to a named,
+recoverable quarantine outside the workspace; record its location, verify the
+canonical workspace and builds, and only then delete it under explicit authority.
+After an authorized migration, do not retain aliases or layout exceptions that
+recreate competing source trees.
+
+Git cannot retain empty directories. Where the canonical matrix requires a
+directory before it has content, use a lowercase `.gitkeep`; remove it once real
+tracked content exists. Treat `validate_workspace.py` as a structural check,
+then report every edition's content and release status separately.

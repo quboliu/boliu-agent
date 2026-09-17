@@ -110,7 +110,11 @@ A Chinese source requires only `-typst-zh`. An English source requires all of
 layer, store corrected material in the raw tree, invent alternate directory
 names, keep a second source authority inside an edition, or retain nested Git
 repositories or submodules anywhere in the book workspace. Run
-`scripts/validate_workspace.py` before production and handoff.
+`scripts/validate_workspace.py` before production and handoff. This validator
+proves the directory contract only. A required edition directory may exist as a
+scaffold while its content, translation, build, visual proof, or release status
+is still incomplete; record those states separately and never report structural
+compliance as publication completion.
 
 ## Establish the book contract
 
@@ -181,7 +185,11 @@ needs typesetting. House typography, two-cover sequencing and duplex rules
 remain authoritative for annotated editions.
 
 Use the project's explicit Typst version, root, font path, and reproducible
-build command. A successful compile is necessary but not sufficient. Read
+build command. Capture the raw Typst diagnostic stream for every release build.
+Warnings are release failures unless the contract documents a narrowly reviewed
+exception; font fallback and `document did not converge` are always blockers.
+Pass the captured diagnostic file to `scripts/validate_book.py --compile-log`.
+A successful, warning-free compile is necessary but not sufficient. Read
 [verification](references/verification.md) before handoff.
 
 Read [production pipeline](references/production-pipeline.md) for deterministic

@@ -12,6 +12,10 @@ description: Handle source recovery, conversion, and publication rules specific 
   the frozen working tree free of nested `.git` metadata and submodules.
 - Record the command that regenerates Markdown chapters and images.
 - Record the commands that regenerate each Typst edition.
+- Record any legacy-path inventory, duplicate hashes, and recoverable quarantine
+  location used during migration. Do not retain compatibility aliases.
+- Record the stable semantic-label scheme that replaces source-page anchors in
+  generated cross-references.
 
 ## Book-specific rules
 
@@ -24,6 +28,8 @@ description: Handle source recovery, conversion, and publication rules specific 
 - Keep book-specific executable helpers under `scripts/`.
 - Pin nonstandard dependencies and give each script's input, output, and
   acceptance check.
+- Record the exact release compile command and raw diagnostics-log path; release
+  builds must produce no unresolved Typst diagnostics.
 
 ## Known anomalies and pitfalls
 

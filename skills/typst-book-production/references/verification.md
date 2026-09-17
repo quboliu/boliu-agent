@@ -34,7 +34,11 @@ by the generic validator and must be verified in the actual project.
    citations, footnotes, and external/internal links preserve their intended
    semantics.
 3. **Build:** the documented command succeeds with the declared fonts, root,
-   and Typst version; the PDF opens and has the expected page count.
+   and Typst version; its raw diagnostic stream is captured and empty, and the
+   PDF opens and has the expected page count. Run `validate_book.py` with
+   `--compile-log`; PDF validation alone does not invoke the compiler. Treat
+   every unreviewed diagnostic as failure, and always reject font fallback and
+   `document did not converge` warnings even when a PDF was emitted.
 4. **Assets and code:** no missing-image placeholders, font fallback surprises,
    malformed raw code, truncated code indentation, or table/figure geometry
    regressions remain.

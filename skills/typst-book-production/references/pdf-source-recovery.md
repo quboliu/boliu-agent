@@ -13,6 +13,11 @@ page numbers are not stable identities. Reconcile extracted Markdown, supplied
 equation sources, bibliography and official assets against the declared authority.
 Do not silently prefer a different edition or replace content with a summary.
 
+Source-page anchors belong in provenance and audit records. Never reuse them as
+internal cross-reference targets in a reflowed edition. Map them to stable,
+unique semantic labels instead; page-number-derived labels can become cyclic
+layout dependencies and cause Typst convergence warnings.
+
 For a book, preserve content and important visual relationships while applying
 the house typography, two covers and duplex rules. For a paper, course note or
 slide adaptation, confirm the requested document type and layout separately;
@@ -50,7 +55,9 @@ inline links. Sample original and generated pages at the same semantic landmarks
 ## Figures and PDF vectors
 
 Prefer verified matching official vector assets. Confirm edition, labels and
-visual content before replacing an extracted raster. When the original PDF has
+visual content, caption, checksum and rights before replacing an extracted
+raster. Filename, dimensions, OCR text, or image similarity may nominate a
+candidate but do not prove identity. When the original PDF has
 vector paths but no separate asset, a vector-preserving region crop may retain
 quality better than a screenshot. Record source page, crop coordinates, checksum
 and permission; inspect clipping, labels and embedded fonts. Where the toolchain

@@ -59,7 +59,9 @@ fixed `SOURCE_DATE_EPOCH` or `--creation-timestamp`, record that value in
 available reproducibly; avoid unspecified network or system-font dependencies.
 Build twice with identical inputs and compare SHA-256; investigate differences
 before promising byte reproducibility. Do not replace evidence with the phrase
-"reproducible build".
+"reproducible build". Capture raw Typst stderr for each release build in
+`output/audit/compile.log`. A release log must be empty; retain nonempty logs as
+failure evidence rather than discarding warnings after a PDF is emitted.
 
 When sources change, rerun the converter, rebuild the entire edition, validate
 and inspect affected semantic landmarks. Fix generated content through the
@@ -74,6 +76,7 @@ python3 /path/to/typst-book-production/scripts/validate_book.py \
   --source-dir /path/to/book-slug/book-slug-markdown/chapters \
   --manifest /path/to/book-slug/book-slug-typst-dual/source-map.json \
   --pdf /path/to/book-slug/book-slug-typst-dual/output/build/book.pdf \
+  --compile-log /path/to/book-slug/book-slug-typst-dual/output/audit/compile.log \
   --page-size-mm 176 250
 ```
 
@@ -88,7 +91,9 @@ python3 /path/to/typst-book-production/scripts/validate_workspace.py \
 Requires PyMuPDF for parsed PDF checks. The script checks recursive manifest
 file coverage, source hashes, referenced outputs/assets and declared dimensions, generated
 placeholders, PDF trim, searchable text, font embedding, and text outside page
-bounds. `--require-a4` is retained for explicitly A4 legacy projects. Neither
+bounds. When `--compile-log` is supplied it also rejects a missing or nonempty
+raw Typst diagnostics log; release validation requires this option.
+`--require-a4` is retained for explicitly A4 legacy projects. Neither
 script proves code equivalence, correctness of all links, annotation evidence,
 caption attachment, or complete duplex layout on an arbitrary real book.
 Verify those in the release audit; never treat a script PASS as certification.

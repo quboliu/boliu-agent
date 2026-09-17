@@ -106,6 +106,31 @@ class ProjectValidation(unittest.TestCase):
         validator.check_generated_text(self.root, failures)
         self.assertEqual(failures, [])
 
+    def test_clean_compile_log(self):
+        log = self.root / "compile.log"
+        log.write_text("", encoding="utf-8")
+        failures = []
+        self.assertEqual(validator.check_compile_log(log, failures), 0)
+        self.assertEqual(failures, [])
+
+    def test_compile_warning_rejected(self):
+        log = self.root / "compile.log"
+        log.write_text(
+            "warning: document did not converge within 5 attempts\n"
+            "  = hint: check introspection queries\n",
+            encoding="utf-8",
+        )
+        failures = []
+        self.assertEqual(validator.check_compile_log(log, failures), 2)
+        self.assertTrue(any("compile diagnostics present" in item for item in failures))
+
+    def test_missing_compile_log_rejected(self):
+        failures = []
+        self.assertEqual(
+            validator.check_compile_log(self.root / "missing.log", failures), 0
+        )
+        self.assertTrue(any("missing compile diagnostics log" in item for item in failures))
+
 
 if __name__ == "__main__":
     unittest.main()
