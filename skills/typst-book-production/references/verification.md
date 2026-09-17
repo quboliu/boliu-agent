@@ -41,7 +41,8 @@ by the generic validator and must be verified in the actual project.
    `document did not converge` warnings even when a PDF was emitted.
 4. **Assets and code:** no missing-image placeholders, font fallback surprises,
    malformed raw code, truncated code indentation, or table/figure geometry
-   regressions remain.
+   regressions remain. Every edition file under `assets/figures/` is declared
+   in the source map or explicitly excluded with a reviewed reason.
 5. **Visual QA:** rasterize and inspect a chapter opener, dense prose page,
    code page, footnote/notes page, table page, and image-heavy page. Check
    overflow, widows/orphans, pair adjacency, captions, running furniture, and

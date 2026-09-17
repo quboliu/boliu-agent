@@ -57,6 +57,19 @@ class ProjectValidation(unittest.TestCase):
         result = self.check_manifest()
         self.assertTrue(any("asset does not exist" in x for x in result))
 
+    def test_undeclared_figure_asset_rejected_or_explicitly_excluded(self):
+        figure = self.root / "assets/figures/orphan.svg"
+        figure.parent.mkdir(parents=True)
+        figure.write_text("<svg/>", encoding="utf-8")
+        self.assertTrue(
+            any("figure assets absent from manifest" in item for item in self.check_manifest())
+        )
+
+        data = json.loads(self.manifest.read_text())
+        data["excluded_assets"] = ["assets/figures/orphan.svg"]
+        self.manifest.write_text(json.dumps(data), encoding="utf-8")
+        self.assertEqual(self.check_manifest(), [])
+
     def test_project_owned_mapping_cardinality_and_order(self):
         data = json.loads(self.manifest.read_text())
         first = data["chapters"][0]

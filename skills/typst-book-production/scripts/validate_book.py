@@ -120,6 +120,8 @@ def check_manifest(
             fail("manifest names files outside source directory: " + ", ".join(extra), failures)
 
     asset_count = 0
+    declared_figures: set[str] = set()
+    figures_dir = (book_dir / "assets" / "figures").resolve()
     for index, image in enumerate(images, start=1):
         if not isinstance(image, dict):
             fail(f"image entry {index} is not an object", failures)
@@ -133,12 +135,52 @@ def check_manifest(
             fail(f"image asset does not exist: {asset}", failures)
         else:
             asset_count += 1
+            try:
+                declared_figures.add(
+                    asset_path.resolve().relative_to(figures_dir).as_posix()
+                )
+            except ValueError:
+                pass
         width = image.get("width")
         height = image.get("height")
         if not isinstance(width, int) or not isinstance(height, int):
             fail(f"image {asset!r} lacks integer dimensions", failures)
         elif width <= 0 or height <= 0:
             fail(f"invalid image dimensions ({width}x{height}): {asset}", failures)
+
+    excluded_assets = manifest.get("excluded_assets", [])
+    if not isinstance(excluded_assets, list) or not all(
+        isinstance(item, str) for item in excluded_assets
+    ):
+        fail("excluded_assets must be a list of asset paths relative to the edition", failures)
+        excluded_assets = []
+    excluded_figures: set[str] = set()
+    for value in excluded_assets:
+        path = relative_path(book_dir, value)
+        if path is None:
+            continue
+        try:
+            excluded_figures.add(path.resolve().relative_to(figures_dir).as_posix())
+        except ValueError:
+            fail(f"excluded asset is outside assets/figures: {value}", failures)
+
+    if figures_dir.is_dir():
+        expected_figures = {
+            path.relative_to(figures_dir).as_posix()
+            for path in figures_dir.rglob("*")
+            if path.is_file()
+        }
+        missing_figures = sorted(
+            expected_figures - declared_figures - excluded_figures
+        )
+        if missing_figures:
+            preview = ", ".join(missing_figures[:10])
+            remainder = len(missing_figures) - 10
+            suffix = f" (+{remainder} more)" if remainder else ""
+            fail(
+                "figure assets absent from manifest: " + preview + suffix,
+                failures,
+            )
 
     return len(chapters), asset_count
 

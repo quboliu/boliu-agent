@@ -36,7 +36,8 @@ begins at the normalized Markdown boundary.
   "images": [
     {"asset": "assets/figures/diagram.svg", "width": 800, "height": 400}
   ],
-  "excluded_sources": ["summary.md"]
+  "excluded_sources": ["summary.md"],
+  "excluded_assets": ["assets/figures/unused-source-variant.svg"]
 }
 ```
 
@@ -48,6 +49,10 @@ title, conversion policy and mapping granularity as needed. Source hashes detect
 drift;
 they do not prove that Typst/PDF corresponds to the source. Compare headings,
 lists, links, code and figures and, for bilingual work, every translated element.
+Every file under `assets/figures/` must appear in `images` or in the reviewed
+`excluded_assets` list; a short manifest that merely samples existing assets is
+not coverage evidence. Prefer removing unused copied figures over excluding
+them without a reason.
 For PDF, EPUB, or mixed raw authority, record and test the raw-to-Markdown
 extraction in the book-local skill; manual content audits remain necessary.
 
