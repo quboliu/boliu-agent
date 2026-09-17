@@ -74,5 +74,5 @@ Also record:
 
 The contract is an edition boundary. Put reusable production rules in this
 general skill and book-specific behavior in
-`.agents/skills/<book-slug>/`; do not hide a second source authority or a
+`.agents/skills/<book-skill-slug>/`; do not hide a second source authority or a
 noncanonical directory behind a contract exception.

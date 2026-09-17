@@ -1,5 +1,5 @@
 ---
-name: <book-slug>
+name: <book-skill-slug>
 description: Handle source recovery, conversion, and publication rules specific to <book-title>.
 ---
 

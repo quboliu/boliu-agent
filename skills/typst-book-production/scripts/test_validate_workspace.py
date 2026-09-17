@@ -16,7 +16,7 @@ class WorkspaceValidation(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def create_workspace(self, language: str) -> None:
+    def create_workspace(self, language: str, skill_slug: str | None = None) -> None:
         slug = self.root.name
         raw = self.root / f"{slug}-raw"
         markdown = self.root / f"{slug}-markdown"
@@ -25,10 +25,11 @@ class WorkspaceValidation(unittest.TestCase):
         (markdown / "chapters").mkdir(parents=True)
         (markdown / "images").mkdir()
         (markdown / "chapters/01.md").write_text("# Chapter\n", encoding="utf-8")
-        skill = self.root / ".agents" / "skills" / slug
+        skill_slug = skill_slug or slug
+        skill = self.root / ".agents" / "skills" / skill_slug
         skill.mkdir(parents=True)
         (skill / "SKILL.md").write_text(
-            f"---\nname: {slug}\ndescription: Local rules.\n---\n\n# Local rules\n",
+            f"---\nname: {skill_slug}\ndescription: Local rules.\n---\n\n# Local rules\n",
             encoding="utf-8",
         )
         suffixes = ("zh",) if language == "zh" else ("en", "dual", "zh")
@@ -59,6 +60,13 @@ class WorkspaceValidation(unittest.TestCase):
 
     def test_chinese_matrix_passes(self):
         self.create_workspace("zh")
+        self.assertEqual(validator.validate(self.root, "zh"), [])
+
+    def test_chinese_original_title_and_english_skill_slug_pass(self):
+        self.root.rmdir()
+        self.root = Path(self.temp.name) / "数据库原理"
+        self.root.mkdir()
+        self.create_workspace("zh", skill_slug="database-internals")
         self.assertEqual(validator.validate(self.root, "zh"), [])
 
     def test_english_requires_all_three_editions(self):
@@ -104,7 +112,7 @@ class WorkspaceValidation(unittest.TestCase):
             any("uppercase" in item for item in validator.validate(self.root, "zh"))
         )
 
-    def test_local_skill_name_must_match_slug(self):
+    def test_local_skill_name_must_match_directory(self):
         self.create_workspace("zh")
         skill = self.root / ".agents/skills/example-book/SKILL.md"
         skill.write_text("---\nname: wrong-name\n---\n", encoding="utf-8")

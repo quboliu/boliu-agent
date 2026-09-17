@@ -46,7 +46,7 @@ The structure fixture tests multi-page contents, hyperlinks and right-page start
 Do not route every book through one universal script. Inspect the supplied
 source dialect, chapter organization and exceptional structures, then create or
 adapt a converter in
-`<book-slug>/.agents/skills/<book-slug>/scripts/` with book-local tests.
+`<book-name>/.agents/skills/<book-skill-slug>/scripts/` with book-local tests.
 Document exact dependencies, explicit input order, regeneration commands,
 formula rules, known anomalies, and learned pitfalls in that local skill or its
 references. Reuse the implementation on subsequent updates; model flexibility
@@ -61,10 +61,10 @@ Never use blind global replacements across prose, code and math.
 
 ### Invariants to implement
 
-- Preserve everything under `<book-slug>-raw/` byte-for-byte. Produce
+- Preserve everything under `<book-name>-raw/` byte-for-byte. Produce
   source-language intermediate chapters only in
-  `<book-slug>-markdown/chapters/` and highest-quality extracted images only
-  in `<book-slug>-markdown/images/`. Declare reading order and front matter
+  `<book-name>-markdown/chapters/` and highest-quality extracted images only
+  in `<book-name>-markdown/images/`. Declare reading order and front matter
   explicitly. Each edition maps Markdown elements to generated Typst in its
   root `source-map.json` and records `source_sha256` from the exact Markdown
   bytes converted.

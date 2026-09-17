@@ -22,7 +22,7 @@ size overrides the B5 default through a documented, reproofed project profile.
 
 Keep `source-map.json` at each Typst edition root under version control.
 `source` paths are relative to the sibling
-`<book-slug>-markdown/chapters/`; output and asset paths are relative to the
+`<book-name>-markdown/chapters/`; output and asset paths are relative to the
 edition root. All source-language Markdown chapters must be covered. Record
 raw-to-Markdown extraction provenance in the book-local skill; the edition map
 begins at the normalized Markdown boundary.

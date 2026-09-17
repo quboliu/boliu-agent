@@ -27,9 +27,26 @@ def require_file(path: Path, failures: list[str]) -> None:
         fail(f"missing file: {path}", failures)
 
 
-def check_local_skill(workspace: Path, slug: str, failures: list[str]) -> None:
-    skill = workspace / ".agents" / "skills" / slug / "SKILL.md"
-    require_file(skill, failures)
+def check_local_skill(workspace: Path, failures: list[str]) -> str | None:
+    skills_root = workspace / ".agents" / "skills"
+    require_dir(skills_root, failures)
+    if not skills_root.is_dir():
+        return None
+    candidates = sorted(
+        path for path in skills_root.iterdir()
+        if path.is_dir() and (path / "SKILL.md").is_file()
+    )
+    if len(candidates) != 1:
+        fail(
+            f"expected exactly one book-local skill under {skills_root}, found {len(candidates)}",
+            failures,
+        )
+        return None
+    skill_dir = candidates[0]
+    skill_slug = skill_dir.name
+    if SLUG_RE.fullmatch(skill_slug) is None:
+        fail(f"book-local skill name is not a lowercase English slug: {skill_slug}", failures)
+    skill = skill_dir / "SKILL.md"
     if not skill.is_file():
         return
     try:
@@ -40,11 +57,12 @@ def check_local_skill(workspace: Path, slug: str, failures: list[str]) -> None:
     match = NAME_RE.search(text)
     if match is None:
         fail(f"local skill has no frontmatter name: {skill}", failures)
-    elif match.group(1) != slug:
+    elif match.group(1) != skill_slug:
         fail(
-            f"local skill name {match.group(1)!r} does not match slug {slug!r}",
+            f"local skill name {match.group(1)!r} does not match directory {skill_slug!r}",
             failures,
         )
+    return skill_slug
 
 
 def check_markdown(markdown: Path, failures: list[str]) -> None:
@@ -137,7 +155,7 @@ def check_lowercase_generated_names(
         relative = path.relative_to(workspace)
         if any(part == ".git" for part in relative.parts):
             continue
-        if relative == Path(".agents") / "skills" / workspace.name / "SKILL.md":
+        if len(relative.parts) == 4 and relative.parts[:2] == (".agents", "skills") and relative.name == "SKILL.md":
             continue
         if re.search(r"[A-Z]", relative.as_posix()):
             bad.append(relative.as_posix())
@@ -169,12 +187,14 @@ def check_no_nested_git(workspace: Path, failures: list[str]) -> None:
 def validate(workspace: Path, source_language: str) -> list[str]:
     failures: list[str] = []
     workspace = workspace.resolve()
-    slug = workspace.name
-    if SLUG_RE.fullmatch(slug) is None:
-        fail(f"workspace name is not a lowercase English slug: {slug}", failures)
+    book_name = workspace.name
+    if re.search(r"[A-Z]", book_name):
+        fail(f"workspace name contains uppercase English characters: {book_name}", failures)
+    if source_language == "en" and SLUG_RE.fullmatch(book_name) is None:
+        fail(f"English-source workspace name is not a lowercase original-title slug: {book_name}", failures)
 
-    raw = workspace / f"{slug}-raw"
-    markdown = workspace / f"{slug}-markdown"
+    raw = workspace / f"{book_name}-raw"
+    markdown = workspace / f"{book_name}-markdown"
     require_dir(raw, failures)
     require_dir(markdown, failures)
     if raw.is_dir() and not any(path.is_file() for path in raw.rglob("*")):
@@ -184,10 +204,10 @@ def validate(workspace: Path, source_language: str) -> list[str]:
     ):
         fail(f"Typst files are forbidden in raw material: {raw}", failures)
     check_markdown(markdown, failures)
-    check_local_skill(workspace, slug, failures)
+    check_local_skill(workspace, failures)
 
     suffixes = ("zh",) if source_language == "zh" else ("en", "dual", "zh")
-    expected_editions = {f"{slug}-typst-{suffix}" for suffix in suffixes}
+    expected_editions = {f"{book_name}-typst-{suffix}" for suffix in suffixes}
     for name in sorted(expected_editions):
         edition = workspace / name
         require_dir(edition, failures)
@@ -197,7 +217,7 @@ def validate(workspace: Path, source_language: str) -> list[str]:
         {
             path.name
             for path in workspace.iterdir()
-            if path.is_dir() and path.name.startswith(f"{slug}-typst-")
+            if path.is_dir() and path.name.startswith(f"{book_name}-typst-")
         }
         if workspace.is_dir()
         else set()

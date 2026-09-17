@@ -282,7 +282,7 @@ def main() -> int:
         "--source-dir",
         required=True,
         type=Path,
-        help="canonical sibling <book-slug>-markdown/chapters directory",
+        help="canonical sibling <book-name>-markdown/chapters directory",
     )
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--pdf", type=Path)

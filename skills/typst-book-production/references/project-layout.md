@@ -1,27 +1,34 @@
 # Canonical book workspace layout
 
-Treat the directory named `<book-slug>` as the root workspace for the whole
-book, not as one edition project. `<book-slug>` is a stable English title slug
-containing only lowercase ASCII letters, digits, and single hyphens. It must
-not contain an edition, translator, publisher, date, `markdown`, or `typst`.
-Ask the user to choose the slug when no unambiguous title slug exists.
+Treat the directory named `<book-name>` as the root workspace for the whole
+book, not as one edition project. Derive `<book-name>` from the original work,
+never from a translation: a Chinese original uses its Chinese original title;
+an English original uses its English original title normalized to lowercase
+ASCII words separated by single hyphens. Lowercase any English letters embedded
+in a Chinese title. The name must not add an edition, translator, publisher,
+date, `markdown`, or `typst` qualifier.
+
+Use a separate `<book-skill-slug>` for the local skill. It is always a stable
+lowercase English slug containing only ASCII letters, digits, and single
+hyphens. Ask the user only when the original title or the skill slug is genuinely
+ambiguous.
 
 Every new workspace follows one of these two exact edition matrices. A Chinese
 source has one Chinese Typst edition:
 
 ```text
-<book-slug>/
+<book-name>/
 ├── .agents/
 │   └── skills/
-│       └── <book-slug>/
+│       └── <book-skill-slug>/
 │           ├── SKILL.md
 │           ├── references/          # only when this book needs them
 │           └── scripts/             # only when this book needs them
-├── <book-slug>-raw/
-├── <book-slug>-markdown/
+├── <book-name>-raw/
+├── <book-name>-markdown/
 │   ├── chapters/
 │   └── images/
-└── <book-slug>-typst-zh/
+└── <book-name>-typst-zh/
 ```
 
 The matrix describes required destinations, not completion. Track structural
@@ -34,19 +41,19 @@ An English source has English, bilingual English-Chinese, and Chinese Typst
 editions:
 
 ```text
-<book-slug>/
-├── .agents/skills/<book-slug>/
-├── <book-slug>-raw/
-├── <book-slug>-markdown/
+<book-name>/
+├── .agents/skills/<book-skill-slug>/
+├── <book-name>-raw/
+├── <book-name>-markdown/
 │   ├── chapters/
 │   └── images/
-├── <book-slug>-typst-en/
-├── <book-slug>-typst-dual/
-└── <book-slug>-typst-zh/
+├── <book-name>-typst-en/
+├── <book-name>-typst-dual/
+└── <book-name>-typst-zh/
 ```
 
 Do not substitute `source`, `sources`, `raw`, `md`, `typst-book`, a
-translated title, or a second slug for any canonical name. All English
+translated title, or a second workspace stem for any canonical name. All English
 characters in every new file and directory name must be lowercase.
 Infrastructure such as `.git/` may coexist with this tree, but it does not
 change any book-production role. Two preservation/protocol exceptions apply:
@@ -55,26 +62,26 @@ skill entry point remains exactly `SKILL.md`.
 
 ## Workspace role boundaries
 
-- `<book-slug>-raw/` contains only the original, unmodified source materials:
+- `<book-name>-raw/` contains only the original, unmodified source materials:
   HTML, original Markdown, text or scanned PDF, EPUB, AZW, or another supplied
   non-Typst format. Original Markdown still belongs here. Never correct,
   normalize, split, OCR-overwrite, or add scripts, reports, extracted images,
   generated text, or Typst files in this directory. A lowercase `readme.md`
   containing provenance is the one permitted metadata file.
-- `<book-slug>-markdown/chapters/` contains the normalized intermediate text,
+- `<book-name>-markdown/chapters/` contains the normalized intermediate text,
   normally one Markdown file per semantic chapter. Its language matches the
   source work: Chinese remains Chinese and English remains English.
-- `<book-slug>-markdown/images/` contains the highest-quality images recovered
+- `<book-name>-markdown/images/` contains the highest-quality images recovered
   from the raw authority. This Markdown tree is the sole normalized
   intermediate authority shared by every Typst edition. Translation and
   bilingual pairing do not alter it.
-- `<book-slug>-typst-<suffix>/` is one final-edition project. It derives
+- `<book-name>-typst-<suffix>/` is one final-edition project. It derives
   content from the sibling Markdown tree; it must not introduce another raw or
   Markdown authority.
-- `.agents/skills/<book-slug>/` is the book-local skill overlay. Put all
+- `.agents/skills/<book-skill-slug>/` is the book-local skill overlay. Put all
   book-specific scripts, dependencies, conversion rules, formula handling,
   terminology, anomalies, exceptions, and learned pitfalls there. Its
-  frontmatter `name` and directory name are exactly `<book-slug>`.
+  frontmatter `name` and directory name are exactly `<book-skill-slug>`.
 
 Do not put book-specific scripts or temporary extraction directories at the
 workspace root, in the raw directory, in the Markdown tree, or in an edition
@@ -89,11 +96,11 @@ repository:
 
 1. Record its canonical upstream URL, exact commit ID, branch or tag when
    relevant, retrieval date, and licence in
-   `<book-slug>-raw/readme.md`.
+   `<book-name>-raw/readme.md`.
 2. Verify the checkout is at that commit and has no intended local changes.
    Resolve or discard editor-generated mutations before freezing it.
 3. Remove only the nested repository metadata and retain the checked-out tree
-   as an ordinary immutable directory under `<book-slug>-raw/`.
+   as an ordinary immutable directory under `<book-name>-raw/`.
 4. Never push book-production changes to the upstream repository. Generate the
    canonical Markdown intermediate from the ordinary snapshot.
 
@@ -115,7 +122,7 @@ manifests, audit records, or smaller edition outputs.
 Each required Typst edition uses the same internal structure:
 
 ```text
-<book-slug>-typst-<suffix>/
+<book-name>-typst-<suffix>/
 ├── assets/
 │   ├── covers/
 │   │   ├── boliu/
@@ -150,10 +157,11 @@ Typst and copied figure paths.
 
 ## Required initialization
 
-1. Select the stable English slug and source language before creating paths.
+1. Select the original-title `<book-name>`, stable English
+   `<book-skill-slug>`, and source language before creating paths.
 2. Create the complete workspace skeleton for the applicable edition matrix.
-3. Preserve every supplied source byte under `<book-slug>-raw/`.
-4. Create or update `.agents/skills/<book-slug>/SKILL.md` before adding any
+3. Preserve every supplied source byte under `<book-name>-raw/`.
+4. Create or update `.agents/skills/<book-skill-slug>/SKILL.md` before adding any
    book-specific rule or script. Start from the
    [book-local skill template](../templates/book-local-skill.md), replace its
    placeholders, and add only the resources the book actually needs.

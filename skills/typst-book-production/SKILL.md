@@ -96,14 +96,15 @@ bilingual edition into a translation summary.
 ## Enforce the canonical book workspace
 
 Read [project layout](references/project-layout.md) before creating, converting,
-or migrating a book. The root workspace is `<book-slug>/`, where the slug is a
-stable lowercase English title slug. It contains three separated production
-layers:
+or migrating a book. Name the root workspace from the original work, never its
+translation: a Chinese original uses its Chinese title; an English original
+uses its English title normalized as a lowercase slug. Call this directory
+name `<book-name>`. It contains three separated production layers:
 
-1. `<book-slug>-raw/` is immutable original material and contains nothing else.
-2. `<book-slug>-markdown/{chapters,images}/` is the source-language normalized
+1. `<book-name>-raw/` is immutable original material and contains nothing else.
+2. `<book-name>-markdown/{chapters,images}/` is the source-language normalized
    intermediate and the content authority for every Typst edition.
-3. `<book-slug>-typst-<suffix>/` contains one final edition project.
+3. `<book-name>-typst-<suffix>/` contains one final edition project.
 
 A Chinese source requires only `-typst-zh`. An English source requires all of
 `-typst-en`, `-typst-dual`, and `-typst-zh`. Do not bypass the Markdown
@@ -151,7 +152,7 @@ book-local converter according to
 [Markdown conversion and book structure](references/markdown-and-matter.md).
 This skill deliberately does not bundle a universal Markdown converter. Keep
 the converter, pinned dependencies, and acceptance tests in
-`.agents/skills/<book-slug>/` so future regeneration is repeatable rather than
+`.agents/skills/<book-skill-slug>/` so future regeneration is repeatable rather than
 rewritten each session.
 The same reference documents reusable
 contents, unnumbered front matter, part pages, copyright and quotation macros.
@@ -212,8 +213,10 @@ permitted for a fixture but is a release blocker for a book.
 ## Project overlays
 
 Every book workspace has a local overlay at
-`.agents/skills/<book-slug>/SKILL.md`, with matching lowercase slug in its
-frontmatter. The overlay owns book-specific scripts, dependencies, terminology,
+`.agents/skills/<book-skill-slug>/SKILL.md`. The skill identifier is a stable
+lowercase English slug even when the workspace uses a Chinese original title;
+its directory and frontmatter name must match. The overlay owns book-specific
+scripts, dependencies, terminology,
 formula handling, fonts, macro names, approved visual decisions, source
 anomalies, and learned pitfalls. It may refine the production core for genuine
 content needs, but it must not rename, collapse, or bypass the canonical raw,
