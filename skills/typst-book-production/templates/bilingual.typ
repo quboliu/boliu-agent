@@ -4,16 +4,14 @@
 
 #let book = boliu-book.with(body-font: ("Libertinus Serif", "Noto Serif SC"), body-lang: "en")
 
-#let dual-language-gap = 6pt
-#let dual-pair-gap = 12pt
+#let dual-paragraph-gap = paragraph-gap
 
-#let dual(en, zh, language-gap: dual-language-gap, pair-gap: dual-pair-gap,
-          pair-height: trim-height - margin-top - margin-bottom) = block(
-  width: 100%, above: pair-gap, below: pair-gap,
+#let dual(en, zh, pair-height: trim-height - margin-top - margin-bottom) = block(
+  width: 100%, above: dual-paragraph-gap, below: dual-paragraph-gap,
   layout(size => {
   let pair = [
   #block(width: 100%, above: 0pt, below: 0pt)[#en#parbreak()]
-  #v(language-gap, weak: true)
+  #v(dual-paragraph-gap, weak: true)
   #block(width: 100%, above: 0pt, below: 0pt)[
     #set text(font: "Noto Serif SC", size: body-size, lang: "zh")
     #set par(first-line-indent: 0pt, justify: true, leading: body-leading, spacing: paragraph-gap)

@@ -13,16 +13,17 @@ This includes the first paragraph after a heading and both bilingual streams.
 List hanging indents, block quotations, and footnote label alignment serve
 different purposes and do not change the body-paragraph rule.
 
-For bilingual body prose, distinguish paired meaning from the next pair:
-`dual-language-gap = 6pt` between the original and its translation, and
-`dual-pair-gap = 12pt` between adjacent paired units. These are explicit layout
-spaces, not baseline distances or glyph-bounding-box gaps. Inner language blocks
-have zero outer block spacing; the outer pair supplies collapsible 12pt spacing
-above/below, so adjacent pairs use one 12pt gap, not 24pt. Suppress outer spacing
-at page boundaries. Ordinary paragraphs within either language retain 1.1em.
-Keep short pairs together and permit controlled breaks for overheight pairs.
-Headings, captions, notes and footnotes retain their own component spacing;
-these two tokens apply to `dual` body units only. Measure the PDF after changes.
+For bilingual body prose, use one shared `paragraph-gap` at every ordinary body
+paragraph boundary: original to its translation, translation to the next
+original, and adjacent paragraphs within either language. At the 10pt baseline
+this is `1.1em` (11pt). Do not distinguish a compact language gap from a larger
+pair gap, and do not add outer spacing around a semantic pair. The bilingual
+container may keep a short pair together or permit a controlled break when it
+is overheight, but that pagination choice must not change the paragraph gap.
+Headings, captions, notes and footnotes retain their own component spacing.
+Measure the rendered PDF in both language directions after changes; any font
+pairing compensation must be one documented project-wide adjustment, never
+independent language and pair gap tokens.
 
 The alternatives are first-line indentation or paragraph spacing; neither is a
 universal requirement. We deliberately retain DDIA's open paragraph style for
