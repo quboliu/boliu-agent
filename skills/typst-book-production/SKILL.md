@@ -108,7 +108,8 @@ layers:
 A Chinese source requires only `-typst-zh`. An English source requires all of
 `-typst-en`, `-typst-dual`, and `-typst-zh`. Do not bypass the Markdown
 layer, store corrected material in the raw tree, invent alternate directory
-names, or keep a second source authority inside an edition. Run
+names, keep a second source authority inside an edition, or retain nested Git
+repositories or submodules anywhere in the book workspace. Run
 `scripts/validate_workspace.py` before production and handoff.
 
 ## Establish the book contract

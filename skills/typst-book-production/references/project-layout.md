@@ -53,7 +53,8 @@ skill entry point remains exactly `SKILL.md`.
   HTML, original Markdown, text or scanned PDF, EPUB, AZW, or another supplied
   non-Typst format. Original Markdown still belongs here. Never correct,
   normalize, split, OCR-overwrite, or add scripts, reports, extracted images,
-  manifests, generated text, or Typst files in this directory.
+  generated text, or Typst files in this directory. A lowercase `readme.md`
+  containing provenance is the one permitted metadata file.
 - `<book-slug>-markdown/chapters/` contains the normalized intermediate text,
   normally one Markdown file per semantic chapter. Its language matches the
   source work: Chinese remains Chinese and English remains English.
@@ -73,6 +74,29 @@ Do not put book-specific scripts or temporary extraction directories at the
 workspace root, in the raw directory, in the Markdown tree, or in an edition
 project. Promote a local rule into this general skill only after it proves
 reusable across multiple books.
+
+## Normalize Git-based raw material
+
+Never retain a nested `.git` directory, `.git` file, Git submodule, gitlink,
+or `.gitmodules` inside a book workspace. When supplied raw material is a Git
+repository:
+
+1. Record its canonical upstream URL, exact commit ID, branch or tag when
+   relevant, retrieval date, and licence in
+   `<book-slug>-raw/readme.md`.
+2. Verify the checkout is at that commit and has no intended local changes.
+   Resolve or discard editor-generated mutations before freezing it.
+3. Remove only the nested repository metadata and retain the checked-out tree
+   as an ordinary immutable directory under `<book-slug>-raw/`.
+4. Never push book-production changes to the upstream repository. Generate the
+   canonical Markdown intermediate from the ordinary snapshot.
+
+For a large public archive that exceeds the hosting limit, keep the local raw
+bytes unchanged but do not force them into ordinary Git. Record an immutable
+download URL or commit, byte size, SHA-256, licence, and a verified retrieval
+command in the raw `readme.md`; put the retrieval script in the book-local
+skill. Use Git LFS only when the user explicitly requires the remote repository
+to contain the large binary itself.
 
 ## Edition project layout
 

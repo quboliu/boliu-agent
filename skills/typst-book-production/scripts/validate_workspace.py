@@ -148,6 +148,24 @@ def check_lowercase_generated_names(
         )
 
 
+def check_no_nested_git(workspace: Path, failures: list[str]) -> None:
+    forbidden: list[str] = []
+    for path in workspace.rglob("*"):
+        relative = path.relative_to(workspace)
+        if relative.parts[0] == ".git" or ".git" not in relative.parts:
+            continue
+        forbidden.append(relative.as_posix())
+    gitmodules = workspace / ".gitmodules"
+    if gitmodules.exists():
+        forbidden.append(".gitmodules")
+    if forbidden:
+        fail(
+            "nested Git metadata or submodule configuration is forbidden: "
+            + ", ".join(sorted(set(forbidden))),
+            failures,
+        )
+
+
 def validate(workspace: Path, source_language: str) -> list[str]:
     failures: list[str] = []
     workspace = workspace.resolve()
@@ -199,6 +217,7 @@ def validate(workspace: Path, source_language: str) -> list[str]:
                 "unexpected workspace-root entries: " + ", ".join(unexpected_roots),
                 failures,
             )
+    check_no_nested_git(workspace, failures)
     check_lowercase_generated_names(workspace, raw, failures)
     return failures
 

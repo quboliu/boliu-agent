@@ -112,6 +112,27 @@ class WorkspaceValidation(unittest.TestCase):
             any("does not match" in item for item in validator.validate(self.root, "zh"))
         )
 
+    def test_rejects_nested_git_repository(self):
+        self.create_workspace("zh")
+        nested_git = self.root / "example-book-raw/upstream/.git"
+        nested_git.mkdir(parents=True)
+        self.assertTrue(
+            any(
+                "nested Git" in item
+                for item in validator.validate(self.root, "zh")
+            )
+        )
+
+    def test_rejects_submodule_configuration(self):
+        self.create_workspace("zh")
+        (self.root / ".gitmodules").write_text("[submodule]\n", encoding="utf-8")
+        self.assertTrue(
+            any(
+                "submodule" in item
+                for item in validator.validate(self.root, "zh")
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

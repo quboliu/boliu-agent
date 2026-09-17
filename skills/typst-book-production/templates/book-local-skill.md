@@ -8,6 +8,8 @@ description: Handle source recovery, conversion, and publication rules specific 
 ## Authority and regeneration
 
 - Record the exact raw inputs and checksums used.
+- For Git-derived raw material, record the upstream URL and fixed commit; keep
+  the frozen working tree free of nested `.git` metadata and submodules.
 - Record the command that regenerates Markdown chapters and images.
 - Record the commands that regenerate each Typst edition.
 
