@@ -11,7 +11,7 @@
 #let accent = rgb("#1a5276")
 #let ink-gray = luma(70)
 #let faint = luma(120)
-#let display-face = ("DejaVu Sans", "Noto Serif SC")
+#let display-face = ("DejaVu Sans", "Noto Serif CJK SC")
 #let mono-face = "DejaVu Sans Mono"
 #let math-face = "New Computer Modern Math"
 #let body-leading = 0.68em
@@ -107,8 +107,8 @@
   show footnote.entry: set block(above: 0.65em)
   show link: set text(fill: accent)
   set raw(theme: none)
-  show raw.where(block: true): set text(font: (mono-face, "Noto Serif SC"), size: 8pt)
-  show raw.where(block: false): set text(font: (mono-face, "Noto Serif SC"), size: 8.6pt)
+  show raw.where(block: true): set text(font: (mono-face, "Noto Serif CJK SC"), size: 8pt)
+  show raw.where(block: false): set text(font: (mono-face, "Noto Serif CJK SC"), size: 8.6pt)
   set figure(gap: 4pt)
   show figure.caption: set text(size: 8.5pt, fill: ink-gray)
   show figure.caption: set par(justify: false)
@@ -122,12 +122,12 @@
     {
       set par(justify: false, leading: 0.5em)
       set raw(theme: none)
-      text(font: (mono-face, "Noto Serif SC"), size: 8pt, hyphenate: false, it)
+      text(font: (mono-face, "Noto Serif CJK SC"), size: 8pt, hyphenate: false, it)
     },
   )
   show raw.where(block: false): it => {
     set raw(theme: none)
-    text(font: (mono-face, "Noto Serif SC"), size: 8.6pt, hyphenate: false, it)
+    text(font: (mono-face, "Noto Serif CJK SC"), size: 8.6pt, hyphenate: false, it)
   }
   show heading.where(level: 1): it => block(sticky: true)[
     #set par(justify: false)

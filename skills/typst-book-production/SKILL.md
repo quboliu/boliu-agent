@@ -170,6 +170,13 @@ contents, unnumbered front matter, part pages, copyright and quotation macros.
 5. Preserve supplied assets with stable paths and original bytes where fidelity
    matters. Do not replace a missing source visual with an invented one.
 
+When the edition matrix has more than one output, a figure, table, code-block,
+caption, or pagination policy is shared by default. Keep it in one template,
+semantic macro, or data mapping consumed by every renderer; do not maintain
+parallel edition-specific overrides that can drift. An intentional language or
+content exception must be named in the book contract and checked in every
+affected edition.
+
 For bilingual work, pair each complete semantic element with its translation:
 headings, prose, lists, captions, notes, footnotes, and table cells. Keep code,
 commands, formulas, identifiers, URLs, and other invariant material single-copy
@@ -191,7 +198,11 @@ Warnings are release failures unless the contract documents a narrowly reviewed
 exception; font fallback and `document did not converge` are always blockers.
 Pass the captured diagnostic file to `scripts/validate_book.py --compile-log`.
 A successful, warning-free compile is necessary but not sufficient. Read
-[verification](references/verification.md) before handoff.
+[verification](references/verification.md) before handoff. For iterative layout
+or renderer changes, also read
+[release hardening](references/release-hardening.md); it adds the cross-edition,
+whole-book, PDF-interaction, and artifact-retention checks that ordinary
+compilation cannot provide.
 
 Read [production pipeline](references/production-pipeline.md) for deterministic
 builds, the source manifest, real-project validation, regeneration and visual

@@ -72,6 +72,13 @@ Inline code: 8.6pt, no chip or background, no hyphenation. Keep long multiword
 snippets breakable at their original spaces; never box an entire long command.
 Preserve whitespace, indentation, literal quotes, and Unicode exactly.
 
+Preserve fenced-language metadata. When the project contract enables code
+labels, show a small, restrained language label at the block's upper right;
+the label must not reduce the code's usable measure or clip the first line.
+Keep this label separate from syntax coloring: the house default remains
+color-neutral, and any project-specific highlighter requires a tested renderer
+and a visual copy/paste check.
+
 No clipping or silently truncated lines. Prefer a source-valid line continuation,
 a landscape dedicated page, or an explicitly documented layout exception for
 long code; never silently insert token breaks or reduce below 8pt.

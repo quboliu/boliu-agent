@@ -5,7 +5,7 @@
 Use Chinese content as the only reading stream. Choose fonts with verified CJK
 coverage, preserve Chinese punctuation and line-breaking policy, and make body,
 heading, code, note, figure, and table typography part of the project template.
-Start from the 伯流出版社 Chinese profile: `Noto Serif SC` (or a metrically
+Start from the 伯流出版社 Chinese profile: `Noto Serif CJK SC` (or a metrically
 verified licensed replacement) at the shared 10pt body token. Retain the shared
 grid, hierarchy, captions, and cover sequence; tune CJK line breaking and font
 metrics through named tokens, never ad-hoc local spacing.

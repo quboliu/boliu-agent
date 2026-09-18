@@ -5,7 +5,7 @@ Copy the relevant entry file plus `core.typ`, `covers.typ`, and `matter.typ` fro
 imports the chosen entry and calls the cover macros before the body.
 
 Install or vendor the declared fonts before compiling. The templates require
-`Libertinus Serif`, `Noto Serif SC`, `DejaVu Sans`, and `DejaVu Sans Mono` by
+`Libertinus Serif`, `Noto Serif CJK SC`, `DejaVu Sans`, and `DejaVu Sans Mono` by
 default. Keep any vendored, redistribution-permitted fonts in `assets/fonts/`
 and compile with an explicit font path, for example:
 
@@ -75,7 +75,7 @@ has a stable physical page, then break before subsequent content. Do not use
 manual coordinate thresholds to classify pages. Run duplex tests after adding
 custom components or changing margins.
 
-- `monolingual-zh.typ` selects Noto Serif SC and Chinese language behavior.
+- `monolingual-zh.typ` selects Noto Serif CJK SC and Chinese language behavior.
 - `monolingual-en.typ` selects Libertinus Serif and English language behavior.
 - `bilingual.typ` adds `dual`, `dual-heading`, `dual-caption`, `dual-note`,
   and `dual-footnote`; source text

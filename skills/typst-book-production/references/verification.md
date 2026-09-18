@@ -6,6 +6,8 @@ Use [production pipeline](production-pipeline.md) for actual-project manifest/
 PDF checks, fixed build timestamps, source reconciliation and before/after
 visual comparisons. For requested annotations, also run the converter's anchor,
 acceptance and emission checks from [content audit](content-audit.md).
+For iterative multi-edition changes, apply the whole-book and PDF-interaction
+checks in [release hardening](release-hardening.md).
 
 Read [editorial style](editorial-style.md) for the profile-specific acceptance
 criteria. Confirm the zero-indent paragraph style in all three editions.
@@ -32,7 +34,8 @@ by the generic validator and must be verified in the actual project.
    order.
 2. **Structure:** heading hierarchy, numbering, table of contents, labels,
    citations, footnotes, and external/internal links preserve their intended
-   semantics.
+   semantics. Inspect emitted PDF annotations and destinations; source markup
+   or visible contents text alone is not link evidence.
 3. **Build:** the documented command succeeds with the declared fonts, root,
    and Typst version; its raw diagnostic stream is captured and empty, and the
    PDF opens and has the expected page count. Run `validate_book.py` with
@@ -43,10 +46,11 @@ by the generic validator and must be verified in the actual project.
    malformed raw code, truncated code indentation, or table/figure geometry
    regressions remain. Every edition file under `assets/figures/` is declared
    in the source map or explicitly excluded with a reviewed reason.
-5. **Visual QA:** rasterize and inspect a chapter opener, dense prose page,
-   code page, footnote/notes page, table page, and image-heavy page. Check
-   overflow, widows/orphans, pair adjacency, captions, running furniture, and
-   page bottoms.
+5. **Visual QA:** rasterize and inspect the complete page sequence, using
+   thumbnails for pattern detection and actual-size detail for a chapter opener,
+   dense prose page, code page, footnote/notes page, table page, and image-heavy
+   page. Check overflow, widows/orphans, pair adjacency, captions, running
+   furniture, page bottoms, unexpected whitespace, and cross-edition geometry.
 6. **Publisher-profile QA:** compare the inspected pages with the named
    伯流出版社 tokens: page grid, body measure, type scale, vertical rhythm,
    heading attachment, figure/caption spacing, table geometry, and running

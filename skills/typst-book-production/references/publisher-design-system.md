@@ -35,7 +35,7 @@ distinguish inherited measurements below from these deliberate house refinements
 | Body | serif, justified | 10 pt; leading `0.68em`; paragraph spacing `1.1em`; first-line indent 0 pt |
 | Bilingual body pair | `paragraph-gap` | Use the same body paragraph spacing between original/translation and between adjacent paired units; no separate language or pair gap |
 | English body face | `body-en` | Libertinus Serif |
-| Chinese body face | `body-zh` | Noto Serif SC |
+| Chinese body face | `body-zh` | Noto Serif CJK SC |
 | UI/head face | `display` | DejaVu Sans |
 | Code face | `mono` | DejaVu Sans Mono; blocks 8 pt; inline code 8.6 pt |
 | Footnotes | `footnote` | 8 pt; first entry gap `0.65em` |
@@ -61,7 +61,7 @@ single value while discarding the system around it.
 All three editions use the same trim, margins, hierarchy, display face, code
 style, gray/blue restrained palette, figure and table rules, and cover sequence.
 
-- **Chinese-only:** use `Noto Serif SC` at 10 pt as the baseline. Verify CJK
+- **Chinese-only:** use `Noto Serif CJK SC` at 10 pt as the baseline. Verify CJK
   punctuation, line-breaking, and the actual printed color; adjust leading only
   as a named project token after raster and print-size inspection.
 - **English-only:** use Libertinus Serif at 10 pt and deliberately enable the
