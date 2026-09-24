@@ -31,16 +31,22 @@ Publish the finished dossier in the `Paparazzi` module of
 
 ## Dossier tiers
 
-Every dossier must set one of the site's existing `paparazziTier` values:
+Every dossier must set one of the site's five `paparazziTier` values. Judge the
+publicly verifiable work and its sustained influence, not a person's worth or a
+single follower, star, or article count:
 
 - `top`: top-tier dossier. It may be created, updated, or published only after
   the user gives explicit special approval for that subject and action in the
   current session. Never infer this approval from a general request to research
   or publish.
-- `star`: an established public practitioner or creator with a substantial,
-  independently verifiable body of work.
-- `indie`: an independent creator, learner, project, or emerging public body of
-  work. Use this as the default when the evidence does not justify `star`.
+- `eminent`: a field-defining practitioner whose widely used methods, tools, or
+  knowledge systems have had sustained influence over years.
+- `star`: a creator with multiple independently verifiable representative works
+  and a stable professional readership or user community.
+- `notable`: a sustained, coherent public body of work whose demonstrated reach
+  remains concentrated in a particular topic or community.
+- `indie`: work still accumulating, or insufficient public evidence to verify a
+  higher tier. This is the evidence default, not a judgment of ability.
 
 State the evidence supporting a non-default tier in the dossier. If the tier is
 uncertain, ask the user before publishing; do not silently promote a subject to
@@ -98,7 +104,7 @@ the clone path before making changes. Verify its `origin` targets
 `quboliu/quboliu.github.io`, its branch is `main`, and the worktree has no
 unrelated changes.
 
-For `star` and `indie`, the user's explicit request to publish a dossier to the
+For `eminent`, `star`, `notable`, and `indie`, the user's explicit request to publish a dossier to the
 Paparazzi module authorizes validation, commit, and push in the same session.
 For `top`, require the special approval defined above before any creation,
 update, or push.
