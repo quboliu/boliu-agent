@@ -18,6 +18,7 @@ boliu-agent/
     ├── gpt-image-gen/
     ├── kubernetes-official-docs/
     ├── kubernetes-paper-reading/
+    ├── lets-go-further/
     ├── scanned-pdf-to-typst/
     ├── typst-book-production/
     └── user-skill-sync/
@@ -75,6 +76,13 @@ figure-aware bilingual reading drafts with source hashes and explicit review
 boundaries.
 
 Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
+
+### lets-go-further
+
+Recovers and typesets *Let's Go Further* with deliberately designed contents
+pages and verified syntax-highlighted code.
+
+Entry: [`skills/lets-go-further/SKILL.md`](skills/lets-go-further/SKILL.md)
 
 ### scanned-pdf-to-typst
 
