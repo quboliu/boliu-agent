@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// blog.mjs — operations for the quboliu.github.io Astro blog.
-// Usage: node blog.mjs <preflight|status|diff|prepare|apply|list|config|which-repo> [args]
+// blog.mjs — source operations for the formal blog and private mindindex drafts.
+// Usage: node blog.mjs [--site formal|draft] <command> [args]
 // This script never commits, pushes, pulls, switches branches, or deletes posts.
 // `preflight` contacts GitHub and runs `git fetch`, but never changes blog
 // content or the working tree. `prepare` and `apply` do write blog content.
 // Git operations that change publication state remain the calling agent's job
-// and require the confirmations documented in SKILL.md.
+// and follow the authorization and deployment workflow in SKILL.md.
 
 import fs from "node:fs";
 import os from "node:os";
@@ -13,11 +13,21 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 // Repo location resolution order:
-//   1. env BLOG_REPO
+//   1. env BLOG_REPO (formal) or DRAFT_BLOG_REPO (draft)
 //   2. ~/.config/blog-publish/config.json  (written by `config` subcommand)
 // There is deliberately no machine-specific built-in local path. The skill
 // asks the user for one during first-use setup.
-const TARGET_REPO_FULL_NAME = "quboliu/quboliu.github.io";
+const CLI_ARGS = process.argv.slice(2);
+const siteIndex = CLI_ARGS.indexOf("--site");
+const SITE = siteIndex < 0 ? "formal" : CLI_ARGS.splice(siteIndex, 2)[1];
+if (!["formal", "draft"].includes(SITE)) fail("--site must be formal or draft");
+const TARGETS = {
+  formal: { repo: "quboliu/quboliu.github.io", url: "https://quboliu.github.io", key: "repo", env: "BLOG_REPO", visibility: "PUBLIC" },
+  draft: { repo: "quboliu/mindindex", url: "https://quboliu.github.io/blog-drafts", key: "draftRepo", env: "DRAFT_BLOG_REPO", visibility: "PRIVATE" },
+};
+const TARGET = TARGETS[SITE];
+const OTHER_SITE = SITE === "formal" ? "draft" : "formal";
+const OTHER_TARGET = TARGETS[OTHER_SITE];
 const CONFIG_FILE = path.join(os.homedir(), ".config", "blog-publish", "config.json");
 
 function expandUserPath(value) {
@@ -36,13 +46,14 @@ function readConfig() {
 }
 
 const CONFIG = readConfig();
-const configuredRepo = process.env.BLOG_REPO ?? CONFIG.repo;
+const configuredRepo = process.env[TARGET.env] ?? CONFIG[TARGET.key];
 const BLOG_REPO = configuredRepo ? path.resolve(expandUserPath(configuredRepo)) : null;
-// Keep repository identity immutable. Configuration may choose only the clone
-// path; it must never redirect this skill to a different repository.
-const REPO_FULL_NAME = TARGET_REPO_FULL_NAME;
+// Each site is locked to its own repository; paths never change that identity.
+const REPO_FULL_NAME = TARGET.repo;
+const otherConfiguredRepo = process.env[OTHER_TARGET.env] ?? CONFIG[OTHER_TARGET.key];
+const OTHER_REPO = otherConfiguredRepo ? path.resolve(expandUserPath(otherConfiguredRepo)) : null;
 const POSTS_ROOT = BLOG_REPO ? path.join(BLOG_REPO, "src/content/posts") : null;
-const SITE_URL = "https://quboliu.github.io";
+const SITE_URL = TARGET.url;
 
 function fail(msg) {
   process.stderr.write(`error: ${msg}\n`);
@@ -53,7 +64,7 @@ function requireConfiguredRepo() {
   if (!BLOG_REPO)
     fail(
       "blog repo path is not configured; ask the user for the local clone path, " +
-        "then run `node blog.mjs config <path>`"
+        `then run node blog.mjs --site ${SITE} config <path>`
     );
   return BLOG_REPO;
 }
@@ -85,24 +96,24 @@ function parseGitHubRepo(url) {
   return m ? `${m[1]}/${m[2]}` : null;
 }
 
-function assertWritableTarget() {
-  requireConfiguredRepo();
-  if (!fs.existsSync(path.join(BLOG_REPO, ".git")))
-    fail("refusing to write: configured blog path is not a git clone: " + BLOG_REPO);
+function assertWritableTarget(repo = BLOG_REPO, expected = REPO_FULL_NAME) {
+  if (!repo) fail("configure both formal and draft clone paths before writing");
+  if (!fs.existsSync(path.join(repo, ".git")))
+    fail("refusing to write: configured blog path is not a git clone: " + repo);
 
-  const origin = run("git", ["-C", BLOG_REPO, "remote", "get-url", "origin"]);
+  const origin = run("git", ["-C", repo, "remote", "get-url", "origin"]);
   const actual = origin.ok ? parseGitHubRepo(origin.stdout) : null;
   if (!actual)
     fail("refusing to write: cannot identify the clone's origin remote");
-  if (actual.toLowerCase() !== REPO_FULL_NAME.toLowerCase())
+  if (actual.toLowerCase() !== expected.toLowerCase())
     fail(
       "refusing to write: origin is " +
         actual +
         " but this skill is locked to " +
-        REPO_FULL_NAME
+        expected
     );
 
-  const branch = run("git", ["-C", BLOG_REPO, "branch", "--show-current"]);
+  const branch = run("git", ["-C", repo, "branch", "--show-current"]);
   if (!branch.ok || branch.stdout !== "main")
     fail(
       'refusing to write: expected branch "main", found "' +
@@ -210,20 +221,20 @@ function fmTags(fm) {
 
 // ---------- posts index ----------
 
-function listPosts() {
+function listPosts(root = POSTS_ROOT) {
   requireConfiguredRepo();
-  if (!fs.existsSync(POSTS_ROOT))
+  if (!fs.existsSync(root))
     fail(
-      `posts dir not found: ${POSTS_ROOT}\n` +
+      `posts dir not found: ${root}\n` +
         `The blog repo is missing or misconfigured — run \`node blog.mjs preflight\` ` +
         `and follow its fix hints (Fresh environment section of SKILL.md).`
     );
   return fs
-    .readdirSync(POSTS_ROOT, { withFileTypes: true })
+    .readdirSync(root, { withFileTypes: true })
     .filter(e => e.isDirectory() && /^\d+$/.test(e.name))
     .map(e => {
       const file = ["index.md", "index.mdx"]
-        .map(f => path.join(POSTS_ROOT, e.name, f))
+        .map(f => path.join(root, e.name, f))
         .find(fs.existsSync);
       if (!file) return null;
       const raw = fs.readFileSync(file, "utf8");
@@ -444,13 +455,21 @@ function cmdPreflight() {
     }
   }
 
+  const metadata = run("gh", ["repo", "view", REPO_FULL_NAME, "--json", "nameWithOwner,visibility"]);
+  if (metadata.ok) {
+    const remote = JSON.parse(metadata.stdout);
+    const matches = remote.nameWithOwner.toLowerCase() === REPO_FULL_NAME.toLowerCase()
+      && remote.visibility === TARGET.visibility;
+    check(matches ? "PASS" : "FAIL", "repository identity", `${remote.nameWithOwner} (${remote.visibility}); expected ${REPO_FULL_NAME} (${TARGET.visibility})`);
+  } else check("FAIL", "repository identity", "cannot verify repository name and visibility");
+
   // 4. local clone present, is a git repo, and origin IS the target repo
   if (!BLOG_REPO) {
     check(
       "FAIL",
       "local clone",
       "blog repo path is not configured",
-      "ask the user for the local clone path, clone if needed, then run `node blog.mjs config <path>`"
+      `ask the user for the selected clone path, then run node blog.mjs --site ${SITE} config <path>`
     );
     return printPreflight(results);
   }
@@ -537,12 +556,13 @@ function cmdStatus(file) {
   const posts = listPosts();
   const { post, how } = findPost(local, posts);
   if (!post) {
-    console.log(`NOT_PUBLISHED title="${local.title}" (${how})`);
+    console.log(`ABSENT_FROM_${SITE.toUpperCase()}_SOURCE title="${local.title}" (${how})`);
     return;
   }
   console.log(
     [
-      `PUBLISHED`,
+      `PRESENT_IN_${SITE.toUpperCase()}_SOURCE`,
+      `  live:     not checked; verify the deployment and URL separately`,
       `  id:       ${post.id}`,
       `  title:    ${post.title}`,
       `  matched:  ${how}`,
@@ -555,14 +575,14 @@ function cmdStatus(file) {
 function cmdDiff(file) {
   const local = readLocal(path.resolve(file));
   const { post, how } = findPost(local, listPosts());
-  if (!post) fail(`no published post matches "${local.title}" (${how}); use prepare to publish`);
+  if (!post) fail(`no source post matches "${local.title}" (${how}); use prepare for a new article or promote for an existing draft`);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "blogdiff-"));
   const publishedBody = path.join(tmp, `published-${post.id}.md`);
   const localBody = path.join(tmp, "local.md");
   fs.writeFileSync(publishedBody, post.body);
   fs.writeFileSync(localBody, local.body);
   console.log(`# post ${post.id} "${post.title}" (matched: ${how})`);
-  console.log(`# diff: < published  > local\n`);
+  console.log(`# diff: < selected source  > input\n`);
   try {
     execFileSync("diff", ["-u", publishedBody, localBody], { stdio: "inherit" });
     console.log("\n# bodies identical");
@@ -582,8 +602,13 @@ function cmdPrepare(file) {
   const posts = listPosts();
   const { post, how } = findPost(local, posts);
   if (post)
-    fail(`already published as ${post.id} "${post.title}" (${how}); use apply to update`);
-  const max = posts.reduce((m, p) => Math.max(m, parseInt(p.id, 10)), 0);
+    fail(`already present as ${post.id} "${post.title}" (${how}); use apply to update`);
+  assertWritableTarget(OTHER_REPO, OTHER_TARGET.repo);
+  const otherPosts = listPosts(path.join(OTHER_REPO, "src/content/posts"));
+  const otherMatch = findPost(local, otherPosts);
+  if (otherMatch.post)
+    fail(`article already exists in ${OTHER_SITE} as ${otherMatch.post.id} (${otherMatch.how}); inspect it and preserve its ID when promoting`);
+  const max = [...posts, ...otherPosts].reduce((m, p) => Math.max(m, parseInt(p.id, 10)), 0);
   const id = String(max + 1).padStart(4, "0");
   const dir = path.join(POSTS_ROOT, id);
   fs.mkdirSync(dir, { recursive: true });
@@ -598,7 +623,7 @@ function cmdPrepare(file) {
     `title: "${local.title.replace(/"/g, '\\"')}"`,
     `area: "${local.area.replace(/"/g, '\\"')}"`,
     `featured: false`,
-    `draft: false`,
+    `draft: ${SITE === "draft"}`,
     `tags:`,
     ...tags.map(t => `  - "${t.replace(/"/g, '\\"')}"`),
     `description: "${description.replace(/"/g, '\\"')}"`,
@@ -623,7 +648,7 @@ function cmdApply(file) {
   assertWritableTarget();
   const local = readLocal(path.resolve(file));
   const { post, how } = findPost(local, listPosts());
-  if (!post) fail(`no published post matches "${local.title}" (${how}); use prepare`);
+  if (!post) fail(`no source post matches "${local.title}" (${how}); use prepare`);
   const dir = path.dirname(post.file);
   const { body, assets } = migrateAssets(local.body, path.dirname(local.file), dir);
   const { fm } = splitFrontmatter(post.raw);
@@ -686,7 +711,7 @@ function cmdConfig(repoPath) {
   fs.mkdirSync(path.dirname(CONFIG_FILE), { recursive: true });
   fs.writeFileSync(
     CONFIG_FILE,
-    JSON.stringify({ repo: dir, repoFullName: REPO_FULL_NAME }, null, 2) + "\n"
+    JSON.stringify({ ...CONFIG, [TARGET.key]: dir }, null, 2) + "\n"
   );
   console.log(
     "CONFIG_SAVED repo=" +
@@ -698,17 +723,40 @@ function cmdConfig(repoPath) {
   );
 }
 
+/** Prepare a publication without deleting the recoverable draft copy. */
+function cmdPromote(id) {
+  if (SITE !== "formal") fail("promote requires --site formal");
+  if (!/^\d{4,}$/.test(id)) fail("expected a numeric post id such as 0205");
+  assertWritableTarget();
+  assertWritableTarget(OTHER_REPO, OTHER_TARGET.repo);
+  const source = path.join(OTHER_REPO, "src/content/posts", id);
+  const destination = path.join(POSTS_ROOT, id);
+  if (fs.existsSync(destination)) fail("formal destination already exists: " + destination);
+  const filename = ["index.md", "index.mdx"].find(file => fs.existsSync(path.join(source, file)));
+  if (!filename) fail("draft post not found: " + id);
+  const raw = fs.readFileSync(path.join(source, filename), "utf8");
+  if (!/^---\r?\n[\s\S]*?\r?\n---/.test(raw)) fail("draft has no valid frontmatter");
+  fs.cpSync(source, destination, { recursive: true, force: false, errorOnExist: true });
+  const updated = raw.replace(/^(---\r?\n)([\s\S]*?)(\r?\n---)/, (_, open, fm, close) => {
+    const metadata = /^draft:/m.test(fm) ? fm.replace(/^draft:.*$/m, "draft: false") : fm + "\ndraft: false";
+    return open + metadata + close;
+  });
+  fs.writeFileSync(path.join(destination, filename), updated);
+  console.log(`COPIED_FOR_PUBLICATION ${id}\n  source retained: ${source}\n  destination: ${destination}\n  Review dates, internal links and assessment records; build both sites before removing the draft.`);
+}
+
 // ---------- main ----------
 
-const [cmd, ...args] = process.argv.slice(2);
-const usage = `usage: node blog.mjs <command>
+const [cmd, ...args] = CLI_ARGS;
+const usage = `usage: node blog.mjs [--site formal|draft] <command>
   preflight          safety checks + git fetch (run first, every session)
-  status <file.md>   check whether a local article is already published
-  diff <file.md>     diff local article body against the published version
+  status <file.md>   check membership in selected source (does not prove deployment)
+  diff <file.md>     diff local article body against selected source
   prepare <file.md>  create a new numbered post (frontmatter + assets), no commit
-  apply <file.md>    overwrite an existing published post with local content
-  list               list all published posts (id, date, title)
-  config <path>      persist the blog repo location (fresh-machine bootstrap)
+  apply <file.md>    update an existing source post with local content
+  list               list selected source posts (id, date, title)
+  promote <id>       copy a draft and all assets to formal; keep draft until validated
+  config <path>      persist the selected site clone location (preserves the other)
   which-repo         print the resolved blog repo path and target repo`;
 
 if (cmd === "preflight") cmdPreflight();
@@ -717,6 +765,7 @@ else if (cmd === "diff" && args[0]) cmdDiff(args[0]);
 else if (cmd === "prepare" && args[0]) cmdPrepare(args[0]);
 else if (cmd === "apply" && args[0]) cmdApply(args[0]);
 else if (cmd === "list") cmdList();
+else if (cmd === "promote" && args[0]) cmdPromote(args[0]);
 else if (cmd === "config" && args[0]) cmdConfig(args[0]);
 else if (cmd === "which-repo")
   console.log(

@@ -1,4 +1,4 @@
 interface:
   display_name: "博客发布"
-  short_description: "安全查验、对比、发布、更新和删除 quboliu.github.io 博客文章"
-  default_prompt: "使用 $blog-publish 检查这篇 Markdown 是否已发布；若尚未配置博客仓库，先询问我的本地 clone 路径，再在确认后更新或发布。"
+  short_description: "管理 mindindex 私有草稿、在线预览与正式博客文章迁移发布"
+  default_prompt: "使用 $blog-publish 按我的意图选择草稿站或正式站，检查两库状态，完成文章修改、预览或正式发布并验证结果。"

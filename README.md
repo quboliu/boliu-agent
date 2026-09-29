@@ -37,7 +37,7 @@ Entry: [`skills/paparazzi/SKILL.md`](skills/paparazzi/SKILL.md)
 
 ### blog-publish
 
-Manages posts on the Astro blog `quboliu/quboliu.github.io`: preflight environment checks, published-status checks, local-vs-published diffs, and publish / update / delete workflows guarded by explicit confirmation before any commit or push.
+Manages private drafts in `quboliu/mindindex` and formal articles in `quboliu/quboliu.github.io`: checks both repositories, refreshes draft previews through the shared Pages deployment, and promotes finished articles with their IDs and assets intact. Distinguishes source membership from live publication and follows the user’s authorized destination and scope.
 
 Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
 

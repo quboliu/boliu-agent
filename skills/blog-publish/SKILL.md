@@ -1,191 +1,173 @@
 ---
 name: blog-publish
-description: Manage posts on the user's Astro blog at quboliu.github.io from any working directory. Run environment and repository preflight checks; determine whether a Markdown article is published; compare local and published content; prepare, update, delete, validate, commit, and push posts. Use when the user mentions 发布博客、查验是否已发布、对比博客文章、博客增删改, asks to publish or update a Markdown article on their blog, or asks whether an article is already on the blog.
+description: "Manage the user's two Astro sites: private mindindex drafts and the public quboliu.github.io blog. Use for writing or updating blog drafts, refreshing online previews, checking source versus live publication, and moving finished articles to the formal blog."
 ---
 
 # Blog Publish
 
 made by quboliu
 
-Operate only on the fixed target repository quboliu/quboliu.github.io and the site
-https://quboliu.github.io. The local clone path is user-configured; never embed
-or assume a machine-specific blog directory. Store posts under
-src/content/posts/NNNN/index.md or index.mdx with co-located assets. Treat a
-push to main as publication because GitHub Actions builds and deploys the site.
+## Architecture and intent
 
-## Resolve the helper
+| Site | Fixed repository | Visibility | Website |
+| --- | --- | --- | --- |
+| Formal | `quboliu/quboliu.github.io` | Public | `https://quboliu.github.io/` |
+| Draft | `quboliu/mindindex` | Private | `https://quboliu.github.io/blog-drafts/` |
 
-Resolve the installed cross-agent user skill once per shell command:
+`mindindex` retains the original blog's full history. The formal repository began
+with fresh history and no posts. Both initially share the same theme; they are
+separate copies, so theme fixes may need to be applied to both.
 
-    BLOG_SKILL_DIR="$HOME/.agents/skills/blog-publish"
-    node "$BLOG_SKILL_DIR/scripts/blog.mjs" <command> [args]
+The formal repository's `deploy.yml` checks out both repositories, builds and
+indexes each separately, and copies the draft output into `dist/blog-drafts/`
+before publishing one Pages artifact. It reads mindindex with the read-only
+Deploy Key stored in `MINDINDEX_DEPLOY_KEY`. Never commit the private key or draft
+source into the formal repository. Do not generate the formal search index after
+merging the outputs: that would expose drafts in formal search.
 
-Do not assume that an agent host exports SKILL_DIR or a host-specific home
-variable. Prefer absolute paths for article arguments so the workflow remains
-independent of the current working directory.
+Draft source is private; rendered draft pages are publicly accessible to anyone
+who knows the address. The user accepts this. Draft pages have `noindex, nofollow`
+and the formal website has no draft navigation link. Do not describe this as
+access control. A history rewrite cannot guarantee erasure of previously public
+commits, caches, forks, or clones; do not promise that old public history becomes
+inaccessible merely because it was moved to a private repository.
 
-Resolve the blog clone in this order: BLOG_REPO environment variable, then the
-repo path in ~/.config/blog-publish/config.json. There is no built-in local
-directory. If neither is configured, ask the user for the blog clone path before
-running preflight or any other blog operation, then persist it with `config`.
-Inspect the resolved path with which-repo.
+Choose the destination from the user's intent and existing conversation:
 
-Available commands:
+- Write, revise, save a draft, or preview: **draft**.
+- Explicitly publish a finished article or update an existing formal article:
+  **formal**.
+- “部署” in the formal repo means push `main`; in the draft repo it means push
+  draft `main`, then trigger the formal deployment workflow.
+- If the destination is genuinely unclear, clarify it. Do not ask again when the
+  user already specified the destination or authorized publication.
 
-- preflight: check Node, GitHub authentication and permission, clone identity,
-  branch, working tree, and synchronization with origin/main.
-- status <file>: match a local Markdown article to a published post.
-- diff <file>: show a unified body diff against the matched post.
-- prepare <file>: create the next numbered post and copy referenced assets.
-- apply <file>: replace the body of a matched post and set modDatetime.
-- list: show post id, publication date, and title.
-- config <path>: validate and save the local clone path.
-- which-repo: show the resolved clone and fixed target repository.
+## Resolve paths and inspect state
 
-The helper never commits, pushes, switches branches, pulls, or deletes posts.
-preflight contacts GitHub and runs git fetch, which updates remote-tracking refs
-but never changes blog content or the working tree. config writes only its config
-file. prepare and apply write blog content.
+Use the canonical helper:
 
-## Establish session safety
+```sh
+BLOG_SKILL_DIR="$HOME/.agents/skills/blog-publish"
+node "$BLOG_SKILL_DIR/scripts/blog.mjs" --site draft which-repo
+node "$BLOG_SKILL_DIR/scripts/blog.mjs" --site formal which-repo
+```
 
-After installing this skill, and whenever no BLOG_REPO or saved repo path exists,
-ask the user where the local clone of quboliu/quboliu.github.io is located (or
-where it should be cloned). Do not infer a path from the current working
-directory, the agent's home directory, or a previous machine. A user-supplied
-path such as `~/workspace/13-个人博客-quboliu.github.io` is valid.
+Paths are user-configured; no machine-specific path is built into the skill.
+Formal path: `BLOG_REPO` or config key `repo`. Draft path: `DRAFT_BLOG_REPO` or
+config key `draftRepo`. Config lives in `~/.config/blog-publish/config.json`.
+If a needed path is missing, use an already supplied user path; otherwise ask.
+Register each clone separately (configuration preserves the other path):
 
-Run preflight before the first blog operation in every session. Do not substitute
-ad hoc checks for it.
+```sh
+node "$BLOG_SKILL_DIR/scripts/blog.mjs" --site formal config <formal-path>
+node "$BLOG_SKILL_DIR/scripts/blog.mjs" --site draft config <draft-path>
+```
 
-Interpret results as follows:
+Run `preflight` for each repository involved before its first operation in a
+session. For promotion, run it for both. For online draft deployment, inspect both
+because the workflow also publishes the latest formal `main`.
 
-- On FAIL, show the failure and fix hint, resolve it with the user, rerun
-  preflight, and do not write blog content.
-- On WARN, explain the warning and follow the corresponding handling below.
-- On success, present the account, fixed repository, local path, branch, working
-  tree, and sync state.
+Preflight checks Node, authenticated account, write permission, canonical remote
+name, expected visibility, local origin, `main`, working tree and remote sync.
+Report failures and resolve them before mutation or shipping. Inspect warnings:
+retain unrelated work, review unpushed commits, and resolve divergence without
+overwriting user changes. Routine fixes already authorized by the task do not
+need repeated approval. Never switch accounts or discard work without authority.
+Use the Node engine declared by each repository and `npm ci` when needed.
 
-Before the first content-changing action in a session, obtain explicit
-confirmation of that target. Use a concise prompt such as:
+## Helper commands
 
-> 将以账号 quboliu 发布到 quboliu/quboliu.github.io（本地 PATH，分支 main，工作区干净）。确认开始修改博客内容吗？
+Always select `--site formal` or `--site draft` in skill workflows. Omission defaults
+to formal only for backward compatibility.
 
-Treat prepare, apply, direct edits, git rm, commit, and push as content-changing
-actions. When the user explicitly asks to publish and confirms the target, that
-instruction authorizes validation, commit, and push for the requested article in
-the same session. If the user asks only to draft, prepare, or edit without
-publication, do not infer authorization to commit or push.
+- `preflight`: read checks plus `git fetch`; exit 0 success, 1 warnings, 2 failures.
+- `list`: list selected source posts.
+- `status <file>`: match a file against selected source posts. **Source presence
+  does not prove live publication.** Check both sites when answering where an
+  article currently lives; then inspect the latest successful deployment and URL.
+- `diff <file>`: compare bodies with the selected source; inspect metadata separately.
+- `prepare <file>`: create a numbered post and copy referenced assets. Requires
+  both clone paths; chooses an unused next ID across both sites. Draft prepares
+  use `draft: true`. Review generated metadata and assets before committing.
+- `apply <file>`: update selected source body and supported metadata, set
+  `modDatetime` in Asia/Shanghai time. Preserve the destination's draft status.
+- `promote <id>` with `--site formal`: copy the complete draft post directory,
+  preserving its ID and assets, and set `draft: false`. Refuses an existing
+  destination. **Keeps the source draft until the agent validates and removes it.**
 
-Handle warnings explicitly:
+The helper never commits, pushes, triggers Actions, removes posts, or rewrites
+history. Partial-title or similarity matches need inspection before replacement.
+Posts live in `src/content/posts/NNNN/index.md` or `index.mdx`; keep their images,
+attachments, and MDX dependencies. Paparazzi dossiers live under
+`src/content/pages/paparazzi/` and require direct file operations; these commands
+only index numbered posts.
 
-- Wrong account: ask before running gh auth switch -u quboliu.
-- Dirty tree: show git status and relevant diffs; ask how to proceed. Never
-  discard or stash user work silently.
-- Behind origin: ask before running git pull --ff-only.
-- Not on main: ask before running git switch main.
-- Fetch failure or offline state: allow status, diff, list, prepare, or apply only
-  after the user acknowledges the stale remote state. Do not commit or push until
-  preflight can verify synchronization.
+## Write or update a draft
 
-## Bootstrap a fresh environment
+1. Work in mindindex. Search both sources before adding a new article so IDs and
+   titles are not duplicated. New posts require the site's `area` vocabulary.
+2. Use `prepare`, `apply`, or direct edits as appropriate. Inspect frontmatter and
+   all referenced assets; update `modDatetime` for edits. Draft builds render
+   `draft: true` and future-dated posts as well as other posts.
+3. Run `npm run content:check` and `npm run build`. In the rendered preview check
+   links, images, search, and Chinese typography when affected. URLs and search
+   results must stay under `/blog-drafts/`.
+4. A local writing request does not by itself request online deployment. When
+   preview deployment is authorized, commit the scoped draft changes and push
+   mindindex `main`, then trigger the formal workflow:
 
-When preflight reports a missing or unsuitable runtime, login, or clone:
+   ```sh
+   gh workflow run deploy.yml --repo quboliu/quboliu.github.io --ref main
+   ```
 
-1. Satisfy the exact Node engine declared by the blog's package.json.
-2. Authenticate GitHub CLI as an account with write access to
-   quboliu/quboliu.github.io.
-3. Ask the user to confirm a clone location if one has not already been supplied,
-   then run:
+5. Wait for the run's result and verify the affected draft URL. A push to mindindex
+   alone does **not** refresh the website. Do not enable Pages on the private repo.
 
-       gh repo clone quboliu/quboliu.github.io <path>
+## Promote a finished article to the formal site
 
-4. Register the clone:
+1. Confirm the selected article from the request; preserve its existing numeric
+   ID. Run `--site formal promote <id>` or copy its complete directory manually.
+   Do not run `prepare` on an existing draft: promotion must retain its ID/assets.
+2. Review `draft: false`, publication date, title, description, area, tags, and
+   canonical URL. Future dates remain hidden on the formal site; set the intended
+   publication date. Carry over the post's entries in
+   `src/data/postValueAssessments.ts` and `postLlmAssessments.ts` when present.
+3. Check cross-article links. A referenced article still in mindindex has no formal
+   URL yet; adjust the article with the user's intended publishing scope. Do not
+   silently publish related drafts or add draft links to the formal website.
+4. Build the formal site successfully before removing the draft directory. Then
+   remove the source and its obsolete assessment entries; build mindindex too.
+   Preserve at least one complete working copy throughout this process.
+5. Review scoped diffs. Commit and push the draft removal first, then the formal
+   addition. The formal push triggers the combined deployment. Keep one article
+   per commit when practical; include its assets and assessment metadata.
+6. If the formal push fails after draft removal was pushed, retain the prepared
+   formal commit and fix/retry the push; do not discard the recoverable article.
+   If the Actions run fails, fix the failing build before claiming publication.
+7. Verify the formal article URL, draft removal, formal RSS/search membership,
+   and the run conclusion. Report the formal URL.
 
-       node "$BLOG_SKILL_DIR/scripts/blog.mjs" config <path>
+Publishing an external article directly to formal is allowed when explicitly
+requested. Otherwise new writing belongs in mindindex. Never bulk-promote the
+old corpus because the formal site is empty.
 
-5. Run npm ci inside the clone.
-6. Rerun preflight before continuing.
+## Update or remove existing content
 
-Accept either HTTPS with GitHub CLI credentials or SSH with a working key. Never
-configure a clone whose origin is not the fixed target repository.
+Work in the site the user names. For deletion, identify the exact article and
+assets before removing; an explicit request to remove that identified article is
+sufficient authorization. Preserve unrelated files and review references from
+other articles. Run the content check and build, commit the scoped changes, then
+use the destination's deployment flow. Report which source and URL changed.
 
-## Run the requested workflow
+## Verify and finish
 
-### Check publication status
+For both sites, Chinese translations (including quotations, captions, footnotes
+and inline emphasis) must be upright. All blockquote descendants must be upright.
+Use bold for Chinese emphasis; preserve original English italics when appropriate.
 
-Run status <file> and report the matched id, title, match method, and URL, or
-report that it is not published. If the user supplies only a title or topic, run
-list and match candidates by title.
-
-If status reports a partial-title or body-similarity match, treat it as uncertain.
-Confirm the match before apply or deletion.
-
-### Compare content
-
-Run diff <file> and summarize meaningful changes. The helper compares bodies
-only. Read and compare both frontmatters directly when metadata matters.
-
-### Publish a new article
-
-1. Run status <file>. Switch to the update workflow if it already exists.
-2. After target confirmation, run prepare <file>.
-3. Show the generated frontmatter and copied-asset list.
-4. Ensure the source article declares the blog's required `area` field; use the
-   site's existing area vocabulary and ask the user when the area is ambiguous.
-   Offer to correct the generated title, description, tags, and area; generated
-   descriptions are only drafts.
-5. Continue to shipping.
-
-### Update an existing post
-
-- For a full update, run diff <file>, confirm uncertain matches, then run
-  apply <file>.
-- For a small edit, modify the matched post directly.
-- Whenever content changes, set modDatetime to the current Asia/Shanghai time.
-- Review the complete diff, including metadata and asset changes, then continue
-  to shipping.
-
-### Delete a post
-
-1. Locate it with list or status.
-2. Show its title, URL, match method, and every file that would be removed.
-3. Obtain explicit deletion confirmation.
-4. Run git rm -r src/content/posts/NNNN.
-5. State that the committed version remains recoverable through git history.
-6. Continue to shipping; content:check is mandatory and build is optional for a
-   deletion unless related code or configuration changed.
-
-## Validate and ship
-
-Require a successful preflight in the current session before committing or
-pushing.
-
-1. Run npm run content:check in the blog repository.
-2. For additions and updates, also run npm run build. Fix failures before
-   proceeding.
-3. Show git status, git diff --stat, and a concise summary of the exact diff to be
-   committed.
-4. If the user explicitly requested publication and confirmed the target in this
-   session, proceed directly. Otherwise, obtain explicit confirmation for this
-   commit and push.
-5. Stage only one post directory, create one commit per post, and push main:
-
-       git add src/content/posts/NNNN
-       git commit -m "posts: add NNNN <title>"
-       git push origin main
-
-   Use an update or remove verb when appropriate.
-6. Report https://quboliu.github.io/posts/NNNN/ and note that deployment usually
-   takes a minute or two.
-
-## Preserve hard safety boundaries
-
-- Never commit or push without an explicit publication instruction and target
-  confirmation in the current session. Once both are present, do not request a
-  redundant post-validation shipping confirmation.
-- Never force-push, rewrite history, or operate on branches other than main.
-- Never bypass an origin mismatch or redirect this skill to another repository.
-- Never discard, overwrite, or stash unrelated work.
-- Stage and commit exactly one post directory at a time.
-- Prefer git revert for undoing a published commit.
+Verify the actual rendered page when typography or routing changes. Check image
+loading, internal links and the appropriate search index; a successful build alone
+does not prove these work. Report source changes and live deployment separately.
+Do not repeat authorization requests when destination, scope and publication were
+already authorized. Routine publication never needs a force push or history reset;
+those require an explicit separate user instruction and a verified backup.
