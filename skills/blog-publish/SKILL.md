@@ -1,6 +1,6 @@
 ---
 name: blog-publish
-description: "Manage the user's two Astro sites: private mindindex drafts and the public quboliu.github.io blog. Use for writing or updating blog drafts, refreshing online previews, checking source versus live publication, and moving finished articles to the formal blog."
+description: "Manage the user's two Astro sites: private mindindex drafts and public quboliu.github.io. Use for blog posts, reposts, Paparazzi dossiers, About synchronization, previews, and publication."
 ---
 
 # Blog Publish
@@ -14,7 +14,9 @@ made by quboliu
 | Formal | `quboliu/quboliu.github.io` | Public | `https://quboliu.github.io/` |
 | Draft | `quboliu/mindindex` | Private | `https://quboliu.github.io/blog-drafts/` |
 
-**A numbered article must exist in exactly one source repository.** The same article may never be kept in both `mindindex` and `quboliu.github.io`, even temporarily as a committed state. Promotion moves its entire directory; publishing always removes the draft source before adding it to the formal remote. Check both repositories and the combined deployment output.
+**Every blog post and repost must exist in exactly one source repository.** Both content types live under `src/content/posts/`. The same article may never be kept in both `mindindex` and `quboliu.github.io`, even temporarily as a committed state. Promotion moves its entire directory; publishing always removes the draft source before adding it to the formal remote. Check both repositories and the combined deployment output.
+
+**Paparazzi and About follow different rules.** Paparazzi dossiers in `src/content/pages/paparazzi/` are maintained independently on each site. Copy a selected dossier when it should appear on both sites, leaving the draft source in place; later edits affect only the targeted copy unless the user asks to update both. Do not apply the post/repost exclusivity rule to Paparazzi. The About page must stay identical on both sites: synchronize `src/content/pages/about.md` and `src/pages/about.astro` whenever either changes.
 
 `mindindex` retains the original blog's full history. The formal repository began
 with fresh history and no posts. Both initially share the same theme; they are
@@ -100,10 +102,13 @@ to formal only for backward compatibility.
 The helper never commits, pushes, triggers Actions, or rewrites history.
 `promote` is the only helper command that removes a source directory: it moves
 that same directory into the formal repo. Partial-title or similarity matches need inspection before replacement.
-Posts live in `src/content/posts/NNNN/index.md` or `index.mdx`; keep their images,
-attachments, and MDX dependencies. Paparazzi dossiers live under
-`src/content/pages/paparazzi/` and require direct file operations; these commands
-only index numbered posts.
+Posts and reposts live in `src/content/posts/NNNN/index.md` or `index.mdx`; keep their images,
+attachments, and MDX dependencies. Paparazzi dossiers require direct file operations; these commands only index numbered posts.
+
+## Paparazzi dossiers and About
+
+- For a Paparazzi copy, identify the exact dossiers and tiers from the source frontmatter. Copy only the selected Markdown files and referenced local assets into the destination; keep the source files. Check that the destination index and dossier URLs render, and that unselected dossiers remain absent there. Each site may then edit its own copies independently.
+- For About changes, update both repositories' `src/content/pages/about.md` and, if relevant, `src/pages/about.astro`. Compare both files across repositories before publishing. The formal deployment checks this equality. Build both sites and use their normal deployment flow for changed sources.
 
 ## Write or update a draft
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "博客发布"
-  short_description: "管理 mindindex 私有草稿、在线预览与正式博客文章迁移发布"
-  default_prompt: "使用 $blog-publish 按我的意图选择草稿站或正式站，检查两库状态，完成文章修改、预览或正式发布并验证结果。"
+  short_description: "管理双站文章迁移、Paparazzi 复制和 About 同步"
+  default_prompt: "使用 $blog-publish 管理草稿站与正式站：文章和转载只保留一份，Paparazzi 按需复制，About 两站同步，并验证发布结果。"
