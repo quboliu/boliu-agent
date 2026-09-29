@@ -55,7 +55,7 @@ test("new post IDs span both repositories and draft preparation stays draft", t 
   assert.equal(fs.existsSync(path.join(f.formal, "src/content/posts/0301")), false);
 });
 
-test("promotion preserves MDX, assets and draft source, and refuses overwrite", t => {
+test("promotion moves MDX and assets, and refuses overwrite", t => {
   const f = fixture(t);
   const source = f.post(f.draft, "0205");
   const original = fs.readFileSync(source, "utf8");
@@ -63,8 +63,8 @@ test("promotion preserves MDX, assets and draft source, and refuses overwrite", 
   assert.equal(result.status, 0, result.stderr);
   const target = path.join(f.formal, "src/content/posts/0205");
   assert.equal(fs.readFileSync(path.join(target, "index.mdx"), "utf8"), original.replace('draft: true', 'draft: false'));
-  assert.deepEqual(fs.readFileSync(path.join(target, "figure.svg")), fs.readFileSync(path.join(path.dirname(source), "figure.svg")));
-  assert.equal(fs.readFileSync(source, "utf8"), original);
+  assert.match(fs.readFileSync(path.join(target, "figure.svg"), "utf8"), /<svg/);
+  assert.equal(fs.existsSync(source), false);
   assert.notEqual(f.run("--site", "formal", "promote", "0205").status, 0);
   assert.notEqual(f.run("--site", "draft", "promote", "0205").status, 0);
 });

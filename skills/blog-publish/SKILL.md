@@ -14,6 +14,8 @@ made by quboliu
 | Formal | `quboliu/quboliu.github.io` | Public | `https://quboliu.github.io/` |
 | Draft | `quboliu/mindindex` | Private | `https://quboliu.github.io/blog-drafts/` |
 
+**A numbered article must exist in exactly one source repository.** The same article may never be kept in both `mindindex` and `quboliu.github.io`, even temporarily as a committed state. Promotion moves its entire directory; publishing always removes the draft source before adding it to the formal remote. Check both repositories and the combined deployment output.
+
 `mindindex` retains the original blog's full history. The formal repository began
 with fresh history and no posts. Both initially share the same theme; they are
 separate copies, so theme fixes may need to be applied to both.
@@ -91,12 +93,13 @@ to formal only for backward compatibility.
   use `draft: true`. Review generated metadata and assets before committing.
 - `apply <file>`: update selected source body and supported metadata, set
   `modDatetime` in Asia/Shanghai time. Preserve the destination's draft status.
-- `promote <id>` with `--site formal`: copy the complete draft post directory,
+- `promote <id>` with `--site formal`: move the complete draft post directory,
   preserving its ID and assets, and set `draft: false`. Refuses an existing
-  destination. **Keeps the source draft until the agent validates and removes it.**
+  destination. The source must be absent immediately after this command.
 
-The helper never commits, pushes, triggers Actions, removes posts, or rewrites
-history. Partial-title or similarity matches need inspection before replacement.
+The helper never commits, pushes, triggers Actions, or rewrites history.
+`promote` is the only helper command that removes a source directory: it moves
+that same directory into the formal repo. Partial-title or similarity matches need inspection before replacement.
 Posts live in `src/content/posts/NNNN/index.md` or `index.mdx`; keep their images,
 attachments, and MDX dependencies. Paparazzi dossiers live under
 `src/content/pages/paparazzi/` and require direct file operations; these commands
@@ -126,8 +129,9 @@ only index numbered posts.
 ## Promote a finished article to the formal site
 
 1. Confirm the selected article from the request; preserve its existing numeric
-   ID. Run `--site formal promote <id>` or copy its complete directory manually.
+   ID. Run `--site formal promote <id>` or move its complete directory manually.
    Do not run `prepare` on an existing draft: promotion must retain its ID/assets.
+   Confirm it no longer exists in mindindex before building either site.
 2. Review `draft: false`, publication date, title, description, area, tags, and
    canonical URL. Future dates remain hidden on the formal site; set the intended
    publication date. Carry over the post's entries in
@@ -135,17 +139,18 @@ only index numbered posts.
 3. Check cross-article links. A referenced article still in mindindex has no formal
    URL yet; adjust the article with the user's intended publishing scope. Do not
    silently publish related drafts or add draft links to the formal website.
-4. Build the formal site successfully before removing the draft directory. Then
-   remove the source and its obsolete assessment entries; build mindindex too.
-   Preserve at least one complete working copy throughout this process.
+4. Remove obsolete assessment entries from mindindex; build both sites and check
+   that the article exists only in formal output. Its earlier version remains
+   recoverable from mindindex Git history. The formal deployment workflow must
+   fail if an article is present in both checked-out source repositories.
 5. Review scoped diffs. Commit and push the draft removal first, then the formal
-   addition. The formal push triggers the combined deployment. Keep one article
+   addition. At no point may both remote branches contain the article. The formal push triggers the combined deployment. Keep one article
    per commit when practical; include its assets and assessment metadata.
 6. If the formal push fails after draft removal was pushed, retain the prepared
    formal commit and fix/retry the push; do not discard the recoverable article.
    If the Actions run fails, fix the failing build before claiming publication.
-7. Verify the formal article URL, draft removal, formal RSS/search membership,
-   and the run conclusion. Report the formal URL.
+7. Verify the formal article URL, draft URL absence, formal RSS/search membership,
+   cross-source exclusivity, and the run conclusion. Report the formal URL.
 
 Publishing an external article directly to formal is allowed when explicitly
 requested. Otherwise new writing belongs in mindindex. Never bulk-promote the

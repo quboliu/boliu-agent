@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // blog.mjs — source operations for the formal blog and private mindindex drafts.
 // Usage: node blog.mjs [--site formal|draft] <command> [args]
-// This script never commits, pushes, pulls, switches branches, or deletes posts.
+// This script never commits, pushes, pulls, or switches branches. Promotion moves one complete post directory.
 // `preflight` contacts GitHub and runs `git fetch`, but never changes blog
 // content or the working tree. `prepare` and `apply` do write blog content.
 // Git operations that change publication state remain the calling agent's job
@@ -723,7 +723,7 @@ function cmdConfig(repoPath) {
   );
 }
 
-/** Prepare a publication without deleting the recoverable draft copy. */
+/** Move one post to formal; the committed draft history remains recoverable. */
 function cmdPromote(id) {
   if (SITE !== "formal") fail("promote requires --site formal");
   if (!/^\d{4,}$/.test(id)) fail("expected a numeric post id such as 0205");
@@ -736,13 +736,13 @@ function cmdPromote(id) {
   if (!filename) fail("draft post not found: " + id);
   const raw = fs.readFileSync(path.join(source, filename), "utf8");
   if (!/^---\r?\n[\s\S]*?\r?\n---/.test(raw)) fail("draft has no valid frontmatter");
-  fs.cpSync(source, destination, { recursive: true, force: false, errorOnExist: true });
+  fs.renameSync(source, destination);
   const updated = raw.replace(/^(---\r?\n)([\s\S]*?)(\r?\n---)/, (_, open, fm, close) => {
     const metadata = /^draft:/m.test(fm) ? fm.replace(/^draft:.*$/m, "draft: false") : fm + "\ndraft: false";
     return open + metadata + close;
   });
   fs.writeFileSync(path.join(destination, filename), updated);
-  console.log(`COPIED_FOR_PUBLICATION ${id}\n  source retained: ${source}\n  destination: ${destination}\n  Review dates, internal links and assessment records; build both sites before removing the draft.`);
+  console.log(`MOVED_FOR_PUBLICATION ${id}\n  source removed: ${source}\n  destination: ${destination}\n  Review dates, internal links and assessment records; build both sites before committing.`);
 }
 
 // ---------- main ----------
@@ -755,7 +755,7 @@ const usage = `usage: node blog.mjs [--site formal|draft] <command>
   prepare <file.md>  create a new numbered post (frontmatter + assets), no commit
   apply <file.md>    update an existing source post with local content
   list               list selected source posts (id, date, title)
-  promote <id>       copy a draft and all assets to formal; keep draft until validated
+  promote <id>       move a draft and all assets to formal; never retain both copies
   config <path>      persist the selected site clone location (preserves the other)
   which-repo         print the resolved blog repo path and target repo`;
 

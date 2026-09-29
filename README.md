@@ -37,7 +37,7 @@ Entry: [`skills/paparazzi/SKILL.md`](skills/paparazzi/SKILL.md)
 
 ### blog-publish
 
-Manages private drafts in `quboliu/mindindex` and formal articles in `quboliu/quboliu.github.io`: checks both repositories, refreshes draft previews through the shared Pages deployment, and promotes finished articles with their IDs and assets intact. Distinguishes source membership from live publication and follows the user’s authorized destination and scope.
+Manages private drafts in `quboliu/mindindex` and formal articles in `quboliu/quboliu.github.io`: checks both repositories, refreshes draft previews through the shared Pages deployment, and moves finished articles with their IDs and assets intact, enforcing one source repository per article. Distinguishes source membership from live publication and follows the user’s authorized destination and scope.
 
 Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
 
