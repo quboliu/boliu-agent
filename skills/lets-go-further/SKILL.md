@@ -42,9 +42,11 @@ made by quboliu
   code block. The `lang` class is mandatory input to the Typst raw block and may
   not be dropped during conversion.
 - Syntax highlighting is a release requirement for every language-tagged code
-  block. Use a supported Typst theme or a tested local highlighting mapping;
-  probe the installed Typst version before choosing a theme API. Never use
-  `theme: none` or an equivalent neutral override in a production edition.
+  block with a supported syntax grammar. Use a supported Typst theme or a
+  tested local highlighting mapping; probe the installed Typst version before
+  choosing a theme API. Never use `theme: none` or an equivalent neutral
+  override in a production edition. Preserve `plain` blocks as intentionally
+  neutral while still preserving their language class.
 - Verify highlighting in representative Go, shell, SQL, and JSON samples. The
   check must confirm both that language tags survive conversion and that the
   rendered PDF contains visibly colored syntax tokens; a colored title bar or
@@ -55,8 +57,8 @@ made by quboliu
   uncaptained figures. They are placed at 80% of the live width with preserved
   aspect ratio.
 - The source image named `cover.png` is the original cover asset and is used
-  directly for this private edition. Do not replace it with a newly generated
-  publisher cover or an unrelated historical illustration.
+  directly as the only cover for this private edition. Do not add a second
+  generated publisher cover or replace it with an unrelated illustration.
 
 ## Non-negotiable visual acceptance gates
 
@@ -78,7 +80,7 @@ made by quboliu
   of quality.
 - The final release audit records the contents-page review and representative
   highlighted-code review for English, Chinese, and bilingual editions. If a
-  language-tagged block has no colored syntax tokens, or if any contents page
+  syntax-supported block has no colored syntax tokens, or if any contents page
   has a visual or reference defect, stop and fix the converter/template before
   regenerating and auditing the PDFs again.
 

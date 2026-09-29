@@ -725,9 +725,6 @@ build_command = "typst compile --root . --font-path assets/fonts book/main.typ {
 source_cover_status = "supplied-original-private-use"
 source_cover_path = "assets/covers/source/source-cover.png"
 source_cover_sha256 = "fc7c7c1ecf32165f74c30fda31650ed5c6ccb2483945088bfe11184e62106d21"
-publisher_cover_artwork = "assets/covers/boliu/charles-babbage-stipple-engraving.jpg"
-publisher_cover_artwork_license = "CC BY 4.0"
-publisher_cover_artwork_credit = "Charles Babbage, stipple engraving by Roffe, 1833; Wellcome Collection, V0000258, via Wikimedia Commons; CC BY 4.0."
 fonts = ["DejaVu Serif", "DejaVu Sans", "DejaVu Sans Mono", "Noto Serif CJK SC"]
 font_license_record = "assets/fonts/readme.md"
 gutter_allowance_mm = 19
@@ -754,15 +751,12 @@ def make_main(workspace: Path, edition: str, chapters: list[Chapter]) -> None:
     if edition == "en":
         title = "Let's Go Further"
         source_version = "Original source: Alex Edwards, version 1.24.0"
-        publisher_edition = "English edition · boliu-b5-2"
     elif edition == "dual":
         title = "Let's Go Further / 更进一步"
         source_version = "Original source: Alex Edwards, version 1.24.0"
-        publisher_edition = "English–Chinese bilingual edition · boliu-b5-2"
     else:
         title = "更进一步"
         source_version = "Original source: Alex Edwards, version 1.24.0"
-        publisher_edition = "Chinese edition · boliu-b5-2"
     includes = "\n".join(f'#include "chapters/{chapter.typst_name}"' for chapter in chapters)
     copyright_text = {
         "en": "Source: Let's Go Further by Alex Edwards, version 1.24.0. Source EPUB and PDF supplied in the raw authority. Typeset as a boliu-b5-2 private-use production proof; the supplied original cover is retained at the user's direction.",
@@ -779,14 +773,6 @@ def make_main(workspace: Path, edition: str, chapters: list[Chapter]) -> None:
   "{AUTHOR}",
   "{source_version}",
   original-cover: "/assets/covers/source/source-cover.png",
-)
-#boliu-cover(
-  "{title}",
-  "{AUTHOR}",
-  "{source_version}",
-  "{publisher_edition}",
-  artwork: "/assets/covers/boliu/charles-babbage-stipple-engraving.jpg",
-  artwork-credit: "Charles Babbage, Roffe, 1833; Wellcome Collection V0000258; CC BY 4.0",
 )
 
 #copyright-page[
