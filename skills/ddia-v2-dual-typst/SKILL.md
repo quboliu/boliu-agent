@@ -8,7 +8,7 @@ description: Maintain the DDIA V2 English-Chinese dual-language Typst book, incl
 made by quboliu
 
 Use this skill for every translation, layout, sample, or PDF-export task in the
-`DDIA-V2-Typest-dual` project. Treat this file and
+`ddia-v2-typest-dual` project. Treat this file and
 `references/layout-decisions.md` as the project-specific source of truth. For
 translation work, read `references/terminology.md` before editing any chapter;
 it is the shared terminology baseline for all agents. The general Typst skill
@@ -23,7 +23,7 @@ font pairing, macro names, and documented source anomalies override the core.
 
 ## Scope and invariants
 
-- Work in `DDIA-V2-Typest-dual/`; leave the original `DDIA-V2-Typest/` tree
+- Work in `ddia-v2-typest-dual/`; leave the original `ddia-v2-typest-en/` tree
   unchanged unless the user explicitly asks otherwise.
 - Preserve the source's structure, numbering, links, code, figures, and table
   geometry. A bilingual change should add translation, not redesign the book.
@@ -100,7 +100,7 @@ font pairing, macro names, and documented source anomalies override the core.
 
 ## Verification workflow
 
-1. Treat `DDIA-V2/**/*.md` as the independent content authority when it is
+1. Treat `ddia-v2-markdown/**/*.md` as the independent content authority when it is
    available. Compare it directly with the bilingual Typst; do not validate the
    bilingual source only against the monolingual Typst from which it was copied.
    Preserve visible Markdown links, including each distinct target in glossary
@@ -148,3 +148,33 @@ confirmed rules separately from unresolved questions, and include the sample
 version that demonstrated the correction when useful. Before a later sample
 or full-book export, reread this skill and the decision log so old layout bugs
 are not reintroduced.
+
+## DDIA cover and export identity (user decision, 2026-09-30)
+
+- Keep the recognizable leaping wild boar from DDIA's original cover, redrawn
+  with the built-in Image Gen tool in comic/cartoon style. Preserve its animal
+  identity and energetic pose; save the generated illustration in the project.
+- Keep both original authors, exactly `Martin Kleppmann` and `Chris Riccomini`,
+  and the original book's `Second Edition` / `第二版`. These are distinct from
+  the local study/typesetting release number.
+- Add `quboliu`, the date of the current successful export (`YYYY-MM-DD`), and
+  the local release version on the cover. The user selected `v1.0.0` as the
+  initial release. Increment the patch version for later successful formal
+  exports unless the user supplies a different version; previews and failed
+  builds do not advance it. Capture one date/version for the whole build.
+- Keep authorship and edition credits separate: `quboliu` is the study edition
+  credit, not a replacement for the original authors. Typeset all text and
+  export metadata with Typst rather than baking it into the generated image.
+- `references/edition.json` stores the last successful export identity.
+  `tools/export_all_pdfs.py` passes that build's version/date to Typst, validates
+  all outputs before publication, and records the successful identity. A
+  direct preview compile reuses the stored identity without advancing it.
+- This explicit user cover decision overrides the production core's generic
+  unchanged-original-cover / historical-portrait requirements for this DDIA
+  study edition. Preserve the current cover/blank-verso sequence; do not add
+  unrelated mandatory cover matter.
+- Inspect the rendered cover for complete animal anatomy, author names,
+  edition, release credit/date/version, and text/image collisions. Do not add
+  publisher endorsements. Any EPUB cover generated later uses the same
+  illustration and export identity rather than a stale separate design.
+- Newly created or renamed project paths use lowercase English letters.

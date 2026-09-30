@@ -242,3 +242,5 @@ when the user confirms a new translation or typesetting rule.
   bilingual containers; and normalized eight Chapter 2 list groups into
   complete English–Chinese semantic units. The full PDF and all 17 chapter
   PDFs were rebuilt.
+
+- 2026-09-30 用户指定 DDIA 新封面：Image Gen 漫画野猪保留原动物与跃起姿态；保留 Martin Kleppmann、Chris Riccomini 和 Second Edition / 第二版；新增 quboliu、当前成功导出日期及本地版本号（从 v1.0.0 起步）。文字采用 Typst 排版，日期/版本每次正式导出捕获一次，成功后递增 patch 的发布记录才生效；预览和失败不递增。此明确用户决定覆盖通用技能的原封面/历史人物封面策略。
