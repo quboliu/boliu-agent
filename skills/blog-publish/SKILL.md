@@ -171,9 +171,20 @@ use the destination's deployment flow. Report which source and URL changed.
 
 ## Verify and finish
 
-For both sites, Chinese translations (including quotations, captions, footnotes
-and inline emphasis) must be upright. All blockquote descendants must be upright.
-Use bold for Chinese emphasis; preserve original English italics when appropriate.
+For any bilingual article or typography change, read
+[references/bilingual-style.md](references/bilingual-style.md). Both sites follow
+the DDIA dual edition: complete English semantic units followed by their Chinese
+translations, equal body size/color/spacing, and single paired headings, captions,
+notes, and footnotes. Mark paired articles `bilingual: true`; use explicit language
+containers rather than formatting translations as quotations. Keep the shared
+renderer, CSS and content checker synchronized between the two repositories.
+
+Chinese translations (including quotations, captions, footnotes and inline
+emphasis) must be upright. All blockquote descendants must be upright. Use bold
+for Chinese emphasis; preserve original English italics when appropriate. Keep
+math and code out of emphasis conversion. On a bulk migration, compare original
+code, equations, table cells, assets, footnote identifiers, and heading anchors;
+inspect nested lists and pair comments by their original reply hierarchy.
 
 Verify the actual rendered page when typography or routing changes. Check image
 loading, internal links and the appropriate search index; a successful build alone
