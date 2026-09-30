@@ -188,6 +188,11 @@ math and code out of emphasis conversion. On a bulk migration, compare original
 code, equations, table cells, assets, footnote identifiers, and heading anchors;
 inspect nested lists and pair comments by their original reply hierarchy.
 
+All article prose (monolingual and bilingual) uses justified paragraphs and list
+text with naturally aligned final lines; preserve existing fonts, sizes and line
+heights. Enable language-aware hyphenation for prose while keeping headings and
+code at their original alignment.
+
 Verify the actual rendered page when typography or routing changes. Check image
 loading, internal links and the appropriate search index; a successful build alone
 does not prove these work. Report source changes and live deployment separately.
