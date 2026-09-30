@@ -175,7 +175,9 @@ For any bilingual article or typography change, read
 [references/bilingual-style.md](references/bilingual-style.md). Both sites follow
 the DDIA dual edition: complete English semantic units followed by their Chinese
 translations, equal body size/color/spacing, and single paired headings, captions,
-notes, and footnotes. Mark paired articles `bilingual: true`; use explicit language
+notes, and footnotes. This is a layout migration: preserve the blog’s existing
+font families, font sizes, line heights and heading colors; do not introduce book
+fonts or size scales. Mark paired articles `bilingual: true`; use explicit language
 containers rather than formatting translations as quotations. Keep the shared
 renderer, CSS and content checker synchronized between the two repositories.
 
