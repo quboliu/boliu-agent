@@ -58,9 +58,13 @@ extraction in the book-local skill; manual content audits remain necessary.
 
 ## Deterministic build and regeneration
 
-Pin Typst, converter/package versions, source snapshots and font files. Set a
-fixed `SOURCE_DATE_EPOCH` or `--creation-timestamp`, record that value in
-`book.toml`, and document a single root-relative build command. Make packages
+Pin Typst, converter/package versions, source snapshots and font files. Capture
+one current UTC timestamp per new export batch, use its epoch for
+`--creation-timestamp` and pass its visible `YYYY-MM-DD HH:mm:ss UTC` form through
+`--input export-timestamp=...` to every cover. Persist both values in the build
+record. An explicitly fixed `SOURCE_DATE_EPOCH` is for intentionally replaying
+the same batch, not for labeling a newly exported PDF with an old timestamp.
+Document a single root-relative build command in `book.toml`. Make packages
 available reproducibly; avoid unspecified network or system-font dependencies.
 Build twice with identical inputs and compare SHA-256; investigate differences
 before promising byte reproducibility. Do not replace evidence with the phrase

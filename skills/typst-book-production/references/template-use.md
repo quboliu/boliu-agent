@@ -10,7 +10,9 @@ default. Keep any vendored, redistribution-permitted fonts in `assets/fonts/`
 and compile with an explicit font path, for example:
 
 ```sh
-typst compile --root . --font-path assets/fonts book/main.typ output/build/book.pdf
+typst compile --root . --font-path assets/fonts \
+  --input "export-timestamp=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" \
+  book/main.typ output/build/book.pdf
 ```
 
 Treat an unknown-font warning or fallback in the PDF as a failed build, not a
@@ -55,6 +57,12 @@ edition-to-art 5mm. Both profiles reserve at least 6mm before the source credits
 Choose the first fitting profile; never shrink below the declared minimum.
 If none fits, compilation stops for a reviewed project cover layout. Record
 the selected title size/profile in the proof and inspect both physical pages.
+
+Both covers also carry the current batch's visible `PDF export:` timestamp in
+the bottom margin. Supply it with `--input export-timestamp=...`; omission or
+malformed input is a compile error. Capture the UTC instant once per batch and
+reuse it for all editions and for deterministic rebuilds. Preserve original
+cover bytes; do not add a page or edit source artwork merely to stamp it.
 
 The entry files are intentionally thin:
 

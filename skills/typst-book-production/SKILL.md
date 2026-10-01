@@ -184,6 +184,17 @@ unless the book contract defines a different policy.
 
 ## Build and verify
 
+Every Typst PDF export must carry a visible, searchable timestamp on each
+cover page (user rule, 2026-10-01). Capture one actual build-batch instant,
+format it as `YYYY-MM-DD HH:mm:ss UTC`, and pass
+`--input "export-timestamp=..."` to the compiler. The cover helpers reject a
+missing or malformed value. Preserve source-cover image bytes and geometry;
+the timestamp is additional native Typst text in the bottom margin, not a
+modification of the original artwork. A filename, mtime, hidden PDF metadata,
+publication date, or an old export identity is not a substitute. Two-cover
+books stamp both covers without inserting pages. Record the timestamp with
+the build command; a repeated deterministic build explicitly reuses it.
+
 For requested fact-checking, corrections, or version updates, read
 [content audit](references/content-audit.md). Keep author text immutable and
 inject accepted editorial notes from a separately reviewed sidecar. Verify exact

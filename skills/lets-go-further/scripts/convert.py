@@ -721,7 +721,7 @@ typst_version = "0.15.1"
 typst_entry = "book/main.typ"
 template = "book/template.typ"
 output_pdf = "{output}"
-build_command = "typst compile --root . --font-path assets/fonts book/main.typ {output}"
+build_command = 'export_epoch=$(date -u +%s); export_stamp=$(date -u -d "@$export_epoch" "+%Y-%m-%d %H:%M:%S UTC"); typst compile --root . --font-path assets/fonts --creation-timestamp "$export_epoch" --input "export-timestamp=$export_stamp" book/main.typ {output}'
 source_cover_status = "supplied-original-private-use"
 source_cover_path = "assets/covers/source/source-cover.png"
 source_cover_sha256 = "fc7c7c1ecf32165f74c30fda31650ed5c6ccb2483945088bfe11184e62106d21"

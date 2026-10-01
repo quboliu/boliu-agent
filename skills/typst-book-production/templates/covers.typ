@@ -4,6 +4,21 @@
 
 #import "core.typ": accent, display-face, faint, page-role
 
+// Visible build identity, independent of original publication/source dates.
+// Fail closed rather than silently stamping yesterday's release or a date only.
+#let export-timestamp() = {
+  let value = sys.inputs.at("export-timestamp", default: none)
+  assert(value != none, message: "Missing cover export timestamp; pass --input export-timestamp=YYYY-MM-DD HH:mm:ss UTC")
+  assert(value.contains(regex("^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} UTC$")), message: "Invalid export-timestamp; use YYYY-MM-DD HH:mm:ss UTC")
+  value
+}
+
+#let cover-export-stamp() = place(bottom + center, dy: 13mm)[
+  #block(fill: white, inset: (x: 3pt, y: 2pt))[
+    #text(font: display-face, size: 7pt, fill: luma(75), hyphenate: false)[PDF export: #export-timestamp()]
+  ]
+]
+
 // Test the whole composition at finite width before emitting one full page.
 // Exhausting the reviewed type scale is an error, never a spill or tiny title.
 #let fitted-cover(top, sizes, bottom: []) = layout(size => {
@@ -28,6 +43,7 @@
   set page(header: none, footer: none)
   set text(hyphenate: false)
   set par(justify: false)
+  cover-export-stamp()
   if original-cover != none {
     align(center + horizon)[#image(original-cover, width: 100%, height: 100%, fit: "contain")]
   } else {
@@ -52,6 +68,7 @@
   set page(header: none, footer: none)
   set text(hyphenate: false)
   set par(justify: false)
+  cover-export-stamp()
   let upper(title-size) = {
   let compact = title-size < 24pt
   let art-height = if compact { 70mm } else { 83mm }

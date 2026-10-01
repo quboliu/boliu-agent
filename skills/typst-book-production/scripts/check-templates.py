@@ -17,6 +17,7 @@ for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "origina
     fixture = "stress" if mode == "original-cover" else mode
     run = subprocess.run(
         ["typst", "compile", "--root", str(root), "--font-path", args.font_path,
+         "--input", "export-timestamp=2026-10-01 00:00:00 UTC",
          "--input", "original=" + str(mode == "original-cover").lower(),
          str(root / "examples" / (fixture + ".typ")), str(pdf)],
         capture_output=True, text=True, check=True)
@@ -35,6 +36,7 @@ for mode in ("monolingual-zh", "monolingual-en", "bilingual", "stress", "origina
     else:
         assert doc[0].get_drawings(), "Original SVG cover missing"
     assert "伯流出版社" in doc[1].get_text()
+    assert all("2026-10-01 00:00:00 UTC" in doc[i].get_text() for i in (0, 1))
     assert "NOT FOR RELEASE" in doc[1].get_text()
     assert doc[2].get_text().strip(), "Unwanted blank before first chapter"
     if mode == "structure":

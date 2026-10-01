@@ -14,6 +14,7 @@ class LayoutRegressions(unittest.TestCase):
         self.addCleanup(temp.cleanup)
         pdf = Path(temp.name) / "proof.pdf"
         result = subprocess.run(["typst", "compile", "--root", str(root),
+                                 "--input", "export-timestamp=2026-10-01 00:00:00 UTC",
                                  "--font-path", os.environ["BOLIU_FONT_PATH"], "-", str(pdf)],
                                 input=f'#import "/{edition}.typ": *\n#show: book\n'+body,
                                 text=True, capture_output=True)
@@ -42,12 +43,26 @@ class LayoutRegressions(unittest.TestCase):
                 self.assertIn("PUBLISHER-SOURCE", doc[1].get_text())
                 self.assertIn("ART-CREDIT", doc[1].get_text())
                 self.assertIn("BODY-MARKER", doc[2].get_text())
+                self.assertTrue(all("2026-10-01 00:00:00 UTC" in doc[i].get_text() for i in (0, 1)))
+                self.assertNotIn("PDF export:", doc[2].get_text())
                 self.assertNotIn("\u00ad", doc[1].get_text())
                 self.assertTrue(doc[1].get_drawings())
 
     def test_impossible_cover_rejected(self):
         self.compile('#boliu-cover("Title " * 1000, "Author", "Source", "Edition")', success=False)
         self.compile('#source-cover("Title " * 1000, "Author", "Source")', success=False)
+
+    def test_cover_timestamp_required_and_formatted(self):
+        root = Path(__file__).resolve().parents[1] / 'templates'
+        for stamp, message in [(None, 'Missing cover export timestamp'), ('2026-10-01', 'Invalid export-timestamp')]:
+            with self.subTest(stamp=stamp), tempfile.TemporaryDirectory() as temp:
+                args = ['typst', 'compile', '--root', str(root), '--font-path', os.environ['BOLIU_FONT_PATH']]
+                if stamp is not None:
+                    args += ['--input', 'export-timestamp=' + stamp]
+                args += ['-', str(Path(temp) / 'invalid.pdf')]
+                result = subprocess.run(args, input='#import "/monolingual-en.typ": *\n#show: book\n#source-cover("Title", "Author", "Source")', text=True, capture_output=True)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(message, result.stderr)
 
     def test_explicit_roles_with_changed_margins(self):
         doc = self.compile('#set page(margin: (top: 35mm, bottom: 25mm, inside: 24mm, outside: 18mm))\n'

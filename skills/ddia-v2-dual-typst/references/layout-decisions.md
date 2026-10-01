@@ -5,6 +5,8 @@ when the user confirms a new translation or typesetting rule.
 
 ## Confirmed
 
+- 2026-10-01：每次 PDF 编译导出，封面必须增加本次编译批次的完整 UTC 时间戳（日期、时分秒、时区），通过 `--input export-timestamp=...` 显式注入；原书出版日期与本地 release 日期不能代替。保持现有漫画野猪、作者、第二版、quboliu、本地版本号和封面/空白页序列不变。完整本导出可独立于分章节导出，必须在成功验证后才更新本地发布身份。
+
 - Bilingual-only work normally remains in `DDIA-V2-Typest-dual`. For the
   2026-08-21 heading-hierarchy repair, the user explicitly required the
   semantic heading levels to stay synchronized across `DDIA-V2`,
