@@ -11,11 +11,31 @@
 #let accent = rgb("#1a5276")
 #let ink-gray = luma(70)
 #let faint = luma(120)
-#let display-face = ("DejaVu Sans", "Noto Serif CJK SC")
+#let display-face = ("DejaVu Sans", "Noto Sans CJK SC")
 #let mono-face = "DejaVu Sans Mono"
 #let math-face = "New Computer Modern Math"
 #let body-leading = 0.68em
 #let paragraph-gap = 1.1em
+
+// Language changes must never replace the Latin face or shrink Latin glyphs.
+#let cjk-pattern = regex("[\\p{Han}\\u{3000}-\\u{303f}\\u{ff01}-\\u{ff0f}\\u{ff1a}-\\u{ff20}\\u{ff3b}-\\u{ff40}\\u{ff5b}-\\u{ff65}“”‘’]+")
+#let zh-content(body, cjk-font: none, cjk-size: none) = {
+  set text(lang: "zh")
+  if cjk-font != none or cjk-size != none {
+    show cjk-pattern: it => context {
+      let fonts = if type(text.font) == array { text.font } else { (text.font,) }
+      let protected = fonts.any(f => {
+        let name = if type(f) == dictionary { f.name } else { f }
+        (lower(mono-face), lower(math-face)).contains(lower(name))
+      })
+      if protected { it } else {
+        text(font: if cjk-font == none { text.font } else { cjk-font },
+          size: if cjk-size == none { text.size } else { cjk-size }, it)
+      }
+    }
+    body
+  } else { body }
+}
 
 #let page-role(role, running: []) = metadata((kind: "boliu-page", role: role, running: running))
 

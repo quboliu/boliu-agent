@@ -48,6 +48,21 @@ meaningful emphasis; never use color as the sole carrier of information.
   two columns with a recorded gutter; bilingual prose remains sequential.
 - Declare font chains for Latin, Chinese, code, and math. CJK headings must have
   an explicit Chinese face. Chinese body remains 10pt, equal to English.
+- Latin words, abbreviations, digits, versions and ordinary URLs embedded in
+  Chinese use the same Latin face, size, weight and style as English in the
+  same semantic role. Never switch an entire Chinese block to a CJK font.
+  Use Latin-first font chains and the shared `zh-content` helper for CJK-only
+  optical adjustments. Preserve each component's own scale: prose, headings,
+  contents, lists, table cells, captions, notes, footnotes and indexes.
+- CJK optical compensation affects CJK glyphs only, including Chinese
+  punctuation. It must not shrink Latin terms or inline code. Code and math
+  keep their declared faces and sizes; lists have a separate `dual-list`
+  helper and must not borrow caption typography.
+- Verify actual PDF character fonts and sizes, including matching bold/italic
+  terms and digits in both language blocks. Reject Latin letters/digits drawn
+  by CJK faces, unreviewed fallback and component-specific bypasses. Run
+  `scripts/audit_mixed_fonts.py --pdf <pdf> --report <json>` and inspect dense
+  mixed-script pages; font statistics cannot replace visual proof.
 - Chinese punctuation stays with its phrase: no opening punctuation at line
   ends or closing punctuation at line starts. Remove extraction-induced CJK
   spaces narrowly; never normalize identifiers or URLs as prose.

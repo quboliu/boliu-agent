@@ -25,6 +25,12 @@ paragraph starts (explicitly zero first-line indent) in all three editions,
 with paragraph spacing. It defines code, equations, tables, images, punctuation,
 pagination, front matter, and measurable release gates. Implement decisions in
 the shared templates and verify output, not only written instructions.
+Mixed Chinese/Latin typography must follow the content role, not the paragraph
+language: translated Latin words and digits use the corresponding English
+face, size, weight and style. CJK optical compensation applies only to CJK
+glyphs. Read the mixed-script rules in editorial style and run the character
+font audit; identical nominal point sizes alone are not proof of consistency.
+
 Figure captions use centered text by default, including every language of a
 bilingual caption; center the complete image-and-caption group.
 

@@ -63,3 +63,13 @@ by the generic validator and must be verified in the actual project.
 Record source coverage, unresolved anomalies, inspected pages, output checksum,
 and the build command in the release record. A clean compile alone does not
 establish fidelity or reading quality.
+
+## Mixed Chinese/Latin type
+
+Run `scripts/audit_mixed_fonts.py --pdf <current-pdf> --report <json>` on the
+actual complete PDF. This checks visible Latin characters and digits in CJK
+faces across all pages. Pair fixtures also verify matching Latin faces, sizes,
+bold/italic styles, component scales and code/math exceptions. Inspect source
+examples, dense lists, tables, captions, footnotes, headings, contents and the
+index after any font change. A zero count does not by itself prove every
+component has the right size.

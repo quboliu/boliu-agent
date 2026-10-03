@@ -3,36 +3,31 @@
 #import "covers.typ": source-cover, boliu-cover
 
 #let book = boliu-book.with(body-font: ("Libertinus Serif", "Noto Serif CJK SC"), body-lang: "en")
-
 #let dual-paragraph-gap = paragraph-gap
-
-#let dual(en, zh, text-size: body-size) = [
+#let dual-zh-body-size = none
+#let dual(en, zh, cjk-size: dual-zh-body-size) = [
   #en#parbreak()
-  #text(font: "Noto Serif CJK SC", size: text-size, lang: "zh")[#zh]
+  #zh-content(cjk-size: cjk-size)[#zh]
   #parbreak()
 ]
-
+#let dual-list(en, zh) = [
+  #en#linebreak()
+  #zh-content(cjk-size: dual-zh-body-size)[#zh]
+]
 #let dual-heading(level, en, zh) = heading(level: level)[
-  #en
-  #linebreak()
-  #text(font: "Noto Serif CJK SC", lang: "zh")[#zh]
+  #show cjk-pattern: set text(style: "normal")
+  #en#linebreak()
+  #zh-content(cjk-font: "Noto Sans CJK SC")[#zh]
 ]
-
 #let dual-caption(en, zh) = [
-  #en
-  #linebreak()
-  #text(font: "Noto Serif CJK SC", lang: "zh")[#zh]
+  #en#linebreak()
+  #zh-content[#zh]
 ]
-
 #let dual-note(en, zh) = book-note[
-  #en
-  #v(6pt)
-  #text(font: "Noto Serif CJK SC", lang: "zh")[#zh]
+  #en#v(6pt)
+  #zh-content[#zh]
 ]
-
-// Retain the shared 8pt note size. Optical reductions are book-specific.
 #let dual-footnote(en, zh) = footnote[
-  #en
-  #v(2pt)
-  #text(font: "Noto Serif CJK SC", lang: "zh")[#zh]
+  #en#v(2pt)
+  #zh-content[#zh]
 ]

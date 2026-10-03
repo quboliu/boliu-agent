@@ -71,7 +71,9 @@ style, gray/blue restrained palette, figure and table rules, and cover sequence.
   the same 10 pt, leading, and paragraph spacing. English normally precedes
   Chinese. Use a shared semantic heading and caption pair; do not use coloured
   translation boxes. A small-size CJK optical adjustment may apply only to the
-  specifically tested component and font pairing.
+  specifically tested component and font pairing. It applies only to CJK glyphs;
+  Latin terms and digits retain the corresponding English role’s face, size
+  and emphasis. Use Latin-first font chains in Chinese and bilingual editions.
 
 ## Cover sequence
 
