@@ -25,6 +25,8 @@ paragraph starts (explicitly zero first-line indent) in all three editions,
 with paragraph spacing. It defines code, equations, tables, images, punctuation,
 pagination, front matter, and measurable release gates. Implement decisions in
 the shared templates and verify output, not only written instructions.
+Figure captions use centered text by default, including every language of a
+bilingual caption; center the complete image-and-caption group.
 
 Every complete-book PDF must support direct duplex printing: portrait pages in
 reading order, left binding, long-edge flip, mirrored inside/outside margins,

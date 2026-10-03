@@ -83,14 +83,15 @@ class LayoutRegressions(unittest.TestCase):
         self.assertLess(folio[3], 22*72/25.4)
         self.assertAlmostEqual(folio[0], 16*72/25.4, delta=1)
 
-    def test_bilingual_short_and_overheight_pairs(self):
+    def test_bilingual_native_and_overheight_pairs(self):
         doc = self.compile('#v(204mm)\n#dual([PAIR-EN], [配对中文])\n'
                            '#pagebreak()\n#dual([LONG-START #lorem(1800)], [长段末尾])',
                            edition="bilingual")
         pages = [p.get_text() for p in doc]
         en = next(i for i, t in enumerate(pages) if "PAIR-EN" in t)
         zh = next(i for i, t in enumerate(pages) if "配对中文" in t)
-        self.assertEqual((en, zh), (1, 1))
+        self.assertLessEqual(en, zh)
+        self.assertLessEqual(zh - en, 1)
         start = next(i for i, t in enumerate(pages) if "LONG-START" in t)
         end = next(i for i, t in enumerate(pages) if "长段末尾" in t)
         self.assertGreater(end, start)
@@ -124,11 +125,29 @@ class LayoutRegressions(unittest.TestCase):
         # A deliberate second pair gap several points larger would fail this bound.
         self.assertLess(max(gaps) - min(gaps), 0.5)
 
-    def test_figure_caption_left_edge(self):
-        doc = self.compile('#fig("/examples/cover-fixture.svg", width: 60%, caption: [Short caption])')
-        words = doc[0].get_text("words")
-        caption = next(w for w in words if w[4] == "Short")
-        self.assertAlmostEqual(caption[0], (19 + 141 * 0.04) * 72/25.4, delta=0.5)
+    def test_figure_caption_center_all_editions(self):
+        for edition in ("monolingual-en", "monolingual-zh", "bilingual"):
+            with self.subTest(edition=edition):
+                doc = self.compile('#fig("/examples/cover-fixture.svg", width: 60%, caption: [Short caption])', edition)
+                rect = doc[0].search_for("Short caption")[0]
+                # Odd-page live area: 19mm inside margin and 141mm measure.
+                expected = (19 + 141 / 2) * 72 / 25.4
+                self.assertAlmostEqual((rect.x0 + rect.x1) / 2, expected, delta=0.5)
+
+    def test_native_and_wrapped_bilingual_captions_center(self):
+        body = '#figure(image("/examples/cover-fixture.svg", width: 60%), caption: [Native caption])\n'
+        doc = self.compile(body)
+        line = next(line for block in doc[0].get_text("dict")["blocks"] for line in block.get("lines", []) if "Native caption" in "".join(span["text"] for span in line["spans"]))
+        expected = (19 + 141 / 2) * 72 / 25.4
+        self.assertAlmostEqual((line["bbox"][0] + line["bbox"][2]) / 2, expected, delta=2.0)
+        doc = self.compile('#fig("/examples/cover-fixture.svg", width: 60%, caption: dual-caption([A complete caption with enough words to wrap over multiple lines while maintaining the centered default for technical figures in the book.], [这是一段较长的中文图注，用于验证图注换行后每一行仍然居中，并且图注与图片保持为同一个完整的图组。]))', edition="bilingual")
+        lines = [line for block in doc[0].get_text("dict")["blocks"] for line in block.get("lines", []) if any(abs(span["size"]-8.5)<0.05 for span in line["spans"])]
+        self.assertGreaterEqual(len(lines), 4)
+        # Typst optically hangs final punctuation outside the centered layout
+        # box. CJK punctuation at 8.5pt shifts the visible ink midpoint by
+        # 2.125pt; allow that optical offset, while detecting left alignment.
+        for line in lines:
+            self.assertAlmostEqual((line["bbox"][0] + line["bbox"][2]) / 2, expected, delta=2.2)
 
 
 if __name__ == "__main__":

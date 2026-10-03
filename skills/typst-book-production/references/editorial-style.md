@@ -122,11 +122,15 @@ reviewed landscape page or a meaningful split. Bilingual copies share geometry.
 
 Prefer vector art for diagrams. Standard widths are 60%, 80%, or 100% of 141mm
 (84.6, 112.8, 141mm), selected for label readability. Preserve aspect ratio.
-Captions: 8.5pt, left/ragged-right within a centered block 92% of live width;
+Captions: 8.5pt, centered text within a centered block 92% of live width;
 4pt below the image; 8pt outer space above/below the figure group.
 The caption width is relative to the live area, not the image.
 Keep image and caption together, within the live height. Oversize figures need
 a dedicated page or documented split, not an unbreakable overflowing block.
+
+Center both single-line and wrapped figure captions by default, including each
+language of a bilingual caption. Keep the complete image and caption group
+centered. Table captions retain their separate above-table policy.
 
 Use native figure labels/references for numbered illustrations. Preserve source
 numbers and bilingual caption correspondence. At final physical size, target

@@ -47,7 +47,7 @@ distinguish inherited measurements below from these deliberate house refinements
 | Running head | `running-head` | 8 pt sans; 3 pt to a 0.4 pt light-gray rule; page number is paired at the outer side |
 | Opener footer | `opener-folio` | centered 8.5 pt; ordinary running head omitted |
 | Block code | `code-block` | 100% live width; 9 pt horizontal / 7 pt vertical inset; square corners; very light gray fill; no syntax colors |
-| Figures | `figure` | vertical space 8 pt above and below; centered; caption 4 pt below image, 92% of live width, 8.5 pt |
+| Figures | `figure` | vertical space 8 pt above and below; centered; caption 4 pt below image, 92% of live width, 8.5 pt, centered text |
 | Tables | `table` | 9 pt text; 6 pt horizontal / 5 pt vertical cell inset; 1 pt top/bottom rules, 0.6 pt header rule, no box grid or striping; 6 pt above/below |
 | Captions | `caption` | 8.5 pt muted gray; attached to the figure or table |
 

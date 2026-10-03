@@ -112,7 +112,7 @@
   set figure(gap: 4pt)
   show figure.caption: set text(size: 8.5pt, fill: ink-gray)
   show figure.caption: set par(justify: false)
-  show figure.caption: it => align(center, block(width: 92%)[#align(left, it)])
+  show figure.caption: it => align(center, block(width: 92%)[#align(center, it)])
   show raw.where(block: true): it => block(
     fill: luma(247),
     inset: (x: 9pt, y: 7pt),
@@ -178,7 +178,7 @@
       #pad(left: 4%, right: 4%)[
         #set text(size: 8.5pt, fill: ink-gray)
         #set par(justify: false)
-        #align(left, caption)
+        #align(center, caption)
       ]
     ]
   ]
