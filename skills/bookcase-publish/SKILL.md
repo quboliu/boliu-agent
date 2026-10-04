@@ -140,6 +140,20 @@ operation temporaries after success; failures retain only the current candidate
 and necessary diagnostics. Preserve reading history. Do not force-push,
 reinitialize or run initial-import/history-sealing commands on a delivered shelf.
 
+As a temporary local storage measure, a normal `publish` runs a wide-window
+delta repack after remote acknowledgement: `git repack -Adf --window=250
+--depth=50`. This only reorganizes local reachable Git objects; it does not
+prune history, rewrite commits, or clean LFS. Retry it manually with:
+
+```bash
+python3 "$BOOKS_ROOT/scripts/bookcase.py" --bookcase "$BOOKCASE_ROOT" repack
+```
+
+If repacking fails after the remote publication was verified, keep the local
+candidate, repair the cause, run `repack`, then run `sync` to clean matching
+published candidates. Do not treat a successful repack as a replacement for
+remote acknowledgement.
+
 For new books, register the complete title, source language, reading project,
 edition, exact filename and build path in source and shelf registries before
 normal publication. Bootstrap commands cannot bypass validation.
