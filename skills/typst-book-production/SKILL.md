@@ -242,6 +242,17 @@ permitted for a fixture but is a release blocker for a book.
 
 ## Project overlays
 
+For books under `mindbuffer/books/`, read
+[bookcase publication](references/bookcase-publication.md) before exporting or
+replacing a reading PDF. Compile into the book's own `output/`, then use the
+bookcase publisher to transfer all saved Highlights annotations before moving
+the PDF into `/share/motecosmos/bookcase/`. Publish only Chinese-original zh and
+English-original dual editions, with the complete title normalized to lowercase
+hyphens plus `-zh.pdf` or `-dual.pdf`; never use abbreviations or generic names.
+Unmatched annotations become notes at the corresponding chapter heading,
+retaining their original excerpts and comments. Enforce migration receipts and
+immediate commit/push in both repositories. Do not create `export/` PDF symlinks.
+
 Every book workspace has a local overlay at
 `.agents/skills/<book-skill-slug>/SKILL.md`. The skill identifier is a stable
 lowercase English slug even when the workspace uses a Chinese original title;
