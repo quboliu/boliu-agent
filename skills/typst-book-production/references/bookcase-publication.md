@@ -21,8 +21,8 @@ Highlights. Read both the books and bookcase `AGENTS.md` before publishing.
    `python3 mindbuffer/books/scripts/bookcase.py publish <book-output-pdf> --reader-closed`.
    This flag records the actual saved/closed operation; it never disables
    annotation validation.
-4. The publisher backs up and immediately commits/pushes the latest saved old
-   PDF, migrates its native annotations, checks the result, atomically replaces
+4. The publisher immediately commits/pushes the latest saved old
+   PDF and verifies remote acknowledgement, migrates its native annotations, checks the result, atomically replaces
    the reading file, and immediately commits/pushes the new file. Only a
    verified remote acknowledgement permits removal of the output candidate.
 5. Commit/push source and policy changes in mindbuffer too. Reopen the new
@@ -63,7 +63,11 @@ User-initiated deletion of notes is legitimate; never revive them from history.
 ## Operational checks
 
 The publisher, Git hooks and reading-change watcher enforce the workflow.
-Never bypass hooks or force-push. Push failures retain local commits and
+Never bypass hooks or rewrite delivered reading history. The user explicitly
+requires this new bookcase to be handed off with one clean initial commit.
+Only its pre-handoff bootstrap history may be consolidated by finalize-import,
+after verifying every registered PDF and absence of subsequent reader changes,
+with an exact remote lease and the hook-approved initial-seal permit. Push failures retain local commits and
 candidates, report pending remote backup and pause further publication.
 The watcher saves stable reader changes immediately after a short write
 debounce. Inspect `.git/bookcase-status.json` and the user service journal.
@@ -72,3 +76,19 @@ Use PyMuPDF and pikepdf for annotation and page validation. Verify native-object
 retention, reflow, chapter fallback, popup/reply links, idempotence, filename
 guards and concurrent writes with the actual publisher regression suite.
 Do not claim that server checks constitute a visual test in Mac Highlights.
+
+## Avoid redundant full-PDF copies
+
+Git history (or Git LFS for large files) is the persistent version store for
+reading PDFs. Do not create initial-import backups, old-PDF publication
+snapshots, previous-version directories or permanent whole-book duplicates.
+Recover the saved old reader PDF from its verified Git commit; migration
+receipts record that commit instead of a local backup path.
+
+Keep only the temporary files needed for migration, deterministic validation
+and atomic replacement. Remove them after success. On failure retain the
+current unpublished candidate and necessary diagnostics, rather than whole
+old-book copies. Do not strip native annotation data or discard meaningful
+Git history to reduce space. Required English/Chinese/bilingual editions and
+user-requested chapter printing are distinct deliverables, not backup copies;
+verify their repeated builds and clean temporary proof outputs.
