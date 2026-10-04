@@ -13,6 +13,7 @@ boliu-agent/
 └── skills/
     ├── paparazzi/
     ├── blog-publish/
+    ├── bookcase-publish/
     ├── ddia-v2-dual-typst/
     ├── deep-concept-research/
     ├── gpt-image-gen/
@@ -41,6 +42,15 @@ Entry: [`skills/paparazzi/SKILL.md`](skills/paparazzi/SKILL.md)
 Manages private drafts in `quboliu/mindindex` and formal articles in `quboliu/quboliu.github.io`: checks both repositories, refreshes draft previews through the shared Pages deployment, and moves finished articles with their IDs and assets intact, enforcing one source repository per article. Distinguishes source membership from live publication and follows the user’s authorized destination and scope.
 
 Entry: [`skills/blog-publish/SKILL.md`](skills/blog-publish/SKILL.md)
+
+### bookcase-publish
+
+Publishes complete reading PDFs through native Highlights annotation migration,
+validated atomic replacement, and immediate Git commit/push. Resolves source
+and shelf locations from machine-local configuration or user confirmation;
+machine paths are kept outside the shared skill.
+
+Entry: [`skills/bookcase-publish/SKILL.md`](skills/bookcase-publish/SKILL.md)
 
 ### ddia-v2-dual-typst
 

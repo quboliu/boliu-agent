@@ -1,0 +1,3 @@
+interface:
+  display_name: "Bookcase Publish"
+  short_description: "Publish reading PDFs with annotation migration and Git sync"
