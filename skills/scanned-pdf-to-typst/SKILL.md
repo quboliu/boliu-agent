@@ -4,7 +4,6 @@ description: Converts scanned or hybrid PDF books into source-traceable, proofre
 ---
 
 # Scanned PDF to Typst
-
 made by quboliu
 
 Treat the rendered page as visual evidence and OCR as an editable hypothesis. Preserve the original PDF unchanged, preserve page identity throughout, and never let a convenient text export silently override what the page shows.

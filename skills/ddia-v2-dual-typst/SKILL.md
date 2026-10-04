@@ -4,7 +4,6 @@ description: Maintain the DDIA V2 English-Chinese dual-language Typst book, incl
 ---
 
 # DDIA V2 dual-language Typst
-
 made by quboliu
 
 Use this skill for every translation, layout, sample, or PDF-export task in the

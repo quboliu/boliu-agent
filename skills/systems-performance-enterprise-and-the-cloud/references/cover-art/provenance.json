@@ -1,0 +1,18 @@
+{
+  "artist": "Claude Monet",
+  "title": "The Japanese Footbridge",
+  "year": 1899,
+  "museum": "National Gallery of Art, Washington",
+  "accession": "1992.9.1",
+  "object_url": "https://www.nga.gov/artworks/74796-japanese-footbridge",
+  "image_url": "https://api.nga.gov/iiif/0b9cefb5-1ee4-401a-8154-8d4039191a28/full/full/0/default.jpg",
+  "rights": "Public domain artwork; NGA Open Access image released under CC0",
+  "rights_url": "https://www.nga.gov/terms-and-notices#open-access-policy",
+  "credit": "Courtesy National Gallery of Art, Washington",
+  "sha256": "d019b97d09febef0a6185e48f282acbdb2b8a60a315fe505fcf33a4bbb741ca4",
+  "width_px": 4096,
+  "height_px": 3302,
+  "crop": "none; preserve entire painting and aspect ratio",
+  "selected_by": "user-authorized classic painting cover, 2026-10-01",
+  "relevance": "A calm visual counterpoint to technical material; bridge, water and reflections suggest connected systems without pretending the painting depicts computing."
+}

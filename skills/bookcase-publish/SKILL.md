@@ -4,7 +4,6 @@ description: Publish validated book reading PDFs to a user-selected private book
 ---
 
 # Bookcase Publish
-
 made by quboliu
 
 Complete the chain from validated book-local output to the reading shelf:

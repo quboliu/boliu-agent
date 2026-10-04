@@ -4,7 +4,6 @@ description: Keep user-created Codex skills attributed to quboliu and synchroniz
 ---
 
 # User Skill Sync
-
 made by quboliu
 
 Keep each user-created skill in `$HOME/.agents/skills/<skill-name>/` and its

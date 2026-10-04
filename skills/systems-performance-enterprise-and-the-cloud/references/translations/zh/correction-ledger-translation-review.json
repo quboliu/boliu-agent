@@ -1,0 +1,1081 @@
+{
+  "timestamp": "2026-10-03 11:43:51 UTC",
+  "scope": "报告缺陷及27文件同类术语扫描；不是逐句全书签核",
+  "corrections": [
+    {
+      "file": "000-front-matter.md",
+      "line": 94,
+      "english": "ePUB is an open, industry-standard format for eBooks. However, support of ePUB and its many features varies across reading devices and applications. Use your device or app settings to customize the presentation to your liking. Settings that you can customize often include font, font size, single or double column, landscape or portrait mode, and figures that you can click or tap to enlarge. For additional information about the settings and features on your reading device or app, visit the device manufacturer’s Web site.",
+      "before": "ePUB 是一种开放的行业标准电子书格式。然而，ePUB 的支持及其许多功能因阅读设备和应用程序而异。使用您的设备或应用程序设置根据您的喜好自定义演示文稿。您可以自定义的设置通常包括字体、字体大小、单列或双列、横向或纵向模式以及可以单击或点击放大的图形。有关阅读设备或应用程序的设置和功能的更多信息，请访问设备制造商的网站。",
+      "after": "ePUB 是一种开放的行业标准电子书格式。然而，ePUB 的支持及其许多功能因阅读设备和应用程序而异。通过设备或应用程序的设置，按个人喜好调整电子书的显示样式。您可以自定义的设置通常包括字体、字体大小、单列或双列、横向或纵向模式以及可以单击或点击放大的图形。有关阅读设备或应用程序的设置和功能的更多信息，请访问设备制造商的网站。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "000-front-matter.md",
+      "line": 96,
+      "english": "Many titles include programming code or configuration examples. To optimize the presentation of these elements, view the eBook in single-column, landscape mode and adjust the font size to the smallest setting. In addition to presenting code and configurations in the reflowable text format, we have included images of the code that mimic the presentation found in the print book; therefore, where the reflowable format may compromise the presentation of the code listing, you will see a “Click here to view code image” link. Click the link to view the print-fidelity code image. To return to the previous page viewed, click the Back button on your device or app.",
+      "before": "许多标题都包含编程代码或配置示例。要优化这些元素的呈现，请以单栏、横向模式查看电子书，并将字体大小调整为最小设置。除了以可重排文本格式呈现代码和配置之外，我们还提供了模仿印刷书中演示的代码图像；因此，在可回流格式可能会影响代码列表的呈现的情况下，您将看到“单击此处查看代码图像”链接。单击链接可查看打印保真度代码图像。要返回到上一个查看的页面，请单击设备或应用程序上的“后退”按钮。",
+      "after": "许多图书都包含编程代码或配置示例。要优化这些元素的呈现，请以单栏、横向模式查看电子书，并将字体大小调整为最小设置。除了以可重排文本格式呈现代码和配置之外，我们还提供了与纸质书中排版一致的代码图片；因此，在可重排格式可能会影响代码清单的呈现的情况下，您将看到“单击此处查看代码图像”链接。单击链接可查看忠实于印刷版排版的代码图片。要返回到上一个查看的页面，请单击设备或应用程序上的“后退”按钮。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "000-front-matter.md",
+      "line": 164,
+      "english": "**[Chapter 6](#ch06-ch06), [CPUs](#ch06-ch06),** covers processors, cores, hardware threads, CPU caches, CPU interconnects, device interconnects, and kernel scheduling.",
+      "before": "**[第 6 章](#ch06-ch06)、[CPU](#ch06-ch06)，**涵盖处理器、内核、硬件线程、CPU 缓存、CPU 互连、设备互连和内核调度。",
+      "after": "**[第 6 章](#ch06-ch06)、[CPU](#ch06-ch06)，**涵盖处理器、核心、硬件线程、CPU 缓存、CPU 互连、设备互连和内核调度。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 554,
+      "english": "| [12.3.8](#ch12-ch12lev3sec8) | Sanity check | Observational analysis |",
+      "before": "| [12.3.8](#ch12-ch12lev3sec8) | 健全性检查 | 观测性分析 |",
+      "after": "| [12.3.8](#ch12-ch12lev3sec8) | 合理性检查 | 观测性分析 |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 735,
+      "english": "#### Procedure",
+      "before": "#### 程序",
+      "after": "#### 实施步骤",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 762,
+      "english": "- **CPUs**: Sockets, cores, hardware threads (virtual CPUs)",
+      "before": "- **CPU**：套接字、内核、硬件线程（虚拟 CPU）",
+      "after": "- **CPU**：处理器插槽、CPU 核心、硬件线程（虚拟 CPU）",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 817,
+      "english": "| Memory | Errors | For example, failed malloc()s (although a default Linux kernel configuration makes this rare due to overcommit) |",
+      "before": "| 内存 | 错误 | 例如，malloc() 失败（尽管默认 Linux 内核配置由于过度使用而导致这种情况很少见） |",
+      "after": "| 内存 | 错误 | 例如，malloc() 失败（尽管默认 Linux 内核配置由于内存超额分配而导致这种情况很少见） |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 1202,
+      "english": "3. Present the results for analysis. The collected data points can be plotted along with the model function to predict scaling and reveal differences between the data and the model. This may also be done using gnuplot or R.",
+      "before": "3. 提出分析结果。收集的数据点可以与模型函数一起绘制，以预测缩放并揭示数据和模型之间的差异。这也可以使用 gnuplot 或 R 来完成。",
+      "after": "3. 呈现结果以供分析。收集的数据点可以与模型函数一起绘制，以预测扩展表现并揭示数据和模型之间的差异。这也可以使用 gnuplot 或 R 来完成。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 1283,
+      "english": "These are the arrival process (*A*), service time distribution (*S*), and number of service centers (*m*). There is also an extended form of Kendall’s notation that includes more factors: number of buffers in the system, population size, and service discipline.",
+      "before": "它们是到达流程（*A*）、服务时间分布（*S*）和服务中心数量（*m*）。肯德尔符号还有一种扩展形式，其中包含更多因素：系统中缓冲区的数量、人口规模和服务纪律。",
+      "after": "它们是到达流程（*A*）、服务时间分布（*S*）和服务中心数量（*m*）。肯德尔符号还有一种扩展形式，其中包含更多因素：系统中缓冲区的数量、顾客源规模和服务规则。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 1335,
+      "english": "The earlier M/D/1 equation has been passed to the `plot()` function. Much of this code specifies limits to the graph, line properties, and axis labels.",
+      "before": "早期的 M/D/1 方程已传递给 `plot()` 函数。此代码的大部分内容指定了对图形、线条属性和轴标签的限制。",
+      "after": "前文给出的 M/D/1 方程已传递给 `plot()` 函数。此代码的大部分内容指定了对图形、线条属性和轴标签的限制。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "003-chapter-03.md",
+      "line": 107,
+      "english": "- **Memory mappings**: Used for demand paging (see [Chapter 7](#ch07-ch07), [Memory](#ch07-ch07), [Section 7.2.3](#ch07-ch07lev2sec3), [Demand Paging](#ch07-ch07lev2sec3)), it can also be used for data stores and other I/O, avoiding syscall overheads.",
+      "before": "- **内存映射**：内存映射用于按需分页（请参阅 [第 7 章](#ch07-ch07)、[内存](#ch07-ch07)、[第 7.2.3 节](#ch07-ch07lev2sec3)、[请求分页](#ch07-ch07lev2sec3)），也可用于数据存储和其他 I/O，从而避免系统调用开销。",
+      "after": "- **内存映射**：内存映射用于按需分页（请参阅 [第 7 章](#ch07-ch07)、[内存](#ch07-ch07)、[第 7.2.3 节](#ch07-ch07lev2sec3)、[按需分页](#ch07-ch07lev2sec3)），也可用于数据存储和其他 I/O，从而避免系统调用开销。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "003-chapter-03.md",
+      "line": 593,
+      "english": "- **[BSD](#gloss-glo-023)**: Paged virtual memory, demand paging, fast file system (FFS), TCP/IP network stack, sockets",
+      "before": "- **[BSD](#gloss-glo-023)**：分页虚拟内存、请求分页、快速文件系统 (FFS)、TCP/IP 网络堆栈、套接字",
+      "after": "- **[BSD](#gloss-glo-023)**：分页虚拟内存、按需分页、快速文件系统 (FFS)、TCP/IP 网络堆栈、套接字",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "005-chapter-05.md",
+      "line": 244,
+      "english": "With an array of adjacent locks in memory, a performance problem can arise when locks fall within the same cache line. Two CPUs updating different locks in the same cache line will encounter cache coherency overhead, with each CPU invalidating the cache line in the other’s cache. This situation is called *false sharing* and is commonly solved by *padding* locks with unused bytes so that only one lock exists in each cache line in memory.",
+      "before": "对于内存中的一系列相邻锁，当锁落入同一高速缓存行时，可能会出现性能问题。两个 CPU 更新同一缓存行中的不同锁将遇到缓存一致性开销，每个 CPU 都会使对方缓存中的缓存行无效。这种情况称为“错误共享”，通常通过使用未使用的字节“填充”锁来解决，以便内存中的每个缓存行中仅存在一个锁。",
+      "after": "对于内存中的一系列相邻锁，当锁落入同一高速缓存行时，可能会出现性能问题。两个 CPU 更新同一缓存行中的不同锁将遇到缓存一致性开销，每个 CPU 都会使对方缓存中的缓存行无效。这种情况称为“伪共享”，通常通过使用未使用的字节“填充”锁来解决，以便内存中的每个缓存行中仅存在一个锁。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "005-chapter-05.md",
+      "line": 274,
+      "english": "Over the lifespan of an application the host system may also change, and bindings that are not updated may hurt instead of help performance, for example when they needlessly bind to CPUs across multiple sockets.",
+      "before": "在应用程序的生命周期中，主机系统也可能会发生变化，未更新的绑定可能会损害而不是帮助性能，例如，当它们不必要地跨多个套接字绑定到 CPU 时。",
+      "after": "在应用程序的生命周期中，主机系统也可能会发生变化，未更新的绑定可能会损害而不是帮助性能，例如，当它们不必要地跨多个处理器插槽绑定到 CPU 时。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "005-chapter-05.md",
+      "line": 1371,
+      "english": "In flame graphs this can appear as “grass”: many thin single frames at the bottom of the profile.",
+      "before": "在火焰图中，这可以显示为“草”：轮廓底部有许多薄的单框架。",
+      "after": "在火焰图中，这可能呈现为“草”状：图的底部有许多细窄的单个栈帧。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "005-chapter-05.md",
+      "line": 1439,
+      "english": "**\\[Zijlstra 09\\]** Zijlstra, P., “mutex: implement adaptive spinning,” [http://lwn.net/Articles/314512](http://lwn.net/Articles/314512), 2009.",
+      "before": "**\\[Zijlstra 09\\]** Zijlstra, P.，“互斥体：实现自适应旋转”，[http://lwn.net/Articles/314512](http://lwn.net/Articles/314512)，2009 年。",
+      "after": "**\\[Zijlstra 09\\]** Zijlstra, P.，“互斥体：实现自适应自旋”，[http://lwn.net/Articles/314512](http://lwn.net/Articles/314512)，2009 年。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 352,
+      "english": "| **Processor** | **Year** | **Max Clock** | **Cores/Threads** | **Transistors** | **Data Bus (bits)** | **Level 1** | **Level 2** | **Level 3** |",
+      "before": "| **处理器** | **年份** | **最大时钟** | **内核/线程** | **晶体管** | **数据总线（位）** | **1 级** | **2 级** | **3 级** |",
+      "after": "| **处理器** | **年份** | **最大时钟** | **核心/线程** | **晶体管** | **数据总线（位）** | **1 级** | **2 级** | **3 级** |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 630,
+      "english": "| [6.5.2](#ch06-ch06lev5sec2) | USE method | Observational analysis |",
+      "before": "| [6.5.2](#ch06-ch06lev5sec2) | 使用方法 | 观测性分析 |",
+      "after": "| [6.5.2](#ch06-ch06lev5sec2) | USE 方法 | 观测性分析 |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 667,
+      "english": "### 6.5.2 USE Method",
+      "before": "### 6.5.2 使用方法",
+      "after": "### 6.5.2 USE 方法",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 733,
+      "english": "- **Timer-based sampling**: Collecting timer-based samples of the currently running function or stack trace. A typical rate used is 99 Hertz (samples per second) per CPU. This provides a coarse view of CPU usage, with enough detail for large and small issues. 99 is used to avoid lock-step sampling that may occur at 100 Hertz, which would produce a skewed profile. If needed, the timer rate can be lowered and the time span enlarged until the overhead is negligible and suitable for production use.",
+      "before": "- **基于定时器的采样**：对当前运行的函数或堆栈跟踪收集基于定时器的样本。典型速率是每个 CPU 99 Hz（每秒 99 个样本）。它提供 CPU 使用情况的粗略视图，但对大问题和小问题都能提供足够细节。使用 99 Hz 是为了避免 100 Hz 可能发生的锁步采样，以免产生偏斜的配置文件。如有需要，可以降低定时器速率、延长采样时间，直到开销足够低，适合生产环境使用。",
+      "after": "- **基于定时器的采样**：对当前运行的函数或堆栈跟踪收集基于定时器的样本。典型速率是每个 CPU 99 Hz（每秒 99 个样本）。它提供 CPU 使用情况的粗略视图，但对大问题和小问题都能提供足够细节。使用 99 Hz 是为了避免 100 Hz 可能发生的锁步采样，以免产生偏斜的性能剖析数据。如有需要，可以降低定时器速率、延长采样时间，直到开销足够低，适合生产环境使用。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 743,
+      "english": "Kernels typically maintain two stack traces for processes: a user-level stack and a kernel stack when in kernel context (e.g., syscalls). For a complete CPU profile, the profiler must record both stacks when available.",
+      "before": "内核通常为进程维护两条堆栈：用户级堆栈，以及处于内核上下文时的内核堆栈（例如执行系统调用时）。要获得完整的 CPU 配置文件，分析器必须在可用时记录这两条堆栈。",
+      "after": "内核通常为进程维护两条堆栈：用户级堆栈，以及处于内核上下文时的内核堆栈（例如执行系统调用时）。要获得完整的 CPU 性能剖析数据，分析器必须在可用时记录这两条堆栈。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 750,
+      "english": "As described in [Chapter 5](#ch05-ch05), a typical CPU profile at Netflix collects user and kernel stack traces at 49 Hertz across (around) 32 CPUs for 30 seconds: this produces a total of 47,040 samples, and presents two challenges:",
+      "before": "如 [第 5 章](#ch05-ch05) 中所述，Netflix 的典型 CPU 配置文件会在约 32 个 CPU 上以 49 Hz 收集用户和内核堆栈跟踪，持续 30 秒：这总共产生 47,040 个样本，并带来两个挑战：",
+      "after": "如 [第 5 章](#ch05-ch05) 中所述，Netflix 的典型 CPU 性能剖析数据会在约 32 个 CPU 上以 49 Hz 收集用户和内核堆栈跟踪，持续 30 秒：这总共产生 47,040 个样本，并带来两个挑战：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 752,
+      "english": "1. **Storage I/O**: Profilers typically write samples to a profile file, which can then be read and examined in different ways. However, writing so many samples to the file system can generate storage I/O that perturbs the performance of the production application. The BPF-based profile(8) tool solves the storage I/O problem by summarizing the samples in kernel memory, and only emitting the summary. No intermediate profile file is used.",
+      "before": "1. **存储 I/O**：分析器通常把样本写入配置文件，然后以不同方式读取和检查。不过，将如此多的样本写入文件系统可能产生存储 I/O，干扰生产应用程序的性能。基于 BPF 的 profile(8) 工具在内核内存中汇总样本，只输出摘要，从而解决存储 I/O 问题，不使用中间配置文件。",
+      "after": "1. **存储 I/O**：分析器通常把样本写入剖析数据文件，然后以不同方式读取和检查。不过，将如此多的样本写入文件系统可能产生存储 I/O，干扰生产应用程序的性能。基于 BPF 的 profile(8) 工具在内核内存中汇总样本，只输出摘要，从而解决存储 I/O 问题，不使用中间剖析数据文件。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 753,
+      "english": "2. **Comprehension**: It is impractical to read 47,040 multi-line stack traces one by one: summaries and visualizations must be used to make sense of the profile. A commonly used stack trace visualization is *flame graphs*, some examples of which are shown in earlier chapters ([1](#ch01-ch01) and [5](#ch05-ch05)); and there are more examples in this chapter.",
+      "before": "2. **理解**：逐一阅读 47,040 条多行堆栈跟踪并不现实，必须使用摘要和可视化来理解配置文件。常用的堆栈跟踪可视化方式是“火焰图”，前面章节展示过一些示例（[1](#ch01-ch01) 和 [5](#ch05-ch05)）；本章还会提供更多示例。",
+      "after": "2. **理解**：逐一阅读 47,040 条多行堆栈跟踪并不现实，必须使用摘要和可视化来理解性能剖析数据。常用的堆栈跟踪可视化方式是“火焰图”，前面章节展示过一些示例（[1](#ch01-ch01) 和 [5](#ch05-ch05)）；本章还会提供更多示例。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 763,
+      "english": "#### Profile Interpretation",
+      "before": "#### 配置文件解读",
+      "after": "#### 性能剖析数据解读",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 765,
+      "english": "Once you have collected and summarized or visualized a CPU profile, your next task is to understand it and search for performance problems. A CPU flame graph excerpt is shown in [Figure 6.16](#ch06-ch06fig16), and the instructions for reading this visualization are in [Section 6.7.3](#ch06-ch06lev7sec3), [Flame Graphs](#ch06-ch06lev7sec3). How would you summarize the profile?",
+      "before": "收集并汇总或可视化 CPU 配置文件后，下一项任务是理解它并寻找性能问题。[图 6.16](#ch06-ch06fig16) 展示了 CPU 火焰图的一个摘录；如何阅读这种可视化，见 [第 6.7.3 节](#ch06-ch06lev7sec3)、[火焰图](#ch06-ch06lev7sec3)。你会如何概括这个配置文件？",
+      "after": "收集并汇总或可视化 CPU 性能剖析数据后，下一项任务是理解它并寻找性能问题。[图 6.16](#ch06-ch06fig16) 展示了 CPU 火焰图的一个摘录；如何阅读这种可视化，见 [第 6.7.3 节](#ch06-ch06lev7sec3)、[火焰图](#ch06-ch06lev7sec3)。你会如何概括这份性能剖析数据？",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 792,
+      "english": "Apart from measuring counter values, PMCs can be configured to interrupt the kernel on the overflow of a given value. For example, at every 10,000 Level 3 cache misses, the kernel could be interrupted to gather a stack backtrace. Over time, the kernel builds a profile of the code paths that are causing Level 3 cache misses, without the prohibitive overhead of measuring every single miss. This is typically used by integrated developer environment (IDE) software, to annotate code with the locations that are causing memory I/O and stall cycles.",
+      "before": "除了测量计数器值，PMC 还可以配置为在计数达到给定值时中断内核。例如，每发生 10,000 次三级缓存未命中，内核就中断一次以收集堆栈回溯。随着时间推移，内核会构建导致三级缓存未命中的代码路径配置文件，而无需承担测量每次未命中的高昂开销。这通常由集成开发环境（IDE）软件使用，用来标注导致内存 I/O 和停顿周期的代码位置。",
+      "after": "除了测量计数器值，PMC 还可以配置为在计数达到给定值时中断内核。例如，每发生 10,000 次三级缓存未命中，内核就中断一次以收集堆栈回溯。随着时间推移，内核会构建导致三级缓存未命中的代码路径性能剖析数据，而无需承担测量每次未命中的高昂开销。这通常由集成开发环境（IDE）软件使用，用来标注导致内存 I/O 和停顿周期的代码位置。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 934,
+      "english": "The *average* is an exponentially damped moving average, which reflects load beyond the 1-, 5-, and 15-minute times (the times are actually constants used in the exponential moving sum [\\[Myer 73\\]](#ch06-ch06ref3)). [Figure 6.17](#ch06-ch06fig17) shows the results of a simple experiment where a single CPU-bound thread was launched and the load averages plotted.",
+      "before": "*平均值*是指数阻尼移动平均值，反映 1 分钟、5 分钟和 15 分钟时间尺度上的负载（这些时间实际上是指数移动平均公式中使用的常数 [\\[Myer 73\\]](#ch06-ch06ref3)）。[图 6.17](#ch06-ch06fig17) 展示了一个简单实验的结果：启动单个 CPU 绑定线程并绘制负载平均值。",
+      "after": "*平均值*是指数阻尼移动平均值，其反映的负载并不限于最近 1 分钟、5 分钟和 15 分钟（这些时间实际上是指数移动求和公式中使用的常数 [\\[Myer 73\\]](#ch06-ch06ref3)）。[图 6.17](#ch06-ch06fig17) 展示了一个简单实验的结果：启动单个 CPU 密集型线程并绘制负载平均值。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1494,
+      "english": "Record a scheduler profile for 10 seconds:",
+      "before": "记录调度程序配置文件 10 秒：",
+      "after": "采集 10 秒的调度性能剖析数据：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1500,
+      "english": "Show per-process scheduler latency from a scheduler profile:",
+      "before": "从调度程序配置文件显示每个进程的调度程序延迟：",
+      "after": "根据调度性能剖析数据显示各进程的调度延迟：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1506,
+      "english": "List per-event scheduler latency from a scheduler profile:",
+      "before": "从调度程序配置文件中列出每个事件调度程序的延迟：",
+      "after": "根据调度性能剖析数据逐事件列出调度延迟：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1583,
+      "english": "To understand a profile, you can try both orderings. If you are unable to make sense of it quickly at the command line, try a visualization such as flame graphs.",
+      "before": "要了解配置文件，您可以尝试这两种顺序。如果您无法在命令行中快速理解它，请尝试可视化，例如火焰图。",
+      "after": "要了解性能剖析数据，您可以尝试这两种顺序。如果您无法在命令行中快速理解它，请尝试可视化，例如火焰图。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1588,
+      "english": "CPU flame graphs can be generated from the same perf.data profile by using the flamegraph report added in Linux 5.8.[^fn-ch06-ch06-footnote-11] For example:",
+      "before": "可以使用 Linux 5.8.[^fn-ch06-ch06-footnote-11] 中添加的火焰图报告从相同的 perf.data 配置文件生成 CPU 火焰图，例如：",
+      "after": "可以使用 Linux 5.8 中[^fn-ch06-ch06-footnote-11]添加的火焰图报告从相同的 perf.data 性能剖析数据生成 CPU 火焰图，例如：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1691,
+      "english": "perf(1) `sched` also has `map` and `timehist` reports for displaying the scheduler profile in different ways. The timehist report shows per-event details:",
+      "before": "perf(1) `sched` 还具有 `map` 和 `timehist` 报告，用于以不同方式显示调度程序配置文件。 timehist 报告显示每个事件的详细信息：",
+      "after": "perf(1) `sched` 还具有 `map` 和 `timehist` 报告，用于以不同方式显示调度程序性能剖析数据。 timehist 报告显示每个事件的详细信息：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 2895,
+      "english": "**\\[Verma 20\\]** Verma, A., “CUDA Cores vs Stream Processors Explained,” [https://graphicscardhub.com/cuda-cores-vs-stream-processors](https://graphicscardhub.com/cuda-cores-vs-stream-processors), 2020.",
+      "before": "**\\[Verma 20\\]** Verma, A.，“CUDA 内核与流处理器的解释”，[https://graphicscardhub.com/cuda-cores-vs-stream-processors](https://graphicscardhub.com/cuda-cores-vs-stream-processors)，2020 年。",
+      "after": "**\\[Verma 20\\]** Verma, A.，“CUDA 核心与流处理器的解释”，[https://graphicscardhub.com/cuda-cores-vs-stream-processors](https://graphicscardhub.com/cuda-cores-vs-stream-processors)，2020 年。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 75,
+      "english": "Linux also allows other behaviors, including placing *no* bounds on memory allocation. This is termed *overcommit* and is described after the following sections on paging and demand paging, which are necessary for overcommit to work.",
+      "before": "Linux 还允许其他行为，包括对内存分配设置“无”限制。这称为“过度使用”，并将在下面有关分页和请求分页的部分之后描述；过度使用依赖于这些机制。",
+      "after": "Linux 还允许其他行为，包括对内存分配设置“无”限制。这称为“内存超额分配”，并将在下面有关分页和按需分页的部分之后描述；内存超额分配依赖于这些机制。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 109,
+      "english": "### 7.2.3 Demand Paging",
+      "before": "### 7.2.3 请求分页",
+      "after": "### 7.2.3 按需分页",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 138,
+      "english": "Demand paging was added to Unix via BSD, along with paged virtual memory. It has become the standard and is used by Linux.",
+      "before": "请求分页与分页虚拟内存一起通过 BSD 添加到 Unix。它已成为标准并被 Linux 使用。",
+      "after": "按需分页与分页虚拟内存一起通过 BSD 添加到 Unix。它已成为标准并被 Linux 使用。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 141,
+      "english": "### 7.2.4 Overcommit",
+      "before": "### 7.2.4 过度使用",
+      "after": "### 7.2.4 内存超额分配",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 143,
+      "english": "Linux supports the notion of *overcommit*, which allows more memory to be allocated than the system can possibly store—more than physical memory and swap devices combined. It relies on demand paging and the tendency of applications to not use much of the memory they have allocated.",
+      "before": "Linux 支持“过度使用”的概念，它允许分配比系统可能存储的内存更多的内存——比物理内存和交换设备的总和还要多。它依赖于请求分页以及应用程序不使用其分配的大量内存这一趋势。",
+      "after": "Linux 支持“内存超额分配”的概念，它允许分配比系统可能存储的内存更多的内存——比物理内存和交换设备的总和还要多。它依赖于按需分页以及应用程序不使用其分配的大量内存这一趋势。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 145,
+      "english": "With overcommit, application requests for memory (e.g., malloc(3)) will succeed when they would otherwise have failed. Instead of allocating memory conservatively to remain within virtual memory limits, an application programmer can allocate memory generously and later use it sparsely on demand.",
+      "before": "通过过度使用，应用程序对内存的请求（例如 malloc(3)）将会成功，否则它们会失败。应用程序程序员可以慷慨地分配内存，然后根据需要稀疏地使用它，而不是保守地分配内存以保持在虚拟内存限制内。",
+      "after": "通过内存超额分配，应用程序对内存的请求（例如 malloc(3)）将会成功，否则它们会失败。应用程序程序员可以慷慨地分配内存，然后根据需要稀疏地使用它，而不是保守地分配内存以保持在虚拟内存限制内。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 147,
+      "english": "On Linux, the behavior of overcommit can be configured with a tunable parameter. See [Section 7.6](#ch07-ch07lev6), [Tuning](#ch07-ch07lev6), for details. The consequences of overcommit depend on how the kernel manages memory pressure; see the discussion of the OOM killer in [Section 7.3](#ch07-ch07lev3), [Architecture](#ch07-ch07lev3).",
+      "before": "在 Linux 上，可以使用可调参数配置过度使用的行为。详细信息请参见[第 7.6 节](#ch07-ch07lev6)、[调优](#ch07-ch07lev6)。过度使用的后果取决于内核如何管理内存压力；参见[第 7.3 节](#ch07-ch07lev3)、[架构](#ch07-ch07lev3)中关于 OOM 杀手的讨论。",
+      "after": "在 Linux 上，可以使用可调参数配置内存超额分配的行为。详细信息请参见[第 7.6 节](#ch07-ch07lev6)、[调优](#ch07-ch07lev6)。内存超额分配的后果取决于内核如何管理内存压力；参见[第 7.3 节](#ch07-ch07lev3)、[架构](#ch07-ch07lev3)中关于 OOM 杀手的讨论。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 174,
+      "english": "Virtual memory can also be studied in terms of capacity utilization, if the system imposes a limit on the amount of virtual memory it is willing to allocate (Linux overcommit does not). If so, once virtual memory is exhausted, the kernel will fail allocations; for example, malloc(3) fails with errno set to ENOMEM.",
+      "before": "如果系统对其愿意分配的虚拟内存量施加限制（Linux 过度使用则没有），则还可以根据容量利用率来研究虚拟内存。如果是这样，一旦虚拟内存耗尽，内核将无法分配；例如，malloc(3) 失败，errno 设置为 ENOMEM。",
+      "after": "如果系统对其愿意分配的虚拟内存量施加限制（Linux 内存超额分配则没有），则还可以根据容量利用率来研究虚拟内存。如果是这样，一旦虚拟内存耗尽，内核将无法分配；例如，malloc(3) 失败，errno 设置为 ENOMEM。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 361,
+      "english": "It is also interesting to ask what happens if no swap device or swap file is configured. This limits virtual memory size, so if overcommit has been disabled, memory allocations will fail sooner. On Linux, this may also mean that the OOM killer is used sooner.",
+      "before": "考虑没有配置交换设备或交换文件时会发生什么也很有意思。这限制了虚拟内存大小，因此如果禁用了过度使用，内存分配将很快失败。在 Linux 上，这也可能意味着 OOM 杀手会更快被使用。",
+      "after": "考虑没有配置交换设备或交换文件时会发生什么也很有意思。这限制了虚拟内存大小，因此如果禁用了内存超额分配，内存分配将很快失败。在 Linux 上，这也可能意味着 OOM 杀手会更快被使用。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 555,
+      "english": "### 7.4.2 USE Method",
+      "before": "### 7.4.2 使用方法",
+      "after": "### 7.4.2 USE 方法",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 569,
+      "english": "Virtual memory utilization may also need to be checked, depending on whether the system performs overcommit. For systems that do not, memory allocations will fail once virtual memory is exhausted—a type of memory error.",
+      "before": "可能还需要检查虚拟内存利用率，具体取决于系统是否执行过度使用。对于不这样做的系统，一旦虚拟内存耗尽，内存分配就会失败——这是一种内存错误。",
+      "after": "可能还需要检查虚拟内存利用率，具体取决于系统是否执行内存超额分配。对于不这样做的系统，一旦虚拟内存耗尽，内存分配就会失败——这是一种内存错误。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 571,
+      "english": "Memory errors can be caused by software, such as failed memory allocations or the Linux OOM killer, or by hardware, such as ECC errors. Historically, memory allocation errors have been left for the applications to report, although not all applications do (and, with Linux overcommit, developers may not have felt it necessary). Hardware errors are also difficult to diagnose. Some tools can report ECC-correctable errors (e.g., on Linux, dmidecode(8), edac-utils, `ipmitool sel`) when ECC memory is used. These correctable errors can be used as a USE method error metric, and can be a sign that uncorrectable errors may soon occur. With actual (uncorrectable) memory errors, you may experience unexplained, unreproducible crashes (including segfaults and bus error signals) of arbitrary applications.",
+      "before": "内存错误可能是由软件引起的，例如失败的内存分配或 Linux OOM 杀手，也可能是由硬件引起的，例如 ECC 错误。从历史上看，内存分配错误一直由应用程序报告，尽管并非所有应用程序都这样做（并且，由于 Linux 过度使用，开发人员可能认为没有必要）。硬件错误也很难诊断。使用 ECC 内存时，某些工具可能会报告 ECC 可纠正错误，例如 Linux 上的 dmidecode(8)、edac-utils 和 `ipmitool sel`。这些可纠正的错误可以用作 USE 方法的错误指标，并且可能是不久后发生不可纠正错误的信号。对于实际的（不可纠正的）内存错误，您可能会遇到任意应用程序无法解释且不可重现的崩溃（包括段错误和总线错误信号）。",
+      "after": "内存错误可能是由软件引起的，例如失败的内存分配或 Linux OOM 杀手，也可能是由硬件引起的，例如 ECC 错误。从历史上看，内存分配错误一直由应用程序报告，尽管并非所有应用程序都这样做（并且，由于 Linux 内存超额分配，开发人员可能认为没有必要）。硬件错误也很难诊断。使用 ECC 内存时，某些工具可能会报告 ECC 可纠正错误，例如 Linux 上的 dmidecode(8)、edac-utils 和 `ipmitool sel`。这些可纠正的错误可以用作 USE 方法的错误指标，并且可能是不久后发生不可纠正错误的信号。对于实际的（不可纠正的）内存错误，您可能会遇到任意应用程序无法解释且不可重现的崩溃（包括段错误和总线错误信号）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 689,
+      "english": "This is a working set size (WSS) estimation method that uses a *negative* experiment, requiring swap devices to be configured to perform the experiment. Available main memory for an application is progressively reduced while measuring performance and swapping: the point where performance sharply degrades and swapping greatly increases shows when the WSS no longer fits into the available memory.",
+      "before": "这是一种使用“负”实验的工作集大小（WSS）估计方法，需要配置交换设备来执行实验。在测量性能和交换时，应用程序的可用主内存逐渐减少：性能急剧下降且交换大幅增加的点表明 WSS 不再适合可用内存。",
+      "after": "这是一种通过*反向实验*估算工作集大小（WSS）的方法，实验需要配置交换设备。逐步减少应用程序可用的主存，同时测量性能和换页活动：当性能急剧下降、换页活动大幅增加时，就表明可用内存已无法容纳工作集。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1179,
+      "english": "For commands that record or sample events, use `perf report` to summarize the profile or `perf script --header` to print them all.",
+      "before": "对于记录或采样事件的命令，请使用 `perf report` 总结配置文件，或使用 `perf script --header` 打印所有事件。",
+      "after": "对于记录或采样事件的命令，请使用 `perf report` 总结性能剖析数据，或使用 `perf script --header` 打印所有事件。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1229,
+      "english": "The full output is 222,582 lines; perf report summarizes code paths as a hierarchy, but the output is still 7,592 lines. Flame graphs can be used to visualize the entire profile more effectively.",
+      "before": "完整输出为 222,582 行； perf 报告将代码路径总结为层次结构，但输出仍然是 7,592 行。火焰图可用于更有效地可视化整个轮廓。",
+      "after": "完整输出为 222,582 行； perf report 将代码路径总结为层次结构，但输出仍然是 7,592 行。火焰图可用于更有效地可视化整份性能剖析数据。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1694,
+      "english": "| vm.overcommit\\_memory | 0 | 0 = Use a heuristic to allow reasonable overcommits; 1 = always overcommit; 2 = don’t overcommit |",
+      "before": "| vm.overcommit\\_memory | 0 | 0 = 使用启发式方法允许合理的过度使用；1 = 总是过度使用；2 = 不要过度使用 |",
+      "after": "| vm.overcommit\\_memory | 0 | 0 = 使用启发式方法允许合理的内存超额分配；1 = 总是内存超额分配；2 = 不要内存超额分配 |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1704,
+      "english": "Another parameter for avoiding OOM is vm.overcommit\\_memory, which can be set to 2 to disable overcommit and avoid cases where this leads to OOM. If you want to control the OOM killer on a per-process basis, check your kernel version for /proc tunables such as oom\\_adj or oom\\_score\\_adj. These are described in Documentation/filesystems/proc.txt.",
+      "before": "避免 OOM 的另一个参数是 vm.overcommit\\_memory，可以将其设置为 2 以禁用过度使用并避免由此导致 OOM 的情况。如果您想按进程控制 OOM 杀手，请根据内核版本检查 /proc 可调参数，例如 oom\\_adj 或 oom\\_score\\_adj。这些在 Documentation/filesystems/proc.txt 中进行了描述。",
+      "after": "避免 OOM 的另一个参数是 vm.overcommit\\_memory，可以将其设置为 2 以禁用内存超额分配并避免由此导致 OOM 的情况。如果您想按进程控制 OOM 杀手，请根据内核版本检查 /proc 可调参数，例如 oom\\_adj 或 oom\\_score\\_adj。这些在 Documentation/filesystems/proc.txt 中进行了描述。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 602,
+      "english": "- **Data deduplication**: A file-system-level feature that avoids recording multiple copies of the same data. This feature has significant performance implications, both good (reduced device I/O) and bad (when the hash table no longer fits in main memory, device I/O becomes inflated, perhaps significantly). The initial version is intended only for workloads where the hash table is expected to always fit in main memory.",
+      "before": "- **重复数据删除**：一种文件系统级功能，可避免记录相同数据的多个副本。此功能对性能有显著影响，既有好处（减少设备 I/O），也有坏处（哈希表不再适合主存时，设备 I/O 可能显著膨胀）。初始版本仅适用于预期哈希表始终能装入主存的工作负载。",
+      "after": "- **重复数据删除**：一种文件系统级功能，可避免记录相同数据的多个副本。此功能对性能有显著影响，既有好处（减少设备 I/O），也有坏处（主存无法容纳哈希表时，设备 I/O 可能显著膨胀）。初始版本仅适用于预期哈希表始终能装入主存的工作负载。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 710,
+      "english": "#### Transaction Cost",
+      "before": "#### 交易成本",
+      "after": "#### 事务开销",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 723,
+      "english": "As a specific example, an application transaction takes 200 ms, during which it waits for a total of 180 ms on multiple file system I/O. The time that the application was blocked by the file system is 90% (100 \\* 180 ms/200 ms). Eliminating file system latency may improve performance by up to 10x.",
+      "before": "作为一个具体示例，应用程序事务需要 200 毫秒，在此期间它在多个文件系统 I/O 上总共等待 180 毫秒。应用程序被文件系统阻止的时间为 90% (100 \\* 180 ms/200 ms)。消除文件系统延迟可将性能提高多达 10 倍。",
+      "after": "作为一个具体示例，应用程序事务需要 200 毫秒，在此期间它在多个文件系统 I/O 上总共等待 180 毫秒。应用程序因文件系统而阻塞的时间占总耗时的 90% (100 \\* 180 ms/200 ms)。消除文件系统延迟可将性能提高多达 10 倍。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 727,
+      "english": "If the application were issuing I/O as *non-blocking*, the application can continue to execute on-CPU while the file system responds. In this case, the blocking file system latency measures only the time the application was blocked off-CPU.",
+      "before": "如果应用程序以“非阻塞”方式发出 I/O，则应用程序可以在文件系统响应时继续在 CPU 上执行。在这种情况下，阻塞文件系统延迟仅测量应用程序被阻止离开 CPU 的时间。",
+      "after": "如果应用程序以“非阻塞”方式发出 I/O，则应用程序可以在文件系统响应时继续在 CPU 上执行。在这种情况下，阻塞文件系统延迟仅测量应用程序因阻塞而未在 CPU 上运行的时间。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 849,
+      "english": "- **Working set size**: How well it fits in the file system cache",
+      "before": "- **工作集大小**：它在文件系统缓存中的适合程度",
+      "after": "- **工作集大小**：工作集在文件系统缓存中的容纳程度",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 1831,
+      "english": "This shows a file system write throughput of 1.4 Gbytes/s (write-back caching is in use, so this only dirtied memory and will be flushed later to disk, depending on the vm.dirty\\_\\* tunable settings: see [Chapter 7](#ch07-ch07), [Memory](#ch07-ch07), [Section 7.6.1](#ch07-ch07lev6sec1), [Tunable Parameters](#ch07-ch07lev6sec1)).",
+      "before": "这显示文件系统写入吞吐量为 1.4 GB/s（正在使用回写缓存，因此这只会弄脏内存，稍后才刷新到磁盘，具体取决于 vm.dirty\\_\\* 可调参数；请参阅[第 7 章](#ch07-ch07)、[内存](#ch07-ch07)、[第 7.6.1 节](#ch07-ch07lev6sec1)、[可调参数](#ch07-ch07lev6sec1)）。",
+      "after": "这显示文件系统写入吞吐量为 1.4 GB/s（正在使用回写缓存，因此此次写入仅使内存中的页面变为脏页，稍后才刷新到磁盘，具体取决于 vm.dirty\\_\\* 可调参数；请参阅[第 7 章](#ch07-ch07)、[内存](#ch07-ch07)、[第 7.6.1 节](#ch07-ch07lev6sec1)、[可调参数](#ch07-ch07lev6sec1)）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 70,
+      "english": "While this may imply a first-come, first-served queue, the on-disk controller can apply other algorithms to optimize performance. These algorithms could include elevator seeking for rotational disks (see the discussion in [Section 9.4.1](#ch09-ch09lev4sec1), [Disk Types](#ch09-ch09lev4sec1)), or separate queues for read and write I/O (especially for flash memory-based disks).",
+      "before": "虽然这可能意味着先到先服务的队列，但磁盘控制器可以应用其他算法来优化性能。这些算法可能包括旋转磁盘的电梯搜索（请参阅 [第 9.4.1 节](#ch09-ch09lev4sec1)、[磁盘类型](#ch09-ch09lev4sec1) 中的讨论），或用于读取和写入 I/O 的单独队列（尤其是基于闪存的磁盘）。",
+      "after": "虽然这可能意味着先到先服务的队列，但磁盘控制器可以应用其他算法来优化性能。这些算法可能包括旋转磁盘的电梯寻道（请参阅 [第 9.4.1 节](#ch09-ch09lev4sec1)、[磁盘类型](#ch09-ch09lev4sec1) 中的讨论），或用于读取和写入 I/O 的单独队列（尤其是基于闪存的磁盘）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 379,
+      "english": "The *elevator algorithm* (also known as *elevator seeking*) is one way that a command queue can improve efficiency. It reorders I/O based on their on-disk location, to minimize travel of the disk heads. The result is similar to a building elevator, which does not service floors based on the order in which the floor buttons were pushed, but makes sweeps up and down the building, stopping at the currently requested floors.",
+      "before": "*电梯算法*（也称为“电梯搜索”）是命令队列提高效率的一种方法。它根据 I/O 在磁盘上的位置重新排序，以最大限度地减少磁盘头的移动。结果类似于建筑物电梯，它不会根据按下楼层按钮的顺序来服务楼层，而是在建筑物上上下扫动，并在当前请求的楼层停止。",
+      "after": "*电梯算法*（也称为“电梯寻道”）是命令队列提高效率的一种方法。它根据 I/O 在磁盘上的位置重新排序，以最大限度地减少磁头的移动。结果类似于建筑物电梯，它不会根据按下楼层按钮的顺序来服务楼层，而是在建筑物上上下扫动，并在当前请求的楼层停止。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 387,
+      "english": "Disks store an error-correcting code (ECC) at the end of each sector for data integrity, so that the drive can verify data was read correctly, or correct any errors that may have occurred. If the sector was not read correctly, the disk heads may retry the read on the next rotation (and may retry several times, varying the location of the head slightly each time). This may be the explanation for unusually slow I/O. The drive may provide soft errors to the OS to explain what happened. It can be beneficial to monitor the rate of soft errors, as an increase can indicate that a drive may soon fail.",
+      "before": "磁盘在每个扇区的末尾存储一个纠错码 (ECC) 以保证数据完整性，以便驱动器可以验证数据是否正确读取，或纠正可能发生的任何错误。如果未正确读取扇区，磁盘头可能会在下一次旋转时重试读取（并且可能会重试几次，每次都会稍微改变磁头的位置）。这可能是 I/O 异常缓慢的原因。驱动器可能会向操作系统提供软错误以解释发生的情况。监视软错误率可能很有用，因为软错误率的增加可能表明驱动器可能很快就会出现故障。",
+      "after": "磁盘在每个扇区的末尾存储一个纠错码 (ECC) 以保证数据完整性，以便驱动器可以验证数据是否正确读取，或纠正可能发生的任何错误。如果未正确读取扇区，磁头可能会在下一次旋转时重试读取（并且可能会重试几次，每次都会稍微改变磁头的位置）。这可能是 I/O 异常缓慢的原因。驱动器可能会向操作系统提供软错误以解释发生的情况。监视软错误率可能很有用，因为软错误率的增加可能表明驱动器可能很快就会出现故障。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 536,
+      "english": "Providing RAID by a disk controller card is called *hardware* RAID. RAID can also be implemented by operating system software, but hardware RAID has been preferred as CPU-expensive checksum and parity calculations can be performed more quickly on dedicated hardware, plus such hardware can include a battery backup unit (BBU) for improved resiliency. However, advances in processors have produced CPUs with a surplus of cycles and cores, reducing the need to offload parity calculations. A number of storage solutions have moved back to software RAID (for example, using ZFS), which reduces complexity and hardware cost and improves observability from the operating system. In the case of a major failure, software RAID may also be easier to repair than hardware RAID (imagine a dead RAID card).",
+      "before": "通过磁盘控制器卡提供的 RAID 称为“硬件”RAID。RAID 也可以通过操作系统软件实现，但硬件 RAID 一直很受青睐，因为 CPU 代价高昂的校验和、奇偶校验计算可以在专用硬件上更快完成，而且此类硬件还可以包括电池备份单元（BBU）以提高弹性。然而，处理器进步带来了拥有富余周期和内核的 CPU，减少了卸载奇偶校验计算的必要性。许多存储解决方案已回归软件 RAID（例如使用 ZFS），这降低了复杂性和硬件成本，并提高了操作系统的可观测性。发生重大故障时，软件 RAID 也可能比硬件 RAID 更容易修复（想象一下 RAID 卡损坏的情况）。",
+      "after": "通过磁盘控制器卡提供的 RAID 称为“硬件”RAID。RAID 也可以通过操作系统软件实现，但硬件 RAID 一直很受青睐，因为 CPU 代价高昂的校验和、奇偶校验计算可以在专用硬件上更快完成，而且此类硬件还可以包括电池备份单元（BBU）以提高弹性。然而，处理器进步带来了拥有富余 CPU 周期和核心的 CPU，减少了卸载奇偶校验计算的必要性。许多存储解决方案已回归软件 RAID（例如使用 ZFS），这降低了复杂性和硬件成本，并提高了操作系统的可观测性。发生重大故障时，软件 RAID 也可能比硬件 RAID 更容易修复（想象一下 RAID 卡损坏的情况）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 638,
+      "english": "- **Deadline**: Attempts to enforce a latency deadline; for example, read and write expiry times in units of milliseconds may be selected. This can be useful for real-time systems, where determinism is desired. It can also solve problems of *starvation*: where an I/O request is starved of disk resources as newly issued I/O jump the queue, resulting in a latency outlier. Starvation can occur due to *writes starving reads*, and as a consequence of elevator seeking and heavy I/O to one area of disk starving I/O to another. The deadline scheduler solves this, in part, by using three separate queues for I/O: read FIFO, write FIFO, and sorted [\\[Love 10\\]](#ch09-ch09ref8).",
+      "before": "- **截止日期**：尝试强制执行延迟截止时间；例如，可以选择以毫秒为单位的读写到期时间。这对于需要确定性的实时系统很有用。它还可以解决“饥饿”问题：新发出的 I/O 跳过队列，导致某个 I/O 请求长期得不到磁盘资源，从而产生延迟异常值。饥饿可能源于“写入饿死读取”，也可能因为电梯寻道以及磁盘某一区域的大量 I/O，导致另一区域的 I/O 饿死。截止时间调度器通过使用三个独立的 I/O 队列部分解决这一问题：读 FIFO、写 FIFO 和排序队列 [\\[Love 10\\]](#ch09-ch09ref8)。",
+      "after": "- **Deadline**：尝试强制执行延迟截止时间；例如，可以选择以毫秒为单位的读写到期时间。这对于需要确定性的实时系统很有用。它还可以解决“饥饿”问题：新发出的 I/O 跳过队列，导致某个 I/O 请求长期得不到磁盘资源，从而产生延迟异常值。饥饿可能源于“写入饿死读取”，也可能因为电梯寻道以及磁盘某一区域的大量 I/O，导致另一区域的 I/O 饿死。Deadline 调度器通过使用三个独立的 I/O 队列部分解决这一问题：读 FIFO、写 FIFO 和排序队列 [\\[Love 10\\]](#ch09-ch09ref8)。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 647,
+      "english": "- **mq-deadline**: A blk-mq version of deadline (described earlier).",
+      "before": "- **mq-deadline**：截止日期的 blk-mq 版本（前面已描述）。",
+      "after": "- **mq-deadline**：Deadline 调度器的 blk-mq 版本（前面已描述）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 746,
+      "english": "Utilization and response time show the result of disk performance. More metrics may be added to characterize the workload, including IOPS and throughput, providing important data for use in capacity planning (see the next section and [Section 9.5.10](#ch09-ch09lev5sec10), [Scaling](#ch09-ch09lev5sec10)).",
+      "before": "利用率和响应时间显示了磁盘性能的结果。可以添加更多指标来表征工作负载，包括 IOPS 和吞吐量，从而提供用于容量规划的重要数据（请参阅下一节和 [第 9.5.10 节](#ch09-ch09lev5sec10)、[缩放](#ch09-ch09lev5sec10)）。",
+      "after": "利用率和响应时间显示了磁盘性能的结果。可以添加更多指标来表征工作负载，包括 IOPS 和吞吐量，从而提供用于容量规划的重要数据（请参阅下一节和 [第 9.5.10 节](#ch09-ch09lev5sec10)、[扩展](#ch09-ch09lev5sec10)）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 891,
+      "english": "- **Read latency profile** (average microseconds): Sequential reads, repeat for 512 bytes, 1K, 2K, 4K, and so on",
+      "before": "- **读取延迟配置文件**（平均微秒）：顺序读取，重复 512 字节、1K、2K、4K 等",
+      "after": "- **读取延迟特征**（平均微秒）：顺序读取，重复 512 字节、1K、2K、4K 等",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 892,
+      "english": "- **Random I/O latency profile** (average microseconds): 512-byte reads, repeat for full offset span, beginning offsets only, end offsets only",
+      "before": "- **随机 I/O 延迟配置文件**（平均微秒）：512 字节读取，重复完整偏移量范围，仅开始偏移量，仅结束偏移量",
+      "after": "- **随机 I/O 延迟特征**（平均微秒）：512 字节读取，重复完整偏移量范围，仅开始偏移量，仅结束偏移量",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 907,
+      "english": "### 9.5.10 Scaling",
+      "before": "### 9.5.10 缩放",
+      "after": "### 9.5.10 扩展",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 1089,
+      "english": "Examining reads and writes separately is important. Applications and file systems commonly use techniques to mitigate write latency (e.g., write-back caching), so the application is less likely to be blocked on disk writes. This means that any metrics that group reads and writes are skewed by a component that may not directly matter (the writes). By splitting them, you can start examining `r_wait`, which shows average read latency, and is likely to be the most important metric for application performance.",
+      "before": "单独检查读取和写入很重要。应用程序和文件系统通常使用技术来减轻写入延迟（例如回写缓存），因此应用程序不太可能在磁盘写入时被阻止。这意味着对读取和写入进行分组的任何指标都会受到可能不直接重要的组件（写入）的影响。通过拆分它们，您可以开始检查 `r_wait`，它显示平均读取延迟，并且可能是应用程序性能的最重要指标。",
+      "after": "单独检查读取和写入很重要。应用程序和文件系统通常使用技术来减轻写入延迟（例如回写缓存），因此应用程序不太可能在磁盘写入时阻塞。这意味着对读取和写入进行分组的任何指标都会受到可能不直接重要的组件（写入）的影响。通过拆分它们，您可以开始检查 `r_wait`，它显示平均读取延迟，并且可能是应用程序性能的最重要指标。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 1198,
+      "english": "- **`iodelay`**: The time the process was blocked on disk I/O (clock ticks), including swapping",
+      "before": "- **`iodelay`**：进程在磁盘 I/O 上被阻止的时间（时钟周期），包括交换",
+      "after": "- **`iodelay`**：进程在磁盘 I/O 上阻塞的时间（时钟滴答数），包括交换",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 2434,
+      "english": "- **/sys/block/\\*/queue/scheduler**: To select the I/O scheduler policy: these may include noop, deadline, cfq, etc. See the earlier descriptions of these in [Section 9.4](#ch09-ch09lev4), [Architecture](#ch09-ch09lev4).",
+      "before": "- **/sys/block/\\*/queue/scheduler**：选择 I/O 调度策略：可能包括 noop、deadline、cfq 等。请参阅 [第 9.4 节](#ch09-ch09lev4)、[架构](#ch09-ch09lev4) 中的早期描述。",
+      "after": "- **/sys/block/\\*/queue/scheduler**：选择 I/O 调度策略：可能包括 noop、deadline、cfq 等。请参阅 [第 9.4 节](#ch09-ch09lev4)、[架构](#ch09-ch09lev4) 中的前文介绍。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 2499,
+      "english": "    - A USE method checklist for disk resources (disks and controllers). Include how to fetch each metric (e.g., which command to execute) and how to interpret the result. Try to use existing OS observability tools before installing or using additional software products.",
+      "before": "    - 磁盘资源（磁盘和控制器）的使用方法清单。包括如何获取每个指标（例如，要执行哪个命令）以及如何解释结果。在安装或使用其他软件产品之前，尝试使用现有的操作系​​统可观测性工具。",
+      "after": "    - 磁盘资源（磁盘和控制器）的 USE 方法检查清单。包括如何获取每个指标（例如，要执行哪个命令）以及如何解释结果。在安装或使用其他软件产品之前，尝试使用现有的操作系统可观测性工具。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 608,
+      "english": "- Support for the SO\\_BUSY\\_POLL socket option, where user-level applications can reduce network receive latency by requesting to *busy wait* (spin on CPU until an event occurs) on a socket [\\[Dumazet 17a\\]](#ch10-ch10ref31).",
+      "before": "- 支持 SO\\_BUSY\\_POLL 套接字选项，其中用户级应用程序可以通过请求套接字 [\\[Dumazet 17a\\]](#ch10-ch10ref31) 上的*忙等待*（在 CPU 上旋转，直到事件发生）来减少网络接收延迟。",
+      "after": "- 支持 SO\\_BUSY\\_POLL 套接字选项，其中用户级应用程序可以通过请求套接字 [\\[Dumazet 17a\\]](#ch10-ch10ref31) 上的*忙等待*（在 CPU 上自旋，直到事件发生）来减少网络接收延迟。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 620,
+      "english": "#### CPU Scaling",
+      "before": "#### CPU 缩放",
+      "after": "#### CPU 处理能力扩展",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 708,
+      "english": "### 10.5.2 USE Method",
+      "before": "### 10.5.2 使用方法",
+      "after": "### 10.5.2 USE 方法",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 862,
+      "english": "- Congestion window size, including zero-size advertisements",
+      "before": "- 拥塞窗口大小，包括零大小广告",
+      "after": "- 拥塞窗口大小，包括零窗口通告",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 101,
+      "english": "#### Dynamic Sizing (Auto Scaling)",
+      "before": "#### 动态调整大小（自动缩放）",
+      "after": "#### 动态调整规模（自动扩缩容）",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 105,
+      "english": "Auto scaling can solve the need to quickly respond to changes in load, but it also risks *overprovisioning*, as pictured in [Figure 11.2](#ch11-ch11fig02). For example, a DoS attack may appear as an increase in load, triggering an expensive increase in server instances. There is a similar risk with application changes that regress performance, requiring more instances to handle the same load. Monitoring is important to verify that these increases make sense.",
+      "before": "自动缩放可以解决快速响应负载变化的需求，但也存在“过度配置”的风险，如[图 11.2](#ch11-ch11fig02)所示。例如，DoS 攻击可能表现为负载增加，从而触发服务器实例的昂贵增加。应用程序更改也存在类似的风险，这些更改会导致性能下降，需要更多实例来处理相同的负载。监控对于验证这些增加是否有意义非常重要。",
+      "after": "自动扩缩容可以解决快速响应负载变化的需求，但也存在“过度配置”的风险，如[图 11.2](#ch11-ch11fig02)所示。例如，DoS 攻击可能表现为负载增加，从而触发服务器实例的昂贵增加。应用程序更改也存在类似的风险，这些更改会导致性能下降，需要更多实例来处理相同的负载。监控对于验证这些增加是否有意义非常重要。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 161,
+      "english": "Kubernetes deploys containers as co-located groups called *Pods*, where containers can share resources and communicate with each other locally (localhost). Each Pod has its own IP address that can be used to communicate (via networking) with other Pods. A Kubernetes *service* is an abstraction for endpoints provided by a group of Pods with metadata including an IP address, and is a persistent and stable interface to these endpoints, while the Pods themselves may be added and removed, allowing them to be treated as disposable. Kubernetes services support the microservices architecture. Kubernetes includes auto-scaling strategies, such as the “Horizontal Pod Autoscaler” that can scale replicas of a Pod based on a target resource utilization or other metric. In Kubernetes, physical machines are called *Nodes*, and a group of Nodes belong to a Kubernetes *cluster* if they connect to the same Kubernetes API server.",
+      "before": "Kubernetes 将容器部署为称为 *Pods* 的共置组，其中容器可以共享资源并在本地（localhost）相互通信。每个 Pod 都有自己的 IP 地址，可用于通过网络与其他 Pod 通信。Kubernetes *服务*是由一组 Pod 提供的端点抽象，其元数据包括 IP 地址；它是这些端点的持久且稳定的接口，而 Pod 本身可以添加和删除，因此可将其视为一次性的。Kubernetes 服务支持微服务架构。Kubernetes 包括自动缩放策略，例如“Horizontal Pod Autoscaler”，可以根据目标资源利用率或其他指标缩放 Pod 副本。在 Kubernetes 中，物理机称为“节点”；如果一组节点连接到同一个 Kubernetes API 服务器，则它们属于一个 Kubernetes“集群”。",
+      "after": "Kubernetes 将容器部署为称为 *Pods* 的共置组，其中容器可以共享资源并在本地（localhost）相互通信。每个 Pod 都有自己的 IP 地址，可用于通过网络与其他 Pod 通信。Kubernetes *服务*是由一组 Pod 提供的端点抽象，其元数据包括 IP 地址；它是这些端点的持久且稳定的接口，而 Pod 本身可以添加和删除，因此可将其视为一次性的。Kubernetes 服务支持微服务架构。Kubernetes 包括自动扩缩容策略，例如“Horizontal Pod Autoscaler”，可以根据目标资源利用率或其他指标调整 Pod 副本数量。在 Kubernetes 中，物理机称为“节点”；如果一组节点连接到同一个 Kubernetes API 服务器，则它们属于一个 Kubernetes“集群”。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 480,
+      "english": "- **`VBD_OO`**: Virtual block device requests blocked and queued (saturation)",
+      "before": "- **`VBD_OO`**：虚拟块设备请求被阻止并排队（饱和）",
+      "after": "- **`VBD_OO`**：虚拟块设备请求阻塞并排队（饱和）",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 681,
+      "english": "The Linux vmstat(8) command includes a column for CPU percent stolen (`st`), which is a rare example of a virtualization-aware statistic. Stolen shows CPU time not available to the guest: it may be consumed by other tenants or other hypervisor functions (such as processing your own I/O, or throttling due to the instance type):",
+      "before": "Linux vmstat(8) 命令包含一列 CPU 被盗百分比 (`st`)，这是虚拟化感知统计数据的罕见示例。 Stolen 显示来宾无法使用 CPU 时间：它可能被其他租户或其他虚拟机管理程序功能消耗（例如处理您自己的 I/O，或由于实例类型而受到限制）：",
+      "after": "Linux vmstat(8) 命令包含 CPU 窃取时间百分比（`st`）这一列，这是少见的能够感知虚拟化的统计指标。窃取时间表示客户机无法获得的 CPU 时间：这些时间可能被其他租户占用，也可能用于虚拟机管理程序的其他功能（例如处理当前客户机自身的 I/O，或因实例类型而实施限流）：",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 423,
+      "english": "| [12.3.8](#ch12-ch12lev3sec8) | Sanity check | Observational analysis |",
+      "before": "| [12.3.8](#ch12-ch12lev3sec8) | 健全性检查 | 观测性分析 |",
+      "after": "| [12.3.8](#ch12-ch12lev3sec8) | 合理性检查 | 观测性分析 |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 702,
+      "english": "### 12.3.8 Sanity Check",
+      "before": "### 12.3.8 健全性检查",
+      "after": "### 12.3.8 合理性检查",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 768,
+      "english": "- **Did it break limits?** This is a sanity check ([Section 12.3.8](#ch12-ch12lev3sec8), [Sanity Check](#ch12-ch12lev3sec8)).",
+      "before": "- **它是否突破了限制？** 这是健全性检查（[第 12.3.8 节](#ch12-ch12lev3sec8)、[健全性检查](#ch12-ch12lev3sec8)）。",
+      "after": "- **它是否突破了限制？** 这是合理性检查（[第 12.3.8 节](#ch12-ch12lev3sec8)、[合理性检查](#ch12-ch12lev3sec8)）。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 1697,
+      "english": "[Figure 14.4](#ch14-ch14fig04) shows the different perf-tools and the areas of a system they can observe.",
+      "before": "[图 14.4](#ch14-ch14fig04)显示了不同的性能工具以及它们可以观察的系统区域。",
+      "after": "[图 14.4](#ch14-ch14fig04)显示了不同的 perf-tools 以及它们可以观察的系统区域。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 1700,
+      "english": "![Figure 14.4 perf-tools](../images/14fig04.jpg)",
+      "before": "![图 14.4 性能工具](../images/14fig04.jpg)",
+      "after": "![图 14.4 perf-tools](../images/14fig04.jpg)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 1714,
+      "english": "**Table 14.7 Single-purpose perf-tools**",
+      "before": "**表 14.7 单一用途性能工具**",
+      "after": "**表 14.7 单一用途 perf-tools **",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 1765,
+      "english": "**Table 14.8 Multi-purpose perf-tools**",
+      "before": "**表 14.8 多用途性能工具**",
+      "after": "**表 14.8 多用途 perf-tools **",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 2001,
+      "english": "- **Hist Triggers**: This will power future perf-tools that should be more efficient than kprobe-based BPF versions.",
+      "before": "- **hist 触发器**：它将为未来的性能工具提供动力，这些工具应当比基于 kprobe 的 BPF 版本更高效。",
+      "after": "- **hist 触发器**：它将为未来的 perf-tools 提供动力，这些工具应当比基于 kprobe 的 BPF 版本更高效。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 2002,
+      "english": "- **Dependencies**: perf-tools remain useful for resource-constrained environments (e.g., embedded Linux) as they typically only require a shell and awk(1).",
+      "before": "- **依赖关系**：性能工具对于资源受限的环境（例如嵌入式 Linux）仍然有用，因为它们通常只需要 shell 和 awk(1)。",
+      "after": "- **依赖关系**：perf-tools 对于资源受限的环境（例如嵌入式 Linux）仍然有用，因为它们通常只需要 shell 和 awk(1)。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 2046,
+      "english": "- **perf-tools**: [https://github.com/brendangregg/perf-tools](https://github.com/brendangregg/perf-tools)",
+      "before": "- **性能工具**：[https://github.com/brendangregg/perf-tools](https://github.com/brendangregg/perf-tools)",
+      "after": "- **perf-tools**：[https://github.com/brendangregg/perf-tools](https://github.com/brendangregg/perf-tools)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 125,
+      "english": "I developed many of these according to the same “do one job and do it well” philosophy as those in perf-tools in [Chapter 14](#ch14-ch14). This design includes making their default output concise and often just sufficient. You can “just run biolatency” without needing to learn any command line options, and usually get just enough output to solve your problem without clutter. Options typically do exist for customization, such as biolatency(8) `-F` to breakdown by I/O flags, shown earlier.",
+      "before": "我按照 [第 14 章](#ch14-ch14) 中性能工具所遵循的“做好一件事”理念开发了其中许多工具。设计目标包括让默认输出简洁且通常足够使用。您可以“直接运行 biolatency”，无需学习任何命令行选项，通常就能获得解决问题所需的信息而不至于杂乱。工具通常也提供定制选项，例如 biolatency(8) 的 `-F` 可按 I/O 标志细分，前面已经展示过。",
+      "after": "我按照 [第 14 章](#ch14-ch14) 中 perf-tools 所遵循的“做好一件事”理念开发了其中许多工具。设计目标包括让默认输出简洁且通常足够使用。您可以“直接运行 biolatency”，无需学习任何命令行选项，通常就能获得解决问题所需的信息而不至于杂乱。工具通常也提供定制选项，例如 biolatency(8) 的 `-F` 可按 I/O 标志细分，前面已经展示过。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 186,
+      "english": "**Table 15.3 Multi-purpose perf-tools**",
+      "before": "**表 15.3 多用途性能工具**",
+      "after": "**表 15.3 多用途 perf-tools **",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "017-appendix-a.md",
+      "line": 6,
+      "english": "# Appendix A — USE Method: Linux",
+      "before": "# 附录 A — 使用方法：Linux",
+      "after": "# 附录 A — USE 方法：Linux",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "017-appendix-a.md",
+      "line": 18,
+      "english": "| CPU | Saturation | System-wide: `vmstat 1`, `r` \\> CPU count[^fn-appa-appa-footnote-1]; `sar -q`, `runq-sz` \\> CPU count; `runqlat`; `runqlen` Per process: /proc/PID/schedstat 2nd field (sched\\_info.run\\_delay); getdelays.c, `CPU`[^fn-appa-appa-footnote-2]; `perf sched latency` (shows average and maximum delay per schedule)[^fn-appa-appa-footnote-3] |",
+      "before": "| CPU | 饱和度 | 全系统：`vmstat 1`、`r` \\> CPU 计数[^fn-appa-appa-footnote-1]； `sar -q`, `runq-sz` \\> CPU 计数； `runqlat`; `runqlen` 每个进程：/proc/PID/schedstat 第二个字段（sched\\_info.run\\_delay）； getdelays.c，`CPU`[^fn-appa-appa-footnote-2]； `perf sched latency`（显示每个计划的平均和最大延迟）[^fn-appa-appa-footnote-3] |",
+      "after": "| CPU | 饱和度 | 全系统：`vmstat 1`、`r` \\> CPU 数量[^fn-appa-appa-footnote-1]； `sar -q`, `runq-sz` \\> CPU 数量； `runqlat`; `runqlen` 每个进程：/proc/PID/schedstat 第二个字段（sched\\_info.run\\_delay）； getdelays.c，`CPU`[^fn-appa-appa-footnote-2]； `perf sched latency`（显示每次调度的平均和最大延迟）[^fn-appa-appa-footnote-3] |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "017-appendix-a.md",
+      "line": 48,
+      "english": "General notes: `uptime` “load average” (or /proc/loadavg) wasn’t included for CPU metrics since Linux load averages include tasks in the uninterruptible I/O state.",
+      "before": "一般说明：`uptime`“平均负载”（或 /proc/loadavg）不包含在 CPU 指标中，因为 Linux 平均负载包括处于不间断 I/O 状态的任务。",
+      "after": "一般说明：`uptime`“平均负载”（或 /proc/loadavg）不包含在 CPU 指标中，因为 Linux 平均负载包括处于不可中断 I/O 状态的任务。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "017-appendix-a.md",
+      "line": 69,
+      "english": "| User mutex | Saturation | `valgrind --tool=drd` to infer contention from held time; dynamic instrumentation of synchronization functions for wait time, e.g., `pmlock.bt`; profiling (perf(1)) user stacks for spins |",
+      "before": "| 用户互斥量 | 饱和度 | `valgrind --tool=drd` 从保持时间推断争用；同步函数的等待时间动态插桩，例如 `pmlock.bt`；用于旋转的分析 (perf(1)) 用户堆栈 |",
+      "after": "| 用户互斥量 | 饱和度 | 使用 `valgrind --tool=drd` 根据锁持有时间推断争用；对同步函数动态插桩以测量等待时间，例如 `pmlock.bt`；使用 perf(1) 对用户调用栈进行性能剖析以查找自旋 |",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "017-appendix-a.md",
+      "line": 82,
+      "english": "**\\[Gregg 13d\\]** Gregg, B., “USE Method: Linux Performance Checklist,” [http://www.brendangregg.com/USEmethod/use-linux.html](http://www.brendangregg.com/USEmethod/use-linux.html), first published 2013.",
+      "before": "**\\[Gregg 13d\\]** Gregg, B.，“使用方法：Linux 性能检查表”，[http://www.brendangregg.com/USEmethod/use-linux.html](http://www.brendangregg.com/USEmethod/use-linux.html)，2013 年首次发布。",
+      "after": "**\\[Gregg 13d\\]** Gregg, B.，“USE 方法：Linux 性能检查表”，[http://www.brendangregg.com/USEmethod/use-linux.html](http://www.brendangregg.com/USEmethod/use-linux.html)，2013 年首次发布。",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 147,
+      "english": "**Anonymous paging, [305](#ch07-page-305)–[307](#ch07-page-307)**",
+      "before": "**匿名寻呼，[305](#ch07-page-305)–[307](#ch07-page-307)**",
+      "after": "**匿名分页，[305](#ch07-page-305)–[307](#ch07-page-307)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 407,
+      "english": "**Back-ends in instruction pipeline, [224](#ch06-page-224)**",
+      "before": "**指令管道后端，[224](#ch06-page-224)**",
+      "after": "**指令流水线后端，[224](#ch06-page-224)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 547,
+      "english": "sanity checks, [664](#ch12-page-664)–[665](#ch12-page-665)",
+      "before": "健全性检查，[664](#ch12-page-664)–[665](#ch12-page-665)",
+      "after": "合理性检查，[664](#ch12-page-664)–[665](#ch12-page-665)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1965,
+      "english": "scaling governors, [297](#ch06-page-297)",
+      "before": "缩放调速器，[297](#ch06-page-297)",
+      "after": "CPU 调频策略，[297](#ch06-page-297)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2158,
+      "english": "**Demand paging**",
+      "before": "**按需寻呼**",
+      "after": "**按需分页**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2378,
+      "english": "scaling, [457](#ch09-page-457)–[458](#ch09-page-458)",
+      "before": "缩放，[457](#ch09-page-457)–[458](#ch09-page-458)",
+      "after": "扩展，[457](#ch09-page-457)–[458](#ch09-page-458)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2979,
+      "english": "**False sharing for hash tables, [181](#ch05-page-181)**",
+      "before": "**哈希表的虚假共享，[181](#ch05-page-181)**",
+      "after": "**哈希表的伪共享，[181](#ch05-page-181)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3117,
+      "english": "paging, [306](#ch07-page-306)",
+      "before": "寻呼，[306](#ch07-page-306)",
+      "after": "分页，[306](#ch07-page-306)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3462,
+      "english": "**Front-ends in instruction pipeline, [224](#ch06-page-224)**",
+      "before": "**指令管道中的前端，[224](#ch06-page-224)**",
+      "after": "**指令流水线中的前端，[224](#ch06-page-224)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3828,
+      "english": "anonymous paging, [306](#ch07-page-306)",
+      "before": "匿名寻呼，[306](#ch07-page-306)",
+      "after": "匿名分页，[306](#ch07-page-306)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4891,
+      "english": "transaction costs analysis, [385](#ch08-page-385)–[386](#ch08-page-386)",
+      "before": "交易成本分析，[385](#ch08-page-385)–[386](#ch08-page-386)",
+      "after": "事务开销分析，[385](#ch08-page-385)–[386](#ch08-page-386)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5340,
+      "english": "demand paging, [307](#ch07-page-307)–[308](#ch07-page-308)",
+      "before": "请求寻呼，[307](#ch07-page-307)–[308](#ch07-page-308)",
+      "after": "按需分页，[307](#ch07-page-307)–[308](#ch07-page-308)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5368,
+      "english": "overcommit, [308](#ch07-page-308)",
+      "before": "过度使用，[308](#ch07-page-308)",
+      "after": "内存超额分配，[308](#ch07-page-308)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5372,
+      "english": "paging, [306](#ch07-page-306)–[307](#ch07-page-307)",
+      "before": "寻呼，[306](#ch07-page-306)–[307](#ch07-page-307)",
+      "after": "分页，[306](#ch07-page-306)–[307](#ch07-page-307)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5595,
+      "english": "RED method, [53](#ch02-page-53)",
+      "before": "红色方法，[53](#ch02-page-53)",
+      "after": "RED 方法，[53](#ch02-page-53)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6856,
+      "english": "**Overcommitted main memory, [305](#ch07-page-305), [308](#ch07-page-308)**",
+      "before": "**主内存过度使用，[305](#ch07-page-305)、[308](#ch07-page-308)**",
+      "after": "**主存超额分配，[305](#ch07-page-305)、[308](#ch07-page-308)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6980,
+      "english": "**Paging**",
+      "before": "**寻呼**",
+      "after": "**分页**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7823,
+      "english": "**Queueing disciplines**",
+      "before": "**排队纪律**",
+      "after": "**排队规则**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7970,
+      "english": "**Receive Side Scaling (RSS) in networks, [522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "before": "**网络中的接收端缩放 (RSS)，[522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "after": "**网络中的接收端扩展 (RSS)，[522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8204,
+      "english": "**RSS (Receive Side Scaling) in networks, [522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "before": "**网络中的 RSS（接收端缩放），[522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "after": "**网络中的 RSS（接收端扩展），[522](#ch10-page-522)–[523](#ch10-page-523)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8286,
+      "english": "**Sanity checks in benchmarking, [664](#ch12-page-664)–[665](#ch12-page-665)**",
+      "before": "**基准测试中的健全性检查，[664](#ch12-page-664)–[665](#ch12-page-665)**",
+      "after": "**基准测试中的合理性检查，[664](#ch12-page-664)–[665](#ch12-page-665)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8372,
+      "english": "**Scalability and scaling**",
+      "before": "**可扩展性和缩放**",
+      "after": "**可扩展性和扩展**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8401,
+      "english": "**Scaling governors, [297](#ch06-page-297)**",
+      "before": "**缩放调速器，[297](#ch06-page-297)**",
+      "after": "**CPU 调频策略，[297](#ch06-page-297)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9437,
+      "english": "queueing disciplines, [571](#ch10-page-571)",
+      "before": "排队纪律，[571](#ch10-page-571)",
+      "after": "排队规则，[571](#ch10-page-571)",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10063,
+      "english": "**Transaction costs of latency, [385](#ch08-page-385)–[386](#ch08-page-386)**",
+      "before": "**延迟的交易成本，[385](#ch08-page-385)–[386](#ch08-page-386)**",
+      "after": "**延迟的事务开销，[385](#ch08-page-385)–[386](#ch08-page-386)**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10634,
+      "english": "**Vertical scaling**",
+      "before": "**垂直缩放**",
+      "after": "**纵向扩展**",
+      "reason": "依据英文逐项核对术语、语义和上下文；不添加原文没有的解释"
+    },
+    {
+      "file": "004-chapter-04.md",
+      "line": 1025,
+      "english": "- **[ARM](#gloss-glo-009)**: Section D7.10, “PMU Events and Event Numbers,” of *Arm® Architecture Reference Manual Armv8, for Armv8-A architecture profile* [\\[ARM 19\\]](#ch04-ch04ref8)",
+      "before": "- **[ARM](#gloss-glo-009)**：*Arm® 架构参考手册 Armv8 的 D7.10 节“PMU 事件和事件编号”，适用于 Armv8-A 架构配置文件* [\\[ARM 19\\]](#ch04-ch04ref8)",
+      "after": "- **[ARM](#gloss-glo-009)**：*Arm® 架构参考手册 Armv8 的 D7.10 节“PMU 事件和事件编号”，适用于 Armv8-A 架构系列* [\\[ARM 19\\]](#ch04-ch04ref8)",
+      "reason": "复核同类语义；ARM profile 依据官方 A/R/M 架构分类核实"
+    },
+    {
+      "file": "004-chapter-04.md",
+      "line": 1408,
+      "english": "**\\[ARM 19\\]** *Arm® Architecture Reference Manual Armv8, for Armv8-A architecture profile*, [https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573), 2019.",
+      "before": "**\\[ARM 19\\]** *Arm® 架构参考手册 Armv8，适用于 Armv8-A 架构配置文件*，[https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573)，2019。",
+      "after": "**\\[ARM 19\\]** *Arm® 架构参考手册 Armv8，适用于 Armv8-A 架构系列*，[https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573)，2019。",
+      "reason": "复核同类语义；ARM profile 依据官方 A/R/M 架构分类核实"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 508,
+      "english": "Another processor detail to be aware of is how many hardware counter registers it provides. For example, the Intel Skylake microarchitecture provides three fixed counters per hardware thread, and an additional eight programmable counters per core (“general-purpose”). These are 48-bit counters when read.",
+      "before": "另一个需要注意的处理器细节是它提供了多少个硬件计数器寄存器。例如，Intel Skylake 微架构为每个硬件线程提供三个固定计数器，并为每个内核提供额外的八个可编程计数器（“通用”）。读取时这些是 48 位计数器。",
+      "after": "另一个需要注意的处理器细节是它提供了多少个硬件计数器寄存器。例如，Intel Skylake 微架构为每个硬件线程提供三个固定计数器，并为每个核心提供额外的八个可编程计数器（“通用”）。读取时这些是 48 位计数器。",
+      "reason": "复核同类语义；ARM profile 依据官方 A/R/M 架构分类核实"
+    },
+    {
+      "file": "013-chapter-13.md",
+      "line": 1661,
+      "english": "**\\[ARM 19\\]** *Arm® Architecture Reference Manual Armv8, for Armv8-A architecture profile*, [https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573), 2019.",
+      "before": "**\\[ARM 19\\]** *Arm® 架构参考手册 Armv8，适用于 Armv8-A 架构配置文件*，[https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573)，2019。",
+      "after": "**\\[ARM 19\\]** *Arm® 架构参考手册 Armv8，适用于 Armv8-A 架构系列*，[https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?\\_ga=2.78191124.1893781712.1575908489-930650904.1559325573](https://developer.arm.com/architectures/cpu-architecture/a-profile/docs?_ga=2.78191124.1893781712.1575908489-930650904.1559325573)，2019。",
+      "reason": "复核同类语义；ARM profile 依据官方 A/R/M 架构分类核实"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 15,
+      "english": "I noticed that, whenever there was a performance issue, the senior system administrators had their own mental procedures for moving quickly through tools and metrics to find the root cause. They understood which metrics were important and when they pointed to an issue, and how to use them to narrow down an investigation. It was this *know-how* that was missing from the man pages—it was typically learned by watching over the shoulder of a senior admin or engineer.",
+      "before": "我注意到，每当出现性能问题时，高级系统管理员都有自己的思维程序，可以快速通过工具和指标来查找根本原因。他们了解哪些指标很重要，何时指出问题，以及如何使用它们来缩小调查范围。手册页中缺少的正是这种“专业知识”——通常是通过高级管理员或工程师的观察来学习的。",
+      "after": "我注意到，每当出现性能问题时，资深系统管理员心中都有一套排查流程，能够迅速运用工具和指标找到根因。他们知道哪些指标重要、何时表明存在问题，以及如何利用这些指标缩小排查范围。手册页中缺少的正是这种*实践经验*——通常需要在资深管理员或工程师身旁观察他们的操作才能学到。",
+      "reason": "复核检查器候选；纠正观察者与被观察者、步骤词义及数值关系"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10572,
+      "english": "procedure, [47](#ch02-page-47)–[48](#ch02-page-48)",
+      "before": "程序，[47](#ch02-page-47)–[48](#ch02-page-48)",
+      "after": "实施步骤，[47](#ch02-page-47)–[48](#ch02-page-48)",
+      "reason": "复核检查器候选；纠正观察者与被观察者、步骤词义及数值关系"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1702,
+      "english": "The size of vm.min\\_free\\_kbytes is set dynamically as a fraction of main memory. The algorithm to choose this is not linear, as needs for free memory do not linearly scale with main memory size. (For reference, this is documented in the Linux source in mm/page\\_alloc.c.) vm.min\\_free\\_kbytes can be reduced to free up some memory for applications, but that can also cause the kernel to be overwhelmed during memory pressure and resort to using OOM sooner. Increasing it can help avoid OOM kills.",
+      "before": "vm.min\\_free\\_kbytes 的大小动态设置为主内存的一部分。选择此值的算法不是线性的，因为对可用内存的需求并不与主内存大小线性缩放。（作为参考，Linux 源代码中的 mm/page\\_alloc.c 对此进行了记录。）可以减少 vm.min\\_free\\_kbytes 来为应用程序释放一些内存，但这也可能导致内核在内存压力期间不堪重负，并更快地诉诸 OOM。增加它可以帮助避免 OOM 终止。",
+      "after": "vm.min\\_free\\_kbytes 的大小动态设置为主内存的一部分。选择此值的算法不是线性的，因为对可用内存的需求并不随主存容量线性增长。（作为参考，Linux 源代码中的 mm/page\\_alloc.c 对此进行了记录。）可以减少 vm.min\\_free\\_kbytes 来为应用程序释放一些内存，但这也可能导致内核在内存压力期间不堪重负，并更快地诉诸 OOM。增加它可以帮助避免 OOM 终止。",
+      "reason": "复核检查器候选；纠正观察者与被观察者、步骤词义及数值关系"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 914,
+      "english": "2. Calculate the number of disks required to support this workload. Factor in RAID configuration. Do not use the maximum throughput and IOPS values per disk, as this would result in driving disks at 100% utilization, leading to immediate performance issues due to saturation and queueing. Pick a target utilization (say, 50%) and scale values accordingly.",
+      "before": "2. 计算支持该工作负载所需的磁盘数量。 RAID 配置因素。不要使用每个磁盘的最大吞吐量和 IOPS 值，因为这会导致磁盘利用率达到 100%，从而因饱和和排队而立即出现性能问题。选择目标利用率（例如 50%）并相应地缩放值。",
+      "after": "2. 计算支持该工作负载所需的磁盘数量，并将 RAID 配置纳入考虑。不要直接使用单块磁盘的最大吞吐量和 IOPS 值，否则磁盘利用率会达到 100%，立即因饱和与排队而产生性能问题。选择目标利用率（例如 50%），并据此按比例调整这些数值。",
+      "reason": "复核检查器候选；纠正观察者与被观察者、步骤词义及数值关系"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 829,
+      "english": "    - Scale a dimension (threads, I/O size...) and measure performance.",
+      "before": "    - 缩放维度（线程、I/O 大小...）并测量性能。",
+      "after": "    - 调整某个维度（线程数、I/O 大小……），并测量性能。",
+      "reason": "复核检查器候选；纠正观察者与被观察者、步骤词义及数值关系"
+    }
+  ],
+  "technical_sources": [
+    "https://www.arm.com/architecture/cpu",
+    "https://www.rfc-editor.org/rfc/rfc9293.html"
+  ],
+  "source_anomalies": [
+    {
+      "file": "010-chapter-10.md",
+      "line": 862,
+      "issue": "英文将零窗口通告列在 congestion window 项下；零窗口通告属于接收窗口流控。保留原文及忠实译文，单独记录待编辑核对，不静默修改作者技术表述。"
+    }
+  ]
+}

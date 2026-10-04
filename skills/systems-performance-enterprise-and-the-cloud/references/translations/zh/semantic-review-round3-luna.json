@@ -1,0 +1,313 @@
+{
+  "scope": {
+    "files": [
+      "018-appendix-b.md",
+      "020-appendix-d.md",
+      "021-appendix-e.md",
+      "015-chapter-15.md"
+    ],
+    "chapter_15_reserved_unmodified_lines": [
+      157,
+      158
+    ],
+    "coverage": "Appendix B lines 1-37; Appendix D lines 1-68; Appendix E lines 1-197 (name labels only); Chapter 15 lines 1-1529 (targeted terminology and memleak row; Chapter 15 table 15.2 rows 157-158 excluded).",
+    "constraints": "Only the four requested Chinese translation files were changed. No English source, scripts, skill files, manifests, generators, or PDFs were changed. Code, URLs, link targets, source markers, table delimiters, and footnote keys/references were preserved."
+  },
+  "change_count": 40,
+  "changed_lines_by_file": {
+    "018-appendix-b.md": 2,
+    "020-appendix-d.md": 5,
+    "021-appendix-e.md": 12,
+    "015-chapter-15.md": 21
+  },
+  "changes": [
+    {
+      "file": "018-appendix-b.md",
+      "line": 8,
+      "before": "这是系统活动报告器 sar(1) 的选项和指标的摘要。您可以使用它来唤起您的记忆，哪些指标属于哪些选项。请参阅手册页以获取完整列表。",
+      "after": "这份速查表汇总了系统活动报告器 sar(1) 的选项和指标，方便您回想各项指标对应哪些选项。完整列表请参阅手册页。",
+      "reason": "英文说这份摘要用于帮助读者回想指标与选项的对应关系；“唤起您的记忆”是生硬直译，改为自然的“方便您回想”。"
+    },
+    {
+      "file": "018-appendix-b.md",
+      "line": 10,
+      "before": "sar(1) 在 [第 4 章](#ch04-ch04)、[可观测性工具](#ch04-ch04)、[第 4.4 节](#ch04-ch04lev4) 中介绍，所选选项在后面的章节中进行了总结（[6](#ch06-ch06)、[7](#ch07-ch07)、[8](#ch08-ch08)、[9](#ch09-ch09)、 [10](#ch10-ch10)）。",
+      "after": "sar(1) 在 [第 4 章](#ch04-ch04)、[可观测性工具](#ch04-ch04)、[第 4.4 节](#ch04-ch04lev4) 中介绍；后续章节（[6](#ch06-ch06)、[7](#ch07-ch07)、[8](#ch08-ch08)、[9](#ch09-ch09)、[10](#ch10-ch10)）也汇总了部分选项。",
+      "reason": "保留原有章节链接与含义，消除“所选选项在后面章节中进行了总结”的生硬被动句。"
+    },
+    {
+      "file": "020-appendix-d.md",
+      "line": 6,
+      "before": "# 附录 D — 选定练习的答案",
+      "after": "# 附录 D — 部分习题参考解答",
+      "reason": "“Solutions”在此为习题解答；“参考解答”比“答案”更贴合 suggested solutions，也准确表达选摘性质。"
+    },
+    {
+      "file": "020-appendix-d.md",
+      "line": 8,
+      "before": "以下是所选练习的建议解决方案。[^fn-appd-appd-footnote-1]",
+      "after": "以下是部分习题的参考解答。[^fn-appd-appd-footnote-1]",
+      "reason": "与标题统一使用“参考解答”，保留原有脚注引用及其完整列表说明。"
+    },
+    {
+      "file": "020-appendix-d.md",
+      "line": 68,
+      "before": "[^fn-appd-appd-footnote-1]: 如果您管理一个培训课程，且学员会获得本书，请联系出版商或我本人以获取完整的练习参考答案。",
+      "after": "[^fn-appd-appd-footnote-1]: 如果您负责培训课程，学员会拿到本书，请联系出版商或我本人索取完整的习题解答。",
+      "reason": "将脚注中的“管理一个培训课程”和“获取完整的练习参考答案”改为自然中文；脚注定义键保持不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 16,
+      "before": "**布伦登·布兰科**：BCC。",
+      "after": "**Brenden Blanco**：BCC。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 36,
+      "before": "**蒂姆·库克**：适用于 Linux 的 nicstat(1) 以及增强功能。",
+      "after": "**Tim Cook**：适用于 Linux 的 nicstat(1) 以及增强功能。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 48,
+      "before": "**凯文·罗伯特·埃尔兹**：DNLC。",
+      "after": "**Kevin Robert Elz**：DNLC。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 60,
+      "before": "**Neil Gunther 博士**：通用可扩展性定律、CPU 利用率的三元图、性能书籍 \\[Gunther 97\\]。",
+      "after": "**Dr. Neil Gunther**：通用可扩展性定律、CPU 利用率的三元图、性能书籍 \\[Gunther 97\\]。",
+      "reason": "人物姓名标题按英文原名呈现；保留英文中的称谓和拼写。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 80,
+      "before": "**约翰·莱文**：OProfile。",
+      "after": "**John Levon**：OProfile。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 100,
+      "before": "**卡里·米尔萨普**：方法 R。",
+      "after": "**Cary Millsap**：方法 R。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 104,
+      "before": "**理查德·J·摩尔**：DProbes、kprobes。",
+      "after": "**Richard J. Moore**：DProbes、kprobes。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 106,
+      "before": "**安德鲁·莫顿**：fadvise，预读。",
+      "after": "**Andrew Morton**：fadvise，预读。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 110,
+      "before": "**迈克·穆斯**：ping(8)。",
+      "after": "**Mike Muuss**：ping(8)。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 134,
+      "before": "**宋永红**：BTF，以及扩展的 BPF 和 BCC 工作。",
+      "after": "**Yonghong Song**：BTF，以及扩展的 BPF 和 BCC 工作。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 150,
+      "before": "**达格·维尔斯**：dstat。",
+      "after": "**Dag Wieers**：dstat。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "021-appendix-e.md",
+      "line": 154,
+      "before": "**张伟**：ktap。",
+      "after": "**Jovi Zhangwei**：ktap。",
+      "reason": "人物姓名标题按英文原名呈现；正文内容不变。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 20,
+      "before": "BPF 与其他跟踪器的不同之处在于它是可编程的。它允许对事件执行用户定义的程序，可以执行过滤、保存和检索信息、计算延迟、执行内核聚合和自定义摘要等的程序。虽然其他跟踪器可能需要将所有事件转储到用户空间并对其进行后处理，但 BPF 允许在内核上下文中高效地进行此类处理。这使得创建性能工具变得切实可行，否则这些工具在生产使用中会花费太多开销。",
+      "after": "BPF 与其他跟踪器的不同之处在于它具有可编程性。它允许在事件上运行用户自定义程序，执行过滤、保存和检索信息、计算延迟、在内核中聚合数据、生成自定义统计结果等操作。其他跟踪器可能需要将所有事件转储到用户空间再进行后处理，而 BPF 可以在内核上下文中高效完成这些处理。因此，原本因开销过高而不适合在生产环境使用的性能工具，现在也切实可行。",
+      "reason": "改正原句的重复结构和“自定义摘要”生硬表达；将自定义 summaries 明确为统计结果，保留生产环境开销因果关系。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 42,
+      "before": "[表 15.1](#ch15-ch15tab01) 中总结了 BCC 和 bpftrace 之间的具体差异。",
+      "after": "[表 15.1](#ch15-ch15tab01) 汇总列出了 BCC 与 bpftrace 的具体差异。",
+      "reason": "此处 summarized 引出表格中的对比内容，用“汇总列出”比“总结了差异”更准确自然。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 55,
+      "before": "| 摘要类型 | 任意 | 计数、最小值、最大值、总和、平均值、log2 直方图、线性直方图；按零个或多个键分组 |",
+      "after": "| 统计结果类型 | 任意 | 计数、最小值、最大值、总和、平均值、log2 直方图、线性直方图；可按零个或多个键分组 |",
+      "reason": "summary types 指工具能生成的统计/聚合结果类型，不是摘要文本类型。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 103,
+      "before": "本节总结了 BCC 及其单用途和多用途性能分析工具。",
+      "after": "本节概述 BCC 及其单用途和多用途性能分析工具。",
+      "reason": "summarizes 在此表示本节概述其内容，不是计算统计量。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 138,
+      "before": "| btrfsdist(8) | 将 btrfs 操作延迟总结为直方图 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "after": "| btrfsdist(8) | 汇总 btrfs 操作延迟并以直方图呈现 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "reason": "该工具按英文描述汇总操作延迟并用直方图呈现；避免把 summarize 译为“总结”。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 147,
+      "before": "| ext4dist(8) | 将 ext4 操作延迟总结为直方图 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "after": "| ext4dist(8) | 汇总 ext4 操作延迟并以直方图呈现 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "reason": "明确这是延迟统计的汇总和直方图呈现。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 155,
+      "before": "| memleak(8) | 显示未完成的内存分配 | - |",
+      "after": "| memleak(8) | 显示尚未释放的内存分配 | - |",
+      "reason": "outstanding memory allocations 指仍未释放的分配；“未完成”容易误解为分配操作尚未完成。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 169,
+      "before": "| tcplife(8) | 跟踪 TCP 会话并总结其生命周期 | [10.6.9](#ch10-ch10lev6sec9) |",
+      "after": "| tcplife(8) | 跟踪 TCP 会话并统计其持续时间 | [10.6.9](#ch10-ch10lev6sec9) |",
+      "reason": "summarize their lifespan 指统计会话持续时间。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 173,
+      "before": "| xfsdist(8) | 将 xfs 操作延迟总结为直方图 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "after": "| xfsdist(8) | 汇总 xfs 操作延迟并以直方图呈现 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "reason": "明确 summarize latency 的统计含义。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 175,
+      "before": "| zfsdist(8) | 将 zfs 操作延迟总结为直方图 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "after": "| zfsdist(8) | 汇总 zfs 操作延迟并以直方图呈现 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "reason": "明确 summarize latency 的统计含义。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 193,
+      "before": "| funclatency(8) | 将函数延迟总结为直方图 | - |",
+      "after": "| funclatency(8) | 汇总函数延迟并以直方图呈现 | - |",
+      "reason": "“总结为直方图”不自然；这里是对延迟做汇总统计。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 300,
+      "before": "按返回值（大小或错误）总结 VFS 读取：",
+      "after": "按返回值（读取大小或错误码）汇总 VFS 读取结果：",
+      "reason": "argdist 按返回值聚合读取操作；使用“汇总结果”避免把 summarize 机械译作“总结”。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 306,
+      "before": "通过 PID 1005 的返回值（大小或错误）总结 libc read()：",
+      "after": "按返回值（读取大小或错误码）汇总 PID 1005 的 libc read() 调用：",
+      "reason": "说明返回值表示读取字节数或错误码，并明确这是针对指定进程的调用汇总。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 322,
+      "before": "使用计数总结内核函数 tcp\\_sendmsg() 大小参数：",
+      "after": "按计数统计内核函数 tcp\\_sendmsg() 的消息长度参数 size：",
+      "reason": "tcp_sendmsg() 的 size 是发送消息长度参数，明确写“消息长度”以免与网络数据包大小混淆。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 330,
+      "before": "将 tcp\\_sendmsg() 大小总结为 2 的幂直方图：",
+      "after": "将 tcp\\_sendmsg() 的消息长度参数 size 汇总为 2 的幂次直方图：",
+      "reason": "明确直方图统计发送消息长度，而不是数据包大小。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 346,
+      "before": "按进程汇总延迟超过 100 μs 的读取：",
+      "after": "按进程汇总延迟超过 100 μs 的读取操作：",
+      "reason": "此处 summarize 是统计聚合，补足读取操作的对象表达。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 382,
+      "before": "本章开头已经总结了这些差异。BCC 适用于支持多种参数或使用多种库的自定义复杂工具。bpftrace 非常适合不接受参数或只接受单个整数参数的单行命令和短小工具。BCC 允许用 C 开发跟踪工具核心的 BPF 程序，从而实现完全控制，但代价是复杂性：BCC 工具的开发时间可能是 bpftrace 工具的十倍，代码行数也可能是十倍。由于开发工具通常需要多次迭代，我发现先用开发速度更快的 bpftrace 编写工具，再在需要时移植到 BCC，可以节省时间。",
+      "after": "本章开头已经概述了这些差异。BCC 适用于支持多种参数或使用多种库的自定义复杂工具。bpftrace 非常适合不接受参数或只接受单个整数参数的单行命令和短小工具。BCC 允许用 C 开发跟踪工具核心的 BPF 程序，从而实现完全控制，但代价是复杂性：BCC 工具的开发时间可能是 bpftrace 工具的十倍，代码行数也可能是十倍。由于开发工具通常需要多次迭代，我发现先用开发速度更快的 bpftrace 编写工具，再在需要时移植到 BCC，可以节省时间。",
+      "reason": "此处 summarized 是回顾本章开头的介绍，改为“概述”而非统计聚合。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 478,
+      "before": "本节总结了 bpftrace 工具和 bpftrace 编程语言。这是基于我在 [\\[Gregg 19\\]](#ch15-ch15ref4) 中的 bpftrace 材料，该材料更深入地探讨了 bpftrace。",
+      "after": "本节概述 bpftrace 工具和 bpftrace 编程语言。内容基于我在 [\\[Gregg 19\\]](#ch15-ch15ref4) 中介绍的 bpftrace；那本书对 bpftrace 有更深入的探讨。",
+      "reason": "summarizes 描述本节内容范围；改用“概述”并保留书目链接。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 596,
+      "before": "将块 I/O 大小总结为直方图：",
+      "after": "汇总块 I/O 请求大小，并以直方图呈现：",
+      "reason": "明确这里统计的是 block I/O 请求大小并生成直方图，不是泛指数据包大小。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 713,
+      "before": "对内核函数 vfs\\_read() 进行计时并总结为直方图：",
+      "after": "测量内核函数 vfs\\_read() 的耗时，并将结果汇总为直方图：",
+      "reason": "summarize here is aggregation of measured latency values into a histogram. 译文明确“耗时”是统计对象。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 1162,
+      "before": "下面总结了 bpftrace 编程的主要组成部分：探针类型、控制流、变量、函数和映射函数。",
+      "after": "下面概述 bpftrace 编程的主要组成部分：探针类型、控制流、变量、函数和映射函数。",
+      "reason": "这里是参考指南对主要组成部分的概述，采用“概述”而非“总结”。"
+    },
+    {
+      "file": "020-appendix-d.md",
+      "line": 63,
+      "before": "问：描述在采用操作系统虚拟化的来宾环境中，对物理系统的可观测性。",
+      "after": "问：描述从操作系统级虚拟化的容器实例中观测物理系统的情况。",
+      "reason": "OS-virtualized guest 在本处指容器实例；host kernel 应明确为宿主机内核，避免误解为虚拟机来宾/宿主机。"
+    },
+    {
+      "file": "020-appendix-d.md",
+      "line": 65,
+      "before": "答：根据主机内核实现，来宾可以查看所有物理资源（包括 CPU 和磁盘）的高级指标，并注意到其他租户何时使用这些资源。泄漏用户数据的指标应该被内核阻止。例如，CPU 的利用率可能是可观测的（例如 50%），但无法观测到导致该利用率的其他租户的进程 ID 和进程名称。",
+      "after": "答：根据宿主机内核的实现，容器可以看到所有物理资源（包括 CPU 和磁盘）的高级指标，并能察觉其他租户何时在使用这些资源。内核应屏蔽会泄露用户数据的指标。例如，可以观测到 CPU 利用率（如 50%），但看不到造成该利用率的其他租户的进程 ID 和进程名称。",
+      "reason": "OS-virtualized guest 在本处指容器实例；host kernel 应明确为宿主机内核，避免误解为虚拟机来宾/宿主机。"
+    }
+  ],
+  "checks": {
+    "translation_validator": {
+      "status": "pass",
+      "file_count": 27,
+      "error_count": 0,
+      "report": "/tmp/systems-performance-luna-round3-validation.json"
+    }
+  }
+}

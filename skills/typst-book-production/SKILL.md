@@ -4,7 +4,6 @@ description: Produce and maintain publication-quality Typst books in a strict ra
 ---
 
 # Typst Book Production
-
 made by quboliu
 
 Produce a faithful, maintainable, and reproducible Typst book. This is a

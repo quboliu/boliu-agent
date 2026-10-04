@@ -1,0 +1,1899 @@
+{
+  "scope": "第三轮上下文术语整改",
+  "corrections": [
+    {
+      "file": "011-chapter-11.md",
+      "line": 16,
+      "english": "- Diagnose performance issues from hosts and guests, understanding how tool usage may vary depending on which virtualization is in use.",
+      "before": "- 诊断主机和来宾的性能问题，了解工具的使用如何根据所使用的虚拟化而变化。",
+      "after": "- 诊断宿主机和客户实例的性能问题，了解工具的使用如何根据所使用的虚拟化而变化。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 18,
+      "english": "While this entire book is applicable to cloud performance analysis, this chapter focuses on performance topics unique to the cloud: how hypervisors and virtualization work, how resource controls can be applied to guests, and how observability works from the host and guests. Cloud vendors typically provide their own custom services and APIs, which are not covered here: see the documentation that each cloud vendor provides for their own set of services.",
+      "before": "虽然整本书都适用于云性能分析，但本章重点讨论云特有的性能主题：虚拟机管理程序和虚拟化如何工作、如何将资源控制应用于来宾以及主机和来宾的可观测性如何工作。云供应商通常会提供自己的自定义服务和 API，此处不予介绍：请参阅每个云供应商为其自己的服务集提供的文档。",
+      "after": "虽然整本书都适用于云性能分析，但本章重点讨论云特有的性能主题：虚拟机管理程序和虚拟化如何工作、如何将资源控制应用于客户实例以及宿主机和客户实例的可观测性如何工作。云供应商通常会提供自己的自定义服务和 API，此处不予介绍：请参阅每个云供应商为其自己的服务集提供的文档。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 23,
+      "english": "- **Hardware virtualization**, where a hypervisor manages multiple guest operating system instances as virtual machines, each running its own kernel with virtualized devices. This section uses the Xen, KVM, and Amazon Nitro hypervisors as examples.",
+      "before": "- **硬件虚拟化**，虚拟机管理程序将多个来宾操作系统实例作为虚拟机进行管理，每个实例都使用虚拟化设备运行自己的内核。本节以 Xen、KVM 和 Amazon Nitro 虚拟机管理程序为例。",
+      "after": "- **硬件虚拟化**，虚拟机管理程序将多个客户操作系统实例作为虚拟机进行管理，每个实例都使用虚拟化设备运行自己的内核。本节以 Xen、KVM 和 Amazon Nitro 虚拟机管理程序为例。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 39,
+      "english": "To summarize key cloud terminology: *cloud computing* describes a dynamic provisioning framework for instances. One or more instances run as *guests* of a physical *host* system. The guests are also called *tenants*, and the term *multitenancy* is used to describe them running on the same host. The host may be managed by cloud providers who operate a *public cloud*, or may be managed by your company for internal use only as part of a *private cloud*. Some companies construct a *hybrid cloud* that spans both public and private clouds.[^fn-ch11-ch11-footnote-1] The cloud guests (tenants) are managed by their end users.",
+      "before": "总结关键的云术语：*云计算*描述了实例的动态配置框架。一个或多个实例作为物理“主机”系统的“来宾”运行。来宾也称为“租户”，术语“多租户”用于描述它们在同一主机上运行。主机可能由运营“公共云”的云提供商管理，也可能由您的公司管理，仅供内部使用，作为“私有云”的一部分。一些公司构建了跨越公共云和私有云的“混合云”。[^fn-ch11-ch11-footnote-1] 云来宾（租户）由其最终用户管理。",
+      "after": "概括云计算的关键术语：*云计算*是为实例动态配置资源的框架。一个或多个实例作为物理*宿主机*（Host）上的*客户实例*（Guest）运行。客户实例也称为*租户*；*多租户*表示这些实例在同一宿主机上运行。宿主机可以由运营*公有云*的云提供商管理，也可以由您的公司管理，仅供内部使用，作为*私有云*的一部分。有些公司构建跨越公有云和私有云的*混合云*。[^fn-ch11-ch11-footnote-1] 云中的客户实例（租户）由其最终用户管理。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 82,
+      "english": "With the per-server instance size typically being small, say, 8 Gbytes (on physical hosts with 512 Gbytes and more of DRAM), fine-grained scaling can be used to attain optimum price/performance, rather than investing up front in huge systems that may remain mostly idle.",
+      "before": "由于每台服务器实例的大小通常较小，例如 8 GB（在具有 512 GB 或更多 DRAM 的物理主机上），因此可以使用细粒度扩展来实现最佳性价比，而不是预先投资于可能大部分闲置的大型系统。",
+      "after": "由于每台服务器实例的大小通常较小，例如 8 GB（在具有 512 GB 或更多 DRAM 的物理宿主机上），因此可以使用细粒度扩展来实现最佳性价比，而不是预先投资于可能大部分闲置的大型系统。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 148,
+      "english": "Cloud computing differs in that entire operating system instances can coexist on the same physical system. Each guest is its own isolated operating system: guests (typically[^fn-ch11-ch11-footnote-5]) cannot observe users and processes from other guests on the same host—that would be considered an information leak—even though they share the same physical resources.",
+      "before": "云计算的不同之处在于整个操作系统实例可以共存于同一物理系统上。每个来宾都是其自己的隔离操作系统：来宾（通常为 [^fn-ch11-ch11-footnote-5]）无法观察同一主机上其他来宾的用户和进程（这将被视为信息泄漏），即使它们共享相同的物理资源。",
+      "after": "云计算的不同之处在于整个操作系统实例可以共存于同一物理系统上。每个客户实例都是其自己的隔离操作系统：客户实例（通常为 [^fn-ch11-ch11-footnote-5]）无法观察同一宿主机上其他客户实例的用户和进程（这将被视为信息泄漏），即使它们共享相同的物理资源。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 150,
+      "english": "Since resources are shared among tenants, performance issues may be caused by *noisy neighbors*. For example, another guest on the same host might perform a full database dump during your peak load, interfering with your disk and network I/O. Worse, a neighbor could be evaluating the cloud provider by executing micro-benchmarks that deliberately saturate resources in order to find their limit.",
+      "before": "由于资源在租户之间共享，因此性能问题可能是由“吵闹的邻居”引起的。例如，同一主机上的另一个来宾可能会在峰值负载期间执行完整数据库转储，从而干扰您的磁盘和网络 I/O。更糟糕的是，邻居可能会通过执行微基准来评估云提供商，这些微基准故意使资源饱和以找到其极限。",
+      "after": "由于资源在租户之间共享，因此性能问题可能是由“吵闹的邻居”引起的。例如，同一宿主机上的另一个客户实例可能会在峰值负载期间执行完整数据库转储，从而干扰您的磁盘和网络 I/O。更糟糕的是，邻居可能会通过执行微基准来评估云提供商，这些微基准故意使资源饱和以找到其极限。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 154,
+      "english": "Apart from limiting resource usage, being able to observe multitenancy contention can help cloud operators tune the limits and better balance tenants on available hosts. The degree of observability depends on the virtualization type.",
+      "before": "除了限制资源使用之外，能够观察多租户争用还可以帮助云运营商调整限制并更好地平衡可用主机上的租户。可观测性的程度取决于虚拟化类型。",
+      "after": "除了限制资源使用之外，能够观察多租户争用还可以帮助云运营商调整限制并更好地平衡可用宿主机上的租户。可观测性的程度取决于虚拟化类型。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 174,
+      "english": "- **Type 1** executes directly on the processors. Hypervisor administration may be performed by a privileged guest that can create and launch new guests. Type 1 is also called *native hypervisor* or *bare-metal hypervisor*. This hypervisor includes its own CPU scheduler for guest VMs. A popular example is the Xen hypervisor.",
+      "before": "- **类型 1** 直接在处理器上执行。虚拟机管理程序可由有权创建并启动新来宾的特权来宾进行管理。类型 1 也称为“本机虚拟机管理程序”或“裸机虚拟机管理程序”。该虚拟机管理程序包含自己的来宾 VM CPU 调度程序。一个流行的例子是 Xen 虚拟机管理程序。",
+      "after": "- **类型 1** 直接在处理器上执行。虚拟机管理程序可由有权创建并启动新客户机的特权客户机进行管理。类型 1 也称为“本机虚拟机管理程序”或“裸机虚拟机管理程序”。该虚拟机管理程序包含自己的客户虚拟机 CPU 调度程序。一个流行的例子是 Xen 虚拟机管理程序。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 175,
+      "english": "- **Type 2** is executed within a host OS, which has privileges to administer the hypervisor and launch new guests. For this type, the system boots a conventional OS that then runs the hypervisor. This hypervisor is scheduled by the host kernel CPU scheduler, and guests appear as processes on the host.",
+      "before": "- **类型 2** 在主机操作系统中执行，该主机操作系统具有管理虚拟机管理程序和启动新来宾的权限。对于这种类型，系统启动传统操作系统，然后运行虚拟机管理程序。该虚拟机管理程序由主机内核 CPU 调度程序进行调度，而来宾在主机上显示为进程。",
+      "after": "- **类型 2** 在宿主机操作系统中执行，该宿主机操作系统具有管理虚拟机管理程序和启动新客户机的权限。对于这种类型，系统启动传统操作系统，然后运行虚拟机管理程序。该虚拟机管理程序由宿主机内核 CPU 调度程序进行调度，而客户机在宿主机上显示为进程。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 184,
+      "english": "- **Config A**: Also called a native hypervisor or a bare-metal hypervisor. The hypervisor software runs directly on the processors, creates domains for running guest virtual machines, and schedules virtual guest CPUs onto the real CPUs. A privileged domain (number 0 in [Figure 11.5](#ch11-ch11fig05)) can administer the others. A popular example is the Xen hypervisor.",
+      "before": "- **配置 A**：也称为本机虚拟机管理程序或裸机虚拟机管理程序。虚拟机管理程序软件直接在处理器上运行，创建用于运行来宾 VM 的域，并将虚拟来宾 CPU 调度到真实 CPU 上。特权域（[图 11.5](#ch11-ch11fig05) 中的数字 0）可以管理其他域。一个流行的例子是 Xen 虚拟机管理程序。",
+      "after": "- **配置 A**：也称为本机虚拟机管理程序或裸机虚拟机管理程序。虚拟机管理程序软件直接在处理器上运行，创建用于运行客户虚拟机 的域，并将虚拟客户机 CPU 调度到真实 CPU 上。特权域（[图 11.5](#ch11-ch11fig05) 中的数字 0）可以管理其他域。一个流行的例子是 Xen 虚拟机管理程序。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 185,
+      "english": "- **Config B**: The hypervisor software is executed by a host OS kernel, and may be composed of kernel-level modules and user-level processes. The host OS has privileges to administer the hypervisor, and its kernel schedules the VM CPUs along with other processes on the host. By use of kernel modules, this configuration also provides direct access to hardware. A popular example is the KVM hypervisor.",
+      "before": "- **配置 B**：虚拟机管理程序软件由主机操作系统内核执行，并且可以由内核级模块和用户级进程组成。主机操作系统具有管理虚拟机管理程序的权限，其内核调度 VM CPU 以及主机上的其他进程。通过使用内核模块，此配置还提供对硬件的直接访问。一个流行的例子是 KVM 虚拟机管理程序。",
+      "after": "- **配置 B**：虚拟机管理程序软件由宿主机操作系统内核执行，并且可以由内核级模块和用户级进程组成。宿主机操作系统具有管理虚拟机管理程序的权限，其内核调度 VM CPU 以及宿主机上的其他进程。通过使用内核模块，此配置还提供对硬件的直接访问。一个流行的例子是 KVM 虚拟机管理程序。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 187,
+      "english": "Both configurations may involve running an I/O proxy (e.g., using the QEMU software) in domain 0 (Xen) or the host OS (KVM), for serving guest I/O. This adds overhead to I/O, and over the years has been optimized by adding shared memory transports and other techniques.",
+      "before": "两种配置都可能涉及在域 0 (Xen) 或主机操作系统 (KVM) 中运行 I/O 代理（例如，使用 QEMU 软件），以服务来宾 I/O。这增加了 I/O 的开销，多年来已经通过添加共享内存传输和其他技术进行了优化。",
+      "after": "两种配置都可能涉及在域 0 (Xen) 或宿主机操作系统 (KVM) 中运行 I/O 代理（例如，使用 QEMU 软件），以服务客户机 I/O。这增加了 I/O 的开销，多年来已经通过添加共享内存传输和其他技术进行了优化。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 194,
+      "english": "- **Paravirtualization** (paravirt or PV): Provides a virtual system that includes an interface for guest operating systems to efficiently use host resources (via *hypercalls*), without needing full virtualization of all components. For example, arming a timer usually involves multiple privileged instructions that must be emulated by the hypervisor. This can be simplified into a single hypercall for use by the paravirtualized guest, for more efficient processing by the hypervisor. For further efficiency, the Xen hypervisor batches these hypercalls into a *multicall*. Paravirtualization may include the use of a paravirtual network device driver by the guest for passing packets more efficiently to the physical network interfaces in the host. While performance is improved, this relies on guest OS support for paravirtualization (which Windows has historically not provided).",
+      "before": "- **半虚拟化**（paravirt 或 PV）：提供一个虚拟系统，其中包括一个供来宾操作系统有效使用主机资源的接口（通过 *hypercall*），而不需要所有组件的完全虚拟化。例如，启用定时器通常涉及多个必须由管理程序模拟的特权指令。这可以简化为单个超级调用，供半虚拟化来宾使用，以便管理程序更有效地进行处理。为了进一步提高效率，Xen 虚拟机管理程序将这些超级调用批处理为*多重调用（multicall）*。半虚拟化可以包括来宾使用半虚拟网络设备驱动程序来更有效地将数据包传递到主机中的物理网络接口。虽然性能得到了提高，但这依赖于来宾操作系统对半虚拟化的支持（Windows 历史上从未提供过）。",
+      "after": "- **半虚拟化**（paravirt 或 PV）：提供一个虚拟系统，其中包括一个供客户操作系统有效使用宿主机资源的接口（通过 *hypercall*），而不需要所有组件的完全虚拟化。例如，启用定时器通常涉及多个必须由管理程序模拟的特权指令。这可以简化为单个超级调用，供半虚拟化客户机使用，以便管理程序更有效地进行处理。为了进一步提高效率，Xen 虚拟机管理程序将这些超级调用批处理为*多重调用（multicall）*。半虚拟化可以包括客户机使用半虚拟网络设备驱动程序来更有效地将数据包传递到宿主机中的物理网络接口。虽然性能得到了提高，但这依赖于客户操作系统对半虚拟化的支持（Windows 历史上从未提供过）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 195,
+      "english": "- **Device hardware support**: To further optimize VM performance, hardware devices other than processors have been adding virtual machine support. This includes single root I/O virtualization (SR-IOV) for network and storage devices, which allows guest VMs to access hardware directly. This requires driver support (example drivers are ixgbe, ena, hv\\_netvsc, and nvme).",
+      "before": "- **设备硬件支持**：为了进一步优化虚拟机性能，处理器以外的硬件设备已经添加了虚拟机支持。这包括网络和存储设备的单根 I/O 虚拟化 (SR-IOV)，它允许来宾虚拟机直接访问硬件。这需要驱动程序支持（示例驱动程序包括 ixgbe、ena、hv\\_netvsc 和 nvme）。",
+      "after": "- **设备硬件支持**：为了进一步优化虚拟机性能，处理器以外的硬件设备已经添加了虚拟机支持。这包括网络和存储设备的单根 I/O 虚拟化 (SR-IOV)，它允许客户虚拟机直接访问硬件。这需要驱动程序支持（示例驱动程序包括 ixgbe、ena、hv\\_netvsc 和 nvme）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 205,
+      "english": "- **Xen**: First released in 2003, Xen began as a research project at the University of Cambridge and was later acquired by Citrix. Xen is a Type 1 hypervisor that runs paravirtualized guests for high performance; support was later added for hardware-assisted guests for unmodified OS support (Windows). Virtual machines are called *domains*, with the most privileged being *dom0*, from which the hypervisor is administered and new domains launched. Xen is open source and can be launched from Linux. The Amazon Elastic Compute Cloud (EC2) was previously based on Xen.",
+      "before": "- **Xen**：Xen 于 2003 年首次发布，最初是剑桥大学的一个研究项目，后来被 Citrix 收购。Xen 是一个类型 1 虚拟机管理程序，可运行半虚拟化来宾以获得高性能；后来添加了对硬件辅助来宾的支持，以支持未经修改的操作系统（Windows）。虚拟机称为 *domains*，其中权限最高的是 *dom0*，虚拟机管理程序通过该域进行管理并启动新域。Xen 是开源的，可以从 Linux 启动。Amazon Elastic Compute Cloud (EC2) 以前基于 Xen。",
+      "after": "- **Xen**：Xen 于 2003 年首次发布，最初是剑桥大学的一个研究项目，后来被 Citrix 收购。Xen 是一个类型 1 虚拟机管理程序，可运行半虚拟化客户机以获得高性能；后来添加了对硬件辅助客户机的支持，以支持未经修改的操作系统（Windows）。虚拟机称为 *domains*，其中权限最高的是 *dom0*，虚拟机管理程序通过该域进行管理并启动新域。Xen 是开源的，可以从 Linux 启动。Amazon Elastic Compute Cloud (EC2) 以前基于 Xen。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 206,
+      "english": "- **Hyper-V**: Released with Windows Server 2008, Hyper-V is a Type 1 hypervisor that creates *partitions* for executing guest operating systems. The Microsoft Azure public cloud may be running a customized version of Hyper-V (exact details are not publicly available).",
+      "before": "- **Hyper-V**：Hyper-V 随 Windows Server 2008 一起发布，是一种类型 1 虚拟机管理程序，可为运行来宾操作系统创建*分区*。Microsoft Azure 公共云可能正在运行 Hyper-V 的定制版本（具体细节尚未公开）。",
+      "after": "- **Hyper-V**：Hyper-V 随 Windows Server 2008 一起发布，是一种类型 1 虚拟机管理程序，可为运行客户操作系统创建*分区*。Microsoft Azure 公共云可能正在运行 Hyper-V 的定制版本（具体细节尚未公开）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 207,
+      "english": "- **KVM**: This was developed by Qumranet, a startup that was bought by Red Hat in 2008. KVM is a Type 2 hypervisor, executing as a kernel module. It supports hardware-assisted extensions and, for high performance, uses paravirtualization for certain devices where supported by the guest OS. To create a complete hardware-assisted virtual machine instance, it is paired with a user process called QEMU (Quick Emulator), a VMM (hypervisor) that can create and manage virtual machines. QEMU was originally a high-quality open-source Type 2 hypervisor that used binary translation, written by Fabrice Bellard. KVM is open source, and is used by Google for the Google Compute Engine [\\[Google 20c\\]](#ch11-ch11ref39).",
+      "before": "- **KVM**：这是由 Qumranet 开发的，该公司是一家初创公司，于 2008 年被 Red Hat 收购。KVM 是一个类型 2 虚拟机管理程序，作为内核模块执行。它支持硬件辅助扩展，并且为了获得高性能，在来宾操作系统支持的某些设备上使用半虚拟化。为了创建完整的硬件辅助虚拟机实例，它与称为 QEMU（快速仿真器）的用户进程配对；QEMU 是一个可以创建和管理虚拟机的 VMM（虚拟机管理程序）。QEMU 最初是一个使用二进制翻译的高质量开源类型 2 虚拟机管理程序，由 Fabrice Bellard 编写。KVM 是开源的，由 Google 用于 Google Compute Engine [\\[Google 20c\\]](#ch11-ch11ref39)。",
+      "after": "- **KVM**：这是由 Qumranet 开发的，该公司是一家初创公司，于 2008 年被 Red Hat 收购。KVM 是一个类型 2 虚拟机管理程序，作为内核模块执行。它支持硬件辅助扩展，并且为了获得高性能，在客户操作系统支持的某些设备上使用半虚拟化。为了创建完整的硬件辅助虚拟机实例，它与称为 QEMU（快速仿真器）的用户进程配对；QEMU 是一个可以创建和管理虚拟机的 VMM（虚拟机管理程序）。QEMU 最初是一个使用二进制翻译的高质量开源类型 2 虚拟机管理程序，由 Fabrice Bellard 编写。KVM 是开源的，由 Google 用于 Google Compute Engine [\\[Google 20c\\]](#ch11-ch11ref39)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 208,
+      "english": "- **Nitro**: Launched by AWS in 2017, this hypervisor uses parts based on KVM with hardware support for all main resources: processors, network, storage, interrupts, and timers [\\[Gregg 17e\\]](#ch11-ch11ref22). No QEMU proxy is used. Nitro provides near bare-metal performance to guest VMs.",
+      "before": "- **Nitro**：该虚拟机管理程序由 AWS 于 2017 年推出，使用基于 KVM 的部件，并为所有主要资源提供硬件支持：处理器、网络、存储、中断和计时器 [\\[Gregg 17e\\]](#ch11-ch11ref22)。不使用 QEMU 代理。Nitro 为来宾虚拟机提供近乎裸机的性能。",
+      "after": "- **Nitro**：该虚拟机管理程序由 AWS 于 2017 年推出，使用基于 KVM 的部件，并为所有主要资源提供硬件支持：处理器、网络、存储、中断和计时器 [\\[Gregg 17e\\]](#ch11-ch11ref22)。不使用 QEMU 代理。Nitro 为客户虚拟机提供近乎裸机的性能。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 222,
+      "english": "In general, the guest applications execute directly on the processors, and CPU-bound applications may experience virtually the same performance as a bare-metal system. CPU overheads may be encountered when making privileged processor calls, accessing hardware, and mapping main memory, depending on how they are handled by the hypervisor. The following describe how CPU instructions are handled by the different hardware virtualization types:",
+      "before": "一般来说，来宾应用程序直接在处理器上执行，而受 CPU 限制的应用程序可能会体验到与裸机系统几乎相同的性能。在进行特权处理器调用、访问硬件和映射主内存时可能会遇到 CPU 开销，具体取决于管理程序如何处理它们。下面描述了不同硬件虚拟化类型如何处理 CPU 指令：",
+      "after": "一般来说，客户机应用程序直接在处理器上执行，而受 CPU 限制的应用程序可能会体验到与裸机系统几乎相同的性能。在进行特权处理器调用、访问硬件和映射主内存时可能会遇到 CPU 开销，具体取决于管理程序如何处理它们。下面描述了不同硬件虚拟化类型如何处理 CPU 指令：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 224,
+      "english": "- **Binary translation**: Guest kernel instructions that operate on physical resources are identified and translated. Binary translation was used before hardware-assisted virtualization was available. Without hardware support for virtualization, the scheme used by VMware involved running a virtual machine monitor (VMM) in processor ring 0 and moving the guest kernel to ring 1, which had previously been unused (applications run in ring 3, and most processors provide four rings; protection rings were introduced in [Chapter 3](#ch03-ch03), [Operating Systems](#ch03-ch03), [Section 3.2.2](#ch03-ch03lev2sec2), [Kernel and User Modes](#ch03-ch03lev2sec2)). Because some guest kernel instructions assume they are running in ring 0, in order to execute from ring 1 they need to be translated, calling into the VMM so that virtualization can be applied. This translation is performed during runtime, costing significant CPU overhead.",
+      "before": "- **二进制翻译**：识别并翻译对物理资源进行操作的来宾内核指令。在硬件辅助虚拟化可用之前，就使用了二进制翻译。在没有虚拟化硬件支持的情况下，VMware 采用的方案是在处理器环 0 中运行 VMM，并将来宾内核移至此前未使用的环 1（应用程序运行在环 3；大多数处理器提供四个环；保护环在[第 3 章](#ch03-ch03)、[操作系统](#ch03-ch03)、[第 3.2.2 节](#ch03-ch03lev2sec2)、[内核态和用户态](#ch03-ch03lev2sec2)中介绍）。由于某些来宾内核指令假设它们在环 0 中运行，因此为了从环 1 执行，它们需要进行转换，调用 VMM，以便可以应用虚拟化。此转换在运行时执行，会消耗大量 CPU 开销。",
+      "after": "- **二进制翻译**：识别并翻译对物理资源进行操作的客户机内核指令。在硬件辅助虚拟化可用之前，就使用了二进制翻译。在没有虚拟化硬件支持的情况下，VMware 采用的方案是在处理器环 0 中运行 VMM，并将客户机内核移至此前未使用的环 1（应用程序运行在环 3；大多数处理器提供四个环；保护环在[第 3 章](#ch03-ch03)、[操作系统](#ch03-ch03)、[第 3.2.2 节](#ch03-ch03lev2sec2)、[内核态和用户态](#ch03-ch03lev2sec2)中介绍）。由于某些客户机内核指令假设它们在环 0 中运行，因此为了从环 1 执行，它们需要进行转换，调用 VMM，以便可以应用虚拟化。此转换在运行时执行，会消耗大量 CPU 开销。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 225,
+      "english": "- **Paravirtualization**: Instructions in the guest OS that must be virtualized are replaced with hypercalls to the hypervisor. Performance can be improved if the guest OS is modified to optimize the hypercalls, making it aware that it is running on virtualized hardware.",
+      "before": "- **半虚拟化**：来宾操作系统中必须虚拟化的指令被对虚拟机管理程序的超级调用所取代。如果修改来宾操作系统以优化超级调用，使其知道自己正在虚拟化硬件上运行，则可以提高性能。",
+      "after": "- **半虚拟化**：客户操作系统中必须虚拟化的指令被对虚拟机管理程序的超级调用所取代。如果修改客户操作系统以优化超级调用，使其知道自己正在虚拟化硬件上运行，则可以提高性能。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 226,
+      "english": "- **Hardware-assisted**: Unmodified guest kernel instructions that operate on hardware are handled by the hypervisor, which runs a VMM at a ring level below 0. Instead of translating binary instructions, the guest kernel privileged instructions are forced to trap to the higher-privileged VMM, which can then emulate the privilege to support virtualization [\\[Adams 06\\]](#ch11-ch11ref4).",
+      "before": "- **硬件辅助**：在硬件上操作的未修改来宾内核指令由虚拟机管理程序处理，该虚拟机管理程序在低于环 0 的特权级别运行 VMM。来宾内核特权指令不是通过二进制翻译执行，而是被强制捕获到更高特权级别的 VMM，然后由 VMM 模拟这些特权操作以支持虚拟化 [\\[Adams 06\\]](#ch11-ch11ref4)。",
+      "after": "- **硬件辅助**：在硬件上操作的未修改客户机内核指令由虚拟机管理程序处理，该虚拟机管理程序在低于环 0 的特权级别运行 VMM。客户机内核特权指令不是通过二进制翻译执行，而是被强制捕获到更高特权级别的 VMM，然后由 VMM 模拟这些特权操作以支持虚拟化 [\\[Adams 06\\]](#ch11-ch11ref4)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 228,
+      "english": "Hardware-assisted virtualization is generally preferred, depending on the implementation and workload, while paravirtualization is used to improve the performance of some workloads (especially I/O) if the guest OS supports it.",
+      "before": "硬件辅助虚拟化通常是首选，具体取决于实施和工作负载，而半虚拟化则用于提高某些工作负载（尤其是 I/O）的性能（如果来宾操作系统支持）。",
+      "after": "硬件辅助虚拟化通常是首选，具体取决于实施和工作负载，而半虚拟化则用于提高某些工作负载（尤其是 I/O）的性能（如果客户操作系统支持）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 232,
+      "english": "Due to high hypervisor to guest transition overhead and a rigid programming model, VMware’s binary translation approach currently outperforms first generation hardware assist implementations in most circumstances. The rigid programming model in the first generation implementation leaves little room for software flexibility in managing either the frequency or the cost of hypervisor to guest transitions.",
+      "before": "由于管理程序到来宾转换的开销较高以及严格的编程模型，VMware 的二进制转换方法目前在大多数情况下优于第一代硬件辅助实现。第一代实现中的严格编程模型在管理虚拟机管理程序到来宾转换的频率或成本方面几乎没有留下软件灵活性的空间。",
+      "after": "由于管理程序到客户机转换的开销较高以及严格的编程模型，VMware 的二进制转换方法目前在大多数情况下优于第一代硬件辅助实现。第一代实现中的严格编程模型在管理虚拟机管理程序到客户机转换的频率或成本方面几乎没有留下软件灵活性的空间。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 234,
+      "english": "The rate of transitions between the guest and hypervisor, as well as the time spent in the hypervisor, can be studied as a metric of CPU overhead. These events are commonly referred to as *guest exits*, as the virtual CPU must stop executing inside the guest when this happens. [Figure 11.6](#ch11-ch11fig06) shows CPU overhead related to guest exits inside KVM.",
+      "before": "来宾和虚拟机管理程序之间的转换速率以及虚拟机管理程序中花费的时间可以作为 CPU 开销的指标进行研究。这些事件通常称为“来宾退出”，因为发生这种情况时虚拟 CPU 必须停止在来宾内部执行。[图 11.6](#ch11-ch11fig06) 显示了 KVM 内部与来宾退出相关的 CPU 开销。",
+      "after": "客户机和虚拟机管理程序之间的转换速率以及虚拟机管理程序中花费的时间可以作为 CPU 开销的指标进行研究。这些事件通常称为“客户机退出”，因为发生这种情况时虚拟 CPU 必须停止在客户机内部执行。[图 11.6](#ch11-ch11fig06) 显示了 KVM 内部与客户机退出相关的 CPU 开销。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 239,
+      "english": "The figure shows the flow of guest exits between the user process, the host kernel, and the guest. The time spent outside of the guest-handling exits is the CPU overhead of hardware virtualization; the more time spent handling exits, the greater the overhead. When the guest exits, a subset of the events can be handled directly in the kernel. Those that cannot must leave the kernel and return to the user process; this induces even greater overhead compared to exits that can be handled by the kernel.",
+      "before": "该图显示了用户进程、主机内核和来宾之间的来宾退出流程。在来宾退出处理之外花费的时间是硬件虚拟化的 CPU 开销；处理退出所花费的时间越多，开销就越大。当来宾退出时，部分事件可以直接在内核中处理。无法在内核中处理的事件必须离开内核并返回到用户进程；与内核可以处理的退出相比，这会导致更大的开销。",
+      "after": "该图显示了用户进程、宿主机内核和客户机之间的客户机退出流程。离开客户机、处理退出事件所花费的时间是硬件虚拟化的 CPU 开销；处理退出所花费的时间越多，开销就越大。当客户机退出时，部分事件可以直接在内核中处理。无法在内核中处理的事件必须离开内核并返回到用户进程；与内核可以处理的退出相比，这会导致更大的开销。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 241,
+      "english": "For example, with the Linux KVM implementation, these overheads can be studied via their guest exit functions, which are mapped in the source code as follows (from arch/x86/kvm/vmx/vmx.c in Linux 5.2, truncated):",
+      "before": "例如，对于 Linux KVM 实现，可以通过其来宾退出函数来研究这些开销，这些开销在源代码中映射如下（来自 Linux 5.2 中的 arch/x86/kvm/vmx/vmx.c，已截断）：",
+      "after": "例如，对于 Linux KVM 实现，可以通过其客户机退出函数来研究这些开销，这些开销在源代码中映射如下（来自 Linux 5.2 中的 arch/x86/kvm/vmx/vmx.c，已截断）：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 279,
+      "english": "While the names are terse, they may provide an idea of the reasons a guest may call into a hypervisor, incurring CPU overhead.",
+      "before": "虽然名称很简洁，但它们可以提供来宾调用虚拟机管理程序并产生 CPU 开销的原因。",
+      "after": "虽然名称很简洁，但它们可以提供客户机调用虚拟机管理程序并产生 CPU 开销的原因。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 281,
+      "english": "One common guest exit is the `halt` instruction, usually called by the idle thread when the kernel can find no more work to perform (which allows the processor to operate in low-power modes until interrupted). It is handled by the handle\\_halt() function (seen in the earlier listing for EXIT\\_REASON\\_HLT), which ultimately calls kvm\\_vcpu\\_halt() (arch/x86/kvm/x86.c):",
+      "before": "一种常见的来宾退出是 `halt` 指令，通常在内核找不到更多工作要执行时由空闲线程调用（这允许处理器在低功耗模式下运行，直到被中断）。它由 handle\\_halt() 函数处理（见前面的 EXIT\\_REASON\\_HLT 列表），该函数最终调用 kvm\\_vcpu\\_halt()（arch/x86/kvm/x86.c）：",
+      "after": "一种常见的客户机退出是 `halt` 指令，通常在内核找不到更多工作要执行时由空闲线程调用（这允许处理器在低功耗模式下运行，直到被中断）。它由 handle\\_halt() 函数处理（见前面的 EXIT\\_REASON\\_HLT 列表），该函数最终调用 kvm\\_vcpu\\_halt()（arch/x86/kvm/x86.c）：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 299,
+      "english": "As with many guest exit types, the code is kept small to minimize CPU overhead. This example begins with a vcpu statistic increment, which tracks how many halts occurred. The remaining code performs the hardware emulation required for this privileged instruction. These functions can be instrumented on Linux using kprobes on the hypervisor host, to track their type and the duration of their exits. Exits can also be tracked globally using the kvm:kvm\\_exit tracepoint, which is used in [Section 11.2.4](#ch11-ch11lev2sec4), [Observability](#ch11-ch11lev2sec4).",
+      "before": "与许多来宾退出类型一样，代码保持较小，以最大限度地减少 CPU 开销。此示例从 vcpu 统计增量开始，该增量跟踪发生了多少次暂停。其余代码执行该特权指令所需的硬件模拟。这些函数可以在 Linux 上使用虚拟机管理程序主机上的 kprobes 进行插桩，以跟踪它们的类型和退出持续时间。还可以使用 kvm:kvm\\_exit 跟踪点全局跟踪退出，该跟踪点在[第 11.2.4 节](#ch11-ch11lev2sec4)、[可观测性](#ch11-ch11lev2sec4)中使用。",
+      "after": "与许多客户机退出类型一样，代码保持较小，以最大限度地减少 CPU 开销。此示例从 vcpu 统计增量开始，该增量跟踪发生了多少次暂停。其余代码执行该特权指令所需的硬件模拟。这些函数可以在 Linux 上使用虚拟机管理程序宿主机上的 kprobes 进行插桩，以跟踪它们的类型和退出持续时间。还可以使用 kvm:kvm\\_exit 跟踪点全局跟踪退出，该跟踪点在[第 11.2.4 节](#ch11-ch11lev2sec4)、[可观测性](#ch11-ch11lev2sec4)中使用。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 306,
+      "english": "As described in [Chapter 7](#ch07-ch07), [Memory](#ch07-ch07), the operating system works with the MMU to create page mappings from virtual to physical memory, caching them in the TLB to improve performance. For virtualization, mapping a new page of memory (page fault) from the guest to the hardware involves two steps:",
+      "before": "如[第 7 章](#ch07-ch07)、[内存](#ch07-ch07)中所述，操作系统与 MMU 一起创建从虚拟内存到物理内存的页面映射，并将它们缓存在 TLB 中以提高性能。对于虚拟化，将新的内存页面（缺页异常）从来宾映射到硬件涉及两个步骤：",
+      "after": "如[第 7 章](#ch07-ch07)、[内存](#ch07-ch07)中所述，操作系统与 MMU 一起创建从虚拟内存到物理内存的页面映射，并将它们缓存在 TLB 中以提高性能。对于虚拟化，将新的内存页面（缺页异常）从客户机映射到硬件涉及两个步骤：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 308,
+      "english": "1. Virtual-to-guest physical translation, as performed by the guest kernel",
+      "before": "1. 虚拟地址到来宾物理地址的转换，由来宾内核执行",
+      "after": "1. 虚拟地址到客户机物理地址的转换，由客户机内核执行",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 309,
+      "english": "2. Guest-physical-to-host-physical (actual) translation, as performed by the hypervisor VMM",
+      "before": "2. 来宾物理到主机物理（实际）转换，由虚拟机管理程序 VMM 执行",
+      "after": "2. 客户机物理到宿主机物理（实际）转换，由虚拟机管理程序 VMM 执行",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 311,
+      "english": "The mapping, from guest virtual to host physical, can then be cached in the TLB, so that subsequent accesses can operate at normal speed—not requiring additional translation. Modern processors support MMU virtualization, so that mappings that have left the TLB can be recalled more quickly in hardware alone (page walk), without calling in to the hypervisor. The feature that supports this is called *extended page tables* (EPT) on Intel and *nested page tables* (NPT) on AMD [\\[Milewski 11\\]](#ch11-ch11ref13).",
+      "before": "然后，从来宾虚拟地址到主机物理地址的映射可以缓存在 TLB 中，以便后续访问可以正常速度运行，而不需要额外的转换。现代处理器支持 MMU 虚拟化，因此可以仅在硬件中更快地恢复已离开 TLB 的映射（页表遍历），而无需调用虚拟机管理程序。支持此功能的机制在 Intel 上称为“扩展页表”（EPT），在 AMD 上称为“嵌套页表”（NPT） [\\[Milewski 11\\]](#ch11-ch11ref13)。",
+      "after": "然后，从客户机虚拟地址到宿主机物理地址的映射可以缓存在 TLB 中，以便后续访问可以正常速度运行，而不需要额外的转换。现代处理器支持 MMU 虚拟化，因此可以仅在硬件中更快地恢复已离开 TLB 的映射（页表遍历），而无需调用虚拟机管理程序。支持此功能的机制在 Intel 上称为“扩展页表”（EPT），在 AMD 上称为“嵌套页表”（NPT） [\\[Milewski 11\\]](#ch11-ch11ref13)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 313,
+      "english": "Without EPT/NPT, another approach to improve performance is to maintain *shadow page tables* of guest-virtual-to-host-physical mappings, which are managed by the hypervisor and then accessed during guest execution by overwriting the guest’s CR3 register. With this strategy, the guest kernel maintains its own page tables, which map from guest virtual to guest physical, as normal. The hypervisor intercepts changes to these page tables and creates equivalent mappings to the host physical pages in the shadow pages. Then, during guest execution, the hypervisor overwrites the CR3 register to point to the shadow pages.",
+      "before": "如果没有 EPT/NPT，提高性能的另一种方法是维护来宾虚拟机到主机物理映射的“影子页表”，这些映射由虚拟机管理程序管理，然后在来宾执行期间通过覆盖来宾的 CR3 寄存器进行访问。通过这种策略，来宾内核可以维护自己的页表，正常情况下，该页表从来宾虚拟映射到来宾物理。虚拟机管理程序拦截对这些页表的更改，并在影子页中创建到主机物理页的等效映射。然后，在来宾执行期间，管理程序会覆盖 CR3 寄存器以指向影子页面。",
+      "after": "如果没有 EPT/NPT，提高性能的另一种方法是维护客户虚拟机到宿主机物理映射的“影子页表”，这些映射由虚拟机管理程序管理，然后在客户机执行期间通过覆盖客户机的 CR3 寄存器进行访问。通过这种策略，客户机内核可以维护自己的页表，正常情况下，该页表从客户机虚拟地址映射到客户机物理地址。虚拟机管理程序拦截对这些页表的更改，并在影子页中创建到宿主机物理页的等效映射。然后，在客户机执行期间，管理程序会覆盖 CR3 寄存器以指向影子页面。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 318,
+      "english": "Unlike OS virtualization, there are some additional consumers of memory when using hardware virtualization. Each guest runs its own kernel, which consumes a small amount of memory. The storage architecture may also lead to double caching, where both the guest and host cache the same data. KVM-style hypervisors also run a VMM process for each VM, such as QEMU, which itself consumes some main memory.",
+      "before": "与操作系统虚拟化不同，使用硬件虚拟化时会有一些额外的内存消耗。每个来宾运行自己的内核，该内核消耗少量内存。存储架构还可能导致双重缓存，即来宾和主机都缓存相同的数据。 KVM 风格的虚拟机管理程序还为每个 VM 运行一个 VMM 进程，例如 QEMU，它本身会消耗一些主内存。",
+      "after": "与操作系统虚拟化不同，使用硬件虚拟化时会有一些额外的内存消耗。每个客户机运行自己的内核，该内核消耗少量内存。存储架构还可能导致双重缓存，即客户机和宿主机都缓存相同的数据。 KVM 风格的虚拟机管理程序还为每个 VM 运行一个 VMM 进程，例如 QEMU，它本身会消耗一些主内存。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 327,
+      "english": "Another technique is *PCI pass-through*, which assigns a PCI device directly to the guest, so it can be used as it would on a bare-metal system. PCI pass-through can provide the best performance of the available options, but it reduces flexibility when configuring the system with multiple tenants, as some devices are now owned by guests and cannot be shared. This may also complicate live migration [\\[Xen 19\\]](#ch11-ch11ref33).",
+      "before": "另一种技术是“PCI 直通”，它将 PCI 设备直接分配给来宾，因此可以像在裸机系统上一样使用它。 PCI 直通可以提供可用选项的最佳性能，但它会降低配置具有多个租户的系统时的灵活性，因为某些设备现在由来宾拥有并且无法共享。这也可能使实时迁移变得复杂 [\\[Xen 19\\]](#ch11-ch11ref33)。",
+      "after": "另一种技术是“PCI 直通”，它将 PCI 设备直接分配给客户机，因此可以像在裸机系统上一样使用它。 PCI 直通可以提供可用选项的最佳性能，但它会降低配置具有多个租户的系统时的灵活性，因为某些设备现在由客户机拥有并且无法共享。这也可能使实时迁移变得复杂 [\\[Xen 19\\]](#ch11-ch11ref33)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 336,
+      "english": "GK is “guest kernel,” and BE is “back end.” The dotted arrows indicate the *control path*, where components inform each other, either synchronously or asynchronously, that more data is ready to transfer. The *data path* (solid arrows) may be implemented in some cases by shared memory and ring buffers. A control path is not shown for Nitro, as it uses the same data path for direct access to hardware.",
+      "before": "GK 是“来宾内核”，BE 是“后端”。虚线箭头表示“控制路径”，其中组件以同步或异步方式相互通知更多数据已准备好传输。在某些情况下，*数据路径*（实线箭头）可以通过共享内存和环形缓冲区来实现。 Nitro 未显示控制路径，因为它使用相同的数据路径直接访问硬件。",
+      "after": "GK 是“客户机内核”，BE 是“后端”。虚线箭头表示“控制路径”，其中组件以同步或异步方式相互通知更多数据已准备好传输。在某些情况下，*数据路径*（实线箭头）可以通过共享内存和环形缓冲区来实现。 Nitro 未显示控制路径，因为它使用相同的数据路径直接访问硬件。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 338,
+      "english": "There are different ways to configure Xen and KVM, not pictured here. This figure shows them using I/O proxy processes (typically the QEMU software), which are created per guest VM. But they can also be configured to use SR-IOV, allowing guest VMs to access hardware directly (not pictured for Xen or KVM in [Figure 11.7](#ch11-ch11fig07)). Nitro requires such hardware support, eliminating the need for I/O proxies.",
+      "before": "配置 Xen 和 KVM 有不同的方法，此处未显示。该图显示了它们使用 I/O 代理进程（通常是 QEMU 软件），这些进程是为每个来宾 VM 创建的。但它们也可以配置为使用 SR-IOV，允许来宾 VM 直接访问硬件（[图 11.7](#ch11-ch11fig07) 中未显示 Xen 或 KVM 的这种配置）。Nitro 需要此类硬件支持，从而无需 I/O 代理。",
+      "after": "配置 Xen 和 KVM 有不同的方法，此处未显示。该图显示了它们使用 I/O 代理进程（通常是 QEMU 软件），这些进程是为每个客户虚拟机 创建的。但它们也可以配置为使用 SR-IOV，允许客户虚拟机 直接访问硬件（[图 11.7](#ch11-ch11fig07) 中未显示 Xen 或 KVM 的这种配置）。Nitro 需要此类硬件支持，从而无需 I/O 代理。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 340,
+      "english": "Xen improves its I/O performance using a *device channel*—an asynchronous shared memory transport between dom0 and the guest domains (domU). This avoids the CPU and bus overhead of creating an extra copy of I/O data as it is passed between the domains. It may also use separate domains for performing I/O, as described in [Section 11.2.3](#ch11-ch11lev2sec3), [Resource Controls](#ch11-ch11lev2sec3).",
+      "before": "Xen 使用*设备通道*（dom0 和来宾域（domU）之间的异步共享内存传输）提高了其 I/O 性能。这避免了在域之间传递 I/O 数据时创建额外的 I/O 数据副本所带来的 CPU 和总线开销。它还可以使用单独的域来执行 I/O，如[第 11.2.3 节](#ch11-ch11lev2sec3)、[资源控制](#ch11-ch11lev2sec3)中所述。",
+      "after": "Xen 使用*设备通道*（dom0 和客户机域（domU）之间的异步共享内存传输）提高了其 I/O 性能。这避免了在域之间传递 I/O 数据时创建额外的 I/O 数据副本所带来的 CPU 和总线开销。它还可以使用单独的域来执行 I/O，如[第 11.2.3 节](#ch11-ch11lev2sec3)、[资源控制](#ch11-ch11lev2sec3)中所述。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 342,
+      "english": "The number of steps in the I/O path, both control and data, is critical for performance: the fewer, the better. In 2006, the KVM developers compared a privileged-guest system like Xen with KVM and found that KVM could perform I/O using half as many steps (five versus ten, although the test was performed without paravirtualization so does not reflect most modern configurations) [\\[Qumranet 06\\]](#ch11-ch11ref6).",
+      "before": "I/O 路径（控制和数据）中的步骤数量对于性能至关重要：越少越好。2006 年，KVM 开发人员将 Xen 等特权来宾系统与 KVM 进行了比较，发现 KVM 可以使用一半的步骤执行 I/O（五比十，尽管测试是在没有半虚拟化的情况下执行的，因此不能反映大多数现代配置）[\\[Qumranet 06\\]](#ch11-ch11ref6)。",
+      "after": "I/O 路径（控制和数据）中的步骤数量对于性能至关重要：越少越好。2006 年，KVM 开发人员将 Xen 等特权客户机系统与 KVM 进行了比较，发现 KVM 可以使用一半的步骤执行 I/O（五比十，尽管测试是在没有半虚拟化的情况下执行的，因此不能反映大多数现代配置）[\\[Qumranet 06\\]](#ch11-ch11ref6)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 358,
+      "english": "As part of the guest configuration, CPU and main memory are typically configured with resource limits. The hypervisor software may also provide resource controls for network and disk I/O.",
+      "before": "作为来宾配置的一部分，CPU 和主内存通常配置有资源限制。虚拟机管理程序软件还可以提供对网络和磁盘 I/O 的资源控制。",
+      "after": "作为客户机配置的一部分，CPU 和主内存通常配置有资源限制。虚拟机管理程序软件还可以提供对网络和磁盘 I/O 的资源控制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 360,
+      "english": "For KVM-like hypervisors, the host OS ultimately controls the physical resources, and resource controls available from the OS may also be applied to the guests, in addition to the controls the hypervisor provides. For Linux, this means cgroups, tasksets, and other resource controls. See [Section 11.3](#ch11-ch11lev3), [OS Virtualization](#ch11-ch11lev3), for more about the resource controls that may be available from the host OS. The following sections describe resource controls from the Xen and KVM hypervisors, as examples.",
+      "before": "对于类似 KVM 的虚拟机管理程序，主机操作系统最终控制物理资源；除了虚拟机管理程序提供的控制之外，操作系统提供的资源控制也可以应用于来宾。对于 Linux，这意味着 cgroup、任务集和其他资源控制。有关主机操作系统可用的资源控制的更多信息，请参阅[第 11.3 节](#ch11-ch11lev3)、[操作系统虚拟化](#ch11-ch11lev3)。以下部分作为示例描述了 Xen 和 KVM 虚拟机管理程序的资源控制。",
+      "after": "对于类似 KVM 的虚拟机管理程序，宿主机操作系统最终控制物理资源；除了虚拟机管理程序提供的控制之外，操作系统提供的资源控制也可以应用于客户机。对于 Linux，这意味着 cgroup、任务集和其他资源控制。有关宿主机操作系统可用的资源控制的更多信息，请参阅[第 11.3 节](#ch11-ch11lev3)、[操作系统虚拟化](#ch11-ch11lev3)。以下部分作为示例描述了 Xen 和 KVM 虚拟机管理程序的资源控制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 365,
+      "english": "CPU resources are usually allocated to guests as virtual CPUs (vCPUs). These are then scheduled by the hypervisor. The number of vCPUs assigned coarsely limits CPU resource usage.",
+      "before": "CPU 资源通常作为虚拟 CPU (vCPU) 分配给来宾。然后，这些由虚拟机管理程序进行调度。分配的 vCPU 数量粗略地限制了 CPU 资源的使用。",
+      "after": "CPU 资源通常作为虚拟 CPU (vCPU) 分配给客户机。然后，这些由虚拟机管理程序进行调度。分配的 vCPU 数量粗略地限制了 CPU 资源的使用。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 367,
+      "english": "For Xen, a fine-grained CPU quota for guests can be applied by a hypervisor CPU scheduler. Schedulers include [\\[Cherkasova 07\\]](#ch11-ch11ref7)[\\[Matthews 08\\]](#ch11-ch11ref12):",
+      "before": "对于 Xen，可以通过管理程序 CPU 调度程序为来宾应用细粒度的 CPU 配额。调度程序包括 [\\[Cherkasova 07\\]](#ch11-ch11ref7)[\\[Matthews 08\\]](#ch11-ch11ref12)：",
+      "after": "对于 Xen，可以通过管理程序 CPU 调度程序为客户机应用细粒度的 CPU 配额。调度程序包括 [\\[Cherkasova 07\\]](#ch11-ch11ref7)[\\[Matthews 08\\]](#ch11-ch11ref12)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 373,
+      "english": "For KVM, fine-grained CPU quotas can be applied by the host OS, for example when using the host kernel *fair-share scheduler* described earlier. On Linux, this can be applied using the cgroup CPU bandwidth controls.",
+      "before": "对于 KVM，主机操作系统可以应用细粒度的 CPU 配额，例如在使用前面描述的主机内核*公平共享调度程序*时。在 Linux 上，可以使用 cgroup CPU 带宽控制来应用此功能。",
+      "after": "对于 KVM，宿主机操作系统可以应用细粒度的 CPU 配额，例如在使用前面描述的宿主机内核*公平共享调度程序*时。在 Linux 上，可以使用 cgroup CPU 带宽控制来应用此功能。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 375,
+      "english": "There are limitations on how either technology can respect guest *priorities*. A guest’s CPU usage is typically opaque to the hypervisor, and guest kernel thread priorities cannot typically be seen or respected. For example, a low-priority log rotation daemon in one guest may have the same hypervisor priority as a critical application server in another guest.",
+      "before": "这两种技术如何尊重来宾的“优先级”都存在限制。来宾的 CPU 使用率通常对虚拟机管理程序来说是不透明的，并且来宾内核线程的优先级通常无法被看到或尊重。例如，一个来宾中的低优先级日志轮换守护进程可能与另一来宾中的关键应用程序服务器具有相同的虚拟机管理程序优先级。",
+      "after": "这两种技术如何尊重客户机的“优先级”都存在限制。客户机的 CPU 使用率通常对虚拟机管理程序来说是不透明的，并且客户机内核线程的优先级通常无法被看到或尊重。例如，一个客户机中的低优先级日志轮换守护进程可能与另一客户机中的关键应用程序服务器具有相同的虚拟机管理程序优先级。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 377,
+      "english": "For Xen, CPU resource usage can be further complicated by high-I/O workloads that consume extra CPU resources in dom0. The back-end driver and I/O proxy in the guest domain alone may consume more than their CPU allocation but are not accounted for [\\[Cherkasova 05\\]](#ch11-ch11ref3). A solution has been to create isolated driver domains (IDDs), which separate out I/O servicing for security, performance isolation, and accounting. This is pictured in [Figure 11.8](#ch11-ch11fig08).",
+      "before": "对于 Xen，高 I/O 工作负载会消耗 dom0 中的额外 CPU 资源，从而使 CPU 资源使用变得更加复杂。仅来宾域中的后端驱动程序和 I/O 代理可能会消耗超过其 CPU 分配的资源，但不计入 [\\[Cherkasova 05\\]](#ch11-ch11ref3)。解决方案是创建隔离的驱动程序域（IDD），将 I/O 服务分开以实现安全性、性能隔离和计费。这如[图 11.8](#ch11-ch11fig08)所示。",
+      "after": "对于 Xen，高 I/O 工作负载会消耗 dom0 中的额外 CPU 资源，从而使 CPU 资源使用变得更加复杂。仅客户机域中的后端驱动程序和 I/O 代理可能会消耗超过其 CPU 分配的资源，但不计入 [\\[Cherkasova 05\\]](#ch11-ch11ref3)。解决方案是创建隔离的驱动程序域（IDD），将 I/O 服务分开以实现安全性、性能隔离和计费。这如[图 11.8](#ch11-ch11fig08)所示。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 382,
+      "english": "The CPU usage by IDDs can be monitored, and the guests can be charged for this usage. From [\\[Gupta 06\\]](#ch11-ch11ref5):",
+      "before": "可以监控 IDD 的 CPU 使用情况，并可以针对此使用量向来宾收费。摘自[\\[Gupta 06\\]](#ch11-ch11ref5)：",
+      "after": "可以监控 IDD 的 CPU 使用情况，并可以针对此使用量向客户机收费。摘自[\\[Gupta 06\\]](#ch11-ch11ref5)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 384,
+      "english": "Our modified scheduler, SEDF-DC for SEDF-Debt Collector, periodically receives feedback from XenMon about the CPU consumed by IDDs for I/O processing on behalf of guest domains. Using this information, SEDF-DC constrains the CPU allocation to guest domains to meet the specified combined CPU usage limit.",
+      "before": "我们修改后的调度程序 SEDF-DC for SEDF-Debt Collector 会定期从 XenMon 接收有关 IDD 代表来宾域进行 I/O 处理所消耗的 CPU 的反馈。使用此信息，SEDF-DC 限制来宾域的 CPU 分配，以满足指定的组合 CPU 使用限制。",
+      "after": "我们修改后的调度程序 SEDF-DC for SEDF-Debt Collector 会定期从 XenMon 接收有关 IDD 代表客户机域进行 I/O 处理所消耗的 CPU 的反馈。使用此信息，SEDF-DC 限制客户机域的 CPU 分配，以满足指定的组合 CPU 使用限制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 391,
+      "english": "Apart from the allocation of vCPUs, CPU cache usage can be controlled using Intel cache allocation technology (CAT). It allows the LLC to be partitioned between guests, and partitions to be shared. While this can prevent a guest polluting another guest’s cache, it can also hurt performance by limiting cache usage.",
+      "before": "除了 vCPU 的分配之外，还可以使用 Intel 缓存分配技术 (CAT) 来控制 CPU 缓存的使用。它允许 LLC 在来宾之间进行分区，并共享分区。虽然这可以防止某个来宾污染另一个来宾的缓存，但它也会通过限制缓存使用来损害性能。",
+      "after": "除了 vCPU 的分配之外，还可以使用 Intel 缓存分配技术 (CAT) 来控制 CPU 缓存的使用。它允许 LLC 在客户机之间进行分区，并共享分区。虽然这可以防止某个客户机污染另一个客户机的缓存，但它也会通过限制缓存使用来损害性能。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 396,
+      "english": "Memory limits are imposed as part of the guest configuration, with the guest seeing only the set amount of memory. The guest kernel then performs its own operations (paging, swapping) to remain within its limit.",
+      "before": "内存限制是作为来宾配置的一部分施加的，来宾只能看到设置的内存量。然后，来宾内核执行其自己的操作（分页、交换）以保持在其限制内。",
+      "after": "内存限制是作为客户机配置的一部分施加的，客户机只能看到设置的内存量。然后，客户机内核执行其自己的操作（分页、交换）以保持在其限制内。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 398,
+      "english": "In an effort to increase flexibility from the static configuration, VMware developed a *balloon driver* [\\[Waldspurger 02\\]](#ch11-ch11ref2), which is able to reduce the memory consumed by the running guest by “inflating” a balloon module inside it, which consumes guest memory. This memory is then reclaimed by the hypervisor for use by other guests. The balloon can also be deflated, returning memory to the guest kernel for use. During this process, the guest kernel executes its normal memory management routines to free memory (e.g., paging). VMware, Xen, and KVM all have support for balloon drivers.",
+      "before": "为了提高静态配置的灵活性，VMware 开发了一个 *balloon 驱动程序* [\\[Waldspurger 02\\]](#ch11-ch11ref2)，它能够通过“膨胀”其中的气球模块来减少正在运行的来宾消耗的内存；该模块会占用来宾内存。然后，虚拟机管理程序会回收这部分内存以供其他来宾使用。气球也可以放气，将内存返回给来宾内核使用。在此过程中，来宾内核执行其正常的内存管理例程以释放内存（例如，分页）。VMware、Xen 和 KVM 都支持气球驱动程序。",
+      "after": "为了提高静态配置的灵活性，VMware 开发了一个 *balloon 驱动程序* [\\[Waldspurger 02\\]](#ch11-ch11ref2)，它能够通过“膨胀”其中的气球模块来减少正在运行的客户机消耗的内存；该模块会占用客户机内存。然后，虚拟机管理程序会回收这部分内存以供其他客户机使用。气球也可以放气，将内存返回给客户机内核使用。在此过程中，客户机内核执行其正常的内存管理例程以释放内存（例如，分页）。VMware、Xen 和 KVM 都支持气球驱动程序。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 400,
+      "english": "When balloon drivers are in use (to check from the guest, search for “balloon” in the output of dmesg(1)), I would be on the lookout for performance issues that they may cause.",
+      "before": "当使用气球驱动程序时（要从来宾处检查，请在 dmesg(1) 的输出中搜索“balloon”），我会留意它们可能导致的性能问题。",
+      "after": "当使用气球驱动程序时（要从客户机处检查，请在 dmesg(1) 的输出中搜索“balloon”），我会留意它们可能导致的性能问题。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 405,
+      "english": "Guests are provided with virtual disk volumes from the host. For KVM-like hypervisors, these may be software volumes created by the OS and sized accordingly. For example, the ZFS file system can create virtual volumes of a desired size.",
+      "before": "主机为来宾提供虚拟磁盘卷。对于类似 KVM 的虚拟机管理程序，这些可能是由操作系统创建并相应调整大小的软件卷。例如，ZFS 文件系统可以创建所需大小的虚拟卷。",
+      "after": "宿主机为客户机提供虚拟磁盘卷。对于类似 KVM 的虚拟机管理程序，这些可能是由操作系统创建并相应调整大小的软件卷。例如，ZFS 文件系统可以创建所需大小的虚拟卷。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 412,
+      "english": "Network throughput may be throttled by external dedicated devices or, in the case of KVM-like hypervisors, by host kernel features. For example, Linux has network bandwidth controls from cgroups as well as different qdiscs, which can be applied to guest network interfaces.",
+      "before": "网络吞吐量可能会受到外部专用设备的限制，或者在类似 KVM 的虚拟机管理程序的情况下，会受到主机内核功能的限制。例如，Linux 具有来自 cgroup 以及不同 qdisc 的网络带宽控制，可应用于来宾网络接口。",
+      "after": "网络吞吐量可能会受到外部专用设备的限制，或者在类似 KVM 的虚拟机管理程序的情况下，会受到宿主机内核功能的限制。例如，Linux 具有来自 cgroup 以及不同 qdisc 的网络带宽控制，可应用于客户机网络接口。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 427,
+      "english": "- **From the privileged guest (Xen) or host (KVM)**: All physical resources should be observable using standard OS tools covered in previous chapters. Guest I/O can be observed by analyzing I/O proxies, if in use. Per-guest resource usage statistics should be made available from the hypervisor. Guest internals, including their processes, cannot be observed directly. Some I/O may not be observable if the device uses pass-through or SR-IOV.",
+      "before": "- **从特权来宾 (Xen) 或主机 (KVM)**：所有物理资源都应该可以使用前面章节中介绍的标准操作系统工具进行观察。可以通过分析 I/O 代理（如果正在使用）来观察来宾 I/O。虚拟机管理程序应提供每个来宾的资源使用统计信息。来宾内部结构（包括其进程）无法直接观察。如果设备使用直通或 SR-IOV，某些 I/O 可能无法观察到。",
+      "after": "- **从特权客户机 (Xen) 或宿主机 (KVM)**：所有物理资源都应该可以使用前面章节中介绍的标准操作系统工具进行观察。可以通过分析 I/O 代理（如果正在使用）来观察客户机 I/O。虚拟机管理程序应提供每个客户机的资源使用统计信息。客户机内部结构（包括其进程）无法直接观察。如果设备使用直通或 SR-IOV，某些 I/O 可能无法观察到。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 428,
+      "english": "- **From the hardware-supported host (Nitro)**: The use of SR-IOV may make device I/O more difficult to observe from the hypervisor as the guest is accessing hardware directly, and not via a proxy or host kernel. (How Amazon actually does hypervisor observability on Nitro is not public knowledge.)",
+      "before": "- **从硬件支持的主机 (Nitro)**：使用 SR-IOV 可能会使从虚拟机管理程序观察设备 I/O 变得更加困难，因为来宾直接访问硬件，而不是通过代理或主机内核。 （亚马逊实际上如何在 Nitro 上实现虚拟机管理程序可观测性并不是公开知识。）",
+      "after": "- **从硬件支持的宿主机 (Nitro)**：使用 SR-IOV 可能会使从虚拟机管理程序观察设备 I/O 变得更加困难，因为客户机直接访问硬件，而不是通过代理或宿主机内核。 （亚马逊实际上如何在 Nitro 上实现虚拟机管理程序可观测性并不是公开知识。）",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 429,
+      "english": "- **From the guests**: Virtualized resources and their usage by the guest can be seen, and physical problems inferred. Since the VM has its own dedicated kernel, kernel internals can be analyzed, and kernel tracing tools, including BPF-based tools, all work.",
+      "before": "- **从来宾**：可以看到虚拟化资源及其对来宾的使用情况，并推断物理问题。由于 VM 有自己的专用内核，因此可以分析内核内部结构，并且内核跟踪工具（包括基于 BPF 的工具）都可以工作。",
+      "after": "- **从客户机视角**：可以看到虚拟化资源及其在客户机内的使用情况，并推断物理问题。由于 VM 有自己的专用内核，因此可以分析内核内部结构，并且内核跟踪工具（包括基于 BPF 的工具）都可以工作。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 431,
+      "english": "From the privileged guest or host (Xen or KVM hypervisors), physical resource usage can typically be observed at a high level: utilization, saturation, errors, IOPS, throughput, I/O type. These factors can usually be expressed per guest, so that heavy users can be quickly identified. Details of which guest processes are performing I/O and their application call stacks cannot be observed directly. They can be observed by logging in to the guest (provided that a means to do so is authorized and configured, e.g., SSH) and using the observability tools that the guest OS provides.",
+      "before": "从特权来宾或主机（Xen 或 KVM 虚拟机管理程序），通常可以在较高级别观察物理资源使用情况：利用率、饱和度、错误、IOPS、吞吐量和 I/O 类型。这些因素通常可以按每个来宾来表示，以便可以快速识别大量用户。无法直接观察哪些来宾进程正在执行 I/O 及其应用程序调用堆栈的详细信息。可以通过登录来宾操作系统（前提是已授权和配置这样做的方法，例如 SSH）并使用来宾操作系统提供的可观测性工具来观察它们。",
+      "after": "从特权客户机或宿主机（Xen 或 KVM 虚拟机管理程序），通常可以在较高级别观察物理资源使用情况：利用率、饱和度、错误、IOPS、吞吐量和 I/O 类型。这些因素通常可以按每个客户机来表示，以便可以快速识别大量用户。无法直接观察哪些客户机进程正在执行 I/O 及其应用程序调用堆栈的详细信息。可以通过登录客户操作系统（前提是已授权和配置这样做的方法，例如 SSH）并使用客户操作系统提供的可观测性工具来观察它们。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 433,
+      "english": "When pass-through or SR-IOV is used, the guest may be making I/O calls directly to hardware. This may bypass I/O paths in the hypervisor, and the statistics they typically collect. The result is that I/O can become invisible to the hypervisor, and not appear in iostat(1) or other tools. A possible workaround is to use PMCs to examine I/O-related counters, and infer I/O that way.",
+      "before": "当使用直通或 SR-IOV 时，来宾可能会直接向硬件执行 I/O。这可能会绕过虚拟机管理程序中的 I/O 路径以及它们通常收集的统计信息。结果是 I/O 对虚拟机管理程序来说变得不可见，并且不会出现在 iostat(1) 或其他工具中。一种可能的解决方法是使用 PMC 检查与 I/O 相关的计数器，并以此方式推断 I/O。",
+      "after": "当使用直通或 SR-IOV 时，客户机可能会直接向硬件执行 I/O。这可能会绕过虚拟机管理程序中的 I/O 路径以及它们通常收集的统计信息。结果是 I/O 对虚拟机管理程序来说变得不可见，并且不会出现在 iostat(1) 或其他工具中。一种可能的解决方法是使用 PMC 检查与 I/O 相关的计数器，并以此方式推断 I/O。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 435,
+      "english": "To identify the root cause of a guest performance issue, the cloud operator may need to log in to both the hypervisor and the guest and execute observability tools from both. Tracing the path of I/O becomes complex due to the steps involved and may also include analysis of hypervisor internals and an I/O proxy, if used.",
+      "before": "为了确定来宾性能问题的根本原因，云运营商可能需要登录虚拟机管理程序和来宾，并从两者执行可观测性工具。由于涉及的步骤，跟踪 I/O 路径变得复杂，并且还可能包括对虚拟机管理程序内部结构和 I/O 代理（如果使用）的分析。",
+      "after": "为了确定客户机性能问题的根本原因，云运营商可能需要登录虚拟机管理程序和客户机，并从两者执行可观测性工具。由于涉及的步骤，跟踪 I/O 路径变得复杂，并且还可能包括对虚拟机管理程序内部结构和 I/O 代理（如果使用）的分析。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 437,
+      "english": "From the guest, physical resource usage may not be observable at all. This may tempt the guest customers to blame mysterious performance issues on resource contention caused by noisy neighbors. To give cloud customers peace of mind (and reduce support tickets) information about physical resource usage (redacted) may be provided via other means, including SNMP or a cloud API.",
+      "before": "从来宾来看，可能根本无法观察到物理资源的使用情况。这可能会诱使来宾用户将神秘的性能问题归咎于吵闹的邻居造成的资源争用。为了让云用户安心（并减少支持请求），有关物理资源使用情况（经过编辑）的信息可以通过其他方式提供，包括 SNMP 或云 API。",
+      "after": "从客户机来看，可能根本无法观察到物理资源的使用情况。这可能会诱使客户机用户将神秘的性能问题归咎于吵闹的邻居造成的资源争用。为了让云用户安心（并减少支持请求），有关物理资源使用情况（经过删节、隐去敏感信息）的信息可以通过其他方式提供，包括 SNMP 或云 API。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 444,
+      "english": "#### 11.2.4.1 Privileged Guest/Host",
+      "before": "#### 11.2.4.1 特权来宾/主机",
+      "after": "#### 11.2.4.1 特权客户机/宿主机",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 450,
+      "english": "For Xen-like hypervisors, the guest vCPUs exist in the hypervisor and are not visible from the privileged guest (dom0) using standard OS tools. For Xen, the xentop(1) tool can be used instead:",
+      "before": "对于类似 Xen 的虚拟机管理程序，来宾 vCPU 存在于虚拟机管理程序中，并且使用标准操作系统工具从特权来宾 (dom0) 中看不到。对于 Xen，可以使用 xentop(1) 工具代替：",
+      "after": "对于类似 Xen 的虚拟机管理程序，客户机 vCPU 存在于虚拟机管理程序中，并且使用标准操作系统工具从特权客户机 (dom0) 中看不到。对于 Xen，可以使用 xentop(1) 工具代替：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 486,
+      "english": "For advanced Xen analysis there is the xentrace(8) tool, which can retrieve a log of fixed event types from the hypervisor. This can then be viewed using xenanalyze for investigating scheduling issues with the hypervisor and CPU scheduler used. There is also xenoprof, the system-wide profiler for Xen (MMU and guests) in the Xen source.",
+      "before": "对于高级 Xen 分析，有 xentrace(8) 工具，它可以从虚拟机管理程序检索固定事件类型的日志。然后可以使用 xenanalyze 查看此信息，以调查所使用的虚拟机管理程序和 CPU 调度程序的调度问题。Xen 源代码中还有 xenoprof，它是 Xen（MMU 和来宾 VM）的系统范围分析器。",
+      "after": "对于高级 Xen 分析，有 xentrace(8) 工具，它可以从虚拟机管理程序检索固定事件类型的日志。然后可以使用 xenanalyze 查看此信息，以调查所使用的虚拟机管理程序和 CPU 调度程序的调度问题。Xen 源代码中还有 xenoprof，它是 Xen（MMU 和客户虚拟机）的系统范围分析器。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 490,
+      "english": "For KVM-like hypervisors, the guest instances are visible within the host OS. For example:",
+      "before": "对于类似 KVM 的虚拟机管理程序，来宾实例在主机操作系统中可见。例如：",
+      "after": "对于类似 KVM 的虚拟机管理程序，客户机实例在宿主机操作系统中可见。例如：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 514,
+      "english": "The `qemu-system-x86` process is a KVM guest, which includes threads for each vCPU and threads for I/O proxies. The total CPU usage for the guest can be seen in the previous top(1) output, and per-vCPU usage can be examined using other tools. For example, using pidstat(1):",
+      "before": "`qemu-system-x86` 进程是 KVM 来宾，其中包括每个 vCPU 的线程和 I/O 代理的线程。来宾的总 CPU 使用情况可以在前面的 top(1) 输出中看到，并且可以使用其他工具检查每个 vCPU 的使用情况。例如，使用 pidstat(1)：",
+      "after": "`qemu-system-x86` 进程是 KVM 客户机，其中包括每个 vCPU 的线程和 I/O 代理的线程。客户机的总 CPU 使用情况可以在前面的 top(1) 输出中看到，并且可以使用其他工具检查每个 vCPU 的使用情况。例如，使用 pidstat(1)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 534,
+      "english": "Mapping QEMU processes to their guest instance names is usually a matter of examining their process arguments (`ps -wwfp PID`) to read the `-name` option.",
+      "before": "将 QEMU 进程映射到其来宾实例名称通常需要检查其进程参数 (`ps -wwfp PID`) 以读取 `-name` 选项。",
+      "after": "将 QEMU 进程映射到其客户机实例名称通常需要检查其进程参数 (`ps -wwfp PID`) 以读取 `-name` 选项。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 536,
+      "english": "Another important area for analysis is guest vCPU exits. The types of exits that occur can show what a guest is doing: whether a given vCPU is idle, performing I/O, or performing compute. On Linux, the perf(1) kvm subcommand provides high-level statistics for KVM exits. For example:",
+      "before": "另一个需要分析的重要领域是来宾 vCPU 退出。发生的退出类型可以显示来宾正在执行的操作：给定 vCPU 是否处于空闲状态、正在执行 I/O 还是正在执行计算。在 Linux 上，perf(1) kvm 子命令提供 KVM 退出的高级统计信息。例如：",
+      "after": "另一个需要分析的重要领域是客户机 vCPU 退出。发生的退出类型可以显示客户机正在执行的操作：给定 vCPU 是否处于空闲状态、正在执行 I/O 还是正在执行计算。在 Linux 上，perf(1) kvm 子命令提供 KVM 退出的高级统计信息。例如：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 571,
+      "english": "While it may not be easy for an operator to directly see inside a guest virtual machine, examining the exits lets you characterize how the overhead of hardware virtualization may or may not be affecting a tenant. If you see a low number of exits and a high percentage of those are `HLT`, you know that the guest CPU is fairly idle. On the other hand, if you have a high number of I/O operations, with interrupts both generated and injected into the guest, then it is very likely that the guest is doing I/O over its virtual NICs and disks.",
+      "before": "虽然操作员直接查看来宾虚拟机内部可能并不容易，但检查退出事件可以让您了解硬件虚拟化的开销可能会或可能不会影响租户。如果您看到退出数量较少且其中 `HLT` 的比例较高，则表明来宾 CPU 相当空闲。另一方面，如果您有大量 I/O 操作，同时生成中断并将其注入到来宾中，那么来宾很可能正在通过其虚拟 NIC 和磁盘执行 I/O。",
+      "after": "虽然操作员直接查看客户虚拟机内部可能并不容易，但检查退出事件可以让您了解硬件虚拟化的开销可能会或可能不会影响租户。如果您看到退出数量较少且其中 `HLT` 的比例较高，则表明客户机 CPU 相当空闲。另一方面，如果您有大量 I/O 操作，同时生成中断并将其注入到客户机中，那么客户机很可能正在通过其虚拟 NIC 和磁盘执行 I/O。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 614,
+      "english": "This provides the exit reason (exit\\_reason), guest return instruction pointer (guest\\_rip), and other details. Along with kvm:kvm\\_entry, which shows when the KVM guest was entered (or put differently, when the exit completed), the duration of the exit can be measured along with its exit reason. In *BPF Performance Tools* [\\[Gregg 19\\]](#ch11-ch11ref30) I published kvmexits.bt, a bpftrace tool for showing exit reasons as a histogram (it is also open source and online [\\[Gregg 19e\\]](#ch11-ch11ref31)). Sample output:",
+      "before": "这提供了退出原因（exit\\_reason）、来宾返回指令指针（guest\\_rip）和其他详细信息。结合 kvm:kvm\\_entry（它显示 KVM 进入来宾的时间，或者换句话说，退出完成的时间），可以测量退出持续时间及其原因。在 *BPF Performance Tools* [\\[Gregg 19\\]](#ch11-ch11ref30) 中，我发布了 kvmexits.bt，这是一个 bpftrace 工具，用于将退出原因显示为直方图（它也是开源且在线的 [\\[Gregg 19e\\]](#ch11-ch11ref31)）。示例输出：",
+      "after": "这提供了退出原因（exit\\_reason）、客户机返回指令指针（guest\\_rip）和其他详细信息。结合 kvm:kvm\\_entry（它显示 KVM 进入客户机的时间，或者换句话说，退出完成的时间），可以测量退出持续时间及其原因。在 *BPF Performance Tools* [\\[Gregg 19\\]](#ch11-ch11ref30) 中，我发布了 kvmexits.bt，这是一个 bpftrace 工具，用于将退出原因显示为直方图（它也是开源且在线的 [\\[Gregg 19e\\]](#ch11-ch11ref31)）。示例输出：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 653,
+      "english": "Another example of advanced analysis is profiling the contents of the CR3 register. Every process in the guest has its own address space and set of page tables describing the virtual-to-physical memory translations. The root of this page table is stored in the register CR3. By sampling the CR3 register from the host (e.g., using bpftrace) you may identify whether a single process is active in the guest (same CR3 value) or if it is switching between processes (different CR3 values).",
+      "before": "高级分析的另一个示例是分析 CR3 寄存器的内容。来宾中的每个进程都有自己的地址空间和一组描述虚拟内存到物理内存转换的页表。该页表的根存储在寄存器 CR3 中。通过从主机采样 CR3 寄存器（例如，使用 bpftrace），您可以确定单个进程在来宾中是否处于活动状态（相同的 CR3 值），或者是否在进程之间切换（不同的 CR3 值）。",
+      "after": "高级分析的另一个示例是分析 CR3 寄存器的内容。客户机中的每个进程都有自己的地址空间和一组描述虚拟内存到物理内存转换的页表。该页表的根存储在寄存器 CR3 中。通过从宿主机采样 CR3 寄存器（例如，使用 bpftrace），您可以确定单个进程在客户机中是否处于活动状态（相同的 CR3 值），或者是否在进程之间切换（不同的 CR3 值）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 655,
+      "english": "For more information, you must log in to the guest.",
+      "before": "如需了解更多信息，您必须登录来宾。",
+      "after": "如需了解更多信息，您必须登录客户机。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 658,
+      "english": "#### 11.2.4.2 Guest",
+      "before": "#### 11.2.4.2 来宾",
+      "after": "#### 11.2.4.2 客户机",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 660,
+      "english": "From a hardware virtualized guest, only the virtual devices can be seen (unless pass-through/SR-IOV is used). This includes CPUs, which shows the vCPUs allocated to the guest. For example, examining CPUs from a KVM guest using mpstat(1):",
+      "before": "从硬件虚拟化来宾中，只能看到虚拟设备（除非使用直通/SR-IOV）。这包括 CPU，显示为分配给来宾的 vCPU。例如，使用 mpstat(1) 检查 KVM 来宾的 CPU：",
+      "after": "从硬件虚拟化客户机中，只能看到虚拟设备（除非使用直通/SR-IOV）。这包括 CPU，显示为分配给客户机的 vCPU。例如，使用 mpstat(1) 检查 KVM 客户机的 CPU：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 679,
+      "english": "The output shows the status of the two guest CPUs only.",
+      "before": "输出仅显示两个来宾 CPU 的状态。",
+      "after": "输出仅显示两个客户机 CPU 的状态。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 700,
+      "english": "In this example, a Xen guest with an aggressive CPU limiting policy was tested. For the first 4 seconds, over 90% of CPU time was in user mode of the guest, with a few percent stolen. This behavior then begins to change aggressively, with most of the CPU time stolen.",
+      "before": "在此示例中，测试了具有严格 CPU 限制策略的 Xen 来宾。在前 4 秒内，超过 90% 的 CPU 时间处于来宾的用户态，其中有一小部分被窃取。然后，这种行为开始发生剧烈变化，大部分 CPU 时间被窃取。",
+      "after": "在此示例中，测试了具有严格 CPU 限制策略的 Xen 客户机。在前 4 秒内，超过 90% 的 CPU 时间处于客户机的用户态，其中有一小部分被窃取。然后，这种行为开始发生剧烈变化，大部分 CPU 时间被窃取。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 702,
+      "english": "Understanding CPU usage at the cycle level often requires the use of hardware counters (see [Chapter 4](#ch04-ch04), [Observability Tools](#ch04-ch04), [Section 4.3.9](#ch04-ch04lev3sec9), [Hardware Counters (PMCs)](#ch04-ch04lev3sec9)). These may or may not be available to the guest, depending on the hypervisor configuration. Xen, for example, has a virtual performance monitoring unit (vpmu) to support PMC usage by the guests, and tuning to specify which PMCs to allow [\\[Gregg 17f\\]](#ch11-ch11ref23).",
+      "before": "了解周期级别的 CPU 使用情况通常需要使用硬件计数器（请参阅[第 4 章](#ch04-ch04)、[可观测性工具](#ch04-ch04)、[第 4.3.9 节](#ch04-ch04lev3sec9)、[硬件计数器（PMC）](#ch04-ch04lev3sec9)）。这些可能对来宾可用，也可能不可用，具体取决于虚拟机管理程序配置。例如，Xen 有一个虚拟性能监控单元（vpmu），用于支持来宾使用 PMC，并进行调整以指定允许哪些 PMC [\\[Gregg 17f\\]](#ch11-ch11ref23)。",
+      "after": "了解周期级别的 CPU 使用情况通常需要使用硬件计数器（请参阅[第 4 章](#ch04-ch04)、[可观测性工具](#ch04-ch04)、[第 4.3.9 节](#ch04-ch04lev3sec9)、[硬件计数器（PMC）](#ch04-ch04lev3sec9)）。这些可能对客户机可用，也可能不可用，具体取决于虚拟机管理程序配置。例如，Xen 有一个虚拟性能监控单元（vpmu），用于支持客户机使用 PMC，并进行调整以指定允许哪些 PMC [\\[Gregg 17f\\]](#ch11-ch11ref23)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 706,
+      "english": "Device latency in detail can be studied using kernel tracing tools, including perf(1), Ftrace, and BPF ([Chapters 13](#ch13-ch13), [14](#ch14-ch14), and [15](#ch15-ch15)). Fortunately, these all should work in the guests since they run dedicated kernels, and the root user has full kernel access. For example, running the BPF-based biosnoop(8) in a KVM guest:",
+      "before": "可以使用内核跟踪工具详细研究设备延迟，包括 perf(1)、Ftrace 和 BPF（[第 13 章](#ch13-ch13)、[第 14 章](#ch14-ch14)和[第 15 章](#ch15-ch15)）。幸运的是，这些都应该在来宾中工作，因为它们运行专用内核，并且 root 用户具有完全的内核访问权限。例如，在 KVM 来宾中运行基于 BPF 的 biosnoop(8)：",
+      "after": "可以使用内核跟踪工具详细研究设备延迟，包括 perf(1)、Ftrace 和 BPF（[第 13 章](#ch13-ch13)、[第 14 章](#ch14-ch14)和[第 15 章](#ch15-ch15)）。幸运的是，这些都应该在客户机中工作，因为它们运行专用内核，并且 root 用户具有完全的内核访问权限。例如，在 KVM 客户机中运行基于 BPF 的 biosnoop(8)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 726,
+      "english": "Previous chapters have covered analysis techniques for the physical system resources, which can be followed by the administrators of the physical systems to look for bottlenecks and errors. Resource controls imposed on the guests can also be checked, to see if guests are consistently at their limit and should be informed and encouraged to upgrade. Not much more can be identified by the administrators without logging in to the guests, which may be necessary for any serious performance investigation.[^fn-ch11-ch11-footnote-6]",
+      "before": "前面的章节介绍了物理系统资源的分析技术，物理系统的管理员可以遵循这些技术来查找瓶颈和错误。还可以检查对来宾施加的资源控制，以查看来宾是否始终处于限制状态，并应通知和鼓励来宾升级。在不登录来宾的情况下，管理员无法识别更多信息，而登录可能是进行认真性能调查所必需的。[^fn-ch11-ch11-footnote-6]",
+      "after": "前面的章节介绍了物理系统资源的分析技术，物理系统的管理员可以遵循这些技术来查找瓶颈和错误。还可以检查对客户机施加的资源控制，以查看客户机是否始终处于限制状态，并应通知和鼓励客户机升级。在不登录客户机的情况下，管理员无法识别更多信息，而登录可能是进行认真性能调查所必需的。[^fn-ch11-ch11-footnote-6]",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 728,
+      "english": "For the guests, the tools and strategies for analyzing resources covered in previous chapters can be applied, bearing in mind that the resources in this case are typically virtual. Some resources may not be driven to their limits, due to unseen resource controls by the hypervisor or contention from other tenants. Ideally, the cloud software or vendor provides a means for customers to check redacted physical resource usage, so that they can investigate performance issues further on their own. If not, contention and limits may be deduced from increases in I/O and CPU scheduling latency. Such latency can be measured either at the syscall layer or in the guest kernel.",
+      "before": "对于来宾来说，可以应用前面章节中介绍的用于分析资源的工具和策略，但请记住，本例中的资源通常是虚拟的。由于虚拟机管理程序隐藏的资源控制或来自其他租户的争用，某些资源可能不会达到物理极限。理想情况下，云软件或供应商会为用户提供一种检查经过删节、隐去敏感信息的物理资源使用情况的方法，以便用户可以自行进一步调查性能问题。如果不是，则可能会根据 I/O 和 CPU 调度延迟的增加推断出争用和限制。这种延迟可以在系统调用层或来宾内核中测量。",
+      "after": "对于客户机来说，可以应用前面章节中介绍的用于分析资源的工具和策略，但请记住，本例中的资源通常是虚拟的。由于虚拟机管理程序隐藏的资源控制或来自其他租户的争用，某些资源可能不会达到物理极限。理想情况下，云软件或供应商会为用户提供一种检查经过删节、隐去敏感信息的物理资源使用情况的方法，以便用户可以自行进一步调查性能问题。如果不是，则可能会根据 I/O 和 CPU 调度延迟的增加推断出争用和限制。这种延迟可以在系统调用层或客户机内核中测量。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 730,
+      "english": "A strategy I use to identify disk and network resource contention from the guest is careful analysis of I/O patterns. This can involve logging the output of biosnoop(8) (see the prior example) and then examining the sequence of I/O to see if any latency outliers are present, and if they are caused by either their size (large I/O is slower), their access pattern (e.g., reads queueing behind a write flush), or neither, in which case it is likely a physical contention or device issue.",
+      "before": "我用来识别来自来宾的磁盘和网络资源争用的策略是仔细分析 I/O 模式。这可能涉及记录 biosnoop(8) 的输出（请参阅前面的示例），然后检查 I/O 序列以查看是否存在任何延迟异常值，以及它们是否是由其大小（大 I/O 速度较慢）、访问模式（例如，在写入刷新后排队读取）引起的，或者两者都不是，在这种情况下，可能是物理争用或设备问题。",
+      "after": "我用来识别来自客户机的磁盘和网络资源争用的策略是仔细分析 I/O 模式。这可能涉及记录 biosnoop(8) 的输出（请参阅前面的示例），然后检查 I/O 序列以查看是否存在任何延迟异常值，以及它们是否是由其大小（大 I/O 速度较慢）、访问模式（例如，在写入刷新后排队读取）引起的，或者两者都不是，在这种情况下，可能是物理争用或设备问题。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 735,
+      "english": "OS virtualization partitions the operating system into instances that Linux calls *containers*, which act like separate guest servers and can be administrated and rebooted independently of the host. These provide small, efficient, fast-booting instances for cloud customers, and high-density servers for cloud operators. OS-virtualized guests are pictured in [Figure 11.9](#ch11-ch11fig09).",
+      "before": "操作系统虚拟化将操作系统划分为 Linux 称为“容器”的实例，这些实例就像独立的来宾服务器一样，可以独立于主机进行管理和重新启动。它们为云用户提供小型、高效、快速启动的实例，为云运营商提供高密度服务器。操作系统虚拟化来宾如[图 11.9](#ch11-ch11fig09)所示。",
+      "after": "操作系统虚拟化将操作系统划分为 Linux 称为“容器”的实例，这些实例就像独立的容器服务器一样，可以独立于宿主机进行管理和重新启动。它们为云用户提供小型、高效、快速启动的实例，为云运营商提供高密度服务器。操作系统虚拟化容器如[图 11.9](#ch11-ch11fig09)所示。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 745,
+      "english": "- Guests can use memory entirely for applications (no extra kernel).",
+      "before": "- 来宾可以将内存完全用于应用程序（无需额外的内核）。",
+      "after": "- 容器可以将内存完全用于应用程序（无需额外的内核）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 746,
+      "english": "- There is a unified file system cache—this can avoid double-caching scenarios between the host and guest.",
+      "before": "- 有统一的文件系统缓存——这可以避免主机和来宾之间的双重缓存情况。",
+      "after": "- 有统一的文件系统缓存——这可以避免宿主机和容器之间的双重缓存情况。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 748,
+      "english": "- For the host operators: improved performance observability, as guest processes are directly visible along with their interactions.",
+      "before": "- 对于主机操作员：提高了性能可观测性，因为来宾进程及其交互是直接可见的。",
+      "after": "- 对于宿主机操作员：提高了性能可观测性，因为容器进程及其交互是直接可见的。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 755,
+      "english": "- For the guests: reduced performance observability, as the kernel typically cannot be analyzed.",
+      "before": "- 对于来宾：性能可观测性降低，因为通常无法分析内核。",
+      "after": "- 对于容器：性能可观测性降低，因为通常无法分析内核。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 756,
+      "english": "- Any kernel panic affects all guests.",
+      "before": "- 任何内核恐慌都会影响所有来宾。",
+      "after": "- 任何内核恐慌都会影响所有容器。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 757,
+      "english": "- Guests cannot run custom kernel modules.",
+      "before": "- 来宾无法运行自定义内核模块。",
+      "after": "- 容器无法运行自定义内核模块。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 758,
+      "english": "- Guests cannot run longer-run PGO kernels (see [Section 3.5.1](#ch03-ch03lev5sec1), [PGO Kernels](#ch03-ch03lev5sec1)).",
+      "before": "- 来宾无法运行长时间运行的 PGO 内核（请参阅[第 3.5.1 节](#ch03-ch03lev5sec1)、[PGO 内核](#ch03-ch03lev5sec1)）。",
+      "after": "- 容器无法运行长时间运行的 PGO 内核（请参阅[第 3.5.1 节](#ch03-ch03lev5sec1)、[PGO 内核](#ch03-ch03lev5sec1)）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 759,
+      "english": "- Guests cannot run different kernel versions or kernels.[^fn-ch11-ch11-footnote-7]",
+      "before": "- 来宾无法运行不同的内核版本或内核。[^fn-ch11-ch11-footnote-7]",
+      "after": "- 容器无法运行不同的内核版本或内核。[^fn-ch11-ch11-footnote-7]",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 761,
+      "english": "Consider the first two disadvantages together: A guest moving from a VM to a container will more likely encounter kernel contention issues, while also losing the ability to analyze them. They will become more dependent on the host operator for this kind of analysis.",
+      "before": "同时考虑前两个缺点：从虚拟机迁移到容器的来宾更有可能遇到内核争用问题，同时也失去分析这些问题的能力。他们将更加依赖主机运营商进行此类分析。",
+      "after": "同时考虑前两个缺点：从虚拟机迁移到容器的租户更有可能遇到内核争用问题，同时也失去分析这些问题的能力。他们将更加依赖宿主机运营商进行此类分析。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 977,
+      "english": "CPU *shares*, provided by the CFS scheduler, is a different approach for CPU allocation that allows containers to share their idle CPU capacity. Shares support the concept of *bursting*, where a container can effectively run faster by using idle CPU from other containers. When there isn’t idle capacity, including when a host has been overprovisioned, shares provide a best-effort division of CPU resources among the containers that need them.",
+      "before": "CPU *共享*由 CFS 调度程序提供，是一种不同的 CPU 分配方法，允许容器共享其空闲 CPU 容量。共享支持“突发”的概念，即容器可以通过使用其他容器的空闲 CPU 有效地运行得更快。当没有空闲容量时（包括主机过度配置时），共享可以在需要 CPU 的容器之间尽力分配 CPU 资源。",
+      "after": "CPU *共享*由 CFS 调度程序提供，是一种不同的 CPU 分配方法，允许容器共享其空闲 CPU 容量。共享支持“突发”的概念，即容器可以通过使用其他容器的空闲 CPU 有效地运行得更快。当没有空闲容量时（包括宿主机过度配置时），共享可以在需要 CPU 的容器之间尽力分配 CPU 资源。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1073,
+      "english": "What is observable depends on the location from which the observability tools are launched and the security settings of the host. Because containers can be configured in many different ways, I will describe the typical case. In general:",
+      "before": "可观测的内容取决于启动可观测性工具的位置以及主机的安全设置。由于容器可以通过多种不同的方式进行配置，因此我将描述典型案例。一般来说：",
+      "after": "可观测的内容取决于启动可观测性工具的位置以及宿主机的安全设置。由于容器可以通过多种不同的方式进行配置，因此我将描述典型案例。一般来说：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1075,
+      "english": "- **From the host** (most privileged namespace): Everything can be observed, including hardware resources, file systems, guest processes, guest TCP sessions, and so on. Guest processes can be seen and analyzed without logging into the guests. Guest file systems can also be easily browsed from the host (the cloud provider).",
+      "before": "- **从主机**（最具特权的命名空间）：可以观察到一切，包括硬件资源、文件系统、来宾进程、来宾 TCP 会话等。无需登录来宾即可查看和分析来宾进程。还可以从主机（云提供商）轻松浏览来宾文件系统。",
+      "after": "- **从宿主机**（最具特权的命名空间）：可以观察到一切，包括硬件资源、文件系统、容器进程、容器 TCP 会话等。无需登录容器即可查看和分析容器进程。还可以从宿主机（云提供商）轻松浏览容器文件系统。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1076,
+      "english": "- **From the guests**: The container can typically only see its own processes, file systems, network interfaces, and TCP sessions. A major exception is system-wide statistics, such as for CPUs and disks: these often show the host rather than just the container. The status of these statistics is typically undocumented (I have written my own documentation in the following section, [Traditional Tools](#ch11-ch11lev3-30)). Kernel internals typically cannot be inspected, so performance tools that use kernel tracing frameworks ([Chapters 13](#ch13-ch13) to [15](#ch15-ch15)) usually do not work.",
+      "before": "- **来自来宾**：容器通常只能看到自己的进程、文件系统、网络接口和 TCP 会话。一个主要的例外是系统范围的统计信息，例如 CPU 和磁盘：这些通常显示主机而不仅仅是容器。这些统计信息的状态通常没有记录（我在下面的部分中编写了自己的文档，[传统工具](#ch11-ch11lev3-30)）。通常无法检查内核内部结构，因此使用内核跟踪框架（[第 13 章](#ch13-ch13)至[第 15 章](#ch15-ch15)）的性能工具通常不起作用。",
+      "after": "- **来自容器**：容器通常只能看到自己的进程、文件系统、网络接口和 TCP 会话。一个主要的例外是系统范围的统计信息，例如 CPU 和磁盘：这些通常显示宿主机而不仅仅是容器。这些统计信息的状态通常没有记录（我在下面的部分中编写了自己的文档，[传统工具](#ch11-ch11lev3-30)）。通常无法检查内核内部结构，因此使用内核跟踪框架（[第 13 章](#ch13-ch13)至[第 15 章](#ch15-ch15)）的性能工具通常不起作用。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1080,
+      "english": "A common concern for container performance analysis is the possible presence of “noisy neighbors,” other container tenants that are aggressively consuming resources and causing access contention for others. Since these container processes are all under one kernel and can be analyzed simultaneously from the host, this is not dissimilar to traditional performance analysis of multiple processes running on one time-sharing system. The main difference is that cgroups may impose additional software limits (resource controls) that are encountered before the hardware limits.",
+      "before": "容器性能分析的一个常见问题是可能存在“吵闹的邻居”，即其他容器租户，它们会大量消耗资源并导致其他人的访问争用。由于这些容器进程都在一个内核下，并且可以从主机同时进行分析，这与传统的在一个分时系统上运行的多个进程的性能分析没有什么不同。主要区别在于 cgroup 可能会在硬件限制之前施加额外的软件限制（资源控制）。",
+      "after": "容器性能分析的一个常见问题是可能存在“吵闹的邻居”，即其他容器租户，它们会大量消耗资源并导致其他人的访问争用。由于这些容器进程都在一个内核下，并且可以从宿主机同时进行分析，这与传统的在一个分时系统上运行的多个进程的性能分析没有什么不同。主要区别在于 cgroup 可能会在硬件限制之前施加额外的软件限制（资源控制）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1084,
+      "english": "On Linux, container observability from both the host and guests is made still more complex and time-consuming by the fact that there is currently no container ID in the kernel,[^fn-ch11-ch11-footnote-11] nor much container support from traditional performance tools.",
+      "before": "在 Linux 上，由于内核中当前没有容器 ID，[^fn-ch11-ch11-footnote-11] 也没有传统性能工具提供的太多容器支持，因此主机和来宾的容器可观测性变得更加复杂和耗时。",
+      "after": "在 Linux 上，由于内核中当前没有容器 ID，[^fn-ch11-ch11-footnote-11] 也没有传统性能工具提供的太多容器支持，因此宿主机和容器的容器可观测性变得更加复杂和耗时。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1086,
+      "english": "These challenges are described in the following sections that summarize the state of traditional performance tools, explore observability from the host and containers, and describe a strategy for analyzing performance.",
+      "before": "以下各节描述了这些挑战，总结了传统性能工具的状态，探索了主机和容器的可观测性，并描述了分析性能的策略。",
+      "after": "以下各节描述了这些挑战，总结了传统性能工具的状态，探索了宿主机和容器的可观测性，并描述了分析性能的策略。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1091,
+      "english": "As a summary of traditional performance tools, [Table 11.6](#ch11-ch11tab06) describes what various tools show when run from the host and from a typical container (one that uses process and mount namespaces) on a Linux 5.2 kernel. Situations that may be unexpected, such as when the container can observe host statistics, are highlighted in bold.",
+      "before": "作为传统性能工具的总结，[表 11.6](#ch11-ch11tab06) 描述了各种工具在 Linux 5.2 内核上从主机和典型容器（使用进程和挂载命名空间的容器）运行时显示的内容。可能出现意外的情况（例如容器可以观察主机统计信息时）以粗体突出显示。",
+      "after": "作为传统性能工具的总结，[表 11.6](#ch11-ch11tab06) 描述了各种工具在 Linux 5.2 内核上从宿主机和典型容器（使用进程和挂载命名空间的容器）运行时显示的内容。可能出现意外的情况（例如容器可以观察宿主机统计信息时）以粗体突出显示。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1096,
+      "english": "| **Tool** | **From the Host** | **From the Container** |",
+      "before": "| **工具** | **来自主机** | **来自容器** |",
+      "after": "| **工具** | **来自宿主机** | **来自容器** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1098,
+      "english": "| `top` | The summary heading shows the host; the process table shows all host and container processes | **The summary heading shows mixed statistics; some are from the host and some from the container.** The process table shows container processes |",
+      "before": "| `top` | 摘要标题显示主机；进程表显示所有主机和容器进程 | **摘要标题显示混合统计信息；有些来自主机，有些来自容器。** 进程表显示容器进程 |",
+      "after": "| `top` | 摘要标题显示宿主机；进程表显示所有宿主机和容器进程 | **摘要标题显示混合统计信息；有些来自宿主机，有些来自容器。** 进程表显示容器进程 |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1100,
+      "english": "| `uptime` | Shows host (system-wide) load averages | **Shows host load averages** |",
+      "before": "| `uptime` | 显示主机（系统范围）平均负载 | **显示主机平均负载** |",
+      "after": "| `uptime` | 显示宿主机（系统范围）平均负载 | **显示宿主机平均负载** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1101,
+      "english": "| `mpstat` | Shows host CPUs and host usage | **Shows host CPUs, and host CPU usage** |",
+      "before": "| `mpstat` | 显示主机 CPU 和主机使用情况 | **显示主机 CPU 和主机 CPU 使用情况** |",
+      "after": "| `mpstat` | 显示宿主机 CPU 和宿主机使用情况 | **显示宿主机 CPU 和宿主机 CPU 使用情况** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1102,
+      "english": "| `vmstat` | Shows host CPUs, memory, and other statistics | **Shows host CPUs, memory, and other statistics** |",
+      "before": "| `vmstat` | 显示主机 CPU、内存和其他统计数据 | **显示主机 CPU、内存和其他统计数据** |",
+      "after": "| `vmstat` | 显示宿主机 CPU、内存和其他统计数据 | **显示宿主机 CPU、内存和其他统计数据** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1104,
+      "english": "| `free` | Shows host memory | **Shows host memory** |",
+      "before": "| `free` | 显示主机内存 | **显示主机内存** |",
+      "after": "| `free` | 显示宿主机内存 | **显示宿主机内存** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1105,
+      "english": "| `iostat` | Shows host disks | **Shows host disks** |",
+      "before": "| `iostat` | 显示主机磁盘 | **显示主机磁盘** |",
+      "after": "| `iostat` | 显示宿主机磁盘 | **显示宿主机磁盘** |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1107,
+      "english": "| `sar -n DEV, TCP 1` | Shows host network interfaces and TCP statistics | Shows container network interfaces and TCP statistics |",
+      "before": "| `sar -n DEV, TCP 1` | 显示主机网络接口和 TCP 统计数据 | 显示容器网络接口和 TCP 统计数据 |",
+      "after": "| `sar -n DEV, TCP 1` | 显示宿主机网络接口和 TCP 统计数据 | 显示容器网络接口和 TCP 统计数据 |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1112,
+      "english": "Over time, container support for tools may improve so that they only show container-specific statistics when run from the container or, even better, show a breakdown of container versus host statistics. The host tools can show everything, and they, too, could be improved by adding support for breakdowns and filters by container or cgroup. These topics are explained more in the following sections on host and guest observability.",
+      "before": "随着时间的推移，容器对工具的支持可能会得到改进，以便它们仅在从容器运行时显示特定于容器的统计信息，或者更好的是，显示容器与主机统计信息的细分。主机工具可以显示所有内容，也可以通过添加对容器或 cgroup 的感知和过滤支持来改进。以下有关主机和来宾可观测性的部分将详细解释这些主题。",
+      "after": "随着时间的推移，容器对工具的支持可能会得到改进，以便它们仅在从容器运行时显示特定于容器的统计信息，或者更好的是，显示容器与宿主机统计信息的细分。宿主机工具可以显示所有内容，也可以通过添加对容器或 cgroup 的感知和过滤支持来改进。以下有关宿主机和容器可观测性的部分将详细解释这些主题。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1115,
+      "english": "#### 11.3.4.2 Host",
+      "before": "#### 11.3.4.2 主机",
+      "after": "#### 11.3.4.2 宿主机",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1117,
+      "english": "When logged in to the host, all system resources (CPUs, memory, file system, disk, network) can be inspected using the tools covered in previous chapters. There are two additional factors to examine when using containers:",
+      "before": "登录主机后，可以使用前面章节中介绍的工具检查所有系统资源（CPU、内存、文件系统、磁盘、网络）。使用容器时还有两个额外因素需要检查：",
+      "after": "登录宿主机后，可以使用前面章节中介绍的工具检查所有系统资源（CPU、内存、文件系统、磁盘、网络）。使用容器时还有两个额外因素需要检查：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1144,
+      "english": "- **Namespace mapping** from the host, such as by using nsenter(1), to allow host performance tools to be run in the container. This can reduce visible processes to just those from the container, when used with the `-p` (PID namespace) option. Although performance tool statistics may not be for the container alone: see [Table 11.6](#ch11-ch11tab06). The `-n` (network namespace) option is also useful for running network tools within the same network namespace (ping(8), tcpdump(8)).",
+      "before": "- 来自主机的**命名空间映射**，例如通过使用 nsenter(1)，以允许主机性能工具在容器中运行。当与 `-p`（PID 命名空间）选项一起使用时，这可以将可见进程减少为仅来自容器的进程。尽管性能工具统计数据可能不仅仅针对容器：请参阅 [表 11.6](#ch11-ch11tab06)。`-n`（网络命名空间）选项对于在同一网络命名空间（ping(8)、tcpdump(8)）内运行网络工具也很有用。",
+      "after": "- 来自宿主机的**命名空间映射**，例如通过使用 nsenter(1)，以允许宿主机性能工具在容器中运行。当与 `-p`（PID 命名空间）选项一起使用时，这可以将可见进程减少为仅来自容器的进程。尽管性能工具统计数据可能不仅仅针对容器：请参阅 [表 11.6](#ch11-ch11tab06)。`-n`（网络命名空间）选项对于在同一网络命名空间（ping(8)、tcpdump(8)）内运行网络工具也很有用。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1153,
+      "english": "Checking hosts (“nodes”):",
+      "before": "检查主机（“节点”）：",
+      "after": "检查宿主机（“节点”）：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1179,
+      "english": "The Docker container technology provides some docker(1) analysis subcommands, including stats. For example, from a production host:",
+      "before": "Docker 容器技术提供了一些 docker(1) 分析子命令，包括 stats。例如，从生产主机：",
+      "after": "Docker 容器技术提供了一些 docker(1) 分析子命令，包括 stats。例如，从生产宿主机：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1228,
+      "english": "Command-line tools that read these statistics include htop(1) and systemd-cgtop(1). For example, running systemd-cgtop(1) on a production container host:",
+      "before": "读取这些统计信息的命令行工具包括 htop(1) 和 systemd-cgtop(1)。例如，在生产容器主机上运行 systemd-cgtop(1)：",
+      "after": "读取这些统计信息的命令行工具包括 htop(1) 和 systemd-cgtop(1)。例如，在生产容器宿主机上运行 systemd-cgtop(1)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1256,
+      "english": "For process namespaces, it means that the PID in the guest is unlikely to match the PID in the host.",
+      "before": "对于进程命名空间，这意味着来宾中的 PID 不太可能与主机中的 PID 匹配。",
+      "after": "对于进程命名空间，这意味着容器中的 PID 不太可能与宿主机中的 PID 匹配。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1258,
+      "english": "When diagnosing performance issues, I first log in to the container so that I can see the problem from the viewpoint of the end user. Later on, I may log in to the host to continue the investigation using system-wide tools, but the PID may not be the same. The mapping is shown in the /proc/PID/status file. For example, from the host:",
+      "before": "在诊断性能问题时，我首先登录到容器，以便可以从最终用户的角度看到问题。稍后我可能会登录主机使用系统范围的工具继续排查，但 PID 可能不同。该映射显示在 /proc/PID/status 文件中。例如，来自主机：",
+      "after": "在诊断性能问题时，我首先登录到容器，以便可以从最终用户的角度看到问题。稍后我可能会登录宿主机使用系统范围的工具继续排查，但 PID 可能不同。该映射显示在 /proc/PID/status 文件中。例如，来自宿主机：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1267,
+      "english": "This shows that PID 4915 on the host is PID 753 in the guest. Unfortunately, I typically need to do the reverse mapping: given the container PID, I need to find the host PID. One (somewhat inefficient) way to do this is to scan all status files:",
+      "before": "这表明主机上的 PID 4915 是来宾中的 PID 753。不幸的是，我通常需要进行反向映射：给定容器 PID，我需要找到主机 PID。一种（有点低效）的方法是扫描所有状态文件：",
+      "after": "这表明宿主机上的 PID 4915 是容器中的 PID 753。不幸的是，我通常需要进行反向映射：给定容器 PID，我需要找到宿主机 PID。一种（有点低效）的方法是扫描所有状态文件：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1276,
+      "english": "In this case it showed that guest PID 753 was host PID 4915. Note that the output may show more than one host PID, since “753” could appear in multiple process namespaces. In that case, you will need to figure out which 753 is from the matching namespace. The /proc/PID/ns files are symlinks that contain namespace IDs, and can be used for this purpose. Examining them from the guest and then the host:",
+      "before": "在本例中，它显示来宾 PID 753 是主机 PID 4915。请注意，输出可能显示多个主机 PID，因为“753”可能出现在多个进程命名空间中。在这种情况下，您需要找出哪个 753 来自匹配的命名空间。/proc/PID/ns 文件是包含命名空间 ID 的符号链接，可用于此目的。先从来宾检查，然后从主机检查：",
+      "after": "在本例中，它显示容器 PID 753 是宿主机 PID 4915。请注意，输出可能显示多个宿主机 PID，因为“753”可能出现在多个进程命名空间中。在这种情况下，您需要找出哪个 753 来自匹配的命名空间。/proc/PID/ns 文件是包含命名空间 ID 的符号链接，可用于此目的。先从容器检查，然后从宿主机检查：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1288,
+      "english": "Note the matching namespace IDs (4026532216): this confirms that host PID 4915 is the same as guest PID 753.",
+      "before": "请注意匹配的命名空间 ID (4026532216)：这确认主机 PID 4915 与来宾 PID 753 相同。",
+      "after": "请注意匹配的命名空间 ID (4026532216)：这确认宿主机 PID 4915 与容器 PID 753 相同。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1290,
+      "english": "Mount namespaces can present similar challenges. Running the perf(1) command from the host, for example, searches in /tmp/perf-PID.map for supplemental symbol files, but container applications emit them to /tmp in the container, which is not the same as /tmp in the host. In addition, the PID is likely different due to process namespaces. Alice Goldfuss first posted a workaround for this that involved moving and renaming these symbol files so that they were available in the host [\\[Goldfuss 17\\]](#ch11-ch11ref21). perf(1) has since gained namespace support to avoid this problem, and the kernel provides a /proc/PID/root mount namespace mapping for direct access to the container’s root (“/”). For example:",
+      "before": "挂载命名空间可能会带来类似的挑战。例如，从主机运行 perf(1) 命令会在 /tmp/perf-PID.map 中搜索补充符号文件，但容器应用程序将它们发送到容器中的 /tmp，这与主机中的 /tmp 不同。此外，由于进程命名空间的原因，PID 可能会有所不同。 Alice Goldfuss 首先发布了一个解决方法，涉及移动和重命名这些符号文件，以便它们在主机 [\\[Goldfuss 17\\]](#ch11-ch11ref21) 中可用。 perf(1) 自此获得了命名空间支持以避免此问题，并且内核提供了 /proc/PID/root 挂载命名空间映射，用于直接访问容器的根目录（“/”）。例如：",
+      "after": "挂载命名空间可能会带来类似的挑战。例如，从宿主机运行 perf(1) 命令会在 /tmp/perf-PID.map 中搜索补充符号文件，但容器应用程序将它们发送到容器中的 /tmp，这与宿主机中的 /tmp 不同。此外，由于进程命名空间的原因，PID 可能会有所不同。 Alice Goldfuss 首先发布了一个解决方法，涉及移动和重命名这些符号文件，以便它们在宿主机 [\\[Goldfuss 17\\]](#ch11-ch11ref21) 中可用。 perf(1) 自此获得了命名空间支持以避免此问题，并且内核提供了 /proc/PID/root 挂载命名空间映射，用于直接访问容器的根目录（“/”）。例如：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1302,
+      "english": "Apart from /proc files, the nsenter(1) command can execute other commands in selected namespaces. The following runs the top(1) command from the host, in the mount (`-m`) and process (`-p`) namespaces from PID 4915 (`-t 4915`):",
+      "before": "除了 /proc 文件之外，nsenter(1) 命令还可以在选定的命名空间中执行其他命令。以下命令从主机在挂载 (`-m`) 和进程 (`-p`) 命名空间中运行 PID 4915 的 top(1) 命令 (`-t 4915`)：",
+      "after": "除了 /proc 文件之外，nsenter(1) 命令还可以在选定的命名空间中执行其他命令。以下命令从宿主机在挂载 (`-m`) 和进程 (`-p`) 命名空间中运行 PID 4915 的 top(1) 命令 (`-t 4915`)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1389,
+      "english": "The output is now broken down by container, showing that nodename `6280172ea7b9` (a container) created 252 processes while tracing. The other nodename, `ip-10-1-239-218`, is the host system.",
+      "before": "输出现在按容器进行细分，显示节点名称 `6280172ea7b9`（容器）在跟踪时创建了 252 个进程。另一个节点名称 `ip-10-1-239-218` 是主机系统。",
+      "after": "输出现在按容器进行细分，显示节点名称 `6280172ea7b9`（容器）在跟踪时创建了 252 个进程。另一个节点名称 `ip-10-1-239-218` 是宿主机系统。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1420,
+      "english": "- **Host has idle CPU**: Can be read from mpstat(1) `%idle`, /proc/stat, and other tools",
+      "before": "- **主机有空闲 CPU**：可以从 mpstat(1) `%idle`、/proc/stat 和其他工具读取",
+      "after": "- **宿主机有空闲 CPU**：可以从 mpstat(1) `%idle`、/proc/stat 和其他工具读取",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1427,
+      "english": "#### 11.3.4.3 Guest (Container)",
+      "before": "#### 11.3.4.3 来宾（容器）",
+      "after": "#### 11.3.4.3 客户环境（容器）",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1450,
+      "english": "This output shows both a CPU and disk workload, and yet this container is completely idle. This can be confusing for people new to OS virtualization—why is my container busy? It’s because the tools are showing host statistics that include activity from other tenants.",
+      "before": "此输出显示了 CPU 和磁盘工作负载，但该容器完全空闲。对于刚刚接触操作系统虚拟化的人来说，这可能会让人感到困惑——为什么我的容器很忙？这是因为这些工具显示的主机统计信息包括其他租户的活动。",
+      "after": "此输出显示了 CPU 和磁盘工作负载，但该容器完全空闲。对于刚刚接触操作系统虚拟化的人来说，这可能会让人感到困惑——为什么我的容器很忙？这是因为这些工具显示的宿主机统计信息包括其他租户的活动。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1486,
+      "english": "1. **The container is an isolated server**: If this is the goal, as is typically the case for cloud vendors, then making tools container-aware means they only show the current container’s activity. iostat(1), for example, should only show disk I/O called by the container and not others. This could be implemented by isolating all statistic sources to only show the current container (/proc, /sys, netlink, etc.). Such isolation would both help and hinder analysis by the guest: diagnosing issues of resource contention from other tenants will be more time-consuming and will rely on inference from unexplained increases in device latency.",
+      "before": "1. **容器是一个隔离的服务器**：如果这是目标，就像云供应商的典型情况一样，那么使工具具有容器感知能力意味着它们只显示当前容器的活动。例如，iostat(1) 应该只显示容器调用的磁盘 I/O，而不显示其他调用的磁盘 I/O。这可以通过隔离所有统计源以仅显示当前容器（/proc、/sys、netlink 等）来实现。这种隔离既有助于也妨碍来宾的分析：诊断其他租户的资源争用问题将更加耗时，并且将依赖于无法解释的设备延迟增加的推断。",
+      "after": "1. **容器是一个隔离的服务器**：如果这是目标，就像云供应商的典型情况一样，那么使工具具有容器感知能力意味着它们只显示当前容器的活动。例如，iostat(1) 应该只显示容器调用的磁盘 I/O，而不显示其他调用的磁盘 I/O。这可以通过隔离所有统计源以仅显示当前容器（/proc、/sys、netlink 等）来实现。这种隔离既有助于也妨碍容器的分析：诊断其他租户的资源争用问题将更加耗时，并且将依赖于无法解释的设备延迟增加的推断。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1487,
+      "english": "2. **The container is a packaging solution**: For companies operating their own container clouds, isolating a container’s statistics may not necessarily be required. Allowing containers to see host statistics (as is often currently the case anyway, as seen earlier with iostat(1)) means that end users can better understand the state of hardware devices and problems caused by noisy neighbors. To make iostat(1) more container-aware in this scenario may mean providing a breakdown showing the current container versus host or other container usage, rather than hiding those statistics.",
+      "before": "2. **容器是一种打包解决方案**：对于运营自己的容器云的公司来说，可能不一定需要隔离容器的统计数据。允许容器查看主机统计信息（无论如何，目前经常出现这种情况，如前面使用 iostat(1) 看到的那样）意味着最终用户可以更好地了解硬件设备的状态以及由嘈杂的邻居引起的问题。在这种情况下，要使 iostat(1) 更加了解容器，可能意味着提供显示当前容器与主机或其他容器使用情况的细分，而不是隐藏这些统计信息。",
+      "after": "2. **容器是一种打包解决方案**：对于运营自己的容器云的公司来说，可能不一定需要隔离容器的统计数据。允许容器查看宿主机统计信息（无论如何，目前经常出现这种情况，如前面使用 iostat(1) 看到的那样）意味着最终用户可以更好地了解硬件设备的状态以及由嘈杂的邻居引起的问题。在这种情况下，要使 iostat(1) 更加了解容器，可能意味着提供显示当前容器与宿主机或其他容器使用情况的细分，而不是隐藏这些统计信息。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1491,
+      "english": "If physical resource observability is allowed, guests will be able to rule out some types of issues, including noisy neighbors. This can lighten the support burden on container operators: people tend to blame what they cannot observe. It is also an important difference from hardware virtualization, which hides physical resources from the guests and has no way to share those statistics (unless external means are used). Ideally, there will be a future setting in Linux to control the sharing of host statistics, so that each container environment can choose between A or B as desired.",
+      "before": "如果允许观察物理资源，来宾将能够排除某些类型的问题，包括吵闹的邻居。这可以减轻容器运营商的支持负担：人们倾向于归咎于他们无法观察到的事情。这也是与硬件虚拟化的一个重要区别，硬件虚拟化对来宾隐藏了物理资源，并且无法共享这些统计数据（除非使用外部手段）。理想情况下，Linux 中未来会有一个设置来控制主机统计信息的共享，以便每个容器环境可以根据需要在 A 或 B 之间进行选择。",
+      "after": "如果允许观察物理资源，容器将能够排除某些类型的问题，包括吵闹的邻居。这可以减轻容器运营商的支持负担：人们倾向于归咎于他们无法观察到的事情。这也是与硬件虚拟化的一个重要区别，硬件虚拟化对客户机隐藏了物理资源，并且无法共享这些统计数据（除非使用外部手段）。理想情况下，Linux 中未来会有一个设置来控制宿主机统计信息的共享，以便每个容器环境可以根据需要在 A 或 B 之间进行选择。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1499,
+      "english": "    - **Host API**: The host exposes access to certain tracing tools via a secure API or GUI. A container could, for example, request common BCC tools such as execsnoop(8) and biolatency(8) to execute, and the host would validate the request, execute a filtered version of the tool, and return with the output.",
+      "before": "    - **主机 API**：主机通过安全 API 或 GUI 公开对某些跟踪工具的访问。例如，容器可以请求执行常见的 BCC 工具，例如 execsnoop(8) 和 biolatency(8)，主机将验证该请求，执行该工具的过滤版本，并返回输出。",
+      "after": "    - **宿主机 API**：宿主机通过安全 API 或 GUI 公开对某些跟踪工具的访问。例如，容器可以请求执行常见的 BCC 工具，例如 execsnoop(8) 和 biolatency(8)，宿主机将验证该请求，执行该工具的过滤版本，并返回输出。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1507,
+      "english": "Previous chapters have covered analysis techniques for the physical system resources and included various methodologies. These can be followed for host operators, and to some extent by the guests, bearing in mind the limitations mentioned previously. For guests, high-level resource usage is typically observable, but drilling down into the kernel is usually not possible.",
+      "before": "前面的章节介绍了物理系统资源的分析技术并包括各种方法。主机运营商可以遵循这些方法，来宾在牢记前述限制的情况下也可以在一定程度上遵循。对于来宾来说，高级资源使用通常是可观测的，但通常不可能深入到内核。",
+      "after": "前面的章节介绍了物理系统资源的分析技术并包括各种方法。宿主机运营商可以遵循这些方法，容器在牢记前述限制的情况下也可以在一定程度上遵循。对于容器来说，高级资源使用通常是可观测的，但通常不可能深入到内核。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1509,
+      "english": "Apart from the physical resources, cloud limits imposed by resource controls should also be checked, by both the host operators and guest tenants. Since these limits, where present, are encountered long before the physical limits, they are more likely to be in effect and should be checked first.",
+      "before": "除了物理资源之外，主机运营商和来宾租户还应该检查资源控制所施加的云限制。由于这些限制（如果存在）是在物理限制之前很久就遇到的，因此它们更有可能生效，因此应首先检查。",
+      "after": "除了物理资源之外，宿主机运营商和容器租户还应该检查资源控制所施加的云限制。由于这些限制（如果存在）是在物理限制之前很久就遇到的，因此它们更有可能生效，因此应首先检查。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1519,
+      "english": "- **Network I/O**: Check current network throughput against any known bandwidth limit, which may be observable only from the host. Encountering the limit causes network I/O latency to increase, as tenants are throttled.",
+      "before": "- **网络 I/O**：根据任何已知的带宽限制检查当前网络吞吐量，该限制只能从主机观察到。遇到限制会导致网络 I/O 延迟增加，因为租户受到限制。",
+      "after": "- **网络 I/O**：根据任何已知的带宽限制检查当前网络吞吐量，该限制只能从宿主机观察到。遇到限制会导致网络 I/O 延迟增加，因为租户受到限制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1546,
+      "english": "- **Google gVisor**: Launched in 2018 as open source, gVisor uses a specialized user-space kernel for guests, written in Go, that improves container security.",
+      "before": "- **Google gVisor**：gVisor 于 2018 年以开源方式推出，它使用用 Go 编写的专门用于来宾的用户空间内核，可提高容器安全性。",
+      "after": "- **Google gVisor**：gVisor 于 2018 年以开源方式推出，它使用用 Go 编写的专门用于容器实例的用户空间内核，可提高容器安全性。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1559,
+      "english": "As the VMM processes run on the host, they can be managed by OS-level resource controls: cgroups, qdiscs, etc., similar to KVM virtualization described in [Section 11.2.3](#ch11-ch11lev2sec3), [Resource Controls](#ch11-ch11lev2sec3). These OS-level resource controls were also discussed in more detail for containers in [Section 11.3.3](#ch11-ch11lev3sec3), [Resource Controls](#ch11-ch11lev3sec3).",
+      "before": "由于 VMM 进程在主机上运行，因此可以通过操作系统级别的资源控制来管理它们：cgroup、qdisc 等，类似于[第 11.2.3 节](#ch11-ch11lev2sec3)、[资源控制](#ch11-ch11lev2sec3)中描述的 KVM 虚拟化。[第 11.3.3 节](#ch11-ch11lev3sec3)、[资源控制](#ch11-ch11lev3sec3)中还针对容器更详细地讨论了这些操作系统级资源控制。",
+      "after": "由于 VMM 进程在宿主机上运行，因此可以通过操作系统级别的资源控制来管理它们：cgroup、qdisc 等，类似于[第 11.2.3 节](#ch11-ch11lev2sec3)、[资源控制](#ch11-ch11lev2sec3)中描述的 KVM 虚拟化。[第 11.3.3 节](#ch11-ch11lev3sec3)、[资源控制](#ch11-ch11lev3sec3)中还针对容器更详细地讨论了这些操作系统级资源控制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1566,
+      "english": "- **From the host**: All physical resources can be observed using standard OS tools, as covered in prior chapters. Guest VMs are visible as processes. Guest internals, including processes inside the VM and their file systems, cannot be observed directly. For a hypervisor operator to analyze guest internals, they must be granted access (e.g., SSH).",
+      "before": "- **从主机**：可以使用标准操作系统工具观察所有物理资源，如前面的章节所述。来宾虚拟机作为进程可见。无法直接观察来宾内部结构，包括虚拟机及其文件系统内的进程。对于要分析来宾内部结构的虚拟机管理程序操作员，必须授予他们访问权限（例如 SSH）。",
+      "after": "- **从宿主机视角**：可以使用标准操作系统工具观察所有物理资源，如前面的章节所述。客户虚拟机作为进程可见。无法直接观察客户机内部结构，包括虚拟机内部的进程和文件系统。对于要分析客户机内部结构的虚拟机管理程序操作员，必须授予他们访问权限（例如 SSH）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1567,
+      "english": "- **From the guest**: Virtualized resources and their usage by the guest can be seen, and physical problems inferred. Kernel tracing tools, including BPF-based tools, all work because the VM has its own dedicated kernel.",
+      "before": "- **从来宾**：可以看到虚拟化资源及其对来宾的使用情况，并推断物理问题。内核跟踪工具（包括基于 BPF 的工具）都可以正常工作，因为 VM 有自己的专用内核。",
+      "after": "- **从客户机视角**：可以看到虚拟化资源及其在客户机内的使用情况，并推断物理问题。内核跟踪工具（包括基于 BPF 的工具）都可以正常工作，因为 VM 有自己的专用内核。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1569,
+      "english": "As an example of observability, the following shows a Firecracker VM as observed using top(1) **from the host**[^fn-ch11-ch11-footnote-13]:",
+      "before": "作为可观测性的示例，下面显示了使用 top(1) **从主机**[^fn-ch11-ch11-footnote-13] 观察到的 Firecracker VM：",
+      "after": "作为可观测性的示例，下面显示了使用 top(1) **从宿主机**[^fn-ch11-ch11-footnote-13] 观察到的 Firecracker VM：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1590,
+      "english": "The entire VM appears as a single process named `firecracker`. This output shows it is consuming 200% CPU (2 CPUs). From the host, you cannot tell which guest processes are consuming this CPU.",
+      "before": "整个虚拟机显示为名为 `firecracker` 的单个进程。此输出显示它正在消耗 200% CPU（2 个 CPU）。从主机上，您无法判断哪些来宾进程正在消耗该 CPU。",
+      "after": "整个虚拟机显示为名为 `firecracker` 的单个进程。此输出显示它正在消耗 200% CPU（2 个 CPU）。从宿主机上，您无法判断哪些客户机进程正在消耗该 CPU。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1592,
+      "english": "The following shows top(1) run **from the guest**:",
+      "before": "下面显示了 top(1) **从来宾**运行：",
+      "after": "以下展示了**在客户机内部**运行 top(1) 的输出：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1615,
+      "english": "Also compare the difference between the header summaries: the host has a one-minute load average of 4.48, whereas the guest has 1.89. Other details are also different, as the guest has its own kernel that is maintaining guest-only statistics. As described in [Section 11.3.4](#ch11-ch11lev3sec4), [Observability](#ch11-ch11lev3sec4), this is different for containers, where statistics seen from the guest may unexpectedly show system-wide statistics from the host.",
+      "before": "还可以比较标头摘要之间的差异：主机的一分钟平均负载为 4.48，而来宾的一分钟平均负载为 1.89。其他细节也不同，因为来宾有自己的内核来维护仅限来宾的统计信息。如[第 11.3.4 节](#ch11-ch11lev3sec4)、[可观测性](#ch11-ch11lev3sec4)中所述，这对于容器来说是不同的，从来宾看到的统计信息可能会意外地显示来自主机的系统范围统计信息。",
+      "after": "还可以比较标头摘要之间的差异：宿主机的一分钟平均负载为 4.48，而客户机的一分钟平均负载为 1.89。其他细节也不同，因为客户机有自己的内核来维护仅限客户机的统计信息。如[第 11.3.4 节](#ch11-ch11lev3sec4)、[可观测性](#ch11-ch11lev3sec4)中所述，这对于容器来说是不同的，从容器中看到的统计信息可能会意外地显示来自宿主机的系统范围统计信息。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1617,
+      "english": "As another example, the following shows mpstat(1) executed from the guest:",
+      "before": "作为另一个示例，以下显示了从来宾执行的 mpstat(1)：",
+      "after": "作为另一个示例，以下显示了从客户机执行的 mpstat(1)：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1632,
+      "english": "This output shows only two CPUs, as the guest has two CPUs assigned.",
+      "before": "此输出仅显示两个 CPU，因为来宾分配了两个 CPU。",
+      "after": "此输出仅显示两个 CPU，因为客户机分配了两个 CPU。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1662,
+      "english": "| Memory allocation | Fixed (and possibly double caching) | Flexible (unused guest memory used for file system cache) | Fixed (and possibly double caching) |",
+      "before": "| 内存分配 | 固定（可能有双重缓存） | 灵活（未使用的来宾内存用于文件系统缓存） | 固定（可能有双重缓存） |",
+      "after": "| 内存分配 | 固定（可能有双重缓存） | 灵活（未使用的容器内存用于文件系统缓存） | 固定（可能有双重缓存） |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1664,
+      "english": "| Observability: from the host | Medium (resource usage, hypervisor statistics, OS inspection for KVM-like hypervisors, but cannot see guest internals) | High (see everything) | Medium (resource usage, hypervisor statistics, OS inspection for KVM-like hypervisors, but cannot see guest internals) |",
+      "before": "| 可观测性：来自主机 | 中（资源使用情况、虚拟机管理程序统计信息、类似 KVM 的虚拟机管理程序的操作系统检查，但看不到来宾内部结构） | 高（查看所有内容） | 中（资源使用情况、虚拟机管理程序统计信息、类似 KVM 的虚拟机管理程序的操作系统检查，但看不到来宾内部结构） |",
+      "after": "| 可观测性：来自宿主机 | 中（资源使用情况、虚拟机管理程序统计信息、类似 KVM 的虚拟机管理程序的操作系统检查，但看不到客户实例内部结构） | 高（查看所有内容） | 中（资源使用情况、虚拟机管理程序统计信息、类似 KVM 的虚拟机管理程序的操作系统检查，但看不到客户实例内部结构） |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1665,
+      "english": "| Observability: from the guest | High (full kernel and virtual device inspection) | Medium (user mode only, kernel counters, full kernel visibility restricted) with extra host-wide metrics (e.g., iostat(1)) | High (full kernel and virtual device inspection) |",
+      "before": "| 可观测性：来自来宾 | 高（完整内核和虚拟设备检查） | 中（仅限用户态、内核计数器；完整内核可见性受限），另有额外的主机范围指标（例如 iostat(1)） | 高（完整内核和虚拟设备检查） |",
+      "after": "| 可观测性：来自客户实例 | 高（完整内核和虚拟设备检查） | 中（仅限用户态、内核计数器；完整内核可见性受限），另有额外的宿主机范围指标（例如 iostat(1)） | 高（完整内核和虚拟设备检查） |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1666,
+      "english": "| Observability favors | End users | Host operators | End users |",
+      "before": "| 可观测性有利于 | 最终用户 | 主机运营商 | 最终用户 |",
+      "after": "| 可观测性有利于 | 最终用户 | 宿主机运营商 | 最终用户 |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1668,
+      "english": "| Different OS guests | Yes | Usually no (sometimes possible with syscall translation, which can add overheads) | Yes |",
+      "before": "| 不同操作系统来宾 | 是 | 通常否（有时可以使用系统调用转换，这会增加开销） | 是 |",
+      "after": "| 不同类型的客户操作系统 | 是 | 通常否（有时可以使用系统调用转换，这会增加开销） | 是 |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1674,
+      "english": "For cloud operators, the highest observability option is containers, because from the host they can see all processes and their interaction. For end users, it is virtual machines, since those give users kernel access to run all kernel-based performance tools, including those in [Chapters 13](#ch13-ch13), [14](#ch14-ch14), and [15](#ch15-ch15). Another option is containers that have kernel access, giving operators and users full visibility of everything; however, this is only an option when the customer also runs the container host, since it lacks security isolation between containers.",
+      "before": "对于云运营商来说，最高可观测性的选择是容器，因为他们可以从主机看到所有进程及其交互。对于最终用户来说，它是虚拟机，因为虚拟机为用户提供了内核访问权限来运行所有基于内核的性能工具，包括[第 13 章](#ch13-ch13)、[第 14 章](#ch14-ch14)和[第 15 章](#ch15-ch15)中的工具。另一种选择是具有内核访问权限的容器，使操作员和用户能够全面了解所有内容；然而，这只是当用户也运行容器主机时的一个选择，因为它缺乏容器之间的安全隔离。",
+      "after": "对于云运营商来说，最高可观测性的选择是容器，因为他们可以从宿主机看到所有进程及其交互。对于最终用户来说，它是虚拟机，因为虚拟机为用户提供了内核访问权限来运行所有基于内核的性能工具，包括[第 13 章](#ch13-ch13)、[第 14 章](#ch14-ch14)和[第 15 章](#ch15-ch15)中的工具。另一种选择是具有内核访问权限的容器，使操作员和用户能够全面了解所有内容；然而，这只是当用户也运行容器宿主机时的一个选择，因为它缺乏容器之间的安全隔离。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1682,
+      "english": "    - What is the difference between the host and the guest?",
+      "before": "    - 主机和来宾有什么区别？",
+      "after": "    - 宿主机与客户实例有什么区别？",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1691,
+      "english": "    - Describe physical system observability from a hardware-virtualized guest (either Xen or KVM).",
+      "before": "    - 描述来自硬件虚拟化来宾（Xen 或 KVM）的物理系统可观测性。",
+      "after": "    - 描述来自硬件虚拟化客户实例（Xen 或 KVM）的物理系统可观测性。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1692,
+      "english": "    - Describe physical system observability from an OS-virtualized guest.",
+      "before": "    - 描述来自操作系统虚拟化来宾的物理系统可观测性。",
+      "after": "    - 描述在采用操作系统虚拟化的容器实例内，对物理系统的可观测性。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1694,
+      "english": "3. Choose a virtualization technology and answer the following for the guests:",
+      "before": "3. 选择一种虚拟化技术，并为来宾回答以下问题：",
+      "after": "3. 选择一种虚拟化技术，并为客户实例回答以下问题：",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1695,
+      "english": "    - Describe how a memory limit is applied, and how it is visible from the guest. (What does the system administrator see when guest memory is exhausted?)",
+      "before": "    - 描述如何应用内存限制，以及如何对来宾可见。（当来宾内存耗尽时，系统管理员会看到什么？）",
+      "after": "    - 描述如何应用内存限制，以及如何对客户实例可见。（当客户实例内存耗尽时，系统管理员会看到什么？）",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1696,
+      "english": "    - If there is an imposed CPU limit, describe how it is applied and how it is visible from the guest.",
+      "before": "    - 如果有强制的 CPU 限制，请描述如何应用它以及如何从来宾中看到它。",
+      "after": "    - 如果有强制的 CPU 限制，请描述如何应用它以及如何从客户实例中看到它。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1697,
+      "english": "    - If there is an imposed disk I/O limit, describe how it is applied and how it is visible from the guest.",
+      "before": "    - 如果存在强制的磁盘 I/O 限制，请描述如何应用该限制以及如何从来宾中看到该限制。",
+      "after": "    - 如果存在强制的磁盘 I/O 限制，请描述如何应用该限制以及如何从客户实例中看到该限制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1698,
+      "english": "    - If there is an imposed network I/O limit, describe how it is applied and how it is visible from the guest.",
+      "before": "    - 如果存在强制网络 I/O 限制，请描述其应用方式以及来宾如何看到该限制。",
+      "after": "    - 如果存在强制网络 I/O 限制，请描述其应用方式以及客户实例如何看到该限制。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 1851,
+      "english": "[^fn-ch11-ch11-footnote-6]: A reviewer pointed out another possible technique (note that this is not a recommendation): a snapshot of the guest’s storage (provided it isn’t encrypted) could be analyzed. For example, given a log of prior disk I/O addresses, a snapshot of file system state can be used to determine which files may have been accessed.",
+      "before": "[^fn-ch11-ch11-footnote-6]: 审阅者指出了另一种可能的技术（请注意，这不是建议）：可以分析来宾存储的快照（前提是未加密）。例如，给定先前磁盘 I/O 地址的日志，文件系统状态的快照可用于确定哪些文件可能已被访问。",
+      "after": "[^fn-ch11-ch11-footnote-6]: 审阅者指出了另一种可能的技术（请注意，这不是建议）：可以分析客户机存储的快照（前提是未加密）。例如，给定先前磁盘 I/O 地址的日志，文件系统状态的快照可用于确定哪些文件可能已被访问。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "003-chapter-03.md",
+      "line": 638,
+      "english": "- **TFO** (3.6, 3.7, 3.13): TCP Fast Open (TFO) can reduce the TCP three-way handshake to a single SYN packet with a TFO cookie, improving performance. It was made the default in 3.13.",
+      "before": "- **TFO**（3.6、3.7、3.13）：TCP 快速打开 (TFO) 可以将 TCP 三向握手减少为带有 TFO cookie 的单个 SYN 数据包，从而提高性能。在 3.13 中它被设为默认值。",
+      "after": "- **TFO**（3.6、3.7、3.13）：TCP 快速打开 (TFO) 可以将 TCP 三次握手减少为带有 TFO cookie 的单个 SYN 数据包，从而提高性能。在 3.13 中它被设为默认值。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "003-chapter-03.md",
+      "line": 555,
+      "english": "- **Jails**: Lightweight OS-level virtualization, allowing multiple guests to share one kernel. Jails were first released in FreeBSD 4.0.",
+      "before": "- **Jails**：轻量级操作系统级虚拟化，允许多个来宾共享一个内核。 Jails 首次在 FreeBSD 4.0 中发布。",
+      "after": "- **Jails**：轻量级操作系统级虚拟化，允许多个隔离实例共享一个内核。 Jails 首次在 FreeBSD 4.0 中发布。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "003-chapter-03.md",
+      "line": 777,
+      "english": "For unikernels to be performance tuned in production, new performance tooling and metrics must be built to support them. As a proof of concept, I built a rudimentary CPU profiler that ran from Xen dom0 to profile a domU unikernel guest and then built a CPU flame graph, just to show that it was possible [\\[Gregg 16a\\]](#ch03-ch03ref28).",
+      "before": "若要在生产环境中调优 unikernel 的性能，就必须构建支持它们的新性能工具和指标。作为概念验证，我构建了一个从 Xen dom0 运行的简易 CPU 性能剖析器，用于对 domU unikernel 来宾进行性能剖析，随后生成 CPU 火焰图，只为证明这确实可行 [\\[Gregg 16a\\]](#ch03-ch03ref28)。",
+      "after": "若要在生产环境中调优 unikernel 的性能，就必须构建支持它们的新性能工具和指标。作为概念验证，我构建了一个从 Xen dom0 运行的简易 CPU 性能剖析器，用于对 domU unikernel 客户机进行性能剖析，随后生成 CPU 火焰图，只为证明这确实可行 [\\[Gregg 16a\\]](#ch03-ch03ref28)。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 326,
+      "english": "Important topics for TCP performance include the three-way handshake, duplicate ACK detection, congestion control algorithms, Nagle, delayed ACKs, SACK, and FACK.",
+      "before": "TCP 性能的重要主题包括三向握手、重复 ACK 检测、拥塞控制算法、Nagle、延迟 ACK、SACK 和 FACK。",
+      "after": "TCP 性能的重要主题包括三次握手、重复 ACK 检测、拥塞控制算法、Nagle、延迟 ACK、SACK 和 FACK。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 330,
+      "english": "Connections are established using a three-way handshake between the hosts. One host passively listens for connections; the other actively initiates the connection. To clarify terminology: *passive* and *active* are from RFC 793 \\[Postel 81\\]; however, they are commonly called *listen* and *connect*, respectively, after the socket API. For the client/server model, the server performs listen and the client performs connect.",
+      "before": "连接是通过主机之间的三向握手建立的。一台主机被动地监听连接；另一个主动发起连接。澄清术语：*被动*和*主动*来自 RFC 793 \\[Postel 81\\]；然而，它们通常按套接字 API 的名称分别称为 *listen* 和 *connect*。对于客户端/服务器模型，服务器执行listen，客户端执行connect。",
+      "after": "连接是通过主机之间的三次握手建立的。一台主机被动地监听连接；另一个主动发起连接。澄清术语：*被动*和*主动*来自 RFC 793 \\[Postel 81\\]；然而，它们通常按套接字 API 的名称分别称为 *listen* 和 *connect*。对于客户端/服务器模型，服务器执行listen，客户端执行connect。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 332,
+      "english": "The three-way handshake is pictured in [Figure 10.6](#ch10-ch10fig06).",
+      "before": "三向握手如[图 10.6](#ch10-ch10fig06)所示。",
+      "after": "三次握手如[图 10.6](#ch10-ch10fig06)所示。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 335,
+      "english": "![Figure 10.6 TCP three-way handshake](../images/10fig06.jpg)",
+      "before": "![图 10.6 TCP 三向握手](../images/10fig06.jpg)",
+      "after": "![图 10.6 TCP 三次握手](../images/10fig06.jpg)",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 341,
+      "english": "Once the three-way handshake is complete, the TCP session is placed in the ESTABLISHED state.",
+      "before": "一旦三向握手完成，TCP 会话将置于 ESTABLISHED 状态。",
+      "after": "一旦三次握手完成，TCP 会话将置于 ESTABLISHED 状态。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 739,
+      "english": "The terms *active* and *passive* were described in the Three-Way Handshake section of [Section 10.4.1](#ch10-ch10lev4sec1), [Protocols](#ch10-ch10lev4sec1).",
+      "before": "[第 10.4.1 节](#ch10-ch10lev4sec1)、[协议](#ch10-ch10lev4sec1)的“三向握手”部分中描述了术语“主动”和“被动”。",
+      "after": "[第 10.4.1 节](#ch10-ch10lev4sec1)、[协议](#ch10-ch10lev4sec1)的“三次握手”部分中描述了术语“主动”和“被动”。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "002-chapter-02.md",
+      "line": 69,
+      "english": "It is important to be aware that perturbations (interference) can affect results, including those caused by scheduled system activity, other users of the system, and other workloads. The origin of the perturbations may not be obvious, and careful study of system performance may be required to determine it. This can be particularly difficult in some cloud environments, where other activity (by guest tenants) on the physical host system may not be observable from within a guest SUT.",
+      "before": "请务必注意，扰动（干扰）可能会影响结果，包括计划执行的系统活动、系统的其他用户和其他工作负载带来的干扰。扰动的根源可能并不明显，可能需要仔细研究系统性能才能确定。这在某些云环境中可能特别困难，在这些环境中，物理主机系统上的其他活动（由来宾租户进行）可能无法从来宾 SUT 内观察到。",
+      "after": "请务必注意，扰动（干扰）可能会影响结果，包括计划执行的系统活动、系统的其他用户和其他工作负载带来的干扰。扰动的根源可能并不明显，可能需要仔细研究系统性能才能确定。这在某些云环境中可能特别困难，在这些环境中，物理宿主机系统上的其他活动（由其他租户进行）可能无法从客户实例内的被测系统（SUT） 内观察到。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1054,
+      "english": "- **`%guest`**: CPU time spent in guest virtual machines",
+      "before": "- **`%guest`**：来宾虚拟机中花费的 CPU 时间",
+      "after": "- **`%guest`**：客户虚拟机中花费的 CPU 时间",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 1055,
+      "english": "- **`%gnice`**: CPU time to run a niced guest",
+      "before": "- **`%gnice`**：运行 nice 来宾所花的 CPU 时间",
+      "after": "- **`%gnice`**：运行 调整过 nice 值的客户机所花的 CPU 时间",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 2655,
+      "english": "Setting the CPUs to always run at maximum frequency may come with an enormous cost to the environment. If this setting does not provide a significant performance improvement, consider continuing to use the `powersave` setting for the sake of the planet. For hosts with the access to power MSRs (cloud guests may filter them), you can also use these MSRs to instrument the power consumed with and without a max CPU frequency setting, to quantify (part of[^fn-ch06-ch06-footnote-20]) the environmental cost.",
+      "before": "将 CPU 设置为始终以最高频率运行，可能给环境带来巨大成本。如果这一设置不能带来显著性能提升，请考虑继续使用 `powersave`，以减少环境负担。对于能够访问电源 MSR 的主机（云来宾可能会过滤这些寄存器），还可以使用 MSR 测量有无最高 CPU 频率设置时的功耗，从而量化环境成本（的一部分见[^fn-ch06-ch06-footnote-20]）。",
+      "after": "将 CPU 设置为始终以最高频率运行，可能给环境带来巨大成本。如果这一设置不能带来显著性能提升，请考虑继续使用 `powersave`，以减少环境负担。对于能够访问电源 MSR 的主机（云实例可能会过滤这些寄存器），还可以使用 MSR 测量有无最高 CPU 频率设置时的功耗，从而量化环境成本（的一部分见[^fn-ch06-ch06-footnote-20]）。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1634,
+      "english": "This output is useful information for static performance tuning (e.g., it shows the type is DDR4 and not DDR5). Unfortunately, this information is typically unavailable to cloud guests.",
+      "before": "此输出对于静态性能调优来说是有用的信息（例如，它显示类型是 DDR4 而不是 DDR5）。不幸的是，云来宾实例通常无法获得此信息。",
+      "after": "此输出对于静态性能调优来说是有用的信息（例如，它显示类型是 DDR4 而不是 DDR5）。不幸的是，云实例通常无法获得此信息。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1691,
+      "english": "| vm.watermark\\_scale\\_factor | 10 | The distance between kswapd watermarks (min, low, high) that control waking up and sleeping (unit is fractions of 10000, such that 10 means 0.1% of system memory) |",
+      "before": "| vm.watermark\\_scale\\_factor | 10 | 控制唤醒和睡眠的 kswapd 水印之间的距离（最小、低、高）（单位是 10000 的分数，例如 10 表示系统内存的 0.1%） |",
+      "after": "| vm.watermark\\_scale\\_factor | 10 | 控制 kswapd 唤醒和休眠的内存水位线（min、low、high）之间的距离（单位为万分比，10 表示系统内存的 0.1%） |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 402,
+      "english": "- **SPECvirt\\_sc2013**: For virtualized environments, this measures the end-to-end performance of the virtualized hardware, the platform, and the guest operating system and application software.",
+      "before": "- **SPECvirt\\_sc2013**：对于虚拟化环境，它衡量虚拟化硬件、平台以及来宾操作系统和应用程序软件的端到端性能。",
+      "after": "- **SPECvirt\\_sc2013**：对于虚拟化环境，它衡量虚拟化硬件、平台以及客户操作系统和应用程序软件的端到端性能。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "004-chapter-04.md",
+      "line": 1016,
+      "english": "Another challenge is cloud computing, as many cloud environments disable PMC access for their guests. It is technically possible to enable it: for example, the Xen hypervisor has the `vpmu` command line option, which allows different sets of PMCs to be exposed to guests[^fn-ch04-ch04-footnote-10] [\\[Xenbits 20\\]](#ch04-ch04ref18). Amazon have enabled many PMCs for their Nitro hypervisor guests.[^fn-ch04-ch04-footnote-11] Also, some cloud providers offer “bare-metal instances” where the guest has full processor access, and therefore full PMC access.",
+      "before": "另一个挑战是云计算，因为许多云环境会禁用来宾机访问 PMC。从技术上讲，启用它是可行的：例如，Xen 虚拟机管理程序具有 `vpmu` 命令行选项，允许向来宾虚拟机公开不同的 PMC 集合[^fn-ch04-ch04-footnote-10] [\\[Xenbits 20\\]](#ch04-ch04ref18)。Amazon 已为其 Nitro 虚拟机管理程序来宾启用许多 PMC。[^fn-ch04-ch04-footnote-11]此外，一些云提供商提供“裸机实例”，其中来宾拥有完整的处理器访问权限，因此也拥有完整的 PMC 访问权限。",
+      "after": "另一个挑战是云计算，因为许多云环境会禁用客户机访问 PMC。从技术上讲，启用它是可行的：例如，Xen 虚拟机管理程序具有 `vpmu` 命令行选项，允许向客户虚拟机公开不同的 PMC 集合[^fn-ch04-ch04-footnote-10] [\\[Xenbits 20\\]](#ch04-ch04ref18)。Amazon 已为其 Nitro 虚拟机管理程序上的客户机启用许多 PMC。[^fn-ch04-ch04-footnote-11]此外，一些云提供商提供“裸机实例”，其中实例拥有完整的处理器访问权限，因此也拥有完整的 PMC 访问权限。",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 157,
+      "english": "| nfsdist(8) | Trace slow NFS operations | [8.6.13](#ch08-ch08lev6sec13) |",
+      "before": "| nfsdist(8) | 将 NFS 操作延迟总结为直方图 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "after": "| nfsdist(8) | 跟踪慢速 NFS 操作 | [8.6.13](#ch08-ch08lev6sec13) |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 158,
+      "english": "| nfsslower(8) | Summarize NFS operation latency as histograms | [8.6.14](#ch08-ch08lev6sec14) |",
+      "before": "| nfsslower(8) | 将 NFS 操作延迟总结为直方图 | [8.6.14](#ch08-ch08lev6sec14) |",
+      "after": "| nfsslower(8) | 以直方图形式汇总 NFS 操作延迟 | [8.6.14](#ch08-ch08lev6sec14) |",
+      "reason": "按虚拟化层次区分宿主机、客户机、客户实例和容器；纠正术语与语义关系，表15.2忠实翻译并另列独立勘误"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 598,
+      "english": "- **ZIO pipeline**: Device I/O is processed by a pipeline of stages, each stage serviced by a pool of threads to improve performance.",
+      "before": "- **ZIO 管道**：设备 I/O 由多个阶段组成的管道处理，每个阶段由线程池提供服务，以提高性能。",
+      "after": "- **ZIO 流水线**：设备 I/O 由多个阶段组成的流水线处理，每个阶段由线程池提供服务，以提高性能。",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 1442,
+      "english": "biolatency(8) summarizes disk I/O latency. To examine it for each I/O, use biosnoop(8).",
+      "before": "biolatency(8) 总结了磁盘 I/O 延迟。要检查每个 I/O，请使用 biosnoop(8)。",
+      "after": "biolatency(8) 汇总了磁盘 I/O 延迟。要检查每个 I/O，请使用 biosnoop(8)。",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 1826,
+      "english": "Summarize block I/O size as a histogram:",
+      "before": "将块 I/O 大小总结为直方图：",
+      "after": "将块 I/O 请求大小汇总为直方图：",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 2189,
+      "english": "| [\\[Gregg 19\\]](#ch09-ch09ref20) | nvmelatency | Summarize NVME driver command latency |",
+      "before": "| [\\[Gregg 19\\]](#ch09-ch09ref20) | nvmelatency | 总结 NVME 驱动程序命令延迟 |",
+      "after": "| [\\[Gregg 19\\]](#ch09-ch09ref20) | nvmelatency | 汇总 NVME 驱动程序命令延迟 |",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 2194,
+      "english": "| [\\[Gregg 19\\]](#ch10-ch10ref45) | so1stbyte | Summarize IP socket first byte latency |",
+      "before": "| [\\[Gregg 19\\]](#ch10-ch10ref45) | so1stbyte | 总结 IP 套接字第一个字节延迟 |",
+      "after": "| [\\[Gregg 19\\]](#ch10-ch10ref45) | so1stbyte | 汇总 IP 套接字第一个字节延迟 |",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "019-appendix-c.md",
+      "line": 345,
+      "english": "Summarize block I/O size as a histogram:",
+      "before": "将块 I/O 大小总结为直方图：",
+      "after": "将块 I/O 请求大小汇总为直方图：",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 377,
+      "english": "For Xen, CPU resource usage can be further complicated by high-I/O workloads that consume extra CPU resources in dom0. The back-end driver and I/O proxy in the guest domain alone may consume more than their CPU allocation but are not accounted for [\\[Cherkasova 05\\]](#ch11-ch11ref3). A solution has been to create isolated driver domains (IDDs), which separate out I/O servicing for security, performance isolation, and accounting. This is pictured in [Figure 11.8](#ch11-ch11fig08).",
+      "before": "对于 Xen，高 I/O 工作负载会消耗 dom0 中的额外 CPU 资源，从而使 CPU 资源使用变得更加复杂。仅客户机域中的后端驱动程序和 I/O 代理可能会消耗超过其 CPU 分配的资源，但不计入 [\\[Cherkasova 05\\]](#ch11-ch11ref3)。解决方案是创建隔离的驱动程序域（IDD），将 I/O 服务分开以实现安全性、性能隔离和计费。这如[图 11.8](#ch11-ch11fig08)所示。",
+      "after": "对于 Xen，高 I/O 工作负载会消耗 dom0 中的额外 CPU 资源，从而使 CPU 资源使用变得更加复杂。仅客户机域中的后端驱动程序和 I/O 代理可能会消耗超过其 CPU 分配的资源，但不计入 [\\[Cherkasova 05\\]](#ch11-ch11ref3)。解决方案是创建隔离的驱动程序域（IDD），将 I/O 服务分开以实现安全性、性能隔离和用量核算。这如[图 11.8](#ch11-ch11fig08)所示。",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "line": 382,
+      "english": "The CPU usage by IDDs can be monitored, and the guests can be charged for this usage. From [\\[Gupta 06\\]](#ch11-ch11ref5):",
+      "before": "可以监控 IDD 的 CPU 使用情况，并可以针对此使用量向客户机收费。摘自[\\[Gupta 06\\]](#ch11-ch11ref5)：",
+      "after": "可以监控 IDD 的 CPU 使用情况，并可将这部分使用量计入相应客户机的资源用量。摘自[\\[Gupta 06\\]](#ch11-ch11ref5)：",
+      "reason": "核对英中完整内容与上下文，纠正流水线、统计汇总及CPU用量核算词义"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1173,
+      "english": "Summarize a memory profile:",
+      "before": "总结一下内存概况：",
+      "after": "汇总内存性能剖析数据：",
+      "reason": "perf report 对采集的内存剖析数据作统计汇总"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1179,
+      "english": "For commands that record or sample events, use `perf report` to summarize the profile or `perf script --header` to print them all.",
+      "before": "对于记录或采样事件的命令，请使用 `perf report` 总结性能剖析数据，或使用 `perf script --header` 打印所有事件。",
+      "after": "对于记录或采样事件的命令，请使用 `perf report` 汇总性能剖析数据，或使用 `perf script --header` 打印所有事件。",
+      "reason": "perf report 对采集的内存剖析数据作统计汇总"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2231,
+      "english": "**Directory indexes in ext3, [379](#ch08-page-379)**",
+      "before": "**ext 中的目录索引，[379](#ch08-page-379)**",
+      "after": "**ext3 中的目录索引，[379](#ch08-page-379)**",
+      "reason": "主代理复核：保留英文索引明确指定的ext3/ext4版本，正文泛称ext不能据此抹去版本信息。"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3468,
+      "english": "**fsck time in ext4, [379](#ch08-page-379)**",
+      "before": "**ext 中的 fsck 时间，[379](#ch08-page-379)**",
+      "after": "**ext4 中的 fsck 时间，[379](#ch08-page-379)**",
+      "reason": "主代理复核：保留英文索引明确指定的ext3/ext4版本，正文泛称ext不能据此抹去版本信息。"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5923,
+      "english": "**Multiblock allocators in ext4, [379](#ch08-page-379)**",
+      "before": "**ext 中的多块分配器，[379](#ch08-page-379)**",
+      "after": "**ext4 中的多块分配器，[379](#ch08-page-379)**",
+      "reason": "主代理复核：保留英文索引明确指定的ext3/ext4版本，正文泛称ext不能据此抹去版本信息。"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6771,
+      "english": "**Ordered mode in ext3, [378](#ch08-page-378)**",
+      "before": "**ext 中的有序模式，[378](#ch08-page-378)**",
+      "after": "**ext3 中的有序模式，[378](#ch08-page-378)**",
+      "reason": "主代理复核：保留英文索引明确指定的ext3/ext4版本，正文泛称ext不能据此抹去版本信息。"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7463,
+      "english": "**Preallocation in ext4, [379](#ch08-page-379)**",
+      "before": "**在 ext 中预分配，[379](#ch08-page-379)**",
+      "after": "**在 ext4 中预分配，[379](#ch08-page-379)**",
+      "reason": "主代理复核：保留英文索引明确指定的ext3/ext4版本，正文泛称ext不能据此抹去版本信息。"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 627,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "006-chapter-06.md",
+      "line": 884,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 518,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 703,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "007-chapter-07.md",
+      "line": 1572,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 656,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 890,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "008-chapter-08.md",
+      "line": 1723,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 664,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 933,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "009-chapter-09.md",
+      "line": 2178,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 670,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 935,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "010-chapter-10.md",
+      "line": 2182,
+      "english": "| **Section** | **Tool** | **Description** |",
+      "before": "| **部分** | **工具** | **描述** |",
+      "after": "| **章节** | **工具** | **描述** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "line": 414,
+      "english": "| **Section** | **Methodology** | **Types** |",
+      "before": "| **部分** | **方法** | **类型** |",
+      "after": "| **章节** | **方法** | **类型** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "line": 86,
+      "english": "| **Profiler** | **Description** | **Section** |",
+      "before": "| **分析器** | **描述** | **部分** |",
+      "after": "| **分析器** | **描述** | **章节** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 132,
+      "english": "| **Tool** | **Description** | **Section** |",
+      "before": "| **工具** | **描述** | **部分** |",
+      "after": "| **工具** | **描述** | **章节** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    },
+    {
+      "file": "015-chapter-15.md",
+      "line": 188,
+      "english": "| **Tool** | **Description** | **Section** |",
+      "before": "| **工具** | **描述** | **部分** |",
+      "after": "| **工具** | **描述** | **章节** |",
+      "reason": "表头Section所列是书内小节编号和链接，译为章节，避免泛指部分。"
+    }
+  ],
+  "coverage": [
+    {
+      "file": "011-chapter-11.md",
+      "start_line": 16,
+      "end_line": 1851,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1859
+    },
+    {
+      "file": "003-chapter-03.md",
+      "start_line": 555,
+      "end_line": 777,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1005
+    },
+    {
+      "file": "010-chapter-10.md",
+      "start_line": 326,
+      "end_line": 739,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 3031
+    },
+    {
+      "file": "002-chapter-02.md",
+      "start_line": 69,
+      "end_line": 69,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1786
+    },
+    {
+      "file": "006-chapter-06.md",
+      "start_line": 1054,
+      "end_line": 2655,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 2917
+    },
+    {
+      "file": "007-chapter-07.md",
+      "start_line": 1634,
+      "end_line": 1691,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1919
+    },
+    {
+      "file": "012-chapter-12.md",
+      "start_line": 402,
+      "end_line": 402,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 908
+    },
+    {
+      "file": "004-chapter-04.md",
+      "start_line": 1016,
+      "end_line": 1016,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1456
+    },
+    {
+      "file": "015-chapter-15.md",
+      "start_line": 157,
+      "end_line": 158,
+      "method": "完整核对专题匹配行及其章节语境；第11章 Guest/Host 匹配行全部阅读；其他章节仅列出的定位行",
+      "source_lines": 1529
+    },
+    {
+      "file": "008-chapter-08.md",
+      "start_line": 598,
+      "end_line": 598,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 2256
+    },
+    {
+      "file": "009-chapter-09.md",
+      "start_line": 1442,
+      "end_line": 1442,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 2603
+    },
+    {
+      "file": "009-chapter-09.md",
+      "start_line": 1826,
+      "end_line": 1826,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 2603
+    },
+    {
+      "file": "009-chapter-09.md",
+      "start_line": 2189,
+      "end_line": 2189,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 2603
+    },
+    {
+      "file": "010-chapter-10.md",
+      "start_line": 2194,
+      "end_line": 2194,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 3031
+    },
+    {
+      "file": "019-appendix-c.md",
+      "start_line": 345,
+      "end_line": 345,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 565
+    },
+    {
+      "file": "011-chapter-11.md",
+      "start_line": 377,
+      "end_line": 377,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 1859
+    },
+    {
+      "file": "011-chapter-11.md",
+      "start_line": 382,
+      "end_line": 382,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 1859
+    },
+    {
+      "file": "007-chapter-07.md",
+      "start_line": 1173,
+      "end_line": 1173,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 1919
+    },
+    {
+      "file": "007-chapter-07.md",
+      "start_line": 1179,
+      "end_line": 1179,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 1919
+    },
+    {
+      "file": "023-index.md",
+      "start_line": 1,
+      "end_line": 11088,
+      "method": "专题术语定位并核对指定英中配对；不声称未列出范围已通读",
+      "source_lines": 11088
+    },
+    {
+      "file": "006-chapter-06.md",
+      "start_line": 627,
+      "end_line": 884,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 2917
+    },
+    {
+      "file": "007-chapter-07.md",
+      "start_line": 518,
+      "end_line": 1572,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 1919
+    },
+    {
+      "file": "008-chapter-08.md",
+      "start_line": 656,
+      "end_line": 1723,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 2256
+    },
+    {
+      "file": "009-chapter-09.md",
+      "start_line": 664,
+      "end_line": 2178,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 2603
+    },
+    {
+      "file": "010-chapter-10.md",
+      "start_line": 670,
+      "end_line": 2182,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 3031
+    },
+    {
+      "file": "012-chapter-12.md",
+      "start_line": 414,
+      "end_line": 414,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 908
+    },
+    {
+      "file": "014-chapter-14.md",
+      "start_line": 86,
+      "end_line": 86,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 2087
+    },
+    {
+      "file": "015-chapter-15.md",
+      "start_line": 132,
+      "end_line": 188,
+      "method": "扫描所有英文表头Section，核对对应表格的小节编号链接后修正中文表头",
+      "source_lines": 1529
+    }
+  ]
+}

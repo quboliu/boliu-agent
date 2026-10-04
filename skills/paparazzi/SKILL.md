@@ -4,7 +4,6 @@ description: Investigate a person or body of work from any public clue, build a 
 ---
 
 # Paparazzi 人物与作品档案
-
 made by quboliu
 
 Turn one or more public clues into an evidence-backed snapshot of the person or

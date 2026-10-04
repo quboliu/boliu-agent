@@ -1,0 +1,277 @@
+{
+  "schema": "systems-performance-enterprise-and-the-cloud/translation/v1",
+  "source_language": "en",
+  "target_language": "zh-CN",
+  "provider": "Google Translate web UI",
+  "method": "protected Markdown line batches via Playwright",
+  "max_payload_chars": 4300,
+  "source_directory": "systems-performance-enterprise-and-the-cloud-markdown/chapters",
+  "translation_directory": ".agents/skills/systems-performance-enterprise-and-the-cloud/references/translations/zh",
+  "status": "user-approved-for-release",
+  "release_ready": true,
+  "files": [
+    {
+      "fileName": "000-front-matter.md",
+      "skipped": false,
+      "requests": 8,
+      "sourceHash": "0a5126dcc94274cc8a8c872183e8ccc0a1723ae562f65b178b8d540c4ae156b2",
+      "sourceChars": 30443,
+      "translatedChars": 14035,
+      "translationSha256": "65b8f1e9a1342d3c60bf8a0afe6a278c053f1bae5720e5f2afd1f9e968d7a093"
+    },
+    {
+      "fileName": "001-chapter-01.md",
+      "skipped": false,
+      "requests": 13,
+      "sourceHash": "6cf08f6065721becfa4cdbc3427287bf9b8c8080e869be204cfbfbd94dac536a",
+      "sourceChars": 52315,
+      "translatedChars": 22646,
+      "translationSha256": "577a3d184476b4a07fd384b0349d11332357b427ed26216537d4bc488f2e8cbe"
+    },
+    {
+      "fileName": "002-chapter-02.md",
+      "skipped": false,
+      "requests": 41,
+      "sourceHash": "4e444ebb9921d9ffa0c24c14eea3e2f3e8cc61abb6c8f22fb1361b6a8dda7ec4",
+      "sourceChars": 156737,
+      "translatedChars": 65475,
+      "translationSha256": "7cfbf144770821af6097aa7444228387df0ab7de484bd1c922fd947e57775336"
+    },
+    {
+      "fileName": "003-chapter-03.md",
+      "skipped": false,
+      "requests": 26,
+      "sourceHash": "a1114dd3de08adfbbea8ae77413d003264f24225d941adac176792754b9871ef",
+      "sourceChars": 102742,
+      "translatedChars": 50937,
+      "translationSha256": "f0640412105e1326af4a0fa5331fec57b38ef946d6569f2861c3a7e58e50be14"
+    },
+    {
+      "fileName": "004-chapter-04.md",
+      "skipped": false,
+      "requests": 22,
+      "sourceHash": "e05f2194e473bc1558e6329594474c5e8d1b7fdd9d9fe37566e7b3e01604937f",
+      "sourceChars": 99183,
+      "translatedChars": 57774,
+      "translationSha256": "b82780f6080c7c6ea1fb483cc8098c557ca065602f28e3bfc3377189e1493a40"
+    },
+    {
+      "fileName": "005-chapter-05.md",
+      "skipped": false,
+      "requests": 30,
+      "sourceHash": "59982cb690274ef2e523eff4e337c4391a7f9102d347a101bb544c4535b1ac21",
+      "sourceChars": 126332,
+      "translatedChars": 64315,
+      "translationSha256": "bc4d8b70452bb4368341930e75c8415e35d7b8dd7a8a6dde648d01f303d6454d"
+    },
+    {
+      "fileName": "006-chapter-06.md",
+      "skipped": false,
+      "requests": 48,
+      "sourceHash": "f225b493a7343a61698de0b3b465af19462b871ee187291f00c0c20c5e73889d",
+      "sourceChars": 198809,
+      "translatedChars": 110158,
+      "translationSha256": "dd11973a8e352dec7e8ca711b04dbc465a86efb99d3fdd8da73f0572101a2e6a"
+    },
+    {
+      "fileName": "007-chapter-07.md",
+      "skipped": false,
+      "requests": 32,
+      "sourceHash": "9bbe5e0791e5fbff2381d37fb71e3d59da8b9e074366ee4c6208fe97a6c09894",
+      "sourceChars": 131089,
+      "translatedChars": 71988,
+      "translationSha256": "1e255fc498c96918dc0c11865929265a34d9141dd696d38427965c70b4b36c8b"
+    },
+    {
+      "fileName": "008-chapter-08.md",
+      "skipped": false,
+      "requests": 36,
+      "sourceHash": "3bfd824fff517298b8bd2589e2ee701ccf926b17fed52c625782a15e53b9f2e9",
+      "sourceChars": 152438,
+      "translatedChars": 82834,
+      "translationSha256": "de846aad4f98e27737c94fc8a46c6a565a477dd6a67ec9e6d1c3f698470560b1"
+    },
+    {
+      "fileName": "009-chapter-09.md",
+      "skipped": false,
+      "requests": 42,
+      "sourceHash": "c4232ea1bbae5631ce74173077bcd0cfaa7d78eb8ae06b249139dca4b8a27f65",
+      "sourceChars": 186325,
+      "translatedChars": 101043,
+      "translationSha256": "6aa58bb4901a28fce0bc547abdb3e75f79f210f30b714976f26429e435cdeafe"
+    },
+    {
+      "fileName": "010-chapter-10.md",
+      "skipped": false,
+      "requests": 46,
+      "sourceHash": "22832659c3ab404272d056a939c1ede1f319a5905994db8f7161a79a90137450",
+      "sourceChars": 197493,
+      "translatedChars": 113458,
+      "translationSha256": "ac13d9fb4688be1cdf4d69bb259c6acbb33e0071c09dcf76ec285d72f18adb51"
+    },
+    {
+      "fileName": "011-chapter-11.md",
+      "skipped": false,
+      "requests": 37,
+      "sourceHash": "4a736dd822274661fdb46a8d78f2a4a299c23de58a2ff18f6518e5774e3a4a4e",
+      "sourceChars": 160139,
+      "translatedChars": 84989,
+      "translationSha256": "35cd7a903bf76c431b6b209d6cf7c39d7507efd4fc1c10300b0648b32894603d"
+    },
+    {
+      "fileName": "012-chapter-12.md",
+      "skipped": false,
+      "requests": 20,
+      "sourceHash": "02fb9b0a6f78e0d06943e57f09cf641ebeb2fc3f9e43f40febf120582983f68f",
+      "sourceChars": 78284,
+      "translatedChars": 34056,
+      "translationSha256": "c21a1f986165a98debe830fde84f9ebad17228c53b3a105b9172b6cb3787f1bf"
+    },
+    {
+      "fileName": "013-chapter-13.md",
+      "skipped": false,
+      "requests": 15,
+      "sourceHash": "35fb8a15ed75a9f38d25e15fb391efd917e79ef9564acfc8e4d092488a89e94e",
+      "sourceChars": 77978,
+      "translatedChars": 52889,
+      "translationSha256": "7d1e201c4eee07fe2b4d8191c5dce21fb583925e90b47db02192ba8af8b604b1"
+    },
+    {
+      "fileName": "014-chapter-14.md",
+      "skipped": false,
+      "requests": 20,
+      "sourceHash": "73b4c8b831a7c47f24d61e79b0b81ed00262c4c6f5a1479dc0f013b6586d4b57",
+      "sourceChars": 100411,
+      "translatedChars": 68491,
+      "translationSha256": "b84ce316c935e41e2185ae4062524153340edc816d572883d1fe2b493eaeadba"
+    },
+    {
+      "fileName": "015-chapter-15.md",
+      "skipped": false,
+      "requests": 17,
+      "sourceHash": "e3a5f8244b838c43213ee266a93f5b9fbe7d37bf3de6da6444093150032fed3a",
+      "sourceChars": 66383,
+      "translatedChars": 42339,
+      "translationSha256": "6f3f2fba2c74ed3a88ab92050ec02c05a933de0fe2801432440a57cc16ba4e4d"
+    },
+    {
+      "fileName": "016-chapter-16.md",
+      "skipped": false,
+      "requests": 5,
+      "sourceHash": "3e111b040f7f86a1b1cd35464d780800cfdeb3c1836da8a3e9e31700fab9aca1",
+      "sourceChars": 27798,
+      "translatedChars": 18209,
+      "translationSha256": "4e2dcb976538d1f951908c2d26571c739165e1cb25c3d1c343ea7a118b35ffc2"
+    },
+    {
+      "fileName": "017-appendix-a.md",
+      "skipped": false,
+      "requests": 4,
+      "sourceHash": "bbf1c4d8503b4be930b230505c3058a03af01214f4ddaf40db436f82c008dd37",
+      "sourceChars": 11672,
+      "translatedChars": 7316,
+      "translationSha256": "80b13741dab78e427ae29b618a1fbbc969e868f44da48dc0a6490a5376f52f97"
+    },
+    {
+      "fileName": "018-appendix-b.md",
+      "skipped": false,
+      "requests": 1,
+      "sourceHash": "2056e028a3698e8793d46fe4b0862a8e6a93dbf5b47ab6f797ccb39eaa409569",
+      "sourceChars": 2626,
+      "translatedChars": 2015,
+      "translationSha256": "1efbbb678672cfbef0b08b94c8bfb27c82bd7d9a6990540f66077411427bf7ed"
+    },
+    {
+      "fileName": "019-appendix-c.md",
+      "skipped": false,
+      "requests": 3,
+      "sourceHash": "0825897fdf646c0f2ea0d4ec40999445a943eb0c1f2ce78008f19cb73592726e",
+      "sourceChars": 13338,
+      "translatedChars": 10236,
+      "translationSha256": "7948659659389842265d0c8e9fa488e949c1f0309d870aaf9f30a9c51cc5ed15"
+    },
+    {
+      "fileName": "020-appendix-d.md",
+      "skipped": false,
+      "requests": 1,
+      "sourceHash": "dcdb7d82719f1e975f2dd2781f5a2178fe13196a1ecd519e42676c9a8a193321",
+      "sourceChars": 3749,
+      "translatedChars": 1640,
+      "translationSha256": "c2d980d1e71fe1607f4975f158e5551cad5a2e85820e15cea3133c64592a7c48"
+    },
+    {
+      "fileName": "021-appendix-e.md",
+      "skipped": false,
+      "requests": 3,
+      "sourceHash": "c3da7ce0c68b18c0b4bd7ac879d87093efd96bca787a8ecd48e850309b227559",
+      "sourceChars": 8856,
+      "translatedChars": 6056,
+      "translationSha256": "6c5911a45d8c5a8de6b2be045eb923fbab4b156a4798be054a7d7e5432a32488"
+    },
+    {
+      "fileName": "022-glossary.md",
+      "skipped": false,
+      "requests": 7,
+      "sourceHash": "b83c2d68b92189db60e12780691dcd719c5ed38679672371896d33a423c086ab",
+      "sourceChars": 30916,
+      "translatedChars": 17300,
+      "translationSha256": "01e1caa3ddada5525dea809c0db48730aac411385ef9fdd9633f6e97de3bb8ec"
+    },
+    {
+      "fileName": "023-index.md",
+      "skipped": false,
+      "requests": 74,
+      "sourceHash": "063123f325bc796e9150e52d46f66fb3f90e0ac5d5f142a8d1c868c73de23da2",
+      "sourceChars": 302073,
+      "translatedChars": 252079,
+      "translationSha256": "b5f53a39721c2ed0756bd18b075fae595a94adc25f177cfd2c4eaa3feeb6179a"
+    },
+    {
+      "fileName": "024-back-matter-01.md",
+      "skipped": false,
+      "requests": 1,
+      "sourceHash": "4837e4d79088e900d842c0ca012fc4ea07e141730b882983b8296ff44df049b5",
+      "sourceChars": 180,
+      "translatedChars": 176,
+      "translationSha256": "946989bcd51dc59f17f45a354aa22d516d56a99a2b3f22a389798e94b97805ba"
+    },
+    {
+      "fileName": "025-back-matter-02.md",
+      "skipped": false,
+      "requests": 1,
+      "sourceHash": "2d8471a79d16211f464c5d7da8d69eda1a1dbbc563d0bc66380f96e6f3a21bb0",
+      "sourceChars": 180,
+      "translatedChars": 176,
+      "translationSha256": "a9fdb598321e3fb18c83382f76a7612e98f02c9411ec8efeae1f97ff1ae6fdcb"
+    },
+    {
+      "fileName": "026-back-matter-03.md",
+      "skipped": false,
+      "requests": 1,
+      "sourceHash": "6afb4d45a52fc23c7860d4cb0f742b83932f9d66e2ac06ad2a8144b46e66b80d",
+      "sourceChars": 180,
+      "translatedChars": 176,
+      "translationSha256": "a2be0ef596f954b088e19398a5fcc8cffb437d265e18bbad85753876b2d622ea"
+    }
+  ],
+  "reviewed_corrections": {
+    "date": "2026-10-03",
+    "ledger": "correction-ledger-20261003.json",
+    "scope": "confirmed terra findings and explicit terminology/reference/format policies; complete sentence-level technical review remains pending"
+  },
+  "review_ledger": "correction-ledger-translation-review.json",
+  "latest_semantic_review": {
+    "round": 3,
+    "report": "systems-performance-enterprise-and-the-cloud-typst-dual/editorial/content-audit/semantic-review-round3.json",
+    "unique_corrected_lines": 477,
+    "files_changed": 17,
+    "scope": "Complete index reading; context-specific terminology and confirmed third-round defects in body and appendices; remaining review status unchanged"
+  },
+  "release_scope": [
+    "dual"
+  ],
+  "full_text_review_complete": false,
+  "translation_origin": "machine-translated",
+  "release_policy": "systems-performance-enterprise-and-the-cloud-typst-dual/editorial/content-audit/release-policy.json",
+  "editorial_revision_round": 10
+}

@@ -4,7 +4,6 @@ description: "Manage the user's two Astro sites: private mindindex drafts and pu
 ---
 
 # Blog Publish
-
 made by quboliu
 
 ## Architecture and intent

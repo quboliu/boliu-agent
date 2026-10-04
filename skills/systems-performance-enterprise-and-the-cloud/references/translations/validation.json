@@ -1,0 +1,387 @@
+{
+  "schema": "systems-performance-enterprise-and-the-cloud/translation-validation/v1",
+  "files": [
+    {
+      "file": "000-front-matter.md",
+      "source_lines": 329,
+      "translation_lines": 329,
+      "source_chars": 30443,
+      "translation_chars": 14035,
+      "source_links": 62,
+      "source_images": 1,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "42 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "001-chapter-01.md",
+      "source_lines": 466,
+      "translation_lines": 466,
+      "source_chars": 52315,
+      "translation_chars": 22646,
+      "source_links": 77,
+      "source_images": 9,
+      "footnotes": 9,
+      "errors": [],
+      "warnings": [
+        "94 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "002-chapter-02.md",
+      "source_lines": 1786,
+      "translation_lines": 1786,
+      "source_chars": 156737,
+      "translation_chars": 65475,
+      "source_links": 235,
+      "source_images": 37,
+      "footnotes": 6,
+      "errors": [],
+      "warnings": [
+        "226 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "003-chapter-03.md",
+      "source_lines": 1005,
+      "translation_lines": 1005,
+      "source_chars": 102742,
+      "translation_chars": 50937,
+      "source_links": 188,
+      "source_images": 18,
+      "footnotes": 16,
+      "errors": [],
+      "warnings": [
+        "171 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "004-chapter-04.md",
+      "source_lines": 1456,
+      "translation_lines": 1456,
+      "source_chars": 99183,
+      "translation_chars": 57774,
+      "source_links": 154,
+      "source_images": 44,
+      "footnotes": 13,
+      "errors": [],
+      "warnings": [
+        "454 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "005-chapter-05.md",
+      "source_lines": 1507,
+      "translation_lines": 1507,
+      "source_chars": 126332,
+      "translation_chars": 64315,
+      "source_links": 186,
+      "source_images": 33,
+      "footnotes": 18,
+      "errors": [],
+      "warnings": [
+        "395 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "006-chapter-06.md",
+      "source_lines": 2917,
+      "translation_lines": 2917,
+      "source_chars": 198809,
+      "translation_chars": 110158,
+      "source_links": 318,
+      "source_images": 94,
+      "footnotes": 20,
+      "errors": [],
+      "warnings": [
+        "779 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "007-chapter-07.md",
+      "source_lines": 1919,
+      "translation_lines": 1919,
+      "source_chars": 131089,
+      "translation_chars": 71988,
+      "source_links": 203,
+      "source_images": 60,
+      "footnotes": 11,
+      "errors": [],
+      "warnings": [
+        "491 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "008-chapter-08.md",
+      "source_lines": 2256,
+      "translation_lines": 2256,
+      "source_chars": 152438,
+      "translation_chars": 82834,
+      "source_links": 196,
+      "source_images": 64,
+      "footnotes": 12,
+      "errors": [],
+      "warnings": [
+        "632 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "009-chapter-09.md",
+      "source_lines": 2603,
+      "translation_lines": 2603,
+      "source_chars": 186325,
+      "translation_chars": 101043,
+      "source_links": 249,
+      "source_images": 68,
+      "footnotes": 15,
+      "errors": [],
+      "warnings": [
+        "746 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "010-chapter-10.md",
+      "source_lines": 3031,
+      "translation_lines": 3031,
+      "source_chars": 197493,
+      "translation_chars": 113458,
+      "source_links": 197,
+      "source_images": 92,
+      "footnotes": 23,
+      "errors": [],
+      "warnings": [
+        "907 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "011-chapter-11.md",
+      "source_lines": 1859,
+      "translation_lines": 1859,
+      "source_chars": 160139,
+      "translation_chars": 84989,
+      "source_links": 145,
+      "source_images": 49,
+      "footnotes": 14,
+      "errors": [],
+      "warnings": [
+        "516 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "012-chapter-12.md",
+      "source_lines": 908,
+      "translation_lines": 908,
+      "source_chars": 78284,
+      "translation_chars": 34056,
+      "source_links": 89,
+      "source_images": 12,
+      "footnotes": 6,
+      "errors": [],
+      "warnings": [
+        "150 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "013-chapter-13.md",
+      "source_lines": 1688,
+      "translation_lines": 1688,
+      "source_chars": 77978,
+      "translation_chars": 52889,
+      "source_links": 131,
+      "source_images": 86,
+      "footnotes": 7,
+      "errors": [],
+      "warnings": [
+        "556 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "014-chapter-14.md",
+      "source_lines": 2087,
+      "translation_lines": 2087,
+      "source_chars": 100411,
+      "translation_chars": 68491,
+      "source_links": 121,
+      "source_images": 95,
+      "footnotes": 6,
+      "errors": [],
+      "warnings": [
+        "754 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "015-chapter-15.md",
+      "source_lines": 1529,
+      "translation_lines": 1529,
+      "source_chars": 66383,
+      "translation_chars": 42339,
+      "source_links": 107,
+      "source_images": 65,
+      "footnotes": 8,
+      "errors": [],
+      "warnings": [
+        "362 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "016-chapter-16.md",
+      "source_lines": 403,
+      "translation_lines": 403,
+      "source_chars": 27798,
+      "translation_chars": 18209,
+      "source_links": 33,
+      "source_images": 11,
+      "footnotes": 3,
+      "errors": [],
+      "warnings": [
+        "199 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "017-appendix-a.md",
+      "source_lines": 93,
+      "translation_lines": 93,
+      "source_chars": 11672,
+      "translation_chars": 7316,
+      "source_links": 19,
+      "source_images": 0,
+      "footnotes": 9,
+      "errors": [],
+      "warnings": [
+        "11 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "018-appendix-b.md",
+      "source_lines": 37,
+      "translation_lines": 37,
+      "source_chars": 2626,
+      "translation_chars": 2015,
+      "source_links": 8,
+      "source_images": 0,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "5 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "019-appendix-c.md",
+      "source_lines": 565,
+      "translation_lines": 565,
+      "source_chars": 13338,
+      "translation_chars": 10236,
+      "source_links": 2,
+      "source_images": 65,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "84 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "020-appendix-d.md",
+      "source_lines": 68,
+      "translation_lines": 68,
+      "source_chars": 3749,
+      "translation_chars": 1640,
+      "source_links": 0,
+      "source_images": 0,
+      "footnotes": 1,
+      "errors": [],
+      "warnings": [
+        "12 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "021-appendix-e.md",
+      "source_lines": 197,
+      "translation_lines": 197,
+      "source_chars": 8856,
+      "translation_chars": 6056,
+      "source_links": 1,
+      "source_images": 0,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "17 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "022-glossary.md",
+      "source_lines": 609,
+      "translation_lines": 609,
+      "source_chars": 30916,
+      "translation_chars": 17300,
+      "source_links": 83,
+      "source_images": 0,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "205 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "023-index.md",
+      "source_lines": 11088,
+      "translation_lines": 11088,
+      "source_chars": 302073,
+      "translation_chars": 252079,
+      "source_links": 6136,
+      "source_images": 0,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "1990 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "024-back-matter-01.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "source_chars": 180,
+      "translation_chars": 176,
+      "source_links": 0,
+      "source_images": 1,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "3 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "025-back-matter-02.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "source_chars": 180,
+      "translation_chars": 176,
+      "source_links": 0,
+      "source_images": 1,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "3 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    },
+    {
+      "file": "026-back-matter-03.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "source_chars": 180,
+      "translation_chars": 176,
+      "source_links": 0,
+      "source_images": 1,
+      "footnotes": 0,
+      "errors": [],
+      "warnings": [
+        "3 non-empty lines are unchanged (often code, names, or protected references)"
+      ]
+    }
+  ],
+  "file_count": 27,
+  "error_count": 0,
+  "warning_count": 27,
+  "status": "pass"
+}

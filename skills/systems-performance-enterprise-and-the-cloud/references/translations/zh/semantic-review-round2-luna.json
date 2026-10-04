@@ -1,0 +1,242 @@
+{
+  "schema": "systems-performance-bilingual-review-candidates/v1",
+  "review_type": "first-pass paired reading; suggestions only",
+  "created": "2026-10-03",
+  "scope": {
+    "english_root": "systems-performance-enterprise-and-the-cloud-markdown/chapters",
+    "chinese_root": ".agents/skills/systems-performance-enterprise-and-the-cloud/references/translations/zh",
+    "chapters": {
+      "011-chapter-11.md": {
+        "total_lines": 1859,
+        "reviewed": true,
+        "read_ranges": [
+          "1-1859 (all prose, headings, tables, figure captions, references and footnotes; code bodies excluded)"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Completed a continuous paired read of all chapter text. Fenced commands/output/code bodies were excluded; table/figure captions and footnote prose were read. Source metadata comments were skipped."
+      },
+      "012-chapter-12.md": {
+        "total_lines": 908,
+        "reviewed": true,
+        "read_ranges": [
+          "1-908 (all prose, headings, tables, figure captions, references and footnotes; code bodies excluded)"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Completed a continuous paired read of all chapter text. Fenced commands/output/code bodies were excluded; table/figure captions and footnote prose were read. Source metadata comments were skipped."
+      },
+      "013-chapter-13.md": {
+        "total_lines": 1688,
+        "reviewed": true,
+        "read_ranges": [
+          "1-1688 (all prose, headings, tables, figure captions, references and footnotes; code bodies excluded)"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Completed a continuous paired read of all chapter text. Fenced commands/output/code bodies were excluded; table/figure captions and footnote prose were read. Source metadata comments were skipped."
+      },
+      "014-chapter-14.md": {
+        "total_lines": 2087,
+        "reviewed": true,
+        "read_ranges": [
+          "1-2087 (continuous paired read; all prose, headings, tables, figure captions, references and footnotes; code bodies excluded)"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Completed a continuous paired read of the full chapter. Fenced commands/output/code bodies were excluded; prose, tables, figure captions, references and footnote prose were read. Source metadata comments were skipped. Two review candidates retained below: Linux tools/perf path mistranslated and bitesize tool name typo."
+      },
+      "015-chapter-15.md": {
+        "total_lines": 1529,
+        "reviewed": true,
+        "read_ranges": [
+          "1-1529 (continuous paired read; all prose, headings, tables, figure captions, references and footnotes; code bodies excluded)"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Completed a continuous paired read of the full chapter. Fenced commands/output/code bodies were excluded; prose, tables, figure captions, references and footnote prose were read. Source metadata comments were skipped. No additional high-confidence translation issue was identified in this chapter."
+      },
+      "016-chapter-16.md": {
+        "total_lines": 403,
+        "reviewed": true,
+        "read_ranges": [
+          "1-403"
+        ],
+        "unreviewed_or_unverified_ranges": [],
+        "notes": "Full prose, tables, captions and footnotes read; fenced code bodies skipped. One weak wording candidate retained below."
+      }
+    },
+    "exclusions": [
+      "Code bodies were not translation-reviewed.",
+      "HTML comments and source metadata were not treated as translation text.",
+      "Figure/table captions and footnote prose were included where their lines fell in a read range."
+    ],
+    "completion": "Complete paired review of chapters 11–16: all listed chapter line ranges were read continuously in English and Chinese, including prose, headings, tables, figure captions, references, and footnotes. Fenced code/command/output bodies and source metadata comments were excluded. No unreviewed ranges remain."
+  },
+  "candidates": [
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 71,
+      "chinese_line": 71,
+      "english": "...increasing difficulties with CPU cache coherency as CPU count scales, as well as power and cooling.",
+      "chinese": "...随着 CPU 数量的扩展以及电源和冷却的扩展。",
+      "suggestion": "可改为“CPU 数量增加会使缓存一致性问题日益突出，同时也会带来供电和散热方面的压力”。",
+      "reason": "“scales”在此描述 CPU 数量增长；译文把同一‘扩展’结构套到电源和冷却上，可能误成电源与冷却本身扩展，原句更像并列指出增长带来的供电、散热问题。",
+      "confidence": "medium"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 329,
+      "chinese_line": 329,
+      "english": "...accelerate first networking and then storage I/O.",
+      "chinese": "...加速网络和存储 I/O。",
+      "suggestion": "考虑保留先后关系，如“先加速网络，随后再加速存储 I/O”。",
+      "reason": "译文省去了 first ... then 的操作顺序；若上下文是在描述分阶段加速，顺序信息有用。",
+      "confidence": "medium"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 728,
+      "chinese_line": 728,
+      "english": "redacted physical resource usage",
+      "chinese": "经编辑的物理资源使用情况",
+      "suggestion": "核实 redacted 在这里是否表示脱敏；若是，可译为“已脱敏的物理资源使用情况”。",
+      "reason": "redacted 通常指删节或隐去敏感信息，“经编辑”可能让读者理解为普通编辑处理。该处需结合数据/图表上下文确认。",
+      "confidence": "medium"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 740,
+      "chinese_line": 740,
+      "english": "FreeBSD jails",
+      "chinese": "FreeBSD 监狱",
+      "suggestion": "考虑保留术语“FreeBSD Jail”或译作“FreeBSD 隔离环境”。",
+      "reason": "这里是操作系统隔离机制的专名；直译“监狱”容易被误读为普通名词。",
+      "confidence": "medium"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 870,
+      "chinese_line": 870,
+      "english": "threads ... until they either yield or are preempted",
+      "chinese": "线程……直到它们屈服或被抢占",
+      "suggestion": "可译为“线程主动让出 CPU 或被抢占为止”。",
+      "reason": "调度语境中的 yield 是主动让出处理器，不是“屈服”；当前译文是明显的词义误选。",
+      "confidence": "high"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 1076,
+      "chinese_line": 1076,
+      "english": "([Chapters 13] to [15])",
+      "chinese": "[第13章]和[第15章]",
+      "suggestion": "核对章节范围表达，建议译为“第 13 至 15 章”。",
+      "reason": "英文范围涵盖第 13、14、15 章；中文“和”列举只提第 13 与第 15 章，遗漏第 14 章或范围关系。",
+      "confidence": "high"
+    },
+    {
+      "file": "016-chapter-16.md",
+      "english_line": 195,
+      "chinese_line": 195,
+      "english": "architectural set",
+      "chinese": "架构集",
+      "suggestion": "建议结合该段所指对象确认是否应为“架构集合/架构系列”等更自然表达。",
+      "reason": "目前译法生硬，但“set”具体指集合还是一组架构选项需结合上下文判定；暂不视为确定错误。",
+      "confidence": "low"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 800,
+      "chinese_line": 800,
+      "english": "mnt | For file system mounts",
+      "chinese": "mnt | 用于文件系统安装",
+      "suggestion": "建议改为“文件系统挂载”。",
+      "reason": "Linux mount 在此是文件系统挂载点/挂载操作；“安装”会被读成 install，属于明显术语误译。",
+      "confidence": "high"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 1853,
+      "chinese_line": 1853,
+      "english": "Since this struct defines how a process is contained, it can be considered the best notion the kernel has of a container.",
+      "chinese": "由于该结构定义了如何包含进程，因此它可以被认为是内核对容器的最佳概念。",
+      "suggestion": "可表达为“该结构定义了进程如何被隔离/纳入容器，因此可以视为内核中最接近容器概念的表示”。",
+      "reason": "contained 指进程的隔离/容纳关系，不是动作“包含进程”；当前译文措辞生硬并易改变技术含义。",
+      "confidence": "medium"
+    },
+    {
+      "file": "011-chapter-11.md",
+      "english_line": 1502,
+      "chinese_line": 1502,
+      "english": "This most hurts advanced users who are logging into systems to use performance tools at the command line...",
+      "chinese": "这对登录系统并在命令行使用性能工具的高级用户造成的伤害最大……",
+      "suggestion": "建议改为“这对登录系统并在命令行使用性能工具的高级用户影响最大”。",
+      "reason": "此处 hurts 是造成最大不便/影响，直译“造成伤害”像人身伤害，中文技术文体不自然。",
+      "confidence": "medium"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "english_line": 358,
+      "chinese_line": 358,
+      "english": "...performance is worse, and the sale is lost.",
+      "chinese": "……性能更差，交易也因此失败。",
+      "suggestion": "建议改为“销售机会因此告吹/交易未能达成”。",
+      "reason": "sale 指销售机会或成交，不是交易执行失败；“交易失败”容易误解为系统交易处理出错。",
+      "confidence": "high"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "english_line": 715,
+      "chinese_line": 715,
+      "english": "800 Mbytes/s (6.4 Gbits/s)",
+      "chinese": "800 MB/秒（6.4 GB/秒）",
+      "suggestion": "括号内单位应核对为“6.4 Gbit/s（吉比特/秒）”。",
+      "reason": "英文是 gigabits/s；中文写成 GB/s（gigabytes/s），比特与字节混淆，单位相差 8 倍。",
+      "confidence": "high"
+    },
+    {
+      "file": "012-chapter-12.md",
+      "english_line": 716,
+      "chinese_line": 716,
+      "english": "1.15 Gbytes/s (9.2 Gbits/s)",
+      "chinese": "1.15 GB/秒（9.2 GB/秒）",
+      "suggestion": "第二处建议改为“9.2 Gbit/s（吉比特/秒）”。",
+      "reason": "括号中的英文单位为 gigabits/s，译文写成 GB/s；此处同样把比特误作字节。前面的 1.15 Gbytes/s 写作 1.15 GB/s 是正确的。",
+      "confidence": "high"
+    },
+    {
+      "file": "013-chapter-13.md",
+      "english_line": 1005,
+      "chinese_line": 1005,
+      "english": "Dereference the contents at offset zero.",
+      "chinese": "取消引用偏移量为零处的内容。",
+      "suggestion": "建议译为“解引用偏移量为零处的内容”。",
+      "reason": "指针语境中的 dereference 是“解引用”；“取消引用”容易被理解为取消引用关系，与读取指针所指内容相反。",
+      "confidence": "high"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "english_line": 1540,
+      "chinese_line": 1540,
+      "english": "| Source | In Linux tools/perf | [git.kernel.org](http://git.kernel.org) |",
+      "chinese": "| 源 | 在 Linux 工具/性能中 | [git.kernel.org](http://git.kernel.org) |",
+      "suggestion": "建议保留目录路径原文，例如“Linux 源代码中的 tools/perf”。",
+      "reason": "tools/perf 是 Linux 源码树中的目录路径；“工具/性能”把路径拆开翻译，无法准确指示 perf 工具目录。",
+      "confidence": "high"
+    },
+    {
+      "file": "014-chapter-14.md",
+      "english_line": 1718,
+      "chinese_line": 1718,
+      "english": "| bitesize(8) | perf | Summarize disk I/O size as a histogram |",
+      "chinese": "| bitsize(8) | perf | 将磁盘 I/O 大小汇总为直方图 |",
+      "suggestion": "核对并保留工具名 bitesize(8)。",
+      "reason": "原文工具名是 bitesize(8)，译文表格写成 bitsize(8)，少了字母 e；这是命令名，不应随译文更改。",
+      "confidence": "high"
+    }
+  ],
+  "summary": {
+    "chapters_in_scope": 6,
+    "fully_reviewed_chapters": 6,
+    "partial_chapters": 0,
+    "high_confidence_candidates": 9,
+    "medium_confidence_candidates": 6,
+    "low_confidence_candidates": 1,
+    "candidate_count": 16
+  }
+}

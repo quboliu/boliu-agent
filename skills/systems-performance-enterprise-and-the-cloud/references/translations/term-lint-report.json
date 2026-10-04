@@ -1,0 +1,270 @@
+{
+  "schema": "systems-performance-enterprise-and-the-cloud/translation-terms/v1",
+  "source_dir": "/share/motecosmos/KnoteHub/Obsidian_/MindBuffer/books/systems-performance-enterprise-and-the-cloud/systems-performance-enterprise-and-the-cloud-markdown/chapters",
+  "translation_dir": "/share/motecosmos/KnoteHub/Obsidian_/MindBuffer/books/systems-performance-enterprise-and-the-cloud/.agents/skills/systems-performance-enterprise-and-the-cloud/references/translations/zh",
+  "file_count": 27,
+  "error_count": 0,
+  "warning_count": 5,
+  "status": "pass",
+  "files": [
+    {
+      "file": "000-front-matter.md",
+      "source_lines": 329,
+      "translation_lines": 329,
+      "issues": [
+        {
+          "line": 164,
+          "severity": "warning",
+          "rule": "hardware_core",
+          "english": "**[Chapter 6](#ch06-ch06), [CPUs](#ch06-ch06),** covers processors, cores, hardware threads, CPU caches, CPU interconnects, device interconnects, and kernel scheduling.",
+          "chinese": "**[第 6 章](#ch06-ch06)、[CPU](#ch06-ch06)**，涵盖处理器、核心、硬件线程、CPU 缓存、CPU 互连、设备互连以及内核调度。",
+          "recommendation": "请核对 core 是否指 CPU 核心；操作系统 kernel 才译作“内核”。"
+        }
+      ],
+      "error_count": 0,
+      "warning_count": 1
+    },
+    {
+      "file": "001-chapter-01.md",
+      "source_lines": 466,
+      "translation_lines": 466,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "002-chapter-02.md",
+      "source_lines": 1786,
+      "translation_lines": 1786,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "003-chapter-03.md",
+      "source_lines": 1005,
+      "translation_lines": 1005,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "004-chapter-04.md",
+      "source_lines": 1456,
+      "translation_lines": 1456,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "005-chapter-05.md",
+      "source_lines": 1507,
+      "translation_lines": 1507,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "006-chapter-06.md",
+      "source_lines": 2917,
+      "translation_lines": 2917,
+      "issues": [
+        {
+          "line": 150,
+          "severity": "warning",
+          "rule": "hardware_core",
+          "english": "Simultaneous multithreading makes use of a superscalar architecture and hardware multithreading support (by the processor) to improve parallelism. It allows a CPU core to run more than one thread, effectively scheduling between them during instructions, e.g., when one instruction stalls on memory I/O. The kernel presents these hardware threads as virtual CPUs, and schedules threads and processes on them as usual. This was introduced and pictured in [Section 6.2.1](#ch06-ch06lev2sec1), [CPU Architecture](#ch06-ch06lev2sec1).",
+          "chinese": "同时多线程利用超标量架构和处理器提供的硬件多线程支持来提高并行度。它允许一个 CPU 核心运行多个线程，并在执行指令期间在这些线程之间进行调度，例如某条指令因内存 I/O 停顿时。内核将这些硬件线程呈现为虚拟 CPU，并像往常一样在其上调度线程和进程。这一机制已在 [第 6.2.1 节](#ch06-ch06lev2sec1)、[CPU 架构](#ch06-ch06lev2sec1) 中介绍并配图说明。",
+          "recommendation": "请核对 core 是否指 CPU 核心；操作系统 kernel 才译作“内核”。"
+        },
+        {
+          "line": 154,
+          "severity": "warning",
+          "rule": "hardware_core",
+          "english": "The performance of each hardware thread is not the same as a separate CPU core, and depends on the workload. To avoid performance problems, kernels may spread out CPU load across cores so that only one hardware thread on each core is busy, avoiding hardware thread contention. Workloads that are stall cycle-heavy (low IPC) may also have better performance than those that are instruction-heavy (high IPC) because stall cycles reduce core contention.",
+          "chinese": "每个硬件线程的性能不同于独立 CPU 核心的性能，并且取决于工作负载。为避免性能问题，内核可以将 CPU 负载分散到多个核心，使每个核心上只有一个硬件线程繁忙，从而避免硬件线程之间的争用。停顿周期较多（IPC 较低）的工作负载也可能比指令较多（IPC 较高）的工作负载表现更好，因为停顿周期会减少核心争用。",
+          "recommendation": "请核对 core 是否指 CPU 核心；操作系统 kernel 才译作“内核”。"
+        }
+      ],
+      "error_count": 0,
+      "warning_count": 2
+    },
+    {
+      "file": "007-chapter-07.md",
+      "source_lines": 1919,
+      "translation_lines": 1919,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "008-chapter-08.md",
+      "source_lines": 2256,
+      "translation_lines": 2256,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "009-chapter-09.md",
+      "source_lines": 2603,
+      "translation_lines": 2603,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "010-chapter-10.md",
+      "source_lines": 3031,
+      "translation_lines": 3031,
+      "issues": [
+        {
+          "line": 115,
+          "severity": "warning",
+          "rule": "blocked_ambiguous",
+          "english": "Connections between pairs of hosts involve *unicast* transmission. *Multicast* transmission allows a sender to transmit to multiple destinations simultaneously, which may span multiple networks. This must be supported by the router configuration to allow delivery. In public cloud environments it may be blocked.",
+          "chinese": "主机对之间的连接涉及*单播*传输。*多播*传输允许发送者同时传输到多个目的地，这可能跨越多个网络。这必须得到路由器配置的支持才能允许传送。在公共云环境中，它可能会被阻止。",
+          "recommendation": "请核对是否为线程/进程等待语境（应为“阻塞”）；网络规则或防火墙语境可保留“阻止”。"
+        },
+        {
+          "line": 381,
+          "severity": "warning",
+          "rule": "scaling_ambiguous",
+          "english": "- **CUBIC**: Uses a cubic function (hence the name) to scale the window, and a “hybrid start” function to exit slow start. CUBIC tends to be more aggressive than Reno, and is the default in Linux.",
+          "chinese": "- **CUBIC**：使用三次函数（因此得名）来缩放窗口，并使用“混合启动”函数来退出慢启动。 CUBIC 往往比 Reno 更激进，并且是 Linux 中的默认设置。",
+          "recommendation": "“缩放”可能是数值缩放，也可能是扩展能力；请按上下文人工核对。"
+        }
+      ],
+      "error_count": 0,
+      "warning_count": 2
+    },
+    {
+      "file": "011-chapter-11.md",
+      "source_lines": 1859,
+      "translation_lines": 1859,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "012-chapter-12.md",
+      "source_lines": 908,
+      "translation_lines": 908,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "013-chapter-13.md",
+      "source_lines": 1688,
+      "translation_lines": 1688,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "014-chapter-14.md",
+      "source_lines": 2087,
+      "translation_lines": 2087,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "015-chapter-15.md",
+      "source_lines": 1529,
+      "translation_lines": 1529,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "016-chapter-16.md",
+      "source_lines": 403,
+      "translation_lines": 403,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "017-appendix-a.md",
+      "source_lines": 93,
+      "translation_lines": 93,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "018-appendix-b.md",
+      "source_lines": 37,
+      "translation_lines": 37,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "019-appendix-c.md",
+      "source_lines": 565,
+      "translation_lines": 565,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "020-appendix-d.md",
+      "source_lines": 68,
+      "translation_lines": 68,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "021-appendix-e.md",
+      "source_lines": 197,
+      "translation_lines": 197,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "022-glossary.md",
+      "source_lines": 609,
+      "translation_lines": 609,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "023-index.md",
+      "source_lines": 11088,
+      "translation_lines": 11088,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "024-back-matter-01.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "025-back-matter-02.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    },
+    {
+      "file": "026-back-matter-03.md",
+      "source_lines": 5,
+      "translation_lines": 5,
+      "issues": [],
+      "error_count": 0,
+      "warning_count": 0
+    }
+  ]
+}

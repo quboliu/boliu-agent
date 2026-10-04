@@ -21,6 +21,7 @@ boliu-agent/
     ├── kubernetes-paper-reading/
     ├── lets-go-further/
     ├── scanned-pdf-to-typst/
+    ├── systems-performance-enterprise-and-the-cloud/
     ├── typst-book-production/
     └── user-skill-sync/
 ```
@@ -99,6 +100,14 @@ Entry: [`skills/lets-go-further/SKILL.md`](skills/lets-go-further/SKILL.md)
 Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
 
 Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKILL.md)
+
+### systems-performance-enterprise-and-the-cloud
+
+Maintains the source-traceable, bilingual Typst edition of *Systems Performance:
+Enterprise and the Cloud*, including book-local audits, reproducible exports,
+and reading-PDF publication checks.
+
+Entry: [`skills/systems-performance-enterprise-and-the-cloud/SKILL.md`](skills/systems-performance-enterprise-and-the-cloud/SKILL.md)
 
 ### typst-book-production
 

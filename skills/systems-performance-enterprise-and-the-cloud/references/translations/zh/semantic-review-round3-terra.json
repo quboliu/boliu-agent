@@ -1,0 +1,1957 @@
+{
+  "status": "completed-and-frozen",
+  "scope": "仅中文023-index.md；顺序完整阅读全部非空英中索引内容条目及分组上下文；空行和HTML锚点/注释由全量结构校验覆盖。额外回查原文正文解释技术词义。",
+  "reading_ranges": [
+    [
+      1,
+      11088
+    ]
+  ],
+  "corrections": [
+    {
+      "file": "023-index.md",
+      "line": 32,
+      "english": "**Active listening in three-way handshakes, [511](#ch10-page-511)**",
+      "before": "**三向握手中主动监听，[511](#ch10-page-511)**",
+      "after": "**三次握手中主动监听，[511](#ch10-page-511)**",
+      "reason": "TCP术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 52,
+      "english": "guests, [603](#ch11-page-603)",
+      "before": "来宾，[603](#ch11-page-603)",
+      "after": "客户机，[603](#ch11-page-603)",
+      "reason": "硬件虚拟化guest"
+    },
+    {
+      "file": "023-index.md",
+      "line": 68,
+      "english": "**Advanced Format for magnetic rotational disks, [437](#ch09-page-437)**",
+      "before": "**旋转磁盘的高级格式，[437](#ch09-page-437)**",
+      "after": "**旋转式磁盘的高级格式，[437](#ch09-page-437)**",
+      "reason": "磁盘介质术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 154,
+      "english": "random change, [42](#ch02-page-42)–[43](#ch02-page-43)",
+      "before": "随机变化，[42](#ch02-page-42)–[43](#ch02-page-43)",
+      "after": "随机改动，[42](#ch02-page-42)–[43](#ch02-page-43)",
+      "reason": "反方法指无依据改动系统非自然变化"
+    },
+    {
+      "file": "023-index.md",
+      "line": 156,
+      "english": "streetlight, [42](#ch02-page-42)",
+      "before": "路灯，[42](#ch02-page-42)",
+      "after": "路灯效应，[42](#ch02-page-42)",
+      "reason": "反方法streetlight指认知偏差而非照明设备"
+    },
+    {
+      "file": "023-index.md",
+      "line": 186,
+      "english": "`bpftrace` for, [765](#ch15-page-765)",
+      "before": "`bpftrace` 为, [765](#ch15-page-765)",
+      "after": "`bpftrace` 用于应用程序分析, [765](#ch15-page-765)",
+      "reason": "for指应用程序分析用途"
+    },
+    {
+      "file": "023-index.md",
+      "line": 219,
+      "english": "CPU profiling, [187](#ch05-page-187)–[189](#ch05-page-189)",
+      "before": "CPU 分析，[187](#ch05-page-187)–[189](#ch05-page-189)",
+      "after": "CPU 剖析，[187](#ch05-page-187)–[189](#ch05-page-189)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 223,
+      "english": "lock analysis, [198](#ch05-page-198)",
+      "before": "锁定分析，[198](#ch05-page-198)",
+      "after": "锁分析，[198](#ch05-page-198)",
+      "reason": "lock指同步锁"
+    },
+    {
+      "file": "023-index.md",
+      "line": 259,
+      "english": "buffers, [177](#ch05-page-177)",
+      "before": "缓冲器，[177](#ch05-page-177)",
+      "after": "缓冲区，[177](#ch05-page-177)",
+      "reason": "software buffer"
+    },
+    {
+      "file": "023-index.md",
+      "line": 278,
+      "english": "compiled, [183](#ch05-page-183)–[184](#ch05-page-184)",
+      "before": "已编译，[183](#ch05-page-183)–[184](#ch05-page-184)",
+      "after": "编译型，[183](#ch05-page-183)–[184](#ch05-page-184)",
+      "reason": "语言分类"
+    },
+    {
+      "file": "023-index.md",
+      "line": 282,
+      "english": "interpreted, [184](#ch05-page-184)–[185](#ch05-page-185)",
+      "before": "解释，[184](#ch05-page-184)–[185](#ch05-page-185)",
+      "after": "解释型，[184](#ch05-page-184)–[185](#ch05-page-185)",
+      "reason": "语言分类"
+    },
+    {
+      "file": "023-index.md",
+      "line": 336,
+      "english": "**Arrival process in queueing systems, [67](#ch02-page-67)**",
+      "before": "**排队系统中的到达流程，[67](#ch02-page-67)**",
+      "after": "**排队系统中的到达过程，[67](#ch02-page-67)**",
+      "reason": "排队论arrival process"
+    },
+    {
+      "file": "023-index.md",
+      "line": 349,
+      "english": "**Associativity in caches, [234](#ch06-page-234)**",
+      "before": "**缓存中的关联性，[234](#ch06-page-234)**",
+      "after": "**缓存中的相联度，[234](#ch06-page-234)**",
+      "reason": "cache associativity"
+    },
+    {
+      "file": "023-index.md",
+      "line": 416,
+      "english": "**Bad paging, [305](#ch07-page-305)**",
+      "before": "**分页错误，[305](#ch07-page-305)**",
+      "after": "**不良分页，[305](#ch07-page-305)**",
+      "reason": "bad paging匿名分页而非分页错误"
+    },
+    {
+      "file": "023-index.md",
+      "line": 419,
+      "english": "**Balloon drivers, [597](#ch11-page-597)**",
+      "before": "**气球驱动器，[597](#ch11-page-597)**",
+      "after": "**内存气球驱动程序，[597](#ch11-page-597)**",
+      "reason": "内存回收机制"
+    },
+    {
+      "file": "023-index.md",
+      "line": 433,
+      "english": "**Bare-metal hypervisors, [587](#ch11-page-587)**",
+      "before": "**裸机管理程序，[587](#ch11-page-587)**",
+      "after": "**裸机虚拟机监控器，[587](#ch11-page-587)**",
+      "reason": "hypervisor术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 537,
+      "english": "CPU profiling, [660](#ch12-page-660)–[661](#ch12-page-661)",
+      "before": "CPU 分析，[660](#ch12-page-660)–[661](#ch12-page-661)",
+      "after": "CPU 剖析，[660](#ch12-page-660)–[661](#ch12-page-661)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 676,
+      "english": "**Blind faith benchmarking, [645](#ch12-page-645)**",
+      "before": "**盲目信仰对标，[645](#ch12-page-645)**",
+      "after": "**盲信基准测试，[645](#ch12-page-645)**",
+      "reason": "benchmarking方法论"
+    },
+    {
+      "file": "023-index.md",
+      "line": 716,
+      "english": "**Block I/O state in delay accounting, [145](#ch04-page-145)**",
+      "before": "**延迟计算中的块 I/O 状态，[145](#ch04-page-145)**",
+      "after": "**延迟记账中的块 I/O 状态，[145](#ch04-page-145)**",
+      "reason": "delay accounting"
+    },
+    {
+      "file": "023-index.md",
+      "line": 801,
+      "english": "I/O profiling, [210](#ch05-page-210)–[212](#ch05-page-212)",
+      "before": "I/O 分析，[210](#ch05-page-210)–[212](#ch05-page-212)",
+      "after": "I/O 剖析，[210](#ch05-page-210)–[212](#ch05-page-212)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 805,
+      "english": "lock tracing, [212](#ch05-page-212)–[213](#ch05-page-213)",
+      "before": "锁定跟踪，[212](#ch05-page-212)–[213](#ch05-page-213)",
+      "after": "锁跟踪，[212](#ch05-page-212)–[213](#ch05-page-213)",
+      "reason": "同步锁"
+    },
+    {
+      "file": "023-index.md",
+      "line": 823,
+      "english": "package contents, [132](#ch04-page-132)",
+      "before": "包装内容，[132](#ch04-page-132)",
+      "after": "软件包内容，[132](#ch04-page-132)",
+      "reason": "package是软件包"
+    },
+    {
+      "file": "023-index.md",
+      "line": 858,
+      "english": "comments, [767](#ch15-page-767)",
+      "before": "评论，[767](#ch15-page-767)",
+      "after": "注释，[767](#ch15-page-767)",
+      "reason": "编程comments"
+    },
+    {
+      "file": "023-index.md",
+      "line": 866,
+      "english": "flow control, [775](#ch15-page-775)–[777](#ch15-page-777)",
+      "before": "流程控制，[775](#ch15-page-775)–[777](#ch15-page-777)",
+      "after": "控制流，[775](#ch15-page-775)–[777](#ch15-page-777)",
+      "reason": "编程flow control"
+    },
+    {
+      "file": "023-index.md",
+      "line": 953,
+      "english": "**Buffers**",
+      "before": "**缓冲器**",
+      "after": "**缓冲区**",
+      "reason": "buffer术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 969,
+      "english": "**Bug database systems**",
+      "before": "**错误数据库系统**",
+      "after": "**缺陷数据库系统**",
+      "reason": "bug跟踪数据库"
+    },
+    {
+      "file": "023-index.md",
+      "line": 982,
+      "english": "**Bursting in cloud computing, [584](#ch11-page-584), [614](#ch11-page-614)–[615](#ch11-page-615)**",
+      "before": "**云计算爆发，[584](#ch11-page-584)、[614](#ch11-page-614)–[615](#ch11-page-615)**",
+      "after": "**云计算中的突发性能，[584](#ch11-page-584)、[614](#ch11-page-614)–[615](#ch11-page-615)**",
+      "reason": "bursting使用空闲CPU资源"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1037,
+      "english": "associativity, [234](#ch06-page-234)",
+      "before": "关联性，[234](#ch06-page-234)",
+      "after": "相联度，[234](#ch06-page-234)",
+      "reason": "cache associativity"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1179,
+      "english": "**Casual benchmarking, [645](#ch12-page-645)**",
+      "before": "**休闲基准测试，[645](#ch12-page-645)**",
+      "after": "**随意基准测试，[645](#ch12-page-645)**",
+      "reason": "casual指随意而非休闲"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1267,
+      "english": "**Circular buffers for applications, [177](#ch05-page-177)**",
+      "before": "**适用于应用的圆形缓冲器，[177](#ch05-page-177)**",
+      "after": "**适用于应用的环形缓冲区，[177](#ch05-page-177)**",
+      "reason": "circular buffer术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1368,
+      "english": "**Co-routines in applications, [178](#ch05-page-178)**",
+      "before": "**应用程序中的协同例程，[178](#ch05-page-178)**",
+      "after": "**应用程序中的协程，[178](#ch05-page-178)**",
+      "reason": "coroutine术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1371,
+      "english": "**Coarse view in profiling, [35](#ch02-page-35)**",
+      "before": "**分析中的粗略视图，[35](#ch02-page-35)**",
+      "after": "**剖析中的粗略视图，[35](#ch02-page-35)**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1412,
+      "english": "**`comm` variable in `bpftrace`, [778](#ch15-page-778)**",
+      "before": "**`comm` 中的变量 `bpftrace`、[778](#ch15-page-778)**",
+      "after": "**`comm` 变量（`bpftrace`）、[778](#ch15-page-778)**",
+      "reason": "变量与工具的归属关系反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1421,
+      "english": "**Common case optimization in applications, [174](#ch05-page-174)**",
+      "before": "**应用中常见案例优化，[174](#ch05-page-174)**",
+      "after": "**应用中常见情况优化，[174](#ch05-page-174)**",
+      "reason": "common case指常见执行情况"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1550,
+      "english": "three-way handshakes, [511](#ch10-page-511)–[512](#ch10-page-512)",
+      "before": "三向握手，[511](#ch10-page-511)–[512](#ch10-page-512)",
+      "after": "三次握手，[511](#ch10-page-511)–[512](#ch10-page-512)",
+      "reason": "TCP术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1588,
+      "english": "**Control groups (cgroups). *See* [cgroups](#index-index194)**",
+      "before": "**对照组（cgroup）。 *参见* [cgroup](#index-index194)**",
+      "after": "**控制组（cgroup）。 *参见* [cgroup](#index-index194)**",
+      "reason": "cgroup不是实验对照组"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1692,
+      "english": "**`cpu` variable in `bpftrace`, [777](#ch15-page-777)**",
+      "before": "**`cpu` 中的变量 `bpftrace`、[777](#ch15-page-777)**",
+      "after": "**`cpu` 变量（`bpftrace`）、[777](#ch15-page-777)**",
+      "reason": "变量与工具归属关系反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1724,
+      "english": "`bpftrace` for, [763](#ch15-page-763), [803](#appc-page-803)–[804](#appc-page-804)",
+      "before": "`bpftrace` 为、[763](#ch15-page-763)、[803](#appc-page-803)–[804](#appc-page-804)",
+      "after": "`bpftrace` 用于 CPU 分析、[763](#ch15-page-763)、[803](#appc-page-803)–[804](#appc-page-804)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1778,
+      "english": "profiling. *See* [CPUs profiling](#index-index298)",
+      "before": "分析。 *参见* [CPU 分析](#index-index298)",
+      "after": "剖析。 *参见* [CPU 剖析](#index-index298)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1818,
+      "english": "word size, [229](#ch06-page-229)",
+      "before": "字大小，[229](#ch06-page-229)",
+      "after": "字长，[229](#ch06-page-229)",
+      "reason": "word size CPU位宽"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1825,
+      "english": "associativity, [234](#ch06-page-234)",
+      "before": "关联性，[234](#ch06-page-234)",
+      "after": "相联度，[234](#ch06-page-234)",
+      "reason": "cache associativity"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1870,
+      "english": "profiling, [247](#ch06-page-247)–[250](#ch06-page-250)",
+      "before": "分析，[247](#ch06-page-247)–[250](#ch06-page-250)",
+      "after": "剖析，[247](#ch06-page-247)–[250](#ch06-page-250)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 1934,
+      "english": "**CPUs profiling**",
+      "before": "**CPU 分析**",
+      "after": "**CPU 剖析**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2056,
+      "english": "**Data integrity in magnetic rotational disks, [438](#ch09-page-438)**",
+      "before": "**旋转磁盘中的数据完整性，[438](#ch09-page-438)**",
+      "after": "**旋转式磁盘中的数据完整性，[438](#ch09-page-438)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2127,
+      "english": "**Deflated disk I/O, [369](#ch08-page-369)**",
+      "before": "**放气磁盘 I/O，[369](#ch08-page-369)**",
+      "after": "**缩减的磁盘 I/O，[369](#ch08-page-369)**",
+      "reason": "deflated指I/O量经缓存等机制减少"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2231,
+      "english": "**Directory indexes in ext3, [379](#ch08-page-379)**",
+      "before": "**ext3 中的目录索引，[379](#ch08-page-379)**",
+      "after": "**ext 中的目录索引，[379](#ch08-page-379)**",
+      "reason": "原文未限定ext3，不额外缩小范围"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2247,
+      "english": "magnetic rotational disks, [439](#ch09-page-439)",
+      "before": "磁性旋转盘，[439](#ch09-page-439)",
+      "after": "旋转式磁盘，[439](#ch09-page-439)",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2316,
+      "english": "magnetic rotational disks, [435](#ch09-page-435)–[439](#ch09-page-439)",
+      "before": "磁性旋转盘，[435](#ch09-page-435)–[439](#ch09-page-439)",
+      "after": "旋转式磁盘，[435](#ch09-page-435)–[439](#ch09-page-439)",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2331,
+      "english": "`bpftrace` for, [764](#ch15-page-764), [806](#appc-page-806)–[807](#appc-page-807)",
+      "before": "`bpftrace` 为、[764](#ch15-page-764)、[806](#appc-page-806)–[807](#appc-page-807)",
+      "after": "`bpftrace` 用于磁盘 I/O 分析、[764](#ch15-page-764)、[806](#appc-page-806)–[807](#appc-page-807)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2532,
+      "english": "balloon, [597](#ch11-page-597)",
+      "before": "气球, [597](#ch11-page-597)",
+      "after": "内存气球, [597](#ch11-page-597)",
+      "reason": "balloon内存回收机制"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2609,
+      "english": "**Early Departure Time (EDT), [119](#ch03-page-119), [524](#ch10-page-524)**",
+      "before": "**提前出发时间 (EDT)，[119](#ch03-page-119)，[524](#ch10-page-524)**",
+      "after": "**提前发送时间 (EDT)，[119](#ch03-page-119)，[524](#ch10-page-524)**",
+      "reason": "网络发包departure非旅行出发"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2618,
+      "english": "**ECC (error-correcting code) for magnetic rotational disks, [438](#ch09-page-438)**",
+      "before": "**用于旋转磁盘的 ECC（纠错码），[438](#ch09-page-438)**",
+      "after": "**用于旋转式磁盘的 ECC（纠错码），[438](#ch09-page-438)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2630,
+      "english": "**EDT (Early Departure Time), [119](#ch03-page-119), [524](#ch10-page-524)**",
+      "before": "**EDT（提前出发时间），[119](#ch03-page-119)，[524](#ch10-page-524)**",
+      "after": "**EDT（提前发送时间），[119](#ch03-page-119)，[524](#ch10-page-524)**",
+      "reason": "网络发包时间"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2639,
+      "english": "**`elasped` variable in `bpftrace`, [777](#ch15-page-777)**",
+      "before": "**`elasped` 中的变量 `bpftrace`、[777](#ch15-page-777)**",
+      "after": "**`elasped` 变量（`bpftrace`）、[777](#ch15-page-777)**",
+      "reason": "变量与工具归属倒置；原作者拼写保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2651,
+      "english": "**Elevator seeking in magnetic rotational disks, [437](#ch09-page-437)–[438](#ch09-page-438)**",
+      "before": "**磁旋转盘中的电梯寻道，[437](#ch09-page-437)–[438](#ch09-page-438)**",
+      "after": "**旋转式磁盘中的电梯寻道，[437](#ch09-page-437)–[438](#ch09-page-438)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2704,
+      "english": "**Error-correcting code (ECC) for magnetic rotational disks, [438](#ch09-page-438)**",
+      "before": "**用于旋转磁盘的纠错码 (ECC)，[438](#ch09-page-438)**",
+      "after": "**用于旋转式磁盘的纠错码 (ECC)，[438](#ch09-page-438)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2770,
+      "english": "`trace-cmd` for, [737](#ch14-page-737)",
+      "before": "`trace-cmd` 为, [737](#ch14-page-737)",
+      "after": "`trace-cmd` 用于事件跟踪, [737](#ch14-page-737)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2794,
+      "english": "`stat` filters, [693](#ch13-page-693)–[694](#ch13-page-694)",
+      "before": "`stat` 滤波器、[693](#ch13-page-693)–[694](#ch13-page-694)",
+      "after": "`stat` 过滤器、[693](#ch13-page-693)–[694](#ch13-page-694)",
+      "reason": "事件筛选非信号滤波"
+    },
+    {
+      "file": "023-index.md",
+      "line": 2852,
+      "english": "**Executable text in process virtual address space, [319](#ch07-page-319)**",
+      "before": "**进程虚拟地址空间中的可执行文本，[319](#ch07-page-319)**",
+      "after": "**进程虚拟地址空间中的可执行代码段，[319](#ch07-page-319)**",
+      "reason": "text指程序代码段而非普通文本"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3010,
+      "english": "**Faults**",
+      "before": "**故障**",
+      "after": "**异常**",
+      "reason": "CPU同步异常fault而非硬件故障"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3071,
+      "english": "`bpftrace` for, [764](#ch15-page-764), [805](#appc-page-805)–[806](#appc-page-806)",
+      "before": "`bpftrace` 为、[764](#ch15-page-764)、[805](#appc-page-805)–[806](#appc-page-806)",
+      "after": "`bpftrace` 用于文件系统分析、[764](#ch15-page-764)、[805](#appc-page-805)–[806](#appc-page-806)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3313,
+      "english": "CPU profiling, [10](#ch01-page-10)–[11](#ch01-page-11), [187](#ch05-page-187)–[188](#ch05-page-188), [278](#ch06-page-278), [660](#ch12-page-660)–[661](#ch12-page-661)",
+      "before": "CPU 分析、[10](#ch01-page-10)–[11](#ch01-page-11)、[187](#ch05-page-187)–[188](#ch05-page-188)、[278](#ch06-page-278)、[660](#ch12-page-660)–[661](#ch12-page-661)",
+      "after": "CPU 剖析、[10](#ch01-page-10)–[11](#ch01-page-11)、[187](#ch05-page-187)–[188](#ch05-page-188)、[278](#ch06-page-278)、[660](#ch12-page-660)–[661](#ch12-page-661)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3337,
+      "english": "sample processing, [249](#ch06-page-249)–[250](#ch06-page-250)",
+      "before": "样品处理，[249](#ch06-page-249)–[250](#ch06-page-250)",
+      "after": "采样数据处理，[249](#ch06-page-249)–[250](#ch06-page-250)",
+      "reason": "sample性能采样非实物样品"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3370,
+      "english": "**Flow control in `bpftrace`, [775](#ch15-page-775)–[777](#ch15-page-777)**",
+      "before": "**`bpftrace`、[775](#ch15-page-775)–[777](#ch15-page-777) 中的流程控制**",
+      "after": "**`bpftrace`、[775](#ch15-page-775)–[777](#ch15-page-777) 中的控制流**",
+      "reason": "编程flow control"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3382,
+      "english": "**Footprints, off-CPU, [188](#ch05-page-188)–[189](#ch05-page-189)**",
+      "before": "**占用空间，脱离 CPU，[188](#ch05-page-188)–[189](#ch05-page-189)**",
+      "after": "**活动线索，off-CPU，[188](#ch05-page-188)–[189](#ch05-page-189)**",
+      "reason": "footprints指阻塞期间留存活动线索而非内存占用"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3468,
+      "english": "**fsck time in ext4, [379](#ch08-page-379)**",
+      "before": "**ext4 中的 fsck 时间，[379](#ch08-page-379)**",
+      "after": "**ext 中的 fsck 时间，[379](#ch08-page-379)**",
+      "reason": "保留源索引ext范围"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3490,
+      "english": "function profiler, [711](#ch14-page-711)–[712](#ch14-page-712)",
+      "before": "函数分析器，[711](#ch14-page-711)–[712](#ch14-page-712)",
+      "after": "函数剖析器，[711](#ch14-page-711)–[712](#ch14-page-712)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3531,
+      "english": "**Fully associative caches, [234](#ch06-page-234)**",
+      "before": "**全关联缓存，[234](#ch06-page-234)**",
+      "after": "**全相联缓存，[234](#ch06-page-234)**",
+      "reason": "fully associative cache术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3537,
+      "english": "**`func` variable in `bpftrace`, [778](#ch15-page-778)**",
+      "before": "**`func` 中的变量 `bpftrace`、[778](#ch15-page-778)**",
+      "after": "**`func` 变量（`bpftrace`）、[778](#ch15-page-778)**",
+      "reason": "变量工具归属反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3570,
+      "english": "graph tracing, [724](#ch14-page-724)–[725](#ch14-page-725)",
+      "before": "图形追踪，[724](#ch14-page-724)–[725](#ch14-page-725)",
+      "after": "调用图跟踪，[724](#ch14-page-724)–[725](#ch14-page-725)",
+      "reason": "function_graph追踪函数调用图"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3574,
+      "english": "`trace-cmd` for, [737](#ch14-page-737), [739](#ch14-page-739)",
+      "before": "`trace-cmd` 为，[737](#ch14-page-737)，[739](#ch14-page-739)",
+      "after": "`trace-cmd` 用于函数调用图跟踪，[737](#ch14-page-737)，[739](#ch14-page-739)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3592,
+      "english": "profiling, [248](#ch06-page-248)",
+      "before": "分析，[248](#ch06-page-248)",
+      "after": "剖析，[248](#ch06-page-248)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3594,
+      "english": "`trace-cmd` for, [736](#ch14-page-736)–[737](#ch14-page-737)",
+      "before": "`trace-cmd` 为，[736](#ch14-page-736)–[737](#ch14-page-737)",
+      "after": "`trace-cmd` 用于函数跟踪，[736](#ch14-page-736)–[737](#ch14-page-737)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3679,
+      "english": "**Grafana, [8](#ch01-page-8)–[9](#ch01-page-9), [138](#ch04-page-138)**",
+      "before": "**格拉法纳，[8](#ch01-page-8)–[9](#ch01-page-9)，[138](#ch04-page-138)**",
+      "after": "**Grafana，[8](#ch01-page-8)–[9](#ch01-page-9)，[138](#ch04-page-138)**",
+      "reason": "软件专名保留可检索拼写"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3707,
+      "english": "**Guests**",
+      "before": "**来宾**",
+      "after": "**客户环境（客户机或容器）**",
+      "reason": "分组同时涵盖硬件虚拟化与操作系统虚拟化guest"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3823,
+      "english": "**Heads in magnetic rotational disks, [436](#ch09-page-436)**",
+      "before": "**磁头位于旋转磁盘中，[436](#ch09-page-436)**",
+      "after": "**旋转式磁盘的磁头，[436](#ch09-page-436)**",
+      "reason": "索引名词短语与磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3875,
+      "english": "PID filters, [729](#ch14-page-729)–[730](#ch14-page-730)",
+      "before": "PID滤波器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "after": "PID过滤器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "reason": "PID选择非信号滤波"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3901,
+      "english": "**Horizontal pod autoscalers (HPAs), [73](#ch02-page-73)**",
+      "before": "**水平 Pod 自动缩放器 (HPA)，[73](#ch02-page-73)**",
+      "after": "**水平 Pod 自动扩缩器 (HPA)，[73](#ch02-page-73)**",
+      "reason": "HPA同时扩容和缩容"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3914,
+      "english": "**Hosts**",
+      "before": "**主机**",
+      "after": "**主机与宿主机**",
+      "reason": "分组涵盖普通应用主机及虚拟化宿主机"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3936,
+      "english": "**HPAs (horizontal pod autoscalers), [73](#ch02-page-73)**",
+      "before": "**HPA（水平 Pod 自动缩放器），[73](#ch02-page-73)**",
+      "after": "**HPA（水平 Pod 自动扩缩器），[73](#ch02-page-73)**",
+      "reason": "HPA同时扩容和缩容"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3954,
+      "english": "**Huge pages, [115](#ch03-page-115)–[116](#ch03-page-116), [314](#ch07-page-314), [352](#ch07-page-352)–[353](#ch07-page-353)**",
+      "before": "**大页面，[115](#ch03-page-115)–[116](#ch03-page-116)、[314](#ch07-page-314)、[352](#ch07-page-352)–[353](#ch07-page-353)**",
+      "after": "**大页，[115](#ch03-page-115)–[116](#ch03-page-116)、[314](#ch07-page-314)、[352](#ch07-page-352)–[353](#ch07-page-353)**",
+      "reason": "huge pages内存术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 3984,
+      "english": "**Hypervisors**",
+      "before": "**管理程序**",
+      "after": "**虚拟机监控器**",
+      "reason": "hypervisor术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4034,
+      "english": "**If statements, [776](#ch15-page-776)**",
+      "before": "**如果语句，[776](#ch15-page-776)**",
+      "after": "**if 语句，[776](#ch15-page-776)**",
+      "reason": "保留编程关键字"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4073,
+      "english": "**Industry benchmarking, [60](#ch02-page-60)–[61](#ch02-page-61)**",
+      "before": "**行业对标，[60](#ch02-page-60)–[61](#ch02-page-61)**",
+      "after": "**行业基准测试，[60](#ch02-page-60)–[61](#ch02-page-61)**",
+      "reason": "benchmarking非行业比较对标"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4164,
+      "english": "**Input/output profiling**",
+      "before": "**输入/输出分析**",
+      "after": "**输入/输出剖析**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4205,
+      "english": "text, [304](#ch07-page-304)",
+      "before": "文字，[304](#ch07-page-304)",
+      "after": "代码段，[304](#ch07-page-304)",
+      "reason": "CPU instruction text可执行代码"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4210,
+      "english": "**Instructions per cycle (IPC), [225](#ch06-page-225), [251](#ch06-page-251), [326](#ch07-page-326)**",
+      "before": "**每周期指令 (IPC)、[225](#ch06-page-225)、[251](#ch06-page-251)、[326](#ch07-page-326)**",
+      "after": "**每周期指令数 (IPC)、[225](#ch06-page-225)、[251](#ch06-page-251)、[326](#ch07-page-326)**",
+      "reason": "IPC指标计数单位"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4338,
+      "english": "**Interval statistics, `stat` for, [693](#ch13-page-693)**",
+      "before": "**区间统计，`stat`，[693](#ch13-page-693)**",
+      "after": "**间隔统计，`stat`，[693](#ch13-page-693)**",
+      "reason": "interval指时间采样间隔"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4423,
+      "english": "sockets, [509](#ch10-page-509)",
+      "before": "插座，[509](#ch10-page-509)",
+      "after": "套接字，[509](#ch10-page-509)",
+      "reason": "socket网络接口"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4432,
+      "english": "**IPC (instructions per cycle), [225](#ch06-page-225), [251](#ch06-page-251), [326](#ch07-page-326)**",
+      "before": "**IPC（每个周期指令）、[225](#ch06-page-225)、[251](#ch06-page-251)、[326](#ch07-page-326)**",
+      "after": "**IPC（每周期指令数）、[225](#ch06-page-225)、[251](#ch06-page-251)、[326](#ch07-page-326)**",
+      "reason": "IPC计数指标"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4492,
+      "english": "garbage colleciton, [185](#ch05-page-185)–[186](#ch05-page-186)",
+      "before": "垃圾收集器，[185](#ch05-page-185)–[186](#ch05-page-186)",
+      "after": "垃圾收集，[185](#ch05-page-185)–[186](#ch05-page-186)",
+      "reason": "collection过程非collector"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4633,
+      "english": "`bpftrace` for, [765](#ch15-page-765)",
+      "before": "`bpftrace` 为, [765](#ch15-page-765)",
+      "after": "`bpftrace` 用于内核分析, [765](#ch15-page-765)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4653,
+      "english": "monolithic, [123](#ch03-page-123)",
+      "before": "单片，[123](#ch03-page-123)",
+      "after": "宏内核，[123](#ch03-page-123)",
+      "reason": "monolithic kernel术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4722,
+      "english": "**kprobe profiler, [707](#ch14-page-707)**",
+      "before": "**kprobe 分析器，[707](#ch14-page-707)**",
+      "after": "**kprobe 剖析器，[707](#ch14-page-707)**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4734,
+      "english": "filters, [721](#ch14-page-721)–[722](#ch14-page-722)",
+      "before": "滤波器，[721](#ch14-page-721)–[722](#ch14-page-722)",
+      "after": "过滤器，[721](#ch14-page-721)–[722](#ch14-page-722)",
+      "reason": "事件筛选非信号滤波"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4738,
+      "english": "profiling, [722](#ch14-page-722)",
+      "before": "分析，[722](#ch14-page-722)",
+      "after": "剖析，[722](#ch14-page-722)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4816,
+      "english": "**Large Receive Offload (LRO), [116](#ch03-page-116)**",
+      "before": "**大量接收卸载 (LRO)，[116](#ch03-page-116)**",
+      "after": "**大包接收卸载 (LRO)，[116](#ch03-page-116)**",
+      "reason": "LRO合并数据包技术"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4843,
+      "english": "graph tracing, [724](#ch14-page-724)–[725](#ch14-page-725)",
+      "before": "图形追踪，[724](#ch14-page-724)–[725](#ch14-page-725)",
+      "after": "调用图跟踪，[724](#ch14-page-724)–[725](#ch14-page-725)",
+      "reason": "函数调用图跟踪"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4851,
+      "english": "I/O profiling, [210](#ch05-page-210)–[211](#ch05-page-211)",
+      "before": "I/O 分析，[210](#ch05-page-210)–[211](#ch05-page-211)",
+      "after": "I/O 剖析，[210](#ch05-page-210)–[211](#ch05-page-211)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4913,
+      "english": "**Least frequently used (LFU) caching algorithm, [36](#ch02-page-36)**",
+      "before": "**最不常用 (LFU) 缓存算法，[36](#ch02-page-36)**",
+      "after": "**最不经常使用 (LFU) 缓存算法，[36](#ch02-page-36)**",
+      "reason": "LFU依据使用频率而非是否常用"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4948,
+      "english": "**LFU (least frequently used) caching algorithm, [36](#ch02-page-36)**",
+      "before": "**LFU（最不常用）缓存算法，[36](#ch02-page-36)**",
+      "after": "**LFU（最不经常使用）缓存算法，[36](#ch02-page-36)**",
+      "reason": "LFU依据使用频率"
+    },
+    {
+      "file": "023-index.md",
+      "line": 4985,
+      "english": "**Limit investigations, benchmarking for, [642](#ch12-page-642)**",
+      "before": "**限制调查、基准测试，[642](#ch12-page-642)**",
+      "after": "**性能极限探查的基准测试，[642](#ch12-page-642)**",
+      "reason": "limit investigations探查性能上限"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5003,
+      "english": "working with, [80](#ch02-page-80)–[81](#ch02-page-81)",
+      "before": "与 [80](#ch02-page-80)–[81](#ch02-page-81) 一起工作",
+      "after": "使用，[80](#ch02-page-80)–[81](#ch02-page-81)",
+      "reason": "working with指使用折线图"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5059,
+      "english": "**Listen backlogs in networks, [519](#ch10-page-519)**",
+      "before": "**监听网络中的积压，[519](#ch10-page-519)**",
+      "after": "**网络监听积压队列，[519](#ch10-page-519)**",
+      "reason": "listen backlog连接队列"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5069,
+      "english": "`trace-cmd` for, [736](#ch14-page-736)",
+      "before": "`trace-cmd` 为, [736](#ch14-page-736)",
+      "after": "`trace-cmd` 用于列出事件, [736](#ch14-page-736)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5175,
+      "english": "**LRO (Large Receive Offload), [116](#ch03-page-116)**",
+      "before": "**LRO（大量接收卸载），[116](#ch03-page-116)**",
+      "after": "**LRO（大包接收卸载），[116](#ch03-page-116)**",
+      "reason": "LRO合并数据包技术"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5216,
+      "english": "**Magnetic rotational disks, [435](#ch09-page-435)–[439](#ch09-page-439)**",
+      "before": "**磁性旋转盘，[435](#ch09-page-435)–[439](#ch09-page-439)**",
+      "after": "**旋转式磁盘，[435](#ch09-page-435)–[439](#ch09-page-439)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5276,
+      "english": "magnetic rotational disks, [436](#ch09-page-436)–[437](#ch09-page-437)",
+      "before": "磁性旋转盘，[436](#ch09-page-436)–[437](#ch09-page-437)",
+      "after": "旋转式磁盘，[436](#ch09-page-436)–[437](#ch09-page-437)",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5293,
+      "english": "**\"A Measure of Transaction Processing Power,\" [655](#ch12-page-655)**",
+      "before": "**“交易处理能力的衡量标准”，[655](#ch12-page-655)**",
+      "after": "**“事务处理能力的衡量标准”，[655](#ch12-page-655)**",
+      "reason": "transaction processing计算机事务"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5396,
+      "english": "word size, [310](#ch07-page-310)",
+      "before": "字大小，[310](#ch07-page-310)",
+      "after": "字长，[310](#ch07-page-310)",
+      "reason": "word size CPU位宽"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5452,
+      "english": "cycle analysis, [326](#ch07-page-326)",
+      "before": "循环分析，[326](#ch07-page-326)",
+      "after": "周期分析，[326](#ch07-page-326)",
+      "reason": "分析CPU周期而非循环结构"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5593,
+      "english": "profiling, [35](#ch02-page-35)",
+      "before": "分析，[35](#ch02-page-35)",
+      "after": "剖析，[35](#ch02-page-35)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5611,
+      "english": "stop indicators, [29](#ch02-page-29)",
+      "before": "停止指示灯，[29](#ch02-page-29)",
+      "after": "停止指标，[29](#ch02-page-29)",
+      "reason": "分析方法stop indicators非实物灯"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5679,
+      "english": "**MFU (most frequently used) caching algorithm, [36](#ch02-page-36)**",
+      "before": "**MFU（最常用）缓存算法，[36](#ch02-page-36)**",
+      "after": "**MFU（最经常使用）缓存算法，[36](#ch02-page-36)**",
+      "reason": "MFU按使用频率"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5779,
+      "english": "**Mode switches**",
+      "before": "**模式开关**",
+      "after": "**模式切换**",
+      "reason": "CPU模式转换非开关物件"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5786,
+      "english": "**Model-specific registers (MSRs)**",
+      "before": "**模型专用寄存器 (MSR)**",
+      "after": "**型号专用寄存器 (MSR)**",
+      "reason": "model指处理器型号"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5848,
+      "english": "**Monolithic kernels, [91](#ch03-page-91), [123](#ch03-page-123)**",
+      "before": "**单片内核，[91](#ch03-page-91)，[123](#ch03-page-123)**",
+      "after": "**宏内核，[91](#ch03-page-91)，[123](#ch03-page-123)**",
+      "reason": "monolithic kernel术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5851,
+      "english": "**Most frequently used (MFU) caching algorithm, [36](#ch02-page-36)**",
+      "before": "**最常用（MFU）缓存算法，[36](#ch02-page-36)**",
+      "after": "**最经常使用（MFU）缓存算法，[36](#ch02-page-36)**",
+      "reason": "MFU按使用频率"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5903,
+      "english": "**MSRs (model-specific registers)**",
+      "before": "**MSR（模型专用寄存器）**",
+      "after": "**MSR（型号专用寄存器）**",
+      "reason": "处理器型号而非模型"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5913,
+      "english": "**Multi-level cell (MLC) flash memory, [440](#ch09-page-440)**",
+      "before": "**多层单元 (MLC) 闪存，[440](#ch09-page-440)**",
+      "after": "**多级单元 (MLC) 闪存，[440](#ch09-page-440)**",
+      "reason": "MLC电压等级非物理层数"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5923,
+      "english": "**Multiblock allocators in ext4, [379](#ch08-page-379)**",
+      "before": "**ext4 中的多块分配器，[379](#ch08-page-379)**",
+      "after": "**ext 中的多块分配器，[379](#ch08-page-379)**",
+      "reason": "保留源ext范围"
+    },
+    {
+      "file": "023-index.md",
+      "line": 5956,
+      "english": "**Multiple-zone disk recording, [437](#ch09-page-437)**",
+      "before": "**多区磁盘录制，[437](#ch09-page-437)**",
+      "after": "**磁盘多区记录，[437](#ch09-page-437)**",
+      "reason": "recording为磁盘记录方式非录制媒体；multiple-zone recording磁盘多区域磁记录，而非逻辑分区"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6001,
+      "english": "**Mutex (MUTually EXclusive) locks**",
+      "before": "**互斥（互斥）锁**",
+      "after": "**Mutex（互斥）锁**",
+      "reason": "保留Mutex名称避免重复空译"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6018,
+      "english": "CPU profiling, [200](#ch05-page-200), [203](#ch05-page-203), [269](#ch06-page-269)–[270](#ch06-page-270), [277](#ch06-page-277), [283](#ch06-page-283)–[284](#ch06-page-284), [697](#ch13-page-697)–[700](#ch13-page-700)",
+      "before": "CPU 分析、[200](#ch05-page-200)、[203](#ch05-page-203)、[269](#ch06-page-269)–[270](#ch06-page-270)、[277](#ch06-page-277)、[283](#ch06-page-283)–[284](#ch06-page-284)、 [697](#ch13-page-697)–[700](#ch13-page-700)",
+      "after": "CPU 剖析、[200](#ch05-page-200)、[203](#ch05-page-203)、[269](#ch06-page-269)–[270](#ch06-page-270)、[277](#ch06-page-277)、[283](#ch06-page-283)–[284](#ch06-page-284)、 [697](#ch13-page-697)–[700](#ch13-page-700)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6070,
+      "english": "**Native Command Queueing (NCQ), [437](#ch09-page-437)**",
+      "before": "**本机命令队列 (NCQ)，[437](#ch09-page-437)**",
+      "after": "**原生命令队列 (NCQ)，[437](#ch09-page-437)**",
+      "reason": "NCQ约定术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6073,
+      "english": "**Native hypervisors, [587](#ch11-page-587)**",
+      "before": "**本机管理程序，[587](#ch11-page-587)**",
+      "after": "**原生虚拟机监控器，[587](#ch11-page-587)**",
+      "reason": "native hypervisor技术概念"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6140,
+      "english": "`bpftrace` for, [764](#ch15-page-764)–[765](#ch15-page-765), [807](#appc-page-807)–[808](#appc-page-808)",
+      "before": "`bpftrace` 为、[764](#ch15-page-764)–[765](#ch15-page-765)、[807](#appc-page-807)–[808](#appc-page-808)",
+      "after": "`bpftrace` 用于网络分析、[764](#ch15-page-764)–[765](#ch15-page-765)、[807](#appc-page-807)–[808](#appc-page-808)",
+      "reason": "for用途遗漏"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6142,
+      "english": "buffers, [27](#ch02-page-27), [507](#ch10-page-507)",
+      "before": "缓冲器，[27](#ch02-page-27)，[507](#ch10-page-507)",
+      "after": "缓冲区，[27](#ch02-page-27)，[507](#ch10-page-507)",
+      "reason": "网络buffer术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6344,
+      "english": "**Node taints in cloud computing, [586](#ch11-page-586)**",
+      "before": "**云计算中的节点污染，[586](#ch11-page-586)**",
+      "after": "**云计算中的节点污点，[586](#ch11-page-586)**",
+      "reason": "Kubernetes taints术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6498,
+      "english": "profiling, [10](#ch01-page-10)–[11](#ch01-page-11)",
+      "before": "分析，[10](#ch01-page-10)–[11](#ch01-page-11)",
+      "after": "剖析，[10](#ch01-page-10)–[11](#ch01-page-11)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6533,
+      "english": "profiling, [135](#ch04-page-135)",
+      "before": "分析，[135](#ch04-page-135)",
+      "after": "剖析，[135](#ch04-page-135)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6582,
+      "english": "footprints, [188](#ch05-page-188)–[189](#ch05-page-189)",
+      "before": "足迹，[188](#ch05-page-188)–[189](#ch05-page-189)",
+      "after": "活动线索，[188](#ch05-page-188)–[189](#ch05-page-189)",
+      "reason": "offCPU footprints指活动线索"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6748,
+      "english": "**OProfile system profiler, [115](#ch03-page-115)**",
+      "before": "**OProfile 系统分析器，[115](#ch03-page-115)**",
+      "after": "**OProfile 系统剖析器，[115](#ch03-page-115)**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6771,
+      "english": "**Ordered mode in ext3, [378](#ch08-page-378)**",
+      "before": "**ext3 中的有序模式，[378](#ch08-page-378)**",
+      "after": "**ext 中的有序模式，[378](#ch08-page-378)**",
+      "reason": "保留源ext范围"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6803,
+      "english": "guests, [627](#ch11-page-627)–[629](#ch11-page-629)",
+      "before": "来宾，[627](#ch11-page-627)–[629](#ch11-page-629)",
+      "after": "容器，[627](#ch11-page-627)–[629](#ch11-page-629)",
+      "reason": "OS虚拟化guest上下文"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6805,
+      "english": "hosts, [619](#ch11-page-619)–[627](#ch11-page-627)",
+      "before": "主机，[619](#ch11-page-619)–[627](#ch11-page-627)",
+      "after": "宿主机，[619](#ch11-page-619)–[627](#ch11-page-627)",
+      "reason": "OS虚拟化host上下文"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6853,
+      "english": "**Overcommit strategy, [115](#ch03-page-115)**",
+      "before": "**超额使用策略，[115](#ch03-page-115)**",
+      "after": "**超额分配策略，[115](#ch03-page-115)**",
+      "reason": "memory overcommit术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6882,
+      "english": "ticks, [99](#ch03-page-99)",
+      "before": "蜱虫，[99](#ch03-page-99)",
+      "after": "时钟节拍，[99](#ch03-page-99)",
+      "reason": "timer ticks非昆虫"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6894,
+      "english": "**Overprovisioning cloud computing, [583](#ch11-page-583)**",
+      "before": "**预留云计算，[583](#ch11-page-583)**",
+      "after": "**云计算中的过量配置，[583](#ch11-page-583)**",
+      "reason": "overprovisioning提供过多资源"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6911,
+      "english": "**Pacing in networks, [524](#ch10-page-524)**",
+      "before": "**网络中的起搏，[524](#ch10-page-524)**",
+      "after": "**网络中的发包节奏控制，[524](#ch10-page-524)**",
+      "reason": "network pacing"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6936,
+      "english": "**Padding locks for hash tables, [181](#ch05-page-181)**",
+      "before": "**哈希表的填充锁，[181](#ch05-page-181)**",
+      "after": "**哈希表锁的填充，[181](#ch05-page-181)**",
+      "reason": "padding是对锁结构填充非锁种类"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6955,
+      "english": "**Page-outs**",
+      "before": "**页面输出**",
+      "after": "**页面换出**",
+      "reason": "page-out内存换页操作"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6959,
+      "english": "working with, [306](#ch07-page-306)",
+      "before": "与 [306](#ch07-page-306) 合作",
+      "after": "工作方式，[306](#ch07-page-306)",
+      "reason": "working with介绍页面换出而非合作"
+    },
+    {
+      "file": "023-index.md",
+      "line": 6984,
+      "english": "demand, [307](#ch07-page-307)–[308](#ch07-page-308)",
+      "before": "需求，[307](#ch07-page-307)–[308](#ch07-page-308)",
+      "after": "按需，[307](#ch07-page-307)–[308](#ch07-page-308)",
+      "reason": "demand paging按需分页"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7014,
+      "english": "**Passive listening in three-way handshakes, [511](#ch10-page-511)**",
+      "before": "**三向握手中的被动监听，[511](#ch10-page-511)**",
+      "after": "**三次握手中的被动监听，[511](#ch10-page-511)**",
+      "reason": "TCP术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7020,
+      "english": "**Pathologies in solid-state drives, [441](#ch09-page-441)**",
+      "before": "**固态硬盘中的病理学，[441](#ch09-page-441)**",
+      "after": "**固态硬盘中的病态行为，[441](#ch09-page-441)**",
+      "reason": "pathologies性能异常非学科"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7026,
+      "english": "**Pause frames in congestion avoidance, [508](#ch10-page-508)**",
+      "before": "**为了避免拥塞而暂停帧，[508](#ch10-page-508)**",
+      "after": "**拥塞避免中的暂停帧，[508](#ch10-page-508)**",
+      "reason": "pause frames名词帧类型非暂停动作"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7059,
+      "english": "profiling, [135](#ch04-page-135)",
+      "before": "分析，[135](#ch04-page-135)",
+      "after": "剖析，[135](#ch04-page-135)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7064,
+      "english": "**Percent busy metric, [33](#ch02-page-33)**",
+      "before": "**繁忙指标百分比，[33](#ch02-page-33)**",
+      "after": "**繁忙百分比指标，[33](#ch02-page-33)**",
+      "reason": "percent busy度量名称"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7091,
+      "english": "CPU profiling, [200](#ch05-page-200)–[201](#ch05-page-201), [245](#ch06-page-245), [268](#ch06-page-268)–[270](#ch06-page-270)",
+      "before": "CPU 分析、[200](#ch05-page-200)–[201](#ch05-page-201)、[245](#ch06-page-245)、[268](#ch06-page-268)–[270](#ch06-page-270)",
+      "after": "CPU 剖析、[200](#ch05-page-200)–[201](#ch05-page-201)、[245](#ch06-page-245)、[268](#ch06-page-268)–[270](#ch06-page-270)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7109,
+      "english": "I/O profiling, [202](#ch05-page-202)–[203](#ch05-page-203)",
+      "before": "I/O 分析，[202](#ch05-page-202)–[203](#ch05-page-203)",
+      "after": "I/O 剖析，[202](#ch05-page-202)–[203](#ch05-page-203)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7129,
+      "english": "one-liners for profiling, [675](#ch13-page-675)–[676](#ch13-page-676)",
+      "before": "用于分析的单行命令，[675](#ch13-page-675)–[676](#ch13-page-676)",
+      "after": "用于剖析的单行命令，[675](#ch13-page-675)–[676](#ch13-page-676)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7145,
+      "english": "process profiling, [271](#ch06-page-271)–[272](#ch06-page-272)",
+      "before": "进程分析，[271](#ch06-page-271)–[272](#ch06-page-272)",
+      "after": "进程剖析，[271](#ch06-page-271)–[272](#ch06-page-272)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7147,
+      "english": "profiling overview, [135](#ch04-page-135)",
+      "before": "分析概述，[135](#ch04-page-135)",
+      "after": "剖析概述，[135](#ch04-page-135)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7280,
+      "english": "cycle analysis, [251](#ch06-page-251)",
+      "before": "循环分析，[251](#ch06-page-251)",
+      "after": "周期分析，[251](#ch06-page-251)",
+      "reason": "CPU周期非循环结构"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7297,
+      "english": "**Periods in OS virtualization, [615](#ch11-page-615)**",
+      "before": "**操作系统虚拟化时期，[615](#ch11-page-615)**",
+      "after": "**操作系统虚拟化中的周期，[615](#ch11-page-615)**",
+      "reason": "CFS带宽配额period"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7303,
+      "english": "**Personalities in FileBench, [414](#ch08-page-414)**",
+      "before": "**FileBench 中的个性，[414](#ch08-page-414)**",
+      "after": "**FileBench 中的工作负载模型配置，[414](#ch08-page-414)**",
+      "reason": "FileBench personalities预设负载配置"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7321,
+      "english": "FlameScope, [292](#ch06-page-292)–[293](#ch06-page-293)",
+      "before": "火焰示波器，[292](#ch06-page-292)–[293](#ch06-page-293)",
+      "after": "FlameScope，[292](#ch06-page-292)–[293](#ch06-page-293)",
+      "reason": "软件专名保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7362,
+      "english": "filters, [729](#ch14-page-729)–[730](#ch14-page-730)",
+      "before": "滤波器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "after": "过滤器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "reason": "PID筛选"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7386,
+      "english": "**Pipelines in ZFS, [381](#ch08-page-381)**",
+      "before": "**ZFS 中的管道，[381](#ch08-page-381)**",
+      "after": "**ZFS 中的流水线，[381](#ch08-page-381)**",
+      "reason": "ZFS I/O pipeline非进程管道"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7392,
+      "english": "**Platters in magnetic rotational disks, [435](#ch09-page-435)–[436](#ch09-page-436)**",
+      "before": "**磁性旋转磁盘中的盘片，[435](#ch09-page-435)–[436](#ch09-page-436)**",
+      "after": "**旋转式磁盘中的盘片，[435](#ch09-page-435)–[436](#ch09-page-436)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7463,
+      "english": "**Preallocation in ext4, [379](#ch08-page-379)**",
+      "before": "**在 ext4 中预分配，[379](#ch08-page-379)**",
+      "after": "**在 ext 中预分配，[379](#ch08-page-379)**",
+      "reason": "保留作者ext范围"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7531,
+      "english": "**Priority**",
+      "before": "**优先**",
+      "after": "**优先级**",
+      "reason": "调度priority量值"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7542,
+      "english": "**Priority inheritance scheme, [227](#ch06-page-227)**",
+      "before": "**优先继承方案，[227](#ch06-page-227)**",
+      "after": "**优先级继承方案，[227](#ch06-page-227)**",
+      "reason": "priority inheritance调度术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7548,
+      "english": "**Priority pause frames in congestion avoidance, [508](#ch10-page-508)**",
+      "before": "**拥塞避免中的优先暂停帧，[508](#ch10-page-508)**",
+      "after": "**拥塞避免中的优先级暂停帧，[508](#ch10-page-508)**",
+      "reason": "以优先级区分暂停帧"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7593,
+      "english": "filters, [729](#ch14-page-729)–[730](#ch14-page-730)",
+      "before": "滤波器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "after": "过滤器，[729](#ch14-page-729)–[730](#ch14-page-730)",
+      "reason": "PID筛选"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7612,
+      "english": "profiling, [271](#ch06-page-271)–[272](#ch06-page-272)",
+      "before": "分析，[271](#ch06-page-271)–[272](#ch06-page-272)",
+      "after": "剖析，[271](#ch06-page-271)–[272](#ch06-page-272)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7658,
+      "english": "profiling, [135](#ch04-page-135)",
+      "before": "分析，[135](#ch04-page-135)",
+      "after": "剖析，[135](#ch04-page-135)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7663,
+      "english": "**Profilers**",
+      "before": "**分析器**",
+      "after": "**剖析器**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7670,
+      "english": "**Profiling**",
+      "before": "**分析**",
+      "after": "**剖析**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7672,
+      "english": "CPUs. *See* [CPUs profiling](#index-index298)",
+      "before": "CPU。 *参见* [CPU 分析](#index-index298)",
+      "after": "CPU。 *参见* [CPU 剖析](#index-index298)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7691,
+      "english": "**Program counter threads, [100](#ch03-page-100)**",
+      "before": "**程序计数器线程，[100](#ch03-page-100)**",
+      "after": "**线程的程序计数器，[100](#ch03-page-100)**",
+      "reason": "线程寄存器字段归属"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7698,
+      "english": "compiled, [183](#ch05-page-183)–[184](#ch05-page-184)",
+      "before": "已编译，[183](#ch05-page-183)–[184](#ch05-page-184)",
+      "after": "编译型，[183](#ch05-page-183)–[184](#ch05-page-184)",
+      "reason": "编程语言分类"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7702,
+      "english": "interpreted, [184](#ch05-page-184)–[185](#ch05-page-185)",
+      "before": "解释，[184](#ch05-page-184)–[185](#ch05-page-185)",
+      "after": "解释型，[184](#ch05-page-184)–[185](#ch05-page-185)",
+      "reason": "编程语言分类"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7709,
+      "english": "**Prometheus monitoring software, [138](#ch04-page-138)**",
+      "before": "**普罗米修斯监控软件，[138](#ch04-page-138)**",
+      "after": "**Prometheus监控软件，[138](#ch04-page-138)**",
+      "reason": "软件专名保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7712,
+      "english": "**Proofs of concept**",
+      "before": "**概念证明**",
+      "after": "**概念验证**",
+      "reason": "proof of concept技术验证术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7871,
+      "english": "**Ramping load benchmarking, [662](#ch12-page-662)–[664](#ch12-page-664)**",
+      "before": "**斜坡负载基准测试，[662](#ch12-page-662)–[664](#ch12-page-664)**",
+      "after": "**递增负载基准测试，[662](#ch12-page-662)–[664](#ch12-page-664)**",
+      "reason": "ramping负载逐步上升"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7877,
+      "english": "**Random change anti-method, [42](#ch02-page-42)–[43](#ch02-page-43)**",
+      "before": "**随机变化反法，[42](#ch02-page-42)–[43](#ch02-page-43)**",
+      "after": "**随机改动反方法，[42](#ch02-page-42)–[43](#ch02-page-43)**",
+      "reason": "反方法指无计划修改系统"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7903,
+      "english": "**RCU (read-copy update), [115](#ch03-page-115)**",
+      "before": "**RCU（读取-副本更新），[115](#ch03-page-115)**",
+      "after": "**RCU（读-复制更新），[115](#ch03-page-115)**",
+      "reason": "RCU机制术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7906,
+      "english": "**RCU-walk (read-copy-update-walk) algorithm, [375](#ch08-page-375)**",
+      "before": "**RCU-walk（读取-复制-更新-walk）算法，[375](#ch08-page-375)**",
+      "after": "**RCU-walk（读-复制-更新遍历）算法，[375](#ch08-page-375)**",
+      "reason": "walk目录路径遍历"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7921,
+      "english": "**Read-copy-update-walk (RCU-walk) algorithm, [375](#ch08-page-375)**",
+      "before": "**读取-复制-更新-行走（RCU-walk）算法，[375](#ch08-page-375)**",
+      "after": "**读-复制-更新遍历（RCU-walk）算法，[375](#ch08-page-375)**",
+      "reason": "walk不是行走"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7943,
+      "english": "**Reader/writer (RW) locks, [179](#ch05-page-179)**",
+      "before": "**读取器/写入器 (RW) 锁，[179](#ch05-page-179)**",
+      "after": "**读写 (RW) 锁，[179](#ch05-page-179)**",
+      "reason": "reader writer lock同步术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7984,
+      "english": "CPU profiling, [695](#ch13-page-695)–[696](#ch13-page-696)",
+      "before": "CPU 分析，[695](#ch13-page-695)–[696](#ch13-page-696)",
+      "after": "CPU 剖析，[695](#ch13-page-695)–[696](#ch13-page-696)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 7994,
+      "english": "stack walking, [696](#ch13-page-696)",
+      "before": "堆栈行走，[696](#ch13-page-696)",
+      "after": "栈遍历，[696](#ch13-page-696)",
+      "reason": "stack walking调用栈回溯"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8183,
+      "english": "**Rotation time in magnetic rotational disks, [436](#ch09-page-436)**",
+      "before": "**磁性旋转盘的旋转时间，[436](#ch09-page-436)**",
+      "after": "**旋转式磁盘的旋转时间，[436](#ch09-page-436)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8271,
+      "english": "**Sampling**",
+      "before": "**取样**",
+      "after": "**采样**",
+      "reason": "性能sampling术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8273,
+      "english": "CPU profiling, [35](#ch02-page-35), [135](#ch04-page-135), [187](#ch05-page-187), [200](#ch05-page-200)–[201](#ch05-page-201), [247](#ch06-page-247)–[248](#ch06-page-248)",
+      "before": "CPU 分析、[35](#ch02-page-35)、[135](#ch04-page-135)、[187](#ch05-page-187)、[200](#ch05-page-200)–[201](#ch05-page-201)、[247](#ch06-page-247)–[248](#ch06-page-248)",
+      "after": "CPU 剖析、[35](#ch02-page-35)、[135](#ch04-page-135)、[187](#ch05-page-187)、[200](#ch05-page-200)–[201](#ch05-page-201)、[247](#ch06-page-247)–[248](#ch06-page-248)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8417,
+      "english": "**SCHED\\_DEADLINE policy, [117](#ch03-page-117)**",
+      "before": "**SCHED\\_DEADLINE 政策，[117](#ch03-page-117)**",
+      "after": "**SCHED\\_DEADLINE 策略，[117](#ch03-page-117)**",
+      "reason": "调度policy非公共政策"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8492,
+      "english": "**Scrubbing file systems, [376](#ch08-page-376)**",
+      "before": "**清理文件系统，[376](#ch08-page-376)**",
+      "after": "**文件系统数据校验，[376](#ch08-page-376)**",
+      "reason": "scrubbing检查校验数据并修复而非清理删除"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8529,
+      "english": "**SEDF (simple earliest deadline first) schedulers, [595](#ch11-page-595)**",
+      "before": "**SEDF（简单最早截止日期优先）调度程序，[595](#ch11-page-595)**",
+      "after": "**SEDF（简单最早截止时间优先）调度程序，[595](#ch11-page-595)**",
+      "reason": "调度deadline为时刻非日期"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8532,
+      "english": "**Seek time in magnetic rotational disks, [436](#ch09-page-436)**",
+      "before": "**在旋转磁盘中寻道时间，[436](#ch09-page-436)**",
+      "after": "**旋转式磁盘的寻道时间，[436](#ch09-page-436)**",
+      "reason": "名词结构及磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8541,
+      "english": "**Segments**",
+      "before": "**报文段**",
+      "after": "**段（报文段或内存段）**",
+      "reason": "分组还含进程虚拟地址空间中的段"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8644,
+      "english": "**Short-stroking in magnetic rotational disks, [437](#ch09-page-437)**",
+      "before": "**磁性旋转盘中的短行程，[437](#ch09-page-437)**",
+      "after": "**旋转式磁盘中的短行程，[437](#ch09-page-437)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8699,
+      "english": "multiple page, [352](#ch07-page-352)–[353](#ch07-page-353)",
+      "before": "多页，[352](#ch07-page-352)–[353](#ch07-page-353)",
+      "after": "多种内存页，[352](#ch07-page-352)–[353](#ch07-page-353)",
+      "reason": "multiple page指多种页大小非多个页面"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8901,
+      "english": "**Solaris**",
+      "before": "**索拉里斯**",
+      "after": "**Solaris**",
+      "reason": "操作系统专名保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8938,
+      "english": "**Speedup with latency, [7](#ch01-page-7)**",
+      "before": "**延迟加速，[7](#ch01-page-7)**",
+      "after": "**以延迟衡量的加速比，[7](#ch01-page-7)**",
+      "reason": "speedup是加速比且用延迟计算"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8972,
+      "english": "**Stack helpers, [214](#ch05-page-214)**",
+      "before": "**堆栈助手，[214](#ch05-page-214)**",
+      "after": "**栈辅助函数，[214](#ch05-page-214)**",
+      "reason": "stack helpers运行时栈遍历辅助函数非人员助手"
+    },
+    {
+      "file": "023-index.md",
+      "line": 8984,
+      "english": "**Stack walking, [102](#ch03-page-102), [696](#ch13-page-696)**",
+      "before": "**堆栈行走，[102](#ch03-page-102)，[696](#ch13-page-696)**",
+      "after": "**栈遍历，[102](#ch03-page-102)，[696](#ch13-page-696)**",
+      "reason": "stack walking术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9040,
+      "english": "interval statistics, [693](#ch13-page-693)",
+      "before": "区间统计，[693](#ch13-page-693)",
+      "after": "间隔统计，[693](#ch13-page-693)",
+      "reason": "时间间隔统计"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9149,
+      "english": "**stop subcommand in `trace-cmd`, [735](#ch14-page-735)**",
+      "before": "**停止 `trace-cmd`、[735](#ch14-page-735) 中的子命令**",
+      "after": "**stop 子命令（`trace-cmd`），[735](#ch14-page-735)**",
+      "reason": "保留stop命令名；不译成操作动作"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9160,
+      "english": "sample processing, [248](#ch06-page-248)–[249](#ch06-page-249)",
+      "before": "样品处理，[248](#ch06-page-248)–[249](#ch06-page-249)",
+      "after": "采样数据处理，[248](#ch06-page-248)–[249](#ch06-page-249)",
+      "reason": "性能sample非实物样品"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9205,
+      "english": "**Streetlight effect, [42](#ch02-page-42)**",
+      "before": "**路灯效果，[42](#ch02-page-42)**",
+      "after": "**路灯效应，[42](#ch02-page-42)**",
+      "reason": "streetlight effect认知偏差"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9235,
+      "english": "**Summary-since-boot values monitoring, [79](#ch02-page-79)**",
+      "before": "**自启动以来值监控摘要，[79](#ch02-page-79)**",
+      "after": "**监控自启动以来的汇总值，[79](#ch02-page-79)**",
+      "reason": "监控对象与摘要归属误置"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9296,
+      "english": "**Symbol churn, [214](#ch05-page-214)**",
+      "before": "**符号流失，[214](#ch05-page-214)**",
+      "after": "**符号变动，[214](#ch05-page-214)**",
+      "reason": "churn指采样与符号表转储之间映射变化非单纯丢失"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9411,
+      "english": "**System-wide CPU profiling, [268](#ch06-page-268)–[270](#ch06-page-270)**",
+      "before": "**系统范围的 CPU 分析，[268](#ch06-page-268)–[270](#ch06-page-270)**",
+      "after": "**系统范围的 CPU 剖析，[268](#ch06-page-268)–[270](#ch06-page-270)**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9420,
+      "english": "profiling, [135](#ch04-page-135)",
+      "before": "分析，[135](#ch04-page-135)",
+      "after": "剖析，[135](#ch04-page-135)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9447,
+      "english": "Tuned Project, [572](#ch10-page-572)",
+      "before": "调优项目，[572](#ch10-page-572)",
+      "after": "Tuned 项目，[572](#ch10-page-572)",
+      "reason": "专名Tuned保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9615,
+      "english": "top processes, [549](#ch10-page-549)",
+      "before": "顶级进程，[549](#ch10-page-549)",
+      "after": "排名靠前的进程，[549](#ch10-page-549)",
+      "reason": "top进程排行榜非进程等级"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9630,
+      "english": "**Tenancy in cloud computing, [580](#ch11-page-580)**",
+      "before": "**云计算中的租赁，[580](#ch11-page-580)**",
+      "after": "**云计算中的租户关系，[580](#ch11-page-580)**",
+      "reason": "cloud tenancy租户上下文"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9750,
+      "english": "magnetic rotational disks, [436](#ch09-page-436)–[437](#ch09-page-437)",
+      "before": "磁性旋转盘，[436](#ch09-page-436)–[437](#ch09-page-437)",
+      "after": "旋转式磁盘，[436](#ch09-page-436)–[437](#ch09-page-437)",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9767,
+      "english": "**Tickless kernels, [99](#ch03-page-99), [117](#ch03-page-117)**",
+      "before": "**无滴答内核，[99](#ch03-page-99)，[117](#ch03-page-117)**",
+      "after": "**无时钟节拍内核，[99](#ch03-page-99)，[117](#ch03-page-117)**",
+      "reason": "tickless timer术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9770,
+      "english": "**Ticks, clock, [99](#ch03-page-99)**",
+      "before": "**滴答声，时钟，[99](#ch03-page-99)**",
+      "after": "**时钟节拍，[99](#ch03-page-99)**",
+      "reason": "tick非声音"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9778,
+      "english": "averages over, [74](#ch02-page-74)",
+      "before": "平均超过，[74](#ch02-page-74)",
+      "after": "按时间求平均，[74](#ch02-page-74)",
+      "reason": "averages over time非超过阈值"
+    },
+    {
+      "file": "023-index.md",
+      "line": 9815,
+      "english": "**Time to first byte (TTFB) in networks, [506](#ch10-page-506)**",
+      "before": "**网络中第一个字节的时间 (TTFB)，[506](#ch10-page-506)**",
+      "after": "**网络首字节到达时间 (TTFB)，[506](#ch10-page-506)**",
+      "reason": "TTFB等待首字节的时间"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10049,
+      "english": "`trace-cmd`. *See* [trace-cmd front end](#index-index1744)",
+      "before": "`trace-cmd`. *See* [trace-cmd front end](#index-index1744)",
+      "after": "`trace-cmd`. *参见* [trace-cmd 前端](#index-index1744)",
+      "reason": "交叉引用文本漏译"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10120,
+      "english": "friends, [509](#ch10-page-509)",
+      "before": "朋友[509](#ch10-page-509)",
+      "after": "相关协议[509](#ch10-page-509)",
+      "reason": "TCP and friends为相关网络协议非人际朋友"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10124,
+      "english": "Large Receive Offload, [116](#ch03-page-116)",
+      "before": "大接收卸载，[116](#ch03-page-116)",
+      "after": "大包接收卸载，[116](#ch03-page-116)",
+      "reason": "LRO术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10130,
+      "english": "offload in packet size, [505](#ch10-page-505)",
+      "before": "卸载数据包大小，[505](#ch10-page-505)",
+      "after": "数据包大小中的卸载机制，[505](#ch10-page-505)",
+      "reason": "offload名词机制非卸载大小动作"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10140,
+      "english": "three-way handshakes, [511](#ch10-page-511)",
+      "before": "三向握手，[511](#ch10-page-511)",
+      "after": "三次握手，[511](#ch10-page-511)",
+      "reason": "TCP术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10199,
+      "english": "**TTFB (time to first byte) in networks, [506](#ch10-page-506)**",
+      "before": "**网络中的 TTFB（第一个字节的时间），[506](#ch10-page-506)**",
+      "after": "**网络中的 TTFB（首字节到达时间），[506](#ch10-page-506)**",
+      "reason": "TTFB度量"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10225,
+      "english": "**Tuned Project, [572](#ch10-page-572)**",
+      "before": "**调整项目，[572](#ch10-page-572)**",
+      "after": "**Tuned 项目，[572](#ch10-page-572)**",
+      "reason": "软件专名Tuned"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10264,
+      "english": "**Type 1 hypervisors, [587](#ch11-page-587)**",
+      "before": "**类型 1 虚拟机管理程序，[587](#ch11-page-587)**",
+      "after": "**第 1 类虚拟机监控器，[587](#ch11-page-587)**",
+      "reason": "type 1 hypervisor术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10267,
+      "english": "**Type 2 hypervisors, [587](#ch11-page-587)**",
+      "before": "**2 类虚拟机管理程序，[587](#ch11-page-587)**",
+      "after": "**第 2 类虚拟机监控器，[587](#ch11-page-587)**",
+      "reason": "type 2 hypervisor术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10298,
+      "english": "**`uid` variable in `bpftrace`, [777](#ch15-page-777)**",
+      "before": "**`uid` 中的变量 `bpftrace`、[777](#ch15-page-777)**",
+      "after": "**`uid` 变量（`bpftrace`）、[777](#ch15-page-777)**",
+      "reason": "变量工具归属反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10373,
+      "english": "**uprobe profiler, [707](#ch14-page-707)**",
+      "before": "**uprobe 分析器，[707](#ch14-page-707)**",
+      "after": "**uprobe 剖析器，[707](#ch14-page-707)**",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10401,
+      "english": "profiling, [723](#ch14-page-723)",
+      "before": "分析，[723](#ch14-page-723)",
+      "after": "剖析，[723](#ch14-page-723)",
+      "reason": "profiling/profiler性能剖析术语，区别普通analysis分析"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10473,
+      "english": "**User mutex in USE method, [799](#appa-page-799)**",
+      "before": "**USE方法中的用户互斥，[799](#appa-page-799)**",
+      "after": "**USE方法中的用户互斥锁，[799](#appa-page-799)**",
+      "reason": "mutex同步锁"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10491,
+      "english": "**`username` variable in `bpftrace`, [777](#ch15-page-777)**",
+      "before": "**`username` 中的变量 `bpftrace`、[777](#ch15-page-777)**",
+      "after": "**`username` 变量（`bpftrace`）、[777](#ch15-page-777)**",
+      "reason": "变量工具归属反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10500,
+      "english": "**`ustack` variable in `bpftrace`, [778](#ch15-page-778)**",
+      "before": "**`ustack` 中的变量 `bpftrace`、[778](#ch15-page-778)**",
+      "after": "**`ustack` 变量（`bpftrace`）、[778](#ch15-page-778)**",
+      "reason": "变量工具归属反转"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10612,
+      "english": "FlameScope, [292](#ch06-page-292)–[293](#ch06-page-293)",
+      "before": "火焰示波器，[292](#ch06-page-292)–[293](#ch06-page-293)",
+      "after": "FlameScope，[292](#ch06-page-292)–[293](#ch06-page-293)",
+      "reason": "软件专名保留"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10615,
+      "english": "**Variation, coefficient of, [76](#ch02-page-76)**",
+      "before": "** [76](#ch02-page-76) 的变异、系数**",
+      "after": "** [76](#ch02-page-76) 的变异系数**",
+      "reason": "coefficient of variation统计量"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10665,
+      "english": "**Vibration in magnetic rotational disks, [438](#ch09-page-438)**",
+      "before": "**磁性旋转盘中的振动，[438](#ch09-page-438)**",
+      "after": "**旋转式磁盘中的振动，[438](#ch09-page-438)**",
+      "reason": "磁盘术语"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10728,
+      "english": "**Virtual-to-guest physical translation, [593](#ch11-page-593)**",
+      "before": "**虚拟地址到来宾物理地址的转换，[593](#ch11-page-593)**",
+      "after": "**虚拟地址到客户机物理地址的转换，[593](#ch11-page-593)**",
+      "reason": "硬件虚拟化guest地址"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10893,
+      "english": "portable executable format, [183](#ch05-page-183)",
+      "before": "便携式可执行格式，[183](#ch05-page-183)",
+      "after": "可移植可执行格式，[183](#ch05-page-183)",
+      "reason": "PE格式portable非便携实物"
+    },
+    {
+      "file": "023-index.md",
+      "line": 10901,
+      "english": "word size, [310](#ch07-page-310)",
+      "before": "字大小，[310](#ch07-page-310)",
+      "after": "字长，[310](#ch07-page-310)",
+      "reason": "word size CPU位宽"
+    },
+    {
+      "file": "023-index.md",
+      "line": 11071,
+      "english": "**ZIO pipeline in ZFS, [381](#ch08-page-381)**",
+      "before": "**ZFS 中的 ZIO 管道，[381](#ch08-page-381)**",
+      "after": "**ZFS 中的 ZIO 流水线，[381](#ch08-page-381)**",
+      "reason": "ZIO pipeline"
+    },
+    {
+      "file": "023-index.md",
+      "line": 11081,
+      "english": "magnetic rotational disks, [437](#ch09-page-437)",
+      "before": "磁性旋转盘，[437](#ch09-page-437)",
+      "after": "旋转式磁盘，[437](#ch09-page-437)",
+      "reason": "磁盘术语"
+    }
+  ],
+  "source_questions": [
+    {
+      "line": 32,
+      "english": "Active listening in three-way handshakes",
+      "issue": "原文主动监听疑似误称；按作者字面保留主动监听，不擅自更正英文。"
+    },
+    {
+      "line": 9645,
+      "english": "**Text step in scientific method, [44](#ch02-page-44)–[45](#ch02-page-45)**",
+      "current_chinese": "**科学方法中的文本步骤，[44](#ch02-page-44)–[45](#ch02-page-45)**",
+      "issue": "索引Text step与第2章科学方法步骤Test不一致；保留作者字面文本步骤，未擅改英文。",
+      "evidence": "002-chapter-02.md:641–645 第4步Test"
+    },
+    {
+      "line": 10395,
+      "english": "interface and overload, [154](#ch04-page-154)–[155](#ch04-page-155)",
+      "current_chinese": "接口和过载，[154](#ch04-page-154)–[155](#ch04-page-155)",
+      "issue": "原索引overload疑似应为overhead；暂按原文过载保留，交主代理处理原文疑点。"
+    }
+  ],
+  "coverage": {
+    "physical_line_range": [
+      1,
+      11088
+    ],
+    "physical_lines_each": 11088,
+    "nonempty_content_pairs": 4570,
+    "index_groups": 1945,
+    "changed_lines": 237,
+    "unchanged_pairs_included_in_reading": true,
+    "not_claimed": "未重新审读27文件全书正文；未校验重建PDF"
+  },
+  "validation": {
+    "report": "/tmp/systems-performance-terra-round3-validation.json",
+    "file_count": 27,
+    "error_count": 0,
+    "warning_count": 27,
+    "status": "pass",
+    "warnings_meaning": "27个文件包含未变的非空行（代码、工具名和受保护引用等），validator常规提示",
+    "modified_line_checks": {
+      "ordered_links": "pass",
+      "ordered_inline_code_tokens": "pass",
+      "page_reference_digits": "pass",
+      "ledger_final_lines": "pass"
+    },
+    "source_sha256": "063123f325bc796e9150e52d46f66fb3f90e0ac5d5f142a8d1c868c73de23da2",
+    "translation_sha256": "5485bd6e7949a3be5a5a18e0f55c88fd6149404d0e9d222928ec7185497b9431"
+  },
+  "needs_pdf_rebuild": true
+}

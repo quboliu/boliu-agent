@@ -1,0 +1,16 @@
+[
+  {
+    "source": "017-appendix-a.md",
+    "line": 67,
+    "reason": "translated sidecar introduced table delimiters absent from the English source",
+    "before": "| 内核互斥体 | 错误 | 动态检测（例如，递归互斥体输入）；其他错误可能会导致内核锁定/恐慌，请使用 kdump/`crash` | 进行调试",
+    "after": "| 内核互斥体 | 错误 | 动态检测（例如，递归互斥体输入）；其他错误可能会导致内核锁定/恐慌，请使用 kdump/`crash` 进行调试 |"
+  },
+  {
+    "source": "017-appendix-a.md",
+    "line": 72,
+    "reason": "translated sidecar introduced table delimiters absent from the English source",
+    "before": "| 任务容量 | 饱和度 | 内存分配时阻塞的线程；此时页面扫描仪应该正在运行（`sar -B`、`pgscan*`），否则使用动态跟踪 | 进行检查",
+    "after": "| 任务容量 | 饱和度 | 内存分配时阻塞的线程；此时页面扫描仪应该正在运行（`sar -B`、`pgscan*`），否则使用动态跟踪 进行检查 |"
+  }
+]

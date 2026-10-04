@@ -1,0 +1,15 @@
+{
+  "encoding": {
+    "observed": "XHTML bytes are UTF-8 but omit a reliable charset declaration",
+    "decision": "decode UTF-8 before parsing",
+    "test": "curly quotes and apostrophes remain U+2018/U+2019 rather than mojibake"
+  },
+  "web_navigation": {
+    "observed": "toc.xhtml and bk01-toc.xhtml are navigation views",
+    "decision": "use native Typst outline and record these as excluded source navigation"
+  },
+  "image_plates": {
+    "observed": "*_images.xhtml contains image-only links to pg*.jpg assets",
+    "decision": "copy every graphic once; do not duplicate plate pages as prose chapters"
+  }
+}
