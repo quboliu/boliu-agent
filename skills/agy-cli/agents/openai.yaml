@@ -1,0 +1,4 @@
+interface:
+  display_name: "AGY CLI"
+  short_description: "Use agy for prompts, long inputs, models, and conversations"
+  default_prompt: "Use $agy-cli to run the requested task with the local Antigravity CLI."

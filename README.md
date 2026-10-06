@@ -11,6 +11,7 @@ boliu-agent/
 │   ├── README.md
 │   └── repository-conventions.md
 └── skills/
+    ├── agy-cli/
     ├── paparazzi/
     ├── blog-publish/
     ├── bookcase-publish/
@@ -30,6 +31,14 @@ boliu-agent/
 - `skills/` contains self-contained agent skills. Each skill owns its `SKILL.md`, references, scripts, assets, and optional UI metadata.
 
 ## Skills
+
+### agy-cli
+
+Explains general Antigravity CLI use: interactive and headless tasks, model
+selection, long-text input, conversation continuation, output formats, and
+common parameter and permission issues.
+
+Entry: [`skills/agy-cli/SKILL.md`](skills/agy-cli/SKILL.md)
 
 ### paparazzi
 
