@@ -23,7 +23,7 @@ const SITE = siteIndex < 0 ? "formal" : CLI_ARGS.splice(siteIndex, 2)[1];
 if (!["formal", "draft"].includes(SITE)) fail("--site must be formal or draft");
 const TARGETS = {
   formal: { repo: "quboliu/quboliu.github.io", url: "https://quboliu.github.io", key: "repo", env: "BLOG_REPO", visibility: "PUBLIC" },
-  draft: { repo: "quboliu/mindindex", url: "https://quboliu.github.io/blog-drafts", key: "draftRepo", env: "DRAFT_BLOG_REPO", visibility: "PRIVATE" },
+  draft: { repo: "quboliu/mindindex", url: "https://quboliu.github.io/d", key: "draftRepo", env: "DRAFT_BLOG_REPO", visibility: "PRIVATE" },
 };
 const TARGET = TARGETS[SITE];
 const OTHER_SITE = SITE === "formal" ? "draft" : "formal";
