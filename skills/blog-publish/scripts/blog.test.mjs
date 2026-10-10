@@ -38,7 +38,7 @@ test("source status distinguishes drafts from formal publication", t => {
   assert.equal(draft.status, 0, draft.stderr);
   assert.match(draft.stdout, /PRESENT_IN_DRAFT_SOURCE/);
   assert.match(draft.stdout, /live: +not checked/);
-  assert.match(draft.stdout, /blog-drafts\/posts\/0205/);
+  assert.match(draft.stdout, /mindindex\/posts\/0205/);
   assert.match(f.run("--site", "formal", "status", file).stdout, /ABSENT_FROM_FORMAL_SOURCE/);
 });
 

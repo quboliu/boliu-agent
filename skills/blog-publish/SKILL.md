@@ -11,7 +11,7 @@ made by quboliu
 | Site | Fixed repository | Visibility | Website |
 | --- | --- | --- | --- |
 | Formal | `quboliu/quboliu.github.io` | Public | `https://quboliu.github.io/` |
-| Draft | `quboliu/mindindex` | Private | `https://quboliu.github.io/d/` |
+| Draft | `quboliu/mindindex` | Private | `https://quboliu.github.io/mindindex/` |
 
 **Every blog post and repost must exist in exactly one source repository.** Both content types live under `src/content/posts/`. The same article may never be kept in both `mindindex` and `quboliu.github.io`, even temporarily as a committed state. Promotion moves its entire directory; publishing always removes the draft source before adding it to the formal remote. Check both repositories and the combined deployment output.
 
@@ -22,7 +22,7 @@ with fresh history and no posts. Both initially share the same theme; they are
 separate copies, so theme fixes may need to be applied to both.
 
 The formal repository's `deploy.yml` checks out both repositories, builds and
-indexes each separately, and copies the draft output into `dist/d/`
+indexes each separately, and copies the draft output into `dist/mindindex/`
 before publishing one Pages artifact. It reads mindindex with the read-only
 Deploy Key stored in `MINDINDEX_DEPLOY_KEY`. Never commit the private key or draft
 source into the formal repository. Do not generate the formal search index after
@@ -118,7 +118,7 @@ attachments, and MDX dependencies. Paparazzi dossiers require direct file operat
    `draft: true` and future-dated posts as well as other posts.
 3. Run `npm run content:check` and `npm run build`. In the rendered preview check
    links, images, search, and Chinese typography when affected. URLs and search
-   results must stay under `/d/`.
+   results must stay under `/mindindex/`.
 4. A local writing request does not by itself request online deployment. When
    preview deployment is authorized, commit the scoped draft changes and push
    mindindex `main`, then trigger the formal workflow:
