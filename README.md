@@ -23,6 +23,7 @@ boliu-agent/
     ├── lets-go-further/
     ├── scanned-pdf-to-typst/
     ├── systems-performance-enterprise-and-the-cloud/
+    ├── technical-writing/
     ├── typst-book-production/
     └── user-skill-sync/
 ```
@@ -117,6 +118,14 @@ Enterprise and the Cloud*, including book-local audits, reproducible exports,
 and reading-PDF publication checks.
 
 Entry: [`skills/systems-performance-enterprise-and-the-cloud/SKILL.md`](skills/systems-performance-enterprise-and-the-cloud/SKILL.md)
+
+### technical-writing
+
+Writes and edits computer science and software engineering prose with direct
+answers, concrete causes, consistent terms, and no filler. Includes document
+forms and worked examples for technical answers, docs, PRs, and reviews.
+
+Entry: [`skills/technical-writing/SKILL.md`](skills/technical-writing/SKILL.md)
 
 ### typst-book-production
 
