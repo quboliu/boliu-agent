@@ -15,10 +15,7 @@ boliu-agent/
     ├── paparazzi/
     ├── blog-publish/
     ├── bookcase-publish/
-    ├── deep-concept-research/
     ├── gpt-image-gen/
-    ├── kubernetes-official-docs/
-    ├── kubernetes-paper-reading/
     ├── scanned-pdf-to-typst/
     ├── technical-writing/
     ├── typst-book-production/
@@ -61,34 +58,11 @@ machine paths are kept outside the shared skill.
 
 Entry: [`skills/bookcase-publish/SKILL.md`](skills/bookcase-publish/SKILL.md)
 
-### deep-concept-research
-
-Builds evidence-traceable, source-and-experiment-driven research topics and cross-domain research programs, with audited claims, experiments, diagrams, tables, and version refresh workflows.
-
-Entry: [`skills/deep-concept-research/SKILL.md`](skills/deep-concept-research/SKILL.md)
-
 ### gpt-image-gen
 
 Generates and edits raster images with `gpt-image-2` through the packyapi or apimart provider, while keeping credentials in ignored local configuration or environment variables.
 
 Entry: [`skills/gpt-image-gen/SKILL.md`](skills/gpt-image-gen/SKILL.md)
-
-### kubernetes-official-docs
-
-Processes Kubernetes upstream official documentation into source-faithful
-bilingual reading drafts and auditable standalone Markdown: source alignment,
-Hugo shortcode restoration, version pinning, article assembly, and provenance
-checks.
-
-Entry: [`skills/kubernetes-official-docs/SKILL.md`](skills/kubernetes-official-docs/SKILL.md)
-
-### kubernetes-paper-reading
-
-Processes Kubernetes-related research PDFs such as Borg and Omega into ordered,
-figure-aware bilingual reading drafts with source hashes and explicit review
-boundaries.
-
-Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
 
 ### scanned-pdf-to-typst
 
