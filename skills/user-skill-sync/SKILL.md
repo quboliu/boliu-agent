@@ -1,15 +1,39 @@
 ---
 name: user-skill-sync
-description: Keep user-created Codex skills attributed to quboliu and synchronized to the quboliu/boliu-agent repository. Use whenever creating, modifying, or updating a user-created skill.
+description: Keep reusable user-created Codex skills attributed to quboliu and synchronized to quboliu/boliu-agent. When creating or updating a skill, classify its scope first; skills for a specific book stay in that book's local directory and are excluded from global installation and synchronization.
 ---
 
 # User Skill Sync
 made by quboliu
 
-Keep each user-created skill in `$HOME/.agents/skills/<skill-name>/` and its
-tracked copy in `skills/<skill-name>/` of `quboliu/boliu-agent`. Apply this
-skill whenever the user asks to create, modify, or update a user-created skill,
-including this one.
+Keep reusable user-created skills in `$HOME/.agents/skills/<skill-name>/` and
+their tracked copies in `skills/<skill-name>/` of `quboliu/boliu-agent`.
+Classify scope before moving or synchronizing any skill, including this one.
+
+## Exclude skills for a specific book first
+
+A skill dedicated to one named book or edition is book-local, even if an old
+copy already exists in a global skill directory or in `boliu-agent`. Judge its
+actual scope from its instructions and owning project; `metadata.scope:
+book-local` is an explicit marker, but its absence does not make a book skill
+reusable.
+
+Keep the complete book-local skill in
+`<book-workspace>/.agents/skills/<skill-name>/`. Do not migrate, install, mirror,
+or symlink it into a global skill directory or `boliu-agent`, and do not add it
+to this repository's catalog. For a book-local change, validate it in place and
+follow the owning project's Git rules; do not trigger the reusable-skill sync
+below. This exclusion applies before location normalization, attribution
+sweeps, fingerprint comparison, and publication.
+
+When cleanup is requested, first preserve the complete skill and its resources
+in the owning book directory. Replace book-local links to global copies with
+real local files, preserve newer book-local changes, and verify content and
+remaining references before removing obsolete global and repository copies.
+
+General workflows such as `typst-book-production`, `scanned-pdf-to-typst`, and
+`bookcase-publish` remain reusable. Promote only lessons that apply across
+books, without importing a particular book's overlay or content.
 
 ## Identify managed skills
 
@@ -19,18 +43,20 @@ it is in `$HOME/.agents/skills/` and is not registered in
 synchronize Codex system skills, plugin-provided skills, or third-party skills
 unless the user explicitly adopts them as a maintained fork.
 
-If ownership is unclear, ask the user before adding an attribution line or
-synchronizing it.
+Only reusable user-created skills that pass the scope check above are managed
+by the remaining workflow. If ownership is unclear, ask the user before adding
+an attribution line or synchronizing it.
 
 ## Normalize nonstandard locations first
 
-`$HOME/.agents/skills/` is the canonical user-level location for managed skills.
-Before inspecting, correcting, or synchronizing a user-created skill, check
+`$HOME/.agents/skills/` is the canonical user-level location for reusable
+managed skills, never for book-local skills.
+Before inspecting, correcting, or synchronizing a reusable managed skill, check
 other host-specific locations that exist, including `$HOME/.codex/skills/`,
 `$HOME/.claude/skills/`, `$HOME/.zcode/skills/`,
 `$HOME/.config/zcode/skills/`, and any location the user identifies.
 
-When a user-created skill is found outside the canonical directory, migrate its
+When a reusable managed skill is found outside the canonical directory, migrate its
 complete directory to `$HOME/.agents/skills/<skill-name>/` first. Do not migrate
 Codex `.system` skills, plugin-managed skills, entries recorded as third-party
 installations in `$HOME/.agents/.skill-lock.json`, or a symlink whose resolved
@@ -85,8 +111,9 @@ how to proceed. Never overwrite, stash, or commit unrelated work.
 
 ## Synchronize and publish
 
-The local managed-skill set is the complete synchronization input. For every
-local managed skill, compare `$HOME/.agents/skills/<skill-name>/` with
+The local reusable managed-skill set, after excluding all book-local skills,
+is the complete synchronization input. For every local managed skill, compare
+`$HOME/.agents/skills/<skill-name>/` with
 `<repo>/skills/<skill-name>/`; do not use remote-only skills to expand, modify,
 or prune the local set. A remote skill missing locally is outside this sync run
 and must be left untouched.

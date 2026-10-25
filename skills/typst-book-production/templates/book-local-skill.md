@@ -1,9 +1,16 @@
 ---
 name: <book-skill-slug>
 description: Handle source recovery, conversion, and publication rules specific to <book-title>.
+metadata:
+  scope: book-local
 ---
 
 # <book-title>
+made by quboliu
+
+Keep this complete skill in this book workspace's `.agents/skills/<book-skill-slug>/`.
+Do not install or symlink it into a global skill directory or synchronize it to
+`boliu-agent`. Reusable-skill synchronization excludes this book-local overlay.
 
 ## Authority and regeneration
 

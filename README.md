@@ -15,21 +15,19 @@ boliu-agent/
     ├── paparazzi/
     ├── blog-publish/
     ├── bookcase-publish/
-    ├── ddia-v2-dual-typst/
     ├── deep-concept-research/
     ├── gpt-image-gen/
     ├── kubernetes-official-docs/
     ├── kubernetes-paper-reading/
-    ├── lets-go-further/
     ├── scanned-pdf-to-typst/
-    ├── systems-performance-enterprise-and-the-cloud/
     ├── technical-writing/
     ├── typst-book-production/
     └── user-skill-sync/
 ```
 
 - `rules/` contains reusable behavioral and repository rules.
-- `skills/` contains self-contained agent skills. Each skill owns its `SKILL.md`, references, scripts, assets, and optional UI metadata.
+- `skills/` contains reusable, self-contained agent skills. Each skill owns its `SKILL.md`, references, scripts, assets, and optional UI metadata.
+- Skills dedicated to a specific book or edition stay only in that book's `.agents/skills/` directory. They are excluded from global skill installation and synchronization to this repository. General book-production workflows remain here.
 
 ## Skills
 
@@ -63,12 +61,6 @@ machine paths are kept outside the shared skill.
 
 Entry: [`skills/bookcase-publish/SKILL.md`](skills/bookcase-publish/SKILL.md)
 
-### ddia-v2-dual-typst
-
-Maintains the DDIA V2 English-Chinese dual-language Typst book.
-
-Entry: [`skills/ddia-v2-dual-typst/SKILL.md`](skills/ddia-v2-dual-typst/SKILL.md)
-
 ### deep-concept-research
 
 Builds evidence-traceable, source-and-experiment-driven research topics and cross-domain research programs, with audited claims, experiments, diagrams, tables, and version refresh workflows.
@@ -98,26 +90,11 @@ boundaries.
 
 Entry: [`skills/kubernetes-paper-reading/SKILL.md`](skills/kubernetes-paper-reading/SKILL.md)
 
-### lets-go-further
-
-Recovers and typesets *Let's Go Further* with deliberately designed contents
-pages and verified syntax-highlighted code.
-
-Entry: [`skills/lets-go-further/SKILL.md`](skills/lets-go-further/SKILL.md)
-
 ### scanned-pdf-to-typst
 
 Converts scanned or hybrid PDFs into proofread, source-traceable Typst editions.
 
 Entry: [`skills/scanned-pdf-to-typst/SKILL.md`](skills/scanned-pdf-to-typst/SKILL.md)
-
-### systems-performance-enterprise-and-the-cloud
-
-Maintains the source-traceable, bilingual Typst edition of *Systems Performance:
-Enterprise and the Cloud*, including book-local audits, reproducible exports,
-and reading-PDF publication checks.
-
-Entry: [`skills/systems-performance-enterprise-and-the-cloud/SKILL.md`](skills/systems-performance-enterprise-and-the-cloud/SKILL.md)
 
 ### technical-writing
 
@@ -140,8 +117,10 @@ Entry: [`skills/typst-book-production/SKILL.md`](skills/typst-book-production/SK
 
 ### user-skill-sync
 
-Keeps user-created Codex skills attributed to `quboliu` and synchronized from
-the local user-skill directory to this repository.
+Keeps reusable user-created Codex skills attributed to `quboliu` and synchronized
+from the local user-skill directory to this repository. Classifies scope before
+any migration or synchronization and leaves book-specific skills in their
+owning book directories.
 
 Entry: [`skills/user-skill-sync/SKILL.md`](skills/user-skill-sync/SKILL.md)
 

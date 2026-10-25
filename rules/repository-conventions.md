@@ -3,6 +3,7 @@
 ## Storage
 
 - Store reusable rules under `rules/` and self-contained skills under `skills/`.
+- Keep skills for a specific book or edition only in that book's `.agents/skills/` directory. Exclude them from global skill installation, `boliu-agent` synchronization, and this repository's catalog; general book-production workflows remain reusable skills.
 - Use lowercase kebab-case skill directory names matching the skill frontmatter `name`.
 - Keep detailed skill references one level below `SKILL.md` so agents can load them selectively.
 

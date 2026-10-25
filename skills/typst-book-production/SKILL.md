@@ -259,6 +259,13 @@ anomalies, and learned pitfalls. It may refine the production core for genuine
 content needs, but it must not rename, collapse, or bypass the canonical raw,
 Markdown, edition, language, or local-skill boundaries.
 
+The complete overlay stays in its book workspace as the sole editable copy.
+Never install or symlink it into a global skill directory, synchronize it to
+`boliu-agent`, or add it to that repository's catalog. Mark newly created
+overlays with `metadata.scope: book-local`; this boundary also applies to
+existing book-specific skills without the marker. `user-skill-sync` manages
+reusable skills only and must exclude these overlays before migration or sync.
+
 Promote a lesson from a project overlay into this core only when it is
 reproducible and useful across multiple books. Keep one-book taste and
 exceptions in that book's decision log.

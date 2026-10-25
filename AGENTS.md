@@ -9,6 +9,7 @@ This repository is an Aranya workspace entry. When a session starts here directl
 - Put reusable behavioral policies in `rules/`.
 - When modifying or committing policy files under `rules/` such as `AGENTS-*.md`, keep the corresponding bilingual variants in sync. In this repository, different policy versions are distinguished by Greek-letter names and language suffixes such as `zh` and `en` (for example, `AGENTS-α-zh.md` and `AGENTS-α-en.md`).
 - Put each skill in `skills/<skill-name>/` with the folder name matching the `name` in its `SKILL.md` frontmatter.
+- This repository contains reusable skills only. Skills dedicated to a specific book or edition stay in that book's local `.agents/skills/` directory; do not install them globally, synchronize them here, or add them to the root catalog.
 - Keep repository navigation in the root `README.md`; do not add auxiliary README, changelog, installation guide, or quick-reference files inside an individual skill unless that skill explicitly requires them as output assets.
 - Do not commit secrets, credentials, private keys, access tokens, unredacted environment dumps, or sensitive raw traces. Private visibility is not a security boundary for secret storage.
 

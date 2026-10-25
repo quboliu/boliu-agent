@@ -82,6 +82,10 @@ skill entry point remains exactly `SKILL.md`.
   book-specific scripts, dependencies, conversion rules, formula handling,
   terminology, anomalies, exceptions, and learned pitfalls there. Its
   frontmatter `name` and directory name are exactly `<book-skill-slug>`.
+  Keep the complete skill in this book workspace, with `metadata.scope:
+  book-local` in new overlays. Its directory and entrypoint must not depend on
+  links to a global skill copy. Do not install it globally or mirror it into
+  `boliu-agent`; only reusable cross-book workflows belong in that repository.
 
 Do not put book-specific scripts or temporary extraction directories at the
 workspace root, in the raw directory, in the Markdown tree, or in an edition
