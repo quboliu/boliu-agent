@@ -12,6 +12,7 @@ boliu-agent/
 │   └── repository-conventions.md
 └── skills/
     ├── agy-cli/
+    ├── agy-peer/
     ├── paparazzi/
     ├── blog-publish/
     ├── bookcase-publish/
@@ -35,6 +36,15 @@ selection, long-text input, conversation continuation, output formats, and
 common parameter and permission issues.
 
 Entry: [`skills/agy-cli/SKILL.md`](skills/agy-cli/SKILL.md)
+
+### agy-peer
+
+Connects Codex with an existing local agy session through a durable, bidirectional
+mailbox. Supports either agent initiating questions, correlated replies, explicit
+receipts, retry-safe message IDs, and guarded attachment to the original terminal.
+Documents the difference between active listening and waking a finished agent turn.
+
+Entry: [`skills/agy-peer/SKILL.md`](skills/agy-peer/SKILL.md)
 
 ### paparazzi
 
