@@ -16,6 +16,7 @@ boliu-agent/
     ├── paparazzi/
     ├── blog-publish/
     ├── bookcase-publish/
+    ├── codex-imagegen/
     ├── gpt-image-gen/
     ├── scanned-pdf-to-typst/
     ├── technical-writing/
@@ -67,6 +68,16 @@ and shelf locations from machine-local configuration or user confirmation;
 machine paths are kept outside the shared skill.
 
 Entry: [`skills/bookcase-publish/SKILL.md`](skills/bookcase-publish/SKILL.md)
+
+### codex-imagegen
+
+Lets external agents and tools generate or edit images through Codex CLI's
+built-in image generation with an existing ChatGPT login. Covers stdin prompts,
+reference images, verified file delivery, structured reports, and timeout
+handling. Maintained in this repository only; no local installation or
+registration is required to read or use its instructions.
+
+Entry: [`skills/codex-imagegen/SKILL.md`](skills/codex-imagegen/SKILL.md)
 
 ### gpt-image-gen
 
